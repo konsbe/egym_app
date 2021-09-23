@@ -1,0 +1,29 @@
+[33mcommit d2deaa33be95a69f424a9581a52cd04577ff0015[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: konsbe <kons.be@outlook.com>
+Date:   Thu Sep 23 21:12:11 2021 +0300
+
+    footer
+
+[33mcommit 2255d0a89d9f6d05644c77d81e7d6c1eea40f84d[m
+Author: konsbe <kons.be@outlook.com>
+Date:   Thu Sep 23 18:37:04 2021 +0300
+
+    touches to navbar
+
+[33mcommit f5be988b0e94ba94d0f948199806ae88fad72945[m
+Author: konsbe <kons.be@outlook.com>
+Date:   Thu Sep 23 18:31:25 2021 +0300
+
+    Navbar First Changes
+
+[33mcommit 1c3fb969089eb7787ff85b9b3e26158d4134eeac[m
+Author: konsbe <kons.be@outlook.com>
+Date:   Thu Sep 23 17:08:08 2021 +0300
+
+    clean up
+
+[33mcommit 21b5f7eb68b4350fbb7f5f9a54935bf150e3d5c3[m
+Author: konsbe <kons.be@outlook.com>
+Date:   Thu Sep 23 17:00:15 2021 +0300
+
+    Initialize project using Create React App
