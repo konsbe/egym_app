@@ -25,8 +25,8 @@ const Header = () => {
           </div>
         </Navbar.Brand>
         <Navbar.Toggle
+          className="burger"
           aria-controls="responsive-navbar-nav"
-          style={{ alignContent: "center" }}
         />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
