@@ -1,12 +1,12 @@
 import React from "react";
 import "./styles.css";
-
+import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
 import snatch from "./../../assets/snatch.jpg";
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div>
+    <header>
       <Navbar
         collapseOnSelect
         expand="lg"
@@ -21,7 +21,9 @@ const Header = () => {
           href="#home"
         >
           <div className="wrap">
-            <img className="brand-image" src={snatch} alt="Brand Logo" />
+            <Link to="/">
+              <img className="brand-image" src={snatch} alt="Brand Logo" />
+            </Link>
           </div>
         </Navbar.Brand>
         <Navbar.Toggle
@@ -31,7 +33,7 @@ const Header = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link className="navmenu" href="#features">
-              HOME
+              <Link to="/">HOME</Link>
             </Nav.Link>
             <Nav.Link className="navmenu" href="#pricing">
               COURSES
@@ -71,7 +73,7 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </header>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Directory = () => {
+const Directory = (props) => {
   return <div>THis is the homepage</div>;
 };
 

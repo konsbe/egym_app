@@ -1,0 +1,12 @@
+import React from "react";
+import "./styles.css";
+
+const Registration = (props) => {
+  return (
+    <div>
+      <h1>Registration Page</h1>
+    </div>
+  );
+};
+
+export default Registration;
