@@ -59,9 +59,11 @@ const Header = (props) => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link className="navmenu" href="#deets">
-              <Button variant="outline-success">LOG IN / SIGN UP</Button>
-            </Nav.Link>
+            <Link to="/login">
+              <Nav.Link className="navmenu" href="#deets">
+                <Button variant="outline-success">LOG IN / SIGN UP</Button>
+              </Nav.Link>
+            </Link>
             <Nav.Link
               className="navmenu"
               style={{ marginRight: 5 }}
