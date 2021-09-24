@@ -20,12 +20,12 @@ const Header = (props) => {
         <Navbar.Brand
           style={{ marginLeft: 10 }}
           className="navbarBrand"
-          href="#home"
+          href="/"
         >
           <div className="wrap">
-            <Link to="/">
-              <img className="brand-image" src={snatch} alt="Brand Logo" />
-            </Link>
+            {/* <Link to="/"> */}
+            <img className="brand-image" src={snatch} alt="Brand Logo" />
+            {/* </Link> */}
           </div>
         </Navbar.Brand>
         <Navbar.Toggle
@@ -34,48 +34,44 @@ const Header = (props) => {
         />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className="navmenu" href="#features">
-              <Link to="/">HOME</Link>
+            <Nav.Link as={Link} to="/" className="navmenu">
+              {/* <Link to="/"> */}
+              HOME
+              {/* </Link> */}
             </Nav.Link>
-            <Nav.Link className="navmenu" href="#pricing">
-              COURSES
-            </Nav.Link>
+            <Nav.Link className="navmenu">COURSES</Nav.Link>
             <NavDropdown
               className="navmenu"
               title="TEST"
               id="collasible-nav-dropdown"
             >
-              <NavDropdown.Item className="submenu" href="#action/3.1">
-                Action
-              </NavDropdown.Item>
-              <NavDropdown.Item className="submenu" href="#action/3.2">
+              <NavDropdown.Item className="submenu">Action</NavDropdown.Item>
+              <NavDropdown.Item className="submenu">
                 Another action
               </NavDropdown.Item>
-              <NavDropdown.Item className="submenu" href="#action/3.3">
-                Something
-              </NavDropdown.Item>
+              <NavDropdown.Item className="submenu">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item className="submenu" href="#action/3.4">
+              <NavDropdown.Item className="submenu">
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
             {!currentUser && (
-              <Link to="/login">
-                <Nav.Link className="navmenu" href="#deets">
-                  <Button className="btnlink" variant="outline-success">
-                    LOG IN / SIGN UP
-                  </Button>
-                </Nav.Link>
-              </Link>
+              <Nav.Link as={Link} to="/login" className="navmenu">
+                {/* <Link > */}
+                <Button className="btnlink" variant="outline-success">
+                  LOG IN / SIGN UP
+                </Button>
+                {/* </Link> */}
+              </Nav.Link>
             )}
             {currentUser && (
               <Nav.Link
                 className="navmenu"
                 style={{ marginRight: 5 }}
                 eventKey={2}
-                href="#memes"
+                // href="#memes"
               >
                 {/* onClick={() => auth.signOut()} */}
                 <Button

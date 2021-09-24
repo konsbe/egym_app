@@ -4,14 +4,18 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 // import firebase from "firebase";
 
 import { firebaseConfig } from "./config";
 
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export const auth = app.auth();
+export const firestore = app.firestore();
+
+// const GoogleProvier = new firebase.auth.GoogleAuthProvider();
+// GoogleAuthProvider.seCustomParameters({ prompt: "select_account" });
 
 export const handleUserProfile = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -21,13 +25,16 @@ export const handleUserProfile = async (userAuth, additionalData) => {
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
-    const { displayName, email } = userAuth;
+    const { firstName, lastName, nickName, email, birthDay } = userAuth;
     const timestamp = new Date();
     //   const userRoles = ["user"];
     try {
       await userRef.set({
-        displayName,
+        firstName,
+        lastName,
+        nickName,
         email,
+        birthDay,
         createdDate: timestamp,
         ...additionalData,
       });
