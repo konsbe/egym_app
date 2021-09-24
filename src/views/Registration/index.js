@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import Button from "./../../components/Forms/Button";
 
 const Registration = (props) => {
   return (
@@ -13,7 +14,8 @@ const Registration = (props) => {
         <input type="date" placeholder="Your Birth Date"></input>
         <input type="password" placeholder="Password"></input>
         <input type="password" placeholder="Confirm Your Password"></input>
-        <button type="submit"> Sign Up </button>
+        {/* <button type="submit"> Sign Up </button> */}
+        <Button className="btnsignup">Sign Up</Button>
       </form>
     </div>
   );

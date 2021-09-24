@@ -16,8 +16,8 @@ class LogIn extends Component {
         <form onSubmit={this.handleSubmit}>
           <input type="email" placeholder="example@email.com"></input>
           <input type="password" placeholder="password"></input>
-          {/* onClick={} */}
-          <Button>Log In</Button>
+          {/* onClick={}   this is a param on Button*/}
+          <Button className="btnlogin">Log In</Button>
           <p className="signup">
             You are not a member
             <Link className="signuplink" to="/registration">

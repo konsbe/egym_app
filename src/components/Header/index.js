@@ -3,8 +3,10 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
 import snatch from "./../../assets/snatch.jpg";
+import { auth } from "./../../firebase/utils";
 
 const Header = (props) => {
+  const { currentUser } = props;
   return (
     <header>
       <Navbar
@@ -59,24 +61,40 @@ const Header = (props) => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Link to="/login">
-              <Nav.Link className="navmenu" href="#deets">
-                <Button variant="outline-success">LOG IN / SIGN UP</Button>
+            {!currentUser && (
+              <Link to="/login">
+                <Nav.Link className="navmenu" href="#deets">
+                  <Button className="btnlink" variant="outline-success">
+                    LOG IN / SIGN UP
+                  </Button>
+                </Nav.Link>
+              </Link>
+            )}
+            {currentUser && (
+              <Nav.Link
+                className="navmenu"
+                style={{ marginRight: 5 }}
+                eventKey={2}
+                href="#memes"
+              >
+                {/* onClick={() => auth.signOut()} */}
+                <Button
+                  className="btnlinnk"
+                  style={{ fontSize: 5 }}
+                  variant="outline-success"
+                >
+                  LOGOUT
+                </Button>
               </Nav.Link>
-            </Link>
-            <Nav.Link
-              className="navmenu"
-              style={{ marginRight: 5 }}
-              eventKey={2}
-              href="#memes"
-            >
-              <Button variant="outline-success">LOGOUT</Button>
-            </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
     </header>
   );
+  Header.defaultProps = {
+    currentUser: null,
+  };
 };
 
 export default Header;

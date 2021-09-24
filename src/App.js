@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
-import { auth } from "./firebase/utils";
+import { auth, handleUserProfile } from "./firebase/utils";
+import { getauth, onAuthStateChanged } from "firebase/auth";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./default.css";
@@ -24,21 +25,32 @@ class App extends Component {
   authListener = null;
 
   componentDidMount() {
-    this.authListener = auth.onAuthStateChanged((userAuth) => {
-      if (!userAuth) return;
+    this.authListener = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await handleUserProfile(userAuth);
+        userRef.onSnapshot((snapshot) => {
+          this.setState({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data(),
+            },
+          });
+        });
+      }
       this.setState({
-        currentUser: userAuth,
+        ...initialState,
       });
     });
   }
   componentWillUnmount() {
     this.authListener();
   }
-  render() {
-    const { currentUser } = this.state;
-  }
+  // render() {
+  //   const { currentUser } = this.state;
+  // }
 
   render() {
+    const { currentUser } = this.state;
     return (
       <div className="App">
         <div className="main">

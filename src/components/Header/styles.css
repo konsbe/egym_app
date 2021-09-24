@@ -19,6 +19,18 @@
 		text-align: center;
     }
 
+.btnlink{
+    font-size: 1rem ;
+    background-color: rgb(28, 29, 28);
+}
+
+/* .btnlink :hover{
+    background-color: rgba(58, 87, 75,1) !important;
+    color: red !important;
+
+
+} */
+
 @media (max-width: 980px) {
     .navmenu{
         display: flex;
