@@ -88,9 +88,9 @@ const Header = (props) => {
       </Navbar>
     </header>
   );
-  Header.defaultProps = {
-    currentUser: null,
-  };
+};
+Header.defaultProps = {
+  currentUser: null,
 };
 
 export default Header;
