@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Router,
+  Redirect,
+} from "react-router-dom";
 import { auth, handleUserProfile } from "./firebase/utils";
 import { getauth, onAuthStateChanged } from "firebase/auth";
 
@@ -55,12 +61,48 @@ class App extends Component {
       <div className="App">
         <div className="main">
           <Switch>
-            <MainLayout currentUser={currentUser}>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <MainLayout currentUser={currentUser}>
+                  <Homepage />
+                </MainLayout>
+              )}
+            />
+            <Route
+              exact
+              path="/registration"
+              render={() =>
+                currentUser ? (
+                  <Redirect to="/" />
+                ) : (
+                  <MainLayout currentUser={currentUser}>
+                    <Registration />
+                  </MainLayout>
+                )
+              }
+            />
+            <Route
+              exact
+              path="/login"
+              render={() =>
+                currentUser ? (
+                  <Redirect to="/" />
+                ) : (
+                  <MainLayout currentUser={currentUser}>
+                    <Login />
+                  </MainLayout>
+                )
+              }
+            />
+
+            {/* <MainLayout currentUser={currentUser}>
               <Route exact path="/" component={Homepage} />
 
               <Route path="/registration" component={Registration} />
               <Route path="/login" component={Login} />
-            </MainLayout>
+            </MainLayout> */}
           </Switch>
         </div>
       </div>
