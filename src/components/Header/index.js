@@ -76,7 +76,7 @@ const Header = (props) => {
                 {/* onClick={() => auth.signOut()} */}
                 <Button
                   className="btnlinnk"
-                  style={{ fontSize: 5 }}
+                  // style={{ fontSize: 5 }}
                   variant="outline-success"
                 >
                   LOGOUT
