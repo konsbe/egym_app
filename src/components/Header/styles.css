@@ -31,7 +31,18 @@
 
 } */
 
+ul{
+    display: flex;
+    list-style-type:none;
+}
+.nav_burger{
+    display: none;
+}
+
 @media (max-width: 980px) {
+    .pc_display{
+        display: none;
+    }
     .navmenu{
         display: flex;
 		flex-direction: column;
@@ -43,6 +54,15 @@
         display: flex;
 		flex-direction: column;
 		justify-content: center;
+		align-items: center;
+		text-align: center;
+    }
+    ul {
+        display: flex;
+        padding-left: 0;
+        margin-left: 0.2rem;
+        margin-right: 0.2rem;
+		justify-content: space-between;
 		align-items: center;
 		text-align: center;
     }

@@ -10,6 +10,7 @@ import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 import { firebaseConfig } from "./config";
 
 const app = firebase.initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export const auth = app.auth();
 export const firestore = app.firestore();

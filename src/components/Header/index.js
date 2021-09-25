@@ -1,4 +1,7 @@
 import React from "react";
+
+import { connect } from "react-redux";
+
 import "./styles.css";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
@@ -33,7 +36,7 @@ const Header = (props) => {
           aria-controls="responsive-navbar-nav"
         />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto pc_display">
             <Nav.Link as={Link} to="/" className="navmenu">
               {/* <Link to="/"> */}
               HOME
@@ -58,39 +61,92 @@ const Header = (props) => {
           </Nav>
           <Nav>
             {!currentUser && (
-              <Nav.Link as={Link} to="/login" className="navmenu">
-                {/* <Link > */}
-                <Button className="btnlink" variant="outline-success">
-                  LOG IN / SIGN UP
-                </Button>
-                {/* </Link> */}
-              </Nav.Link>
+              <ul>
+                <li>
+                  <Nav.Link as={Link} to="/profile" className="navmenu">
+                    {/* <Link > */}
+                    <Button className="btnlink" variant="outline-success">
+                      My Profile
+                    </Button>
+                    {/* </Link> */}
+                  </Nav.Link>
+                </li>
+                <li>
+                  <Nav.Link as={Link} to="/login" className="navmenu">
+                    {/* <Link > */}
+                    <Button className="btnlink" variant="outline-success">
+                      LOG IN / SIGN UP
+                    </Button>
+                    {/* </Link> */}
+                  </Nav.Link>
+                </li>
+              </ul>
             )}
             {currentUser && (
-              <Nav.Link
-                className="navmenu"
-                style={{ marginRight: 5 }}
-                eventKey={2}
-                // href="#memes"
-              >
-                {/* onClick={() => auth.signOut()} */}
-                <Button
-                  className="btnlinnk"
-                  // style={{ fontSize: 5 }}
-                  variant="outline-success"
-                >
-                  <span onClick={() => auth.signOut()}>LOGOUT</span>
-                </Button>
-              </Nav.Link>
+              <ul>
+                <li>
+                  <Nav.Link as={Link} to="/profile" className="navmenu">
+                    {/* <Link > */}
+                    <Button className="btnlink" variant="outline-success">
+                      My Profile
+                    </Button>
+                    {/* </Link> */}
+                  </Nav.Link>
+                </li>
+                <li>
+                  <Nav.Link
+                    className="navmenu"
+                    style={{ marginRight: 5 }}
+                    eventKey={2}
+                    // href="#memes"
+                  >
+                    {/* onClick={() => auth.signOut()} */}
+                    <Button
+                      className="btnlinnk"
+                      // style={{ fontSize: 5 }}
+                      variant="outline-success"
+                    >
+                      <span onClick={() => auth.signOut()}>LOGOUT</span>
+                    </Button>
+                  </Nav.Link>
+                </li>
+              </ul>
             )}
+
+            <Nav.Link as={Link} to="/" className="navmenu nav_burger">
+              {/* <Link to="/"> */}
+              HOME
+              {/* </Link> */}
+            </Nav.Link>
+            <Nav.Link className="navmenu nav_burger">COURSES</Nav.Link>
+            <NavDropdown
+              className="navmenu nav_burger"
+              title="TEST"
+              id="collasible-nav-dropdown"
+            >
+              <NavDropdown.Item className="submenu">Action</NavDropdown.Item>
+              <NavDropdown.Item className="submenu">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item className="submenu">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item className="submenu">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
     </header>
   );
 };
+
 Header.defaultProps = {
   currentUser: null,
 };
 
-export default Header;
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
+export default connect(mapStateToProps, null)(Header);
