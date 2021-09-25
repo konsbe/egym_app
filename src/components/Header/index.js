@@ -79,7 +79,7 @@ const Header = (props) => {
                   // style={{ fontSize: 5 }}
                   variant="outline-success"
                 >
-                  LOGOUT
+                  <span onClick={() => auth.signOut()}>LOGOUT</span>
                 </Button>
               </Nav.Link>
             )}

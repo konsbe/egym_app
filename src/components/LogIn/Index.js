@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import Button from "../Forms/Button";
-import {} from "../../firebase/utils";
+import Button from "./../Forms/Button";
+import { auth } from "./../../firebase/utils";
 
 import FormInput from "../Forms/FormInput";
 
@@ -28,6 +28,14 @@ class LogIn extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({
+        ...initialState,
+      });
+    } catch (err) {}
   };
 
   render() {
