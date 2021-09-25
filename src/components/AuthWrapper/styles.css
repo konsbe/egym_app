@@ -1,4 +1,4 @@
-.login{
+.authWrapper{
     display: grid;
     place-items: center;
     margin-left: auto;
@@ -6,13 +6,18 @@
     padding-top: 10rem;
     padding-bottom: 10rem;
 }
+.wrap{
+    display: grid;
+    place-items: center;
 
-.login > form {
+}
+
+.wrap > form {
     display: flex;
     flex-direction: column;
 }
 
-.login > form > input {
+.wrap > form > input {
     width: 35 rem;
     height: 3rem;
     font-size: 2rem;
@@ -41,24 +46,22 @@
 
 .signup{
     font-size:1.3rem;
-text-align: center  ;
+    text-align: center  ;
 }
 
 .signuplink {
     text-decoration: underline;
     color: blue;
 }
-.forgot{
-    font-size:1.3rem;
-text-align: center  ;
-margin-top: 1px;
-}
-.second{
-    margin-bottom: 5px;
-}
+.btnform {
+    display: grid;
+    place-items: center;
+    margin-left: auto;
+    margin-right: auto;
 
-.btnlogin {
-    width: 35 rem;
+
+    width: 100%;
+    /* width: 35 rem; */
     height: 3rem;
     font-size: 2rem;
     line-height: 1;
@@ -66,6 +69,13 @@ margin-top: 1px;
     margin-bottom: 1rem;
     border-radius:0.5rem ;
     color: lemonchiffon;
-    background-color: rgb(0, 182, 24);
+    background-color: rgb(1, 68, 10);
+    border: none;
 
+}
+.btnform:hover {
+    background-color: rgb(63, 68, 59);
+}
+.btnform:active {
+    background-color: rgb(113, 150, 84);
 }

@@ -1,3 +1,43 @@
+MY NOTES
+
+### src/components/EmailPassword
+                                    you have to change  handleSubmit = async (e) => {
+                                                                e.preventDefault();
+
+                                                                try {
+** this line                                                    const { email } = this.state; **
+
+                                                                const config = {
+                                                                    url: "http://localhost:3000/login",
+                                                                };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

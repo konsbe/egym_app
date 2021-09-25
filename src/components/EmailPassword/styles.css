@@ -1,0 +1,37 @@
+.errorline {
+    display: grid;
+    place-items: center;
+    border-style: inset;
+    list-style-type: none;
+    color:rgb(255, 255, 0,0.8);
+    margin-bottom: 1px;
+    font-size: 1.3rem;
+    background-color: rgb(255, 0, 0,0.8);
+}
+
+
+.errorline {
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
