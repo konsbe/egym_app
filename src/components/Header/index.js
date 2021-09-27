@@ -1,15 +1,20 @@
 import React from "react";
 
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./styles.css";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
-import snatch from "./../../assets/snatch.jpg";
 import { auth } from "./../../firebase/utils";
 
+import snatch from "./../../assets/snatch.jpg";
+
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const Header = (props) => {
-  const { currentUser } = props;
+  const { currentUser } = useSelector(mapState);
   return (
     <header>
       <Navbar
@@ -145,8 +150,4 @@ Header.defaultProps = {
   currentUser: null,
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
-});
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;

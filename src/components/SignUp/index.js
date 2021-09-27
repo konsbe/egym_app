@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpUser } from "../../redux/User/user.actions";
+
 import { withRouter } from "react-router";
 
 import "./styles.css";
 import { Link } from "react-router-dom";
-import { auth, handleUserProfile } from "./../../firebase/utils";
+// import { auth, handleUserProfile } from "./../../firebase/utils";
 
 import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
 import FormInput from "../Forms/FormInput";
 
+const mapState = ({ user }) => ({
+  signUpSuccess: user.signUpSuccess,
+  signUpError: user.signUpError,
+});
+
 const SignUp = (props) => {
+  const { signUpSuccess, signUpError } = useSelector(mapState);
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [nickName, setNickName] = useState("");
@@ -18,6 +28,19 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    if (signUpSuccess) {
+      resetForm();
+      props.history.push("/");
+    }
+  }, [signUpSuccess]);
+
+  useEffect(() => {
+    if (Array.isArray(signUpError) && signUpError.length > 0) {
+      setErrors(signUpError);
+    }
+  }, [signUpError]);
 
   const resetForm = () => {
     setFirstName("");
@@ -30,31 +53,19 @@ const SignUp = (props) => {
     setErrors([]);
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    if (password !== confirmPassword) {
-      const err = ["Password don't much"];
-      setErrors(err);
-      return;
-    }
-
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await handleUserProfile(user, {
+    dispatch(
+      signUpUser({
         firstName,
         lastName,
         nickName,
+        email,
         birthDay,
-      });
-
-      resetForm();
-      props.history.push("/");
-    } catch (err) {}
+        password,
+        confirmPassword,
+      })
+    );
   };
 
   const configAuthWrapper = {
