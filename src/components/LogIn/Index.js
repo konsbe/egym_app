@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { logInUser } from "../../redux/User/user.actions";
+import { logInUser, resetAllAuthForms } from "../../redux/User/user.actions";
 
 import "./styles.css";
 import { Link, withRouter } from "react-router-dom";
@@ -19,18 +19,18 @@ const LogIn = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    if (signInSuccess) {
-      resetForm();
-      props.history.push("/");
-    }
-  }, [signInSuccess]);
-
   const resetForm = () => {
     setEmail("");
     setPassword("");
   };
+
+  useEffect(() => {
+    if (signInSuccess) {
+      resetForm();
+      dispatch(resetAllAuthForms());
+      props.history.push("/");
+    }
+  }, [signInSuccess]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

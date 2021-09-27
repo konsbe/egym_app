@@ -6,6 +6,10 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
+export const resetAllAuthForms = () => ({
+  type: userTypes.RESET_AUTH_FORMS,
+});
+
 export const logInUser =
   ({ email, password }) =>
   async (dispatch) => {
@@ -54,6 +58,38 @@ export const signUpUser =
       });
     } catch (err) {}
   };
+
+export const resetPassword =
+  ({ email }) =>
+  async (dispatch) => {
+    try {
+      const config = {
+        url: "http://localhost:3000/login",
+      };
+
+      await auth
+        .sendPasswordResetEmail(email, config)
+        .then(() => {
+          dispatch({
+            type: userTypes.RESET_PASSWORD_SUCCESS,
+            payload: true,
+          });
+          // props.history.push("/login");
+          //   console.log("Password Reset");
+        })
+        .catch(() => {
+          const err = ["Email not Found"];
+          dispatch({
+            type: userTypes.RESET_PASSWORD_ERROR,
+            payload: err,
+          });
+          // setErrors(err);
+          //   console.log("Something went Wrong");
+        });
+    } catch (err) {}
+  };
+
+
 
 
 
