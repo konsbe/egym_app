@@ -18,7 +18,7 @@ export const firestore = app.firestore();
 // const GoogleProvier = new firebase.auth.GoogleAuthProvider();
 // GoogleAuthProvider.seCustomParameters({ prompt: "select_account" });
 
-export const handleUserProfile = async (userAuth, additionalData) => {
+export const handleUserProfile = async ({ userAuth, additionalData }) => {
   if (!userAuth) return;
   const { uid } = userAuth;
 
@@ -28,7 +28,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
   if (!snapshot.exists) {
     const { firstName, lastName, nickName, email, birthDay } = userAuth;
     const timestamp = new Date();
-    //   const userRoles = ["user"];
+    const userRoles = ["user"];
     try {
       await userRef.set({
         firstName,
@@ -37,6 +37,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
         email,
         birthDay,
         createdDate: timestamp,
+        userRoles,
         ...additionalData,
       });
     } catch (err) {
@@ -44,4 +45,13 @@ export const handleUserProfile = async (userAuth, additionalData) => {
     }
   }
   return userRef;
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 };

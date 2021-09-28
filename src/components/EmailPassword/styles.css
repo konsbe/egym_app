@@ -1,4 +1,5 @@
 .errorline {
+    transition: visibility 0s, opacity 5s linear;
     display: grid;
     place-items: center;
     border-style: inset;

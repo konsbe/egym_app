@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { logInUser, resetAllAuthForms } from "../../redux/User/user.actions";
+import {
+  logInUser,
+  resetAllAuthForms,
+  emailSignInStart,
+} from "../../redux/User/user.actions";
 
 import "./styles.css";
 import { Link, withRouter } from "react-router-dom";
@@ -11,11 +15,11 @@ import Button from "./../Forms/Button";
 import FormInput from "../Forms/FormInput";
 
 const mapState = ({ user }) => ({
-  signInSuccess: user.signInSuccess,
+  currentUser: user.currentUser,
 });
 
 const LogIn = (props) => {
-  const { signInSuccess } = useSelector(mapState);
+  const { currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,16 +29,15 @@ const LogIn = (props) => {
   };
 
   useEffect(() => {
-    if (signInSuccess) {
+    if (currentUser) {
       resetForm();
-      dispatch(resetAllAuthForms());
       props.history.push("/");
     }
-  }, [signInSuccess]);
+  }, [currentUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(logInUser({ email, password }));
+    dispatch(emailSignInStart({ email, password }));
   };
 
   const configAuthWrapper = {

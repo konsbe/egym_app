@@ -1,5 +1,47 @@
 import userTypes from "./user.types";
-import { auth, handleUserProfile } from "../../firebase/utils";
+import { auth, handleUserProfile } from "./../../firebase/utils";
+
+export const emailSignInStart = (userCredentials) => ({
+  type: userTypes.EMAIL_SIGN_IN_START,
+  payload: userCredentials,
+});
+
+export const signInSuccess = (user) => ({
+  type: userTypes.SIGN_IN_SUCCESS,
+  payload: user,
+});
+
+export const checkUserSession = () => ({
+  type: userTypes.CHECK_USER_SESSION,
+});
+
+export const signOutUserStart = () => ({
+  type: userTypes.SIGN_OUT_USER_START,
+});
+
+export const signOutUserSuccess = () => ({
+  type: userTypes.SIGN_OUT_USER_SUCCESS,
+});
+
+export const signUpUserStart = (userCredentials) => ({
+  type: userTypes.SIGN_UP_USER_START,
+  payload: userCredentials,
+});
+
+export const userError = (err) => ({
+  type: userTypes.USER_ERRORS,
+  payload: err,
+});
+
+export const resetPasswordStart = (userCredentials) => ({
+  type: userTypes.RESET_PASSWORD_START,
+  payload: userCredentials,
+});
+
+export const resetPasswordSuccess = () => ({
+  type: userTypes.RESET_PASSWORD_SUCCESS,
+  payload: true,
+});
 
 export const setCurrentUser = (user) => ({
   type: userTypes.SET_CURRENT_USER,
@@ -9,89 +51,4 @@ export const setCurrentUser = (user) => ({
 export const resetAllAuthForms = () => ({
   type: userTypes.RESET_AUTH_FORMS,
 });
-
-export const logInUser =
-  ({ email, password }) =>
-  async (dispatch) => {
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      dispatch({
-        type: userTypes.SIGN_IN_SUCCESS,
-        payload: true,
-      });
-    } catch (err) {}
-  };
-
-export const signUpUser =
-  ({
-    firstName,
-    lastName,
-    nickName,
-    email,
-    birthDay,
-    password,
-    confirmPassword,
-  }) =>
-  async (dispatch) => {
-    if (password !== confirmPassword) {
-      const err = ["Password don't much"];
-      dispatch({
-        type: userTypes.SIGN_UP_ERROR,
-        payload: err,
-      });
-      return;
-    }
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await handleUserProfile(user, {
-        firstName,
-        lastName,
-        nickName,
-        birthDay,
-      });
-      dispatch({
-        type: userTypes.SIGN_UP_SUCCESS,
-        payload: true,
-      });
-    } catch (err) {}
-  };
-
-export const resetPassword =
-  ({ email }) =>
-  async (dispatch) => {
-    try {
-      const config = {
-        url: "http://localhost:3000/login",
-      };
-
-      await auth
-        .sendPasswordResetEmail(email, config)
-        .then(() => {
-          dispatch({
-            type: userTypes.RESET_PASSWORD_SUCCESS,
-            payload: true,
-          });
-          // props.history.push("/login");
-          //   console.log("Password Reset");
-        })
-        .catch(() => {
-          const err = ["Email not Found"];
-          dispatch({
-            type: userTypes.RESET_PASSWORD_ERROR,
-            payload: err,
-          });
-          // setErrors(err);
-          //   console.log("Something went Wrong");
-        });
-    } catch (err) {}
-  };
-
-
-
-
-
-
 
