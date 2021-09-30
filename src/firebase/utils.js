@@ -1,16 +1,13 @@
-// import firebase from "firebase/app";
-// import "firebase/firestore";
-// import "firebase/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+// import { getFirestore } from "firebase/firestore/lite";
 // import firebase from "firebase";
 
 import { firebaseConfig } from "./config";
 
 const app = firebase.initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
 export const auth = app.auth();
 export const firestore = app.firestore();

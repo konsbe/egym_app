@@ -1,5 +1,4 @@
 import userTypes from "./user.types";
-import { auth, handleUserProfile } from "./../../firebase/utils";
 
 export const emailSignInStart = (userCredentials) => ({
   type: userTypes.EMAIL_SIGN_IN_START,
@@ -43,12 +42,11 @@ export const resetPasswordSuccess = () => ({
   payload: true,
 });
 
-export const setCurrentUser = (user) => ({
-  type: userTypes.SET_CURRENT_USER,
-  payload: user,
-});
+// export const setCurrentUser = (user) => ({
+//   type: userTypes.SET_CURRENT_USER,
+//   payload: user,
+// });
 
-export const resetAllAuthForms = () => ({
-  type: userTypes.RESET_AUTH_FORMS,
-});
-
+// export const resetAllAuthForms = () => ({
+//   type: userTypes.RESET_AUTH_FORMS,
+// });

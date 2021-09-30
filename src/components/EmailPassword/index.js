@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPasswordStart } from "../../redux/User/user.actions";
-import { useHistory, Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./styles.css";
-import { auth } from "./../../firebase/utils";
 
 import AuthWrapper from "./../AuthWrapper";
 import Button from "./../Forms/Button";
@@ -23,14 +21,9 @@ const EmailPassword = (props) => {
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState("");
 
-  // const resetForm = () => {
-  //   setEmail("");
-  //   setErrors("");
-  // };
-
   useEffect(() => {
     if (resetPasswordSuccess) {
-      props.history.push("/login");
+      history.push("/login");
     }
   }, [resetPasswordSuccess]);
 
@@ -77,4 +70,4 @@ const EmailPassword = (props) => {
   );
 };
 
-export default withRouter(EmailPassword);
+export default EmailPassword;

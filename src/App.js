@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
-import { auth, handleUserProfile } from "./firebase/utils";
-import { getauth, onAuthStateChanged } from "firebase/auth";
+import { Switch, Route } from "react-router-dom";
 
 import { checkUserSession } from "./redux/User/user.actions";
 
@@ -45,9 +43,6 @@ const App = (props) => {
           <Route
             path="/registration"
             render={() => (
-              // currentUser ? (
-              //   <Redirect to="/" />
-              // ) :
               <MainLayout>
                 <Registration />
               </MainLayout>
@@ -56,9 +51,6 @@ const App = (props) => {
           <Route
             path="/login"
             render={() => (
-              // currentUser ? (
-              //   <Redirect to="/" />
-              // ) :
               <MainLayout>
                 <Login />
               </MainLayout>
@@ -82,13 +74,6 @@ const App = (props) => {
               </WithAuth>
             )}
           />
-
-          {/* <MainLayout currentUser={currentUser}>
-              <Route exact path="/" component={Homepage} />
-
-              <Route path="/registration" component={Registration} />
-              <Route path="/login" component={Login} />
-            </MainLayout> */}
         </Switch>
       </div>
     </div>

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpUserStart, signUpUser } from "../../redux/User/user.actions";
-
-import { withRouter } from "react-router";
+import { signUpUserStart } from "../../redux/User/user.actions";
 
 import "./styles.css";
-import { Link } from "react-router-dom";
-// import { auth, handleUserProfile } from "./../../firebase/utils";
+import { Link, useHistory } from "react-router-dom";
 
 import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
@@ -20,6 +17,7 @@ const mapState = ({ user }) => ({
 const SignUp = (props) => {
   const { currentUser, userErr } = useSelector(mapState);
   const dispatch = useDispatch();
+  const history = useHistory();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [nickName, setNickName] = useState("");
@@ -33,7 +31,7 @@ const SignUp = (props) => {
     if (currentUser) {
       resetForm();
 
-      props.history.push("/");
+      history.push("/");
     }
   }, [currentUser]);
 
@@ -74,9 +72,6 @@ const SignUp = (props) => {
   };
 
   return (
-    // <div className="registration">
-    //   <h1>Registration Form</h1>
-
     <AuthWrapper {...configAuthWrapper}>
       <div className="formWrap">
         {errors.length > 0 && (
@@ -143,7 +138,6 @@ const SignUp = (props) => {
             placeholder="Confirm Your Password"
             handleChange={(e) => setConfirmPassword(e.target.value)}
           />
-          {/* <button type="submit"> Sign Up </button> */}
           <Button type="submit" className="btnform">
             Register
           </Button>
@@ -161,4 +155,4 @@ const SignUp = (props) => {
   );
 };
 
-export default withRouter(SignUp);
+export default SignUp;

@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import {
-  logInUser,
-  resetAllAuthForms,
-  emailSignInStart,
-} from "../../redux/User/user.actions";
+import { emailSignInStart } from "../../redux/User/user.actions";
 
 import "./styles.css";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
@@ -21,6 +17,7 @@ const mapState = ({ user }) => ({
 const LogIn = (props) => {
   const { currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const resetForm = () => {
@@ -31,7 +28,7 @@ const LogIn = (props) => {
   useEffect(() => {
     if (currentUser) {
       resetForm();
-      props.history.push("/");
+      history.push("/");
     }
   }, [currentUser]);
 
@@ -46,9 +43,6 @@ const LogIn = (props) => {
 
   return (
     <AuthWrapper {...configAuthWrapper}>
-      {/* // <div className="login">
-      //   <div>
-      //     <h1>Log In</h1> */}
       <div className="formWrap">
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -74,8 +68,6 @@ const LogIn = (props) => {
               Here{" "}
             </Link>
           </p>
-
-          {/* onClick={}   this is a param on Button*/}
           <Button type="submit" className="btnform">
             Log In
           </Button>
@@ -88,11 +80,9 @@ const LogIn = (props) => {
             now
           </p>
         </form>
-        {/* </div>
-        </div> */}
       </div>
     </AuthWrapper>
   );
 };
 
-export default withRouter(LogIn);
+export default LogIn;

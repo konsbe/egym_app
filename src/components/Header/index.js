@@ -5,7 +5,7 @@ import { signOutUserStart } from "./../../redux/User/user.actions";
 
 import "./styles.css";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 
 import snatch from "./../../assets/snatch.jpg";
 
@@ -38,9 +38,7 @@ const Header = (props) => {
           href="/"
         >
           <div className="wrap">
-            {/* <Link to="/"> */}
             <img className="brand-image" src={snatch} alt="Brand Logo" />
-            {/* </Link> */}
           </div>
         </Navbar.Brand>
         <Navbar.Toggle
@@ -50,9 +48,7 @@ const Header = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto pc_display">
             <Nav.Link as={Link} to="/" className="navmenu">
-              {/* <Link to="/"> */}
               HOME
-              {/* </Link> */}
             </Nav.Link>
             <Nav.Link className="navmenu">COURSES</Nav.Link>
             <NavDropdown
@@ -76,20 +72,16 @@ const Header = (props) => {
               <ul>
                 <li>
                   <Nav.Link as={Link} to="/profile" className="navmenu">
-                    {/* <Link > */}
-                    <Button className="btnlink" variant="outline-success">
+                  <Button className="btnlink" variant="outline-success">
                       My Profile
                     </Button>
-                    {/* </Link> */}
                   </Nav.Link>
                 </li>
                 <li>
                   <Nav.Link as={Link} to="/login" className="navmenu">
-                    {/* <Link > */}
-                    <Button className="btnlink" variant="outline-success">
+                  <Button className="btnlink" variant="outline-success">
                       LOG IN / SIGN UP
                     </Button>
-                    {/* </Link> */}
                   </Nav.Link>
                 </li>
               </ul>
@@ -98,11 +90,9 @@ const Header = (props) => {
               <ul>
                 <li>
                   <Nav.Link as={Link} to="/profile" className="navmenu">
-                    {/* <Link > */}
-                    <Button className="btnlink" variant="outline-success">
+                  <Button className="btnlink" variant="outline-success">
                       My Profile
                     </Button>
-                    {/* </Link> */}
                   </Nav.Link>
                 </li>
                 <li>
@@ -110,13 +100,10 @@ const Header = (props) => {
                     className="navmenu"
                     style={{ marginRight: 5 }}
                     eventKey={2}
-                    // href="#memes"
                   >
-                    {/* onClick={() => auth.signOut()} */}
-                    <Button
+                  <Button
                       className="btnlinnk"
-                      // style={{ fontSize: 5 }}
-                      variant="outline-success"
+                  variant="outline-success"
                     >
                       <span onClick={() => signOut()}>LOGOUT</span>
                     </Button>
@@ -126,10 +113,8 @@ const Header = (props) => {
             )}
 
             <Nav.Link as={Link} to="/" className="navmenu nav_burger">
-              {/* <Link to="/"> */}
               HOME
-              {/* </Link> */}
-            </Nav.Link>
+              </Nav.Link>
             <Nav.Link className="navmenu nav_burger">COURSES</Nav.Link>
             <NavDropdown
               className="navmenu nav_burger"
