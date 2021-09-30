@@ -42,6 +42,18 @@ export const resetPasswordSuccess = () => ({
   payload: true,
 });
 
+// export const addNewUserStart
+
+export const fetchUsersStart = () => ({
+  type: userTypes.FETCH_USERS_START,
+
+})
+
+export const setUsers = (users) => ({
+  type: userTypes.SET_USERS,
+  payload: users
+})
+
 // export const setCurrentUser = (user) => ({
 //   type: userTypes.SET_CURRENT_USER,
 //   payload: user,

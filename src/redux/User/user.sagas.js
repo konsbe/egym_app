@@ -10,8 +10,9 @@ import {
   signOutUserSuccess,
   resetPasswordSuccess,
   userError,
+  setUsers,
 } from "./user.actions";
-import { handleResetPasswordAPI } from "./user.helpers";
+import { handleFetchUsers, handleResetPasswordAPI } from "./user.helpers";
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
@@ -119,6 +120,17 @@ export function* onResetPasswordStart() {
   yield takeLatest(userTypes.RESET_PASSWORD_START, resetPassword);
 }
 
+export function* fetchUsers() {
+  try {
+    const users = yield handleFetchUsers();
+    yield put(setUsers(users));
+  } catch (err) {}
+}
+
+export function* onFetchUsersStart() {
+  yield takeLatest(userTypes.FETCH_USERS_START, fetchUsers);
+}
+
 export default function* userSagas() {
   yield all([
     call(onEmailSignInStart),
@@ -126,5 +138,6 @@ export default function* userSagas() {
     call(onSignOutUserStart),
     call(onSignUpUserStart),
     call(onResetPasswordStart),
+    call(onFetchUsersStart),
   ]);
 }
