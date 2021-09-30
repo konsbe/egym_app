@@ -23,12 +23,13 @@ const Header = (props) => {
   };
 
   return (
-    <header>
+    <header sticky="top">
       <Navbar
         collapseOnSelect
         expand="lg"
         bg="dark"
         variant="dark"
+        fixed="top"
         sticky="top"
         className="navigation-bar"
       >
@@ -72,14 +73,14 @@ const Header = (props) => {
               <ul>
                 <li>
                   <Nav.Link as={Link} to="/profile" className="navmenu">
-                  <Button className="btnlink" variant="outline-success">
+                    <Button className="btnlink" variant="outline-success">
                       My Profile
                     </Button>
                   </Nav.Link>
                 </li>
                 <li>
                   <Nav.Link as={Link} to="/login" className="navmenu">
-                  <Button className="btnlink" variant="outline-success">
+                    <Button className="btnlink" variant="outline-success">
                       LOG IN / SIGN UP
                     </Button>
                   </Nav.Link>
@@ -90,7 +91,7 @@ const Header = (props) => {
               <ul>
                 <li>
                   <Nav.Link as={Link} to="/profile" className="navmenu">
-                  <Button className="btnlink" variant="outline-success">
+                    <Button className="btnlink" variant="outline-success">
                       My Profile
                     </Button>
                   </Nav.Link>
@@ -101,10 +102,7 @@ const Header = (props) => {
                     style={{ marginRight: 5 }}
                     eventKey={2}
                   >
-                  <Button
-                      className="btnlinnk"
-                  variant="outline-success"
-                    >
+                    <Button className="btnlinnk" variant="outline-success">
                       <span onClick={() => signOut()}>LOGOUT</span>
                     </Button>
                   </Nav.Link>
@@ -114,7 +112,7 @@ const Header = (props) => {
 
             <Nav.Link as={Link} to="/" className="navmenu nav_burger">
               HOME
-              </Nav.Link>
+            </Nav.Link>
             <Nav.Link className="navmenu nav_burger">COURSES</Nav.Link>
             <NavDropdown
               className="navmenu nav_burger"

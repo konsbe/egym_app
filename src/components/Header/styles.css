@@ -1,5 +1,11 @@
+header {
+        position: sticky;
+    top: 0;
+}
+
 .navbar{
     margin-left: 5 rem;
+
 }
 .burger{
     margin-right: 0.7rem;
@@ -70,4 +76,10 @@ ul{
 .navigation-bar{
     font-family: 'Roboto', sans-serif;
     font-size: 1.3rem;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
