@@ -118,10 +118,10 @@ const Header = (props) => {
             <Nav.Link as={Link} to="/" className="navmenu nav_burger">
               HOME
             </Nav.Link>
-            <Nav.Link as={Link} to="/courses" className="navmenu">
+            <Nav.Link as={Link} to="/courses" className="navmenu nav_burger">
               COURSES
             </Nav.Link>
-            <Nav.Link as={Link} to="/test" className="navmenu">
+            <Nav.Link as={Link} to="/test" className="navmenu nav_burger">
               TEST
             </Nav.Link>
           </Nav>

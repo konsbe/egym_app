@@ -54,6 +54,11 @@ export const setUsers = (users) => ({
   payload: users
 })
 
+export const addDataStart = (userData) => ({
+  type: userTypes.ADD_NEW_DATA_START,
+  payload: userData,
+});
+
 // export const setCurrentUser = (user) => ({
 //   type: userTypes.SET_CURRENT_USER,
 //   payload: user,

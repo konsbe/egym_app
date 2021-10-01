@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpUserStart } from "../../redux/User/user.actions";
+import { addDataStart } from "../../redux/User/user.actions";
 
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
+
+import { useAuth } from "../../customHooks";
 
 import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
@@ -15,6 +17,7 @@ const mapState = ({ user }) => ({
 });
 
 const FormTest = (props) => {
+  const userDetails = useAuth();
   const { currentUser, userErr } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -40,6 +43,7 @@ const FormTest = (props) => {
   const [goodmorning, setGoodmorning] = useState("");
   const [anterior, setAnterior] = useState("");
   const [posterior, setPosterior] = useState("");
+  const [birthDay, setbirthDay] = useState("");
   const [errors, setErrors] = useState([]);
 
   //   useEffect(() => {
@@ -79,13 +83,15 @@ const FormTest = (props) => {
     setGoodmorning("");
     setAnterior("");
     setPosterior("");
+    setbirthDay("");
     setErrors([]);
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
     dispatch(
-      signUpUserStart({
+      addDataStart({
+        birthDay,
         rightShoulder,
         leftShoulder,
         rightPlentar,
@@ -104,6 +110,11 @@ const FormTest = (props) => {
         goodmorning,
         anterior,
         posterior,
+        birthDay: userDetails.birthDay,
+        firstName: userDetails.firstName,
+        lastName: userDetails.lastName,
+        nickName: userDetails.nickName,
+        email: userDetails.email,
       })
     );
   };

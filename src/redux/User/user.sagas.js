@@ -12,7 +12,12 @@ import {
   userError,
   setUsers,
 } from "./user.actions";
-import { handleFetchUsers, handleResetPasswordAPI } from "./user.helpers";
+import {
+  handleFetchUsers,
+  handleResetPasswordAPI,
+  handleNewData,
+} from "./user.helpers";
+import { useAuth } from "./../../customHooks";
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
@@ -131,6 +136,67 @@ export function* onFetchUsersStart() {
   yield takeLatest(userTypes.FETCH_USERS_START, fetchUsers);
 }
 
+export function* addData({
+  payload: {
+    rightShoulder,
+    leftShoulder,
+    rightPlentar,
+    leftPlentar,
+    pelvic,
+    rightChest,
+    leftChest,
+    rightAnkle,
+    leftAnkle,
+    rightAdductor,
+    leftAdductor,
+    rightSoleAnkle,
+    leftSoleAnkle,
+    rightGluteus,
+    leftGluteus,
+    goodmorning,
+    anterior,
+    posterior,
+    birthDay,
+    firstName,
+    lastName,
+    nickName,
+    email,
+  },
+}) {
+  try {
+    yield handleNewData({
+      rightShoulder,
+      leftShoulder,
+      rightPlentar,
+      leftPlentar,
+      pelvic,
+      rightChest,
+      leftChest,
+      rightAnkle,
+      leftAnkle,
+      rightAdductor,
+      leftAdductor,
+      rightSoleAnkle,
+      leftSoleAnkle,
+      rightGluteus,
+      leftGluteus,
+      goodmorning,
+      anterior,
+      posterior,
+      birthDay,
+      firstName,
+      lastName,
+      nickName,
+      email,
+      userUID: auth.currentUser.uid,
+    });
+  } catch (err) {}
+}
+
+export function* onAddTestData() {
+  yield takeLatest(userTypes.ADD_NEW_DATA_START, addData);
+}
+
 export default function* userSagas() {
   yield all([
     call(onEmailSignInStart),
@@ -139,5 +205,6 @@ export default function* userSagas() {
     call(onSignUpUserStart),
     call(onResetPasswordStart),
     call(onFetchUsersStart),
+    call(onAddTestData),
   ]);
 }

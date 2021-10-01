@@ -1,5 +1,6 @@
 import { auth } from "../../firebase/utils";
 import { firestore } from "../../firebase/utils";
+import firebase from "firebase/compat/app";
 
 export const handleResetPasswordAPI = (email) => {
   const config = {
@@ -24,6 +25,28 @@ export const handleFetchUsers = () => {
       .collection("users")
       .orderBy("createdDate", "asc")
       .get()
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.id,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+// firebase.auth().currentUser.uid;
+export const handleNewData = (testdata) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+
+      .set(testdata)
       .then((snapshot) => {
         const usersArray = snapshot.docs.map((doc) => {
           return {
