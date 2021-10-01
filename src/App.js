@@ -23,6 +23,8 @@ import Login from "./views/Login";
 import Recovery from "./views/Recovery";
 import Dashboard from "./views/Dashboard";
 import Admin from "./views/Admin";
+import Courses from "./views/Courses";
+import DoTest from "./views/DoTest";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ const App = (props) => {
   return (
     <div className="App">
       <div className="main">
-      <AdminToolbar />
+        <AdminToolbar />
         <Switch>
           <Route
             exact
@@ -42,6 +44,24 @@ const App = (props) => {
             render={() => (
               <MainLayout>
                 <Homepage />
+              </MainLayout>
+            )}
+          />
+          <Route
+            exact
+            path="/courses"
+            render={() => (
+              <MainLayout>
+                <Courses />
+              </MainLayout>
+            )}
+          />
+          <Route
+            exact
+            path="/test"
+            render={() => (
+              <MainLayout>
+                <DoTest />
               </MainLayout>
             )}
           />

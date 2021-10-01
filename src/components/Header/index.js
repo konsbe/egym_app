@@ -51,7 +51,12 @@ const Header = (props) => {
             <Nav.Link as={Link} to="/" className="navmenu">
               HOME
             </Nav.Link>
-            <Nav.Link className="navmenu">COURSES</Nav.Link>
+            <Nav.Link as={Link} to="/courses" className="navmenu">
+              COURSES
+            </Nav.Link>
+            <Nav.Link as={Link} to="/test" className="navmenu">
+              TEST
+            </Nav.Link>
             <NavDropdown
               className="navmenu"
               title="TEST"
@@ -113,22 +118,12 @@ const Header = (props) => {
             <Nav.Link as={Link} to="/" className="navmenu nav_burger">
               HOME
             </Nav.Link>
-            <Nav.Link className="navmenu nav_burger">COURSES</Nav.Link>
-            <NavDropdown
-              className="navmenu nav_burger"
-              title="TEST"
-              id="collasible-nav-dropdown"
-            >
-              <NavDropdown.Item className="submenu">Action</NavDropdown.Item>
-              <NavDropdown.Item className="submenu">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item className="submenu">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item className="submenu">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link as={Link} to="/courses" className="navmenu">
+              COURSES
+            </Nav.Link>
+            <Nav.Link as={Link} to="/test" className="navmenu">
+              TEST
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
