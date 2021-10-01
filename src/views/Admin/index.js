@@ -31,30 +31,43 @@ const Admin = (props) => {
   } else {
     return (
       <div>
-        <h1>Admin</h1>
+        <div className="myH1">
+          <h1>Manage Users</h1>
+        </div>
         <div className="manageUsers">
-          <table border="0" cellPadding="0" cellSpacing="0">
-            <tbody>
-              <tr>
+          <table border="0" cellPadding="10" cellSpacing="0">
+            {/* <tbody> */}
+            {/* <tr>
                 <td>
-                  <table border="0" cellPadding="0" cellSpacing="0">
-                    <tbody>
-                      {users.map((person, index) => {
-                        const { firstName, lastName, nickName } = person;
-                        return (
-                          <tr key={index}>
-                            <td>{firstName}</td>
-                            <td>{lastName}</td>
-                            <td>{nickName}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+                  <table
+                    className="tableValues"
+                    border="0"
+                    cellPadding="0"
+                    cellSpacing="0"
+                  > */}
+            <tbody>
+              {users.map((person, index) => {
+                const { firstName, lastName, nickName } = person;
+                return (
+                  <tr key={index}>
+                    <td>{firstName}</td>
+                    <td>{lastName}</td>
+                    <td>{nickName}</td>
+                    <td>
+                      <input className="checkBox" type="checkbox"></input>
+                    </td>
+                    <td>
+                      <input className="checkBox" type="checkbox"></input>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
+          {/* </td> */}
+          {/* </tr> */}
+          {/* </tbody> */}
+          {/* </table> */}
         </div>
       </div>
     );

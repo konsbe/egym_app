@@ -22,6 +22,7 @@ export const handleFetchUsers = () => {
   return new Promise((resolve, reject) => {
     firestore
       .collection("users")
+      .orderBy("createdDate", "asc")
       .get()
       .then((snapshot) => {
         const usersArray = snapshot.docs.map((doc) => {
