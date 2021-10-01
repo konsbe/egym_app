@@ -29,12 +29,17 @@ const FormTest = (props) => {
   const [leftBack, setLeftBack] = useState("");
   const [rightAnkle, setRightAnkle] = useState("");
   const [leftAnkle, setLeftAnkle] = useState("");
+  const [rightAdductor, setRightAdductor] = useState("");
+  const [leftAdductor, setLeftAdductor] = useState("");
+  const [rightSoleAnkle, setRightSoleAnkle] = useState("");
+  const [leftSoleAnkle, setLeftSoleAnkle] = useState("");
+  const [rightDisplacement, setRightDisplacement] = useState("");
+  const [leftDisplacement, setLeftDisplacement] = useState("");
+  const [rightGluteus, setRightGluteus] = useState("");
+  const [leftGluteus, setLeftGluteus] = useState("");
   const [goodmorning, setGoodmorning] = useState("");
-  const [nickName, setNickName] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthDay, setBirthDay] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [anterior, setAnterior] = useState("");
+  const [posterior, setPosterior] = useState("");
   const [errors, setErrors] = useState([]);
 
   //   useEffect(() => {
@@ -63,12 +68,17 @@ const FormTest = (props) => {
     setLeftBack("");
     setRightAnkle("");
     setLeftAnkle("");
+    setRightAdductor("");
+    setLeftAdductor("");
+    setRightSoleAnkle("");
+    setLeftSoleAnkle("");
+    setRightDisplacement("");
+    setLeftDisplacement("");
+    setRightGluteus("");
+    setLeftGluteus("");
     setGoodmorning("");
-    setNickName("");
-    setEmail("");
-    setBirthDay("");
-    setPassword("");
-    setConfirmPassword("");
+    setAnterior("");
+    setPosterior("");
     setErrors([]);
   };
 
@@ -85,12 +95,15 @@ const FormTest = (props) => {
         leftChest,
         rightAnkle,
         leftAnkle,
+        rightAdductor,
+        leftAdductor,
+        rightSoleAnkle,
+        leftSoleAnkle,
+        rightGluteus,
+        leftGluteus,
         goodmorning,
-        nickName,
-        email,
-        birthDay,
-        password,
-        confirmPassword,
+        anterior,
+        posterior,
       })
     );
   };
@@ -240,6 +253,115 @@ const FormTest = (props) => {
               handleChange={(e) => setGoodmorning(e.target.value)}
             />
           </div>
+          <div className="labelTitle" style={{ marginTop: 10 }}>
+            Squat
+          </div>
+          <div className="nestedInputs">
+            {/* <div className="subLabelTitle">Adductor:</div> */}
+            <div className="subinputs">
+              <FormInput
+                className="forminput"
+                type="text"
+                name="adductor"
+                value={leftAdductor}
+                placeholder="Left Aductor"
+                handleChange={(e) => setLeftAdductor(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="text"
+                name="adductor"
+                value={rightAdductor}
+                placeholder="Right Adductor"
+                handleChange={(e) => setRightAdductor(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="nestedInputs">
+            {/* <div className="subLabelTitle">Adductor:</div> */}
+            <div className="subinputs">
+              <FormInput
+                className="forminput"
+                type="text"
+                name="soleAnkle"
+                value={leftSoleAnkle}
+                placeholder="Left Sole/ Ankle"
+                handleChange={(e) => setLeftSoleAnkle(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="text"
+                name="soleAnkle"
+                value={rightSoleAnkle}
+                placeholder="Right Sole/ Ankle"
+                handleChange={(e) => setRightSoleAnkle(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="nestedInputs">
+            {/* <div className="subLabelTitle">Adductor:</div> */}
+            <div className="subinputs">
+              <FormInput
+                className="forminput"
+                type="text"
+                name="leftDisplacement"
+                value={leftDisplacement}
+                placeholder="Left Pelvic Displacement"
+                handleChange={(e) => setLeftDisplacement(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="text"
+                name="rightDisplacement"
+                value={rightDisplacement}
+                placeholder="Right Pelvic Displacement"
+                handleChange={(e) => setRightDisplacement(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="labelTitle" style={{ marginTop: 10 }}>
+            Single Leg Squat
+          </div>
+          <div className="nestedInputs">
+            {/* <div className="subLabelTitle">Adductor:</div> */}
+            <div className="subinputs">
+              <FormInput
+                className="forminput"
+                type="text"
+                name="leftGluteus"
+                value={leftGluteus}
+                placeholder="Left Medius Gluteus"
+                handleChange={(e) => setLeftGluteus(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="text"
+                name="rightGluteus"
+                value={rightGluteus}
+                placeholder="Right Medius Gluteus"
+                handleChange={(e) => setRightGluteus(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* <div className="subLabelTitle">Adductor:</div> */}
+          <FormInput
+            className="forminput"
+            type="text"
+            name="anterior"
+            value={anterior}
+            placeholder="Anterior Kinetics"
+            handleChange={(e) => setAnterior(e.target.value)}
+          />
+          {/* <div className="subLabelTitle">Adductor:</div> */}
+          <FormInput
+            className="forminput"
+            type="text"
+            name="posterior"
+            value={posterior}
+            placeholder="Posterior Kinetics"
+            handleChange={(e) => setPosterior(e.target.value)}
+          />
           {/* <FormInput
             className="forminput"
             type="text"
@@ -248,45 +370,7 @@ const FormTest = (props) => {
             placeholder="Last Name"
             handleChange={(e) => setLastName(e.target.value)}
           /> */}
-          <FormInput
-            className="forminput"
-            type="text"
-            name="nickName"
-            value={nickName}
-            placeholder="Nick Name"
-            handleChange={(e) => setNickName(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="email"
-            name="email"
-            value={email}
-            placeholder="example@email.com"
-            handleChange={(e) => setEmail(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="date"
-            name="birthDay"
-            value={birthDay}
-            handleChange={(e) => setBirthDay(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            handleChange={(e) => setPassword(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            placeholder="Confirm Your Password"
-            handleChange={(e) => setConfirmPassword(e.target.value)}
-          />
+
           <Button type="submit" className="btnform">
             Register
           </Button>

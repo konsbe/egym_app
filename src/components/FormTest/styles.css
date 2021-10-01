@@ -4,12 +4,13 @@
     /* position: absolute; */
     align-items: center;
 }
-.plentar {
+.subinputs {
 
     display: inline-flex;
-    position: absolute;
+    /* position: absolute; */
     align-items: center;
 }
+
 
 .labelTitle {
     text-align: center;
@@ -25,7 +26,13 @@
     .labelTitle{
         text-align: center;
     }
+
+
+    /* position: absolute; */
+    /* align-items: center; */
+
 }
+
 
 /* .forminput {
     width: 25rem;
