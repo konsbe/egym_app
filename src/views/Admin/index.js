@@ -25,6 +25,9 @@ const Admin = (props) => {
     dispatch(fetchUsersStart());
   }, []);
 
+
+
+
   const isAdmin = checkUserIsAdmin(currentUser);
   if (!isAdmin) {
     return null;
@@ -54,10 +57,21 @@ const Admin = (props) => {
                     <td>{lastName}</td>
                     <td>{nickName}</td>
                     <td>
-                      <input className="checkBox" type="checkbox"></input>
+                      <input
+                        className="checkBox"
+                        name="payment"
+                        id="payment"
+                        type="checkbox"
+                      ></input>
+                      <label for="payment" className="checkLabel">
+                        Payment
+                      </label>
                     </td>
                     <td>
                       <input className="checkBox" type="checkbox"></input>
+                      <label for="payment" className="checkLabel">
+                        Month Program
+                      </label>
                     </td>
                   </tr>
                 );

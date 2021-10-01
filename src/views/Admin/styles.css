@@ -9,11 +9,18 @@ tr:nth-child(even) {
     padding-bottom: 2rem;
 }
 
+.checkLabel {
+    font-size: 20px;
+    padding-right: 1rem;
+    padding-left: 0.3rem;
+}
+
 .tableValues{
     border:ridge;
 }
 
 .checkBox{
+
     place-items: flex end;
 }
 
