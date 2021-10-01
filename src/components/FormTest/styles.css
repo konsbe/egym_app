@@ -10,7 +10,9 @@
     /* position: absolute; */
     align-items: center;
 }
-
+.allspace {
+    width: 100%;
+}
 
 .labelTitle {
     text-align: center;

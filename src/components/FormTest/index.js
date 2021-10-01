@@ -169,7 +169,7 @@ const FormTest = (props) => {
           </div>
           <div>
             <FormInput
-              className="forminput"
+              className="forminput allspace"
               type="text"
               name="pelvic"
               value={pelvic}
@@ -245,7 +245,7 @@ const FormTest = (props) => {
           </div>
           <div>
             <FormInput
-              className="forminput"
+              className="forminput allspace"
               type="text"
               name="goodmorning"
               value={goodmorning}
@@ -346,7 +346,7 @@ const FormTest = (props) => {
 
           {/* <div className="subLabelTitle">Adductor:</div> */}
           <FormInput
-            className="forminput"
+            className="forminput allspace"
             type="text"
             name="anterior"
             value={anterior}
@@ -355,7 +355,7 @@ const FormTest = (props) => {
           />
           {/* <div className="subLabelTitle">Adductor:</div> */}
           <FormInput
-            className="forminput"
+            className="forminput allspace"
             type="text"
             name="posterior"
             value={posterior}
