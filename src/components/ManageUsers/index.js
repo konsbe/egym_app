@@ -1,0 +1,45 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsersStart } from "../../redux/User/user.actions";
+
+import User from "./User";
+
+const mapState = ({ user }) => ({
+  users: user.users,
+});
+
+const ManageUsers = ({}) => {
+  const dispatch = useDispatch();
+  const { users } = useSelector(mapState);
+
+  useEffect(() => {
+    dispatch(fetchUsersStart());
+  }, []);
+
+  if (!Array.isArray(users)) return null;
+
+  if (users.length < 1) {
+    return (
+      <div className="users">
+        <p>No users..</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="users">
+      <h1>Manage Users</h1>
+      {users.map((user, pos) => {
+        const { firstName, lastName, nickName } = user;
+        if (!firstName || !lastName) return null;
+        const configUser = {
+          ...user,
+        };
+
+        return <User {...configUser} />;
+      })}
+    </div>
+  );
+};
+
+export default ManageUsers;

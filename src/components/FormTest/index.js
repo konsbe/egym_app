@@ -43,7 +43,7 @@ const FormTest = (props) => {
   const [goodmorning, setGoodmorning] = useState("");
   const [anterior, setAnterior] = useState("");
   const [posterior, setPosterior] = useState("");
-  const [birthDay, setbirthDay] = useState("");
+
   const [errors, setErrors] = useState([]);
 
   //   useEffect(() => {
@@ -83,7 +83,6 @@ const FormTest = (props) => {
     setGoodmorning("");
     setAnterior("");
     setPosterior("");
-    setbirthDay("");
     setErrors([]);
   };
 
@@ -91,7 +90,6 @@ const FormTest = (props) => {
     event.preventDefault();
     dispatch(
       addDataStart({
-        birthDay,
         rightShoulder,
         leftShoulder,
         rightPlentar,
@@ -115,6 +113,8 @@ const FormTest = (props) => {
         lastName: userDetails.lastName,
         nickName: userDetails.nickName,
         email: userDetails.email,
+        createdDate: userDetails.createdDate,
+        userRoles: userDetails.userRoles,
       })
     );
   };

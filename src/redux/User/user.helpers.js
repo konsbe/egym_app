@@ -61,3 +61,21 @@ export const handleNewData = (testdata) => {
       });
   });
 };
+
+
+export const handleFetchUser = (userID) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(userID)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists) {
+          resolve(snapshot.data());
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

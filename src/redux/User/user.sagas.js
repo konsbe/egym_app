@@ -11,11 +11,13 @@ import {
   resetPasswordSuccess,
   userError,
   setUsers,
+  setUser,
 } from "./user.actions";
 import {
   handleFetchUsers,
   handleResetPasswordAPI,
   handleNewData,
+  handleFetchUser,
 } from "./user.helpers";
 import { useAuth } from "./../../customHooks";
 
@@ -161,6 +163,8 @@ export function* addData({
     lastName,
     nickName,
     email,
+    createdDate,
+    userRoles,
   },
 }) {
   try {
@@ -188,6 +192,8 @@ export function* addData({
       lastName,
       nickName,
       email,
+      createdDate,
+      userRoles,
       userUID: auth.currentUser.uid,
     });
   } catch (err) {}
@@ -195,6 +201,17 @@ export function* addData({
 
 export function* onAddTestData() {
   yield takeLatest(userTypes.ADD_NEW_DATA_START, addData);
+}
+
+export function* fetchUser({ payload }) {
+  try {
+    const user = yield handleFetchUser(payload);
+    yield put(setUser(user));
+  } catch (err) {}
+}
+
+export function* onFetchUserStart() {
+  yield takeLatest(userTypes.FETCH_USER_START, fetchUser);
 }
 
 export default function* userSagas() {
@@ -206,5 +223,6 @@ export default function* userSagas() {
     call(onResetPasswordStart),
     call(onFetchUsersStart),
     call(onAddTestData),
+    call(onFetchUserStart),
   ]);
 }
