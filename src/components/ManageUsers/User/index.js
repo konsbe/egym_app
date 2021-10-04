@@ -16,6 +16,7 @@ const User = ({ documentID, firstName, lastName, nickName }) => {
           <li>
             <span>{nickName}</span>
           </li>
+
         </ul>
       </div>
     </div>

@@ -14,7 +14,7 @@ const UserProfile = ({}) => {
   const { userID } = useParams();
   const { user } = useSelector(mapState);
 
-  const { firstName, lastName } = user;
+  const { userUID, firstName, lastName } = user;
 
   useEffect(() => {
     dispatch(fetchUserStart(userID));
@@ -24,6 +24,7 @@ const UserProfile = ({}) => {
     <div>
       {<h1>{firstName}</h1>}
       {<h2>{lastName}</h2>}
+      {<h3>{userUID}</h3>}
     </div>
   );
 };

@@ -88,6 +88,7 @@ const App = (props) => {
           <Route
             path="/user/:userID"
             render={() => (
+
               <MainLayout>
                 <Profile />
               </MainLayout>

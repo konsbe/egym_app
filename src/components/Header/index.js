@@ -1,7 +1,10 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { signOutUserStart } from "./../../redux/User/user.actions";
+import {
+  signOutUserStart,
+  fetchUsersStart,
+} from "./../../redux/User/user.actions";
 
 import "./styles.css";
 import { Link } from "react-router-dom";
@@ -9,18 +12,26 @@ import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 
 import snatch from "./../../assets/snatch.jpg";
 
+import { useAuth } from "../../customHooks";
+
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
+  users: user.users,
 });
 
 const Header = (props) => {
   const dispatch = useDispatch();
-
+  // const userID = useAuth();
   const { currentUser } = useSelector(mapState);
+  const { users } = useSelector(mapState);
 
   const signOut = () => {
     dispatch(signOutUserStart());
   };
+
+  // useEffect(() => {
+  //   dispatch(fetchUsersStart());
+  // }, []);
 
   return (
     <header sticky="top">
@@ -95,7 +106,11 @@ const Header = (props) => {
             {currentUser && (
               <ul>
                 <li>
-                  <Nav.Link as={Link} to="/profile" className="navmenu">
+                  <Nav.Link
+                    as={Link}
+                    to={`/user/${currentUser.id}`}
+                    className="navmenu"
+                  >
                     <Button className="btnlink" variant="outline-success">
                       My Profile
                     </Button>
