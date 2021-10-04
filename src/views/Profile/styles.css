@@ -1,0 +1,26 @@
+.profile_body{
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  width:100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position:absolute;
+  white-space: nowrap;
+    background-color: aquamarine;
+
+}
+
+/*
+.userProfile{
+    justify-content:start;
+}
+
+.profile_body > .userPosts{
+    justify-content: center;
+}
+
+.profile_body > .userCalendar{
+    justify-content: end;
+} */

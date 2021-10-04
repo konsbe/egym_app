@@ -12,11 +12,11 @@ import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 
 import snatch from "./../../assets/snatch.jpg";
 
-import { useAuth } from "../../customHooks";
+
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
-  users: user.users,
+  users: user.currentUser,
 });
 
 const Header = (props) => {
@@ -28,6 +28,8 @@ const Header = (props) => {
   const signOut = () => {
     dispatch(signOutUserStart());
   };
+
+  const configUser = { ...currentUser };
 
   // useEffect(() => {
   //   dispatch(fetchUsersStart());
@@ -108,7 +110,7 @@ const Header = (props) => {
                 <li>
                   <Nav.Link
                     as={Link}
-                    to={`/user/${currentUser.id}`}
+                    to={`/user/${users.id}`}
                     className="navmenu"
                   >
                     <Button className="btnlink" variant="outline-success">

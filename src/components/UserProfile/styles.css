@@ -1,0 +1,29 @@
+.sidebar {
+  width:100%;
+
+    position: sticky;
+
+    text-align: center;
+    top: 10rem;
+    margin-left: 1rem;
+    flex: 0.2 ;
+    height: 100%;
+}
+h3 {
+    font-weight: 500;
+}
+h6 {
+    font-weight: 400;
+}
+.sidebarTop{
+    padding-top: 5rem;
+    background-color: rgb(240, 240, 240);
+    margin-bottom: 1rem;
+}
+.sidebarBottom{
+    background-color: rgb(238, 238, 238);
+    margin-bottom: 1rem;
+}
+span {
+    font-weight: 500;
+}
