@@ -27,6 +27,7 @@ import Courses from "./views/Courses";
 import DoTest from "./views/DoTest";
 import Users from "./views/Users";
 import Profile from "./views/Profile";
+import Exercises from "./views/Exercises";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -86,9 +87,16 @@ const App = (props) => {
             )}
           />
           <Route
+            path="/exercises"
+            render={() => (
+              <MainLayout>
+                <Exercises />
+              </MainLayout>
+            )}
+          />
+          <Route
             path="/user/:userID"
             render={() => (
-
               <MainLayout>
                 <Profile />
               </MainLayout>

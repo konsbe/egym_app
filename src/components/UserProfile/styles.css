@@ -22,7 +22,8 @@ h6 {
 }
 .sidebarBottom{
     background-color: rgb(238, 238, 238);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 5rem;
 }
 span {
     font-weight: 500;
