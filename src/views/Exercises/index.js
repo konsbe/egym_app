@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./styles.css";
 
+import { addExerciseStart } from "./../../redux/Exercises/exercises.actions";
+
 import ExerciseForm from "../../components/ExerciseForm";
 import AddButton from "./../../components/ExerciseForm/AddButton";
 import FormInput from "../../components/Forms/FormInput";
 import Button from "./../../components/Forms/Button";
 
 const Exercises = (props) => {
-  const [showAddExercise, setShowAddExercise] = useState(false);
   const dispatch = useDispatch();
+  const [showAddExercise, setShowAddExercise] = useState(false);
   const [exerciseName, setExerciseName] = useState("");
   const [youtubeURL, setYoutubeURL] = useState("");
   const [imgURL, setImgURL] = useState("");
@@ -20,9 +22,15 @@ const Exercises = (props) => {
     setImgURL("");
   };
 
-  const handleFormSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch();
+    dispatch(
+      addExerciseStart({
+        exerciseName,
+        youtubeURL,
+        imgURL,
+      })
+    );
   };
 
   return (
@@ -32,7 +40,7 @@ const Exercises = (props) => {
         onAdd={() => setShowAddExercise(!showAddExercise)}
       />
       {showAddExercise && (
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="form">
             <FormInput
               className="forminput"
