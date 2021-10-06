@@ -14,3 +14,25 @@ export const handleAddExercise = (exercise) => {
       });
   });
 };
+
+
+export const handleFetchExercises = () => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("exercises")
+      .get()
+      .then((snapshot) => {
+        const exercisesArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.id,
+          };
+        });
+        resolve(exercisesArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+

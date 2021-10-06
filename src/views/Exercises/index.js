@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 
 import {
@@ -12,7 +12,12 @@ import AddButton from "./../../components/ExerciseForm/AddButton";
 import FormInput from "../../components/Forms/FormInput";
 import Button from "./../../components/Forms/Button";
 
+const mapState = ({ exercisesData }) => ({
+  exercises: exercisesData.exercises,
+});
+
 const Exercises = (props) => {
+  const { exercises } = useSelector(mapState);
   const dispatch = useDispatch();
   const [showAddExercise, setShowAddExercise] = useState(false);
   const [exerciseName, setExerciseName] = useState("");
@@ -26,8 +31,8 @@ const Exercises = (props) => {
   };
 
   useEffect(() => {
-    // resetForm();
-    dispatch(fetchExercisesStart);
+    resetForm();
+    dispatch(fetchExercisesStart());
   }, []);
 
   const handleSubmit = (event) => {
@@ -79,6 +84,21 @@ const Exercises = (props) => {
           <Button type="submit">ADD</Button>
         </form>
       )}
+      <div className="exercises">
+        <h3 className="exerciseHeader">Exercises</h3>
+        {exercises.map((exercise, index) => {
+          const { youtubeURL, exerciseName, imgURL } = exercise;
+          return (
+            <div key={index}>
+              {exerciseName}
+              {""}
+              {youtubeURL}
+              {""}
+              {imgURL}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
