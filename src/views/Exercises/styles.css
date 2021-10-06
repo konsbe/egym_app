@@ -1,0 +1,22 @@
+.addForm{
+    justify-content: center;
+    align-items: center;
+      margin: auto;
+  width: 100%;
+
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      margin: auto;
+    width: 100%;
+}
+@media (min-width: 1240px) {
+    .forminput:nth-child(1){
+
+        margin-left: 0.3rem;
+        margin-right: 0.3rem;
+
+    }
+}
