@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./styles.css";
 
-import { addExerciseStart } from "./../../redux/Exercises/exercises.actions";
+import {
+  addExerciseStart,
+  fetchExercisesStart,
+} from "./../../redux/Exercises/exercises.actions";
 
 import ExerciseForm from "../../components/ExerciseForm";
 import AddButton from "./../../components/ExerciseForm/AddButton";
@@ -22,8 +25,14 @@ const Exercises = (props) => {
     setImgURL("");
   };
 
+  useEffect(() => {
+    // resetForm();
+    dispatch(fetchExercisesStart);
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    resetForm();
     dispatch(
       addExerciseStart({
         exerciseName,

@@ -1,5 +1,7 @@
 const exerciseTypes = {
   ADD_NEW_EXERCISE: "ADD_NEW_EXERCISE",
+  FETCH_EXERCISES_START: "FETCH_EXERCISES_START",
+  SET_EXERCISES: "SET_EXERCISES",
 };
 
 export default exerciseTypes;
