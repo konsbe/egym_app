@@ -1,8 +1,12 @@
 import { auth } from "../../firebase/utils";
 import { takeLatest, put, all, call } from "redux-saga/effects";
 import exerciseTypes from "./exercises.types";
-import { handleAddExercise, handleFetchExercises } from "./exercises.helpers";
-import { setExercises } from "./exercises.actions";
+import {
+  handleAddExercise,
+  handleFetchExercises,
+  handleDeleteExercise,
+} from "./exercises.helpers";
+import { setExercises, fetchExercisesStart } from "./exercises.actions";
 
 export function* addExercise({
   payload: { exerciseName, youtubeURL, imgURL },
@@ -16,6 +20,7 @@ export function* addExercise({
       exerciseIDUSER: auth.currentUser.uid,
       createdDate: timestamp,
     });
+    yield put(fetchExercisesStart());
   } catch (err) {
     //
   }
@@ -38,6 +43,23 @@ export function* onFetchExercisesStart() {
   yield takeLatest(exerciseTypes.FETCH_EXERCISES_START, fetchExercises);
 }
 
+export function* deleteExercise({ payload }) {
+  try {
+    yield handleDeleteExercise(payload);
+    yield put(fetchExercisesStart());
+  } catch (err) {
+    //
+  }
+}
+
+export function* onDeleteExerciseStart() {
+  yield takeLatest(exerciseTypes.DELETE_EXERCISE_START, deleteExercise);
+}
+
 export default function* exercisesSagas() {
-  yield all([call(onAddExerciseStart), call(onFetchExercisesStart)]);
+  yield all([
+    call(onAddExerciseStart),
+    call(onFetchExercisesStart),
+    call(onDeleteExerciseStart),
+  ]);
 }

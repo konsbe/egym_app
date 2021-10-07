@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
+import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 import {
   addExerciseStart,
   fetchExercisesStart,
+  deleteExerciseStart,
 } from "./../../redux/Exercises/exercises.actions";
 
 import ExerciseForm from "../../components/ExerciseForm";
@@ -28,10 +30,10 @@ const Exercises = (props) => {
     setExerciseName("");
     setYoutubeURL("");
     setImgURL("");
+    setShowAddExercise(false);
   };
 
   useEffect(() => {
-    resetForm();
     dispatch(fetchExercisesStart());
   }, []);
 
@@ -45,6 +47,7 @@ const Exercises = (props) => {
         imgURL,
       })
     );
+    resetForm();
   };
 
   return (
@@ -87,14 +90,21 @@ const Exercises = (props) => {
       <div className="exercises">
         <h3 className="exerciseHeader">Exercises</h3>
         {exercises.map((exercise, index) => {
-          const { youtubeURL, exerciseName, imgURL } = exercise;
+          const { youtubeURL, exerciseName, imgURL, documentID } = exercise;
           return (
-            <div key={index}>
-              {exerciseName}
-              {""}
-              {youtubeURL}
-              {""}
-              {imgURL}
+            <div className="exerciseDetails" key={index}>
+              <span>{exerciseName}</span>
+
+              <span>{youtubeURL}</span>
+
+              <span>{imgURL}</span>
+
+              <span className="deleteBtn">
+                <FaTimes
+                  style={{ color: "red", cursor: "pointer" }}
+                  onClick={() => dispatch(deleteExerciseStart(documentID))}
+                />
+              </span>
             </div>
           );
         })}

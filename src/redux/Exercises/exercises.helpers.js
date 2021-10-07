@@ -20,6 +20,7 @@ export const handleFetchExercises = () => {
   return new Promise((resolve, reject) => {
     firestore
       .collection("exercises")
+      .orderBy("createdDate", "desc")
       .get()
       .then((snapshot) => {
         const exercisesArray = snapshot.docs.map((doc) => {
@@ -36,3 +37,17 @@ export const handleFetchExercises = () => {
   });
 };
 
+export const handleDeleteExercise = (documentID) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("exercises")
+      .doc(documentID)
+      .delete()
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

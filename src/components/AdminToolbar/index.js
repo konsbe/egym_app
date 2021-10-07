@@ -21,7 +21,7 @@ const AdminToolbar = (props) => {
       <div className="adminToolbar">
         <ul className="toolbar">
           <li>
-            <Nav.Link as={Link} to="/admin" className="navmenu">
+            <Nav.Link as={Link} to="/manageusers" className="navmenu">
               <Button className="btnlink" variant="outline-success">
                 Manage Users
               </Button>

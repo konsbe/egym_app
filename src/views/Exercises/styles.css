@@ -12,8 +12,49 @@
       margin: auto;
     width: 100%;
 }
+
+.exercises{
+  display: inline-block;
+  width: 99%;
+}
+
+.exerciseDetails{
+
+  display: flex;
+  position:initial;
+  width: 100%;
+  font-size: 2rem;
+  border:ridge;
+  border-radius: 9px;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.exerciseDetails:nth-child(even){
+  background-color: lightgray;
+
+}
+
+span{
+  position: relative;
+  width: 100%;
+
+  font-weight: 400;
+
+}
+
+span:nth-child(1){
+  padding-left: 0.3rem;
+}
+span:last-child{
+  text-align:end;
+}
+
 @media (min-width: 1240px) {
-    .forminput:nth-child(1){
+  .forminput:nth-child(1){
 
         margin-left: 0.3rem;
         margin-right: 0.3rem;

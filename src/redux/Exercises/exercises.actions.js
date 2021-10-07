@@ -13,3 +13,9 @@ export const setExercises = (exercises) => ({
   type: exerciseTypes.SET_EXERCISES,
   payload: exercises,
 });
+
+
+export const deleteExerciseStart = (exerciseID) => ({
+  type: exerciseTypes.DELETE_EXERCISE_START,
+  payload: exerciseID,
+});

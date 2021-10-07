@@ -1,14 +1,3 @@
-.users {
-    display: block;
-    width: 100%;
-    padding:0;
-    margin: 2rem 0;
-}
-
-.user {
-    width:33.3333333;
-    padding: 0 10px;
-    height: 25rem;
-    margin: 0;
-    float: right;
-}
+/* .userLine:nth-child(even){
+    background-color:darkgray;
+} */

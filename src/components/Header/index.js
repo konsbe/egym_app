@@ -119,11 +119,7 @@ const Header = (props) => {
                   </Nav.Link>
                 </li>
                 <li>
-                  <Nav.Link
-                    className="navmenu"
-                    style={{ marginRight: 5 }}
-                    eventKey={2}
-                  >
+                  <Nav.Link className="navmenu">
                     <Button className="btnlinnk" variant="outline-success">
                       <span onClick={() => signOut()}>LOGOUT</span>
                     </Button>
