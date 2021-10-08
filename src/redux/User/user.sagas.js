@@ -82,11 +82,15 @@ export function* signUpUser({
   payload: {
     firstName,
     lastName,
-    nickName,
-    birthDay,
+    genre,
+    height,
+    weight,
     email,
+    birthDay,
     password,
     confirmPassword,
+    injuries,
+    gear,
   },
 }) {
   if (password !== confirmPassword) {
@@ -99,8 +103,12 @@ export function* signUpUser({
     const additionalData = {
       firstName,
       lastName,
-      nickName,
       birthDay,
+      genre,
+      height,
+      weight,
+      injuries,
+      gear,
     };
     yield getSnapshotFromUserAuth(user);
     yield call(handleUserProfile, {
@@ -161,7 +169,11 @@ export function* addData({
     birthDay,
     firstName,
     lastName,
-    nickName,
+    genre,
+    height,
+    weight,
+    injuries,
+    gear,
     email,
     createdDate,
     userRoles,
@@ -190,7 +202,11 @@ export function* addData({
       birthDay,
       firstName,
       lastName,
-      nickName,
+      genre,
+      height,
+      weight,
+      injuries,
+      gear,
       email,
       createdDate,
       userRoles,

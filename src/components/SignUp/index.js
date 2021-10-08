@@ -8,6 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
 import FormInput from "../Forms/FormInput";
+import FormSelect from "../Forms/FormSelect";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -20,9 +21,13 @@ const SignUp = (props) => {
   const history = useHistory();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [nickName, setNickName] = useState("");
+  const [genre, setGenre] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [email, setEmail] = useState("");
   const [birthDay, setBirthDay] = useState("");
+  const [gear, setGear] = useState("");
+  const [injuries, setInjuries] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -44,11 +49,16 @@ const SignUp = (props) => {
   const resetForm = () => {
     setFirstName("");
     setLastName("");
-    setNickName("");
+    setGenre("");
+    setHeight("");
+    setWeight("");
+    // setNickName("");
     setEmail("");
     setBirthDay("");
     setPassword("");
     setConfirmPassword("");
+    setInjuries("");
+    setGear("");
     setErrors([]);
   };
 
@@ -58,11 +68,15 @@ const SignUp = (props) => {
       signUpUserStart({
         firstName,
         lastName,
-        nickName,
+        genre,
+        height,
+        weight,
         email,
         birthDay,
         password,
         confirmPassword,
+        injuries,
+        gear,
       })
     );
   };
@@ -99,13 +113,74 @@ const SignUp = (props) => {
             placeholder="Last Name"
             handleChange={(e) => setLastName(e.target.value)}
           />
+          <p className="textLabels">Birthday:</p>
+          <FormInput
+            className="forminput"
+            type="date"
+            name="birthDay"
+            value={birthDay}
+            handleChange={(e) => setBirthDay(e.target.value)}
+          />
+          <p className="textLabels">Genre:</p>
+          <FormSelect
+            // label="Genre"
+            className="forminput"
+            // default="man"
+            options={[
+              {
+                value: "-",
+                // default: "man",
+                name: "-",
+              },
+              {
+                value: "man",
+                // default: "man",
+                name: "man",
+              },
+              {
+                value: "woman",
+                name: "woman",
+              },
+            ]}
+            // defaultValue:man
+            // placeholder="Genre"
+            handleChange={(e) => setGenre(e.target.value)}
+          />
           <FormInput
             className="forminput"
             type="text"
-            name="nickName"
-            value={nickName}
-            placeholder="Nick Name"
-            handleChange={(e) => setNickName(e.target.value)}
+            name="height"
+            value={height}
+            placeholder="Height in cm"
+            handleChange={(e) => setHeight(e.target.value)}
+          />
+          <FormInput
+            className="forminput"
+            type="text"
+            name="weight"
+            value={weight}
+            placeholder="Weight in kilos"
+            handleChange={(e) => setWeight(e.target.value)}
+          />
+          <p className="textLabels">Please write any injuries here:</p>
+          <textarea
+            className="formtext"
+            type="textarea"
+            name="injuries"
+            rows="8"
+            value={injuries}
+            placeholder="ruptured right meniscus, tendonitis of the right wrist, etc"
+            onChange={(e) => setInjuries(e.target.value)}
+          />
+          <p className="textLabels">Please write your training gear here:</p>
+          <textarea
+            className="formtext"
+            type="textarea"
+            name="gear"
+            rows="8"
+            value={gear}
+            placeholder="gym membership, exercise treadmills, bodyweight, swimming pool, dumbbells 2x5kg-2x10kg, etc.."
+            onChange={(e) => setGear(e.target.value)}
           />
           <FormInput
             className="forminput"
@@ -114,13 +189,6 @@ const SignUp = (props) => {
             value={email}
             placeholder="example@email.com"
             handleChange={(e) => setEmail(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="date"
-            name="birthDay"
-            value={birthDay}
-            handleChange={(e) => setBirthDay(e.target.value)}
           />
           <FormInput
             className="forminput"
@@ -138,6 +206,7 @@ const SignUp = (props) => {
             placeholder="Confirm Your Password"
             handleChange={(e) => setConfirmPassword(e.target.value)}
           />
+          {/* <textarea className="forminput" rows="5" /> */}
           <Button type="submit" className="btnform">
             Register
           </Button>
