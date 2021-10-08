@@ -124,7 +124,7 @@ const SignUp = (props) => {
           <p className="textLabels">Genre:</p>
           <FormSelect
             // label="Genre"
-            className="forminput"
+            className="formSelect"
             // default="man"
             options={[
               {

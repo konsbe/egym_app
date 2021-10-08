@@ -7,6 +7,16 @@
     margin-bottom: 1rem;
     border-radius:0.5rem ;
 }
+.formSelect {
+    width: 25rem;
+    height: 3rem;
+    font-size: 2rem;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    border-radius:0.5rem ;
+    margin-left: 0.4rem;
+    border-width:0.16rem;
+}
 
 /* .forminput:nth-child(5){
     width: 5rem;
@@ -18,6 +28,7 @@
 } */
 
 .formtext {
+    border-width: 0.15rem;
     width: 24.8rem;
     /* height: 3rem; */
     font-size: 1rem;
