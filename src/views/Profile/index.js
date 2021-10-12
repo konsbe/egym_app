@@ -22,10 +22,10 @@ const Profile = ({}) => {
   const [injuries, setInjuries] = useState("");
   const toggleModal = () => setHideModal(!hideModal);
 
-  const configModal = {
-    hideModal,
-    toggleModal,
-  };
+  // const configModal = {
+  //   hideModal,
+  //   toggleModal,
+  // };
 
   const resetForm = () => {
     setHideModal(true);
@@ -53,7 +53,7 @@ const Profile = ({}) => {
     <div className="profile_body">
       <div className="userProfile">
         <div className="callToActions">
-          <ul>
+          <ul className="btnPopup">
             <li>
               <Button onClick={() => setBtnPopup(true)}>
                 Edit Profile Infos
@@ -110,7 +110,9 @@ const Profile = ({}) => {
 
               <br />
 
-              <Button type="submit">EDIT</Button>
+              <Button className="btnform" type="submit">
+                EDIT
+              </Button>
             </form>
           </div>
         </Popup>

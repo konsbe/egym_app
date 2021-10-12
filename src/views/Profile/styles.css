@@ -26,6 +26,20 @@ text-align: center;
     margin-left: 0.4rem;
 }
 
+.btnPopup {
+    margin-top: 0.5rem;
+    padding-left: 0;
+    margin: auto;
+}
+.btnform{
+    width: auto;
+padding-left: 1rem;
+padding-right: 1rem;
+font-weight: 300;
+height: 2rem;
+font-size: 1.2rem;
+}
+
 /*
 .userProfile{
     justify-content:start;
