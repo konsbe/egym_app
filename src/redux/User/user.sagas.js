@@ -18,6 +18,10 @@ import {
   handleResetPasswordAPI,
   handleNewData,
   handleFetchUser,
+  handleUpdateData,
+  handleUpdateWeight,
+  handleUpdateGear,
+  handleUpdateInjuries,
 } from "./user.helpers";
 import { useAuth } from "./../../customHooks";
 
@@ -219,6 +223,42 @@ export function* onAddTestData() {
   yield takeLatest(userTypes.ADD_NEW_DATA_START, addData);
 }
 
+export function* updateWeight({ payload: { weight } }) {
+  try {
+    yield handleUpdateWeight({
+      weight,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserWeight() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updateWeight);
+}
+
+export function* updateGear({ payload: { gear } }) {
+  try {
+    yield handleUpdateGear({
+      gear,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserGear() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updateGear);
+}
+
+export function* updateInjuries({ payload: { injuries } }) {
+  try {
+    yield handleUpdateInjuries({
+      injuries,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserInjuries() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updateInjuries);
+}
+
 export function* fetchUser({ payload }) {
   try {
     const user = yield handleFetchUser(payload);
@@ -240,5 +280,8 @@ export default function* userSagas() {
     call(onFetchUsersStart),
     call(onAddTestData),
     call(onFetchUserStart),
+    call(onUpdateUserWeight),
+    call(onUpdateUserGear),
+    call(onUpdateUserInjuries),
   ]);
 }

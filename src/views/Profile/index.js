@@ -12,9 +12,16 @@ import FormInput from "../../components/Forms/FormInput";
 import FormSelect from "./../../components/Forms/FormSelect";
 import Button from "./../../components/Forms/Button";
 import Popup from "../../components/Popup";
+import { updateUserStart } from "../../redux/User/user.actions";
+
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+  userErr: user.userErr,
+});
 
 const Profile = ({}) => {
   const [hideModal, setHideModal] = useState(true);
+  const { currentUser, userErr } = useSelector(mapState);
   const [btnPopup, setBtnPopup] = useState(false);
   const dispatch = useDispatch();
   const [weight, setWeight] = useState("");
@@ -37,15 +44,13 @@ const Profile = ({}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // dispatch(
-    //   addProductStart({
-    //     productCategory,
-    //     productName,
-    //     productThumbnail,
-    //     productPrice,
-    //     productDesc,
-    //   })
-    // );
+    dispatch(
+      updateUserStart({
+        weight,
+        gear,
+        injuries,
+      })
+    );
     resetForm();
   };
 
@@ -110,7 +115,7 @@ const Profile = ({}) => {
 
               <br />
 
-              <Button className="btnform" type="submit">
+              <Button className="btnedit" type="submit">
                 EDIT
               </Button>
             </form>

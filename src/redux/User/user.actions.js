@@ -70,6 +70,12 @@ export const setUser = (user) => ({
   payload: user,
 });
 
+export const updateUserStart = (upData) => ({
+  type: userTypes.UPDATE_USER_DATA,
+  payload: upData,
+});
+
+
 // export const setCurrentUser = (user) => ({
 //   type: userTypes.SET_CURRENT_USER,
 //   payload: user,

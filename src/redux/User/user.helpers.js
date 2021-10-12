@@ -62,6 +62,80 @@ export const handleNewData = (testdata) => {
   });
 };
 
+// UPDATE DATA
+export const handleUpdateWeight = ({weight}) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      // .ref(`gear`)
+      .update({ weight })
+      // .update({ injuries: injuries })
+      // .update({ gear: gear })
+
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.id,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+export const handleUpdateGear = ({gear}) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      // .ref(`gear`)
+      .update({ gear })
+      // .update({ injuries: injuries })
+      // .update({ gear: gear })
+
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.id,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+export const handleUpdateInjuries = ({injuries}) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      // .ref(`gear`)
+      .update({ injuries })
+      // .update({ injuries: injuries })
+      // .update({ gear: gear })
+
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.id,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 
 export const handleFetchUser = (userID) => {
   return new Promise((resolve, reject) => {
