@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useHistory } from "react-router-dom";
 import "./styles.css";
 
 import Calendar from "../../components/Calendar";
@@ -14,16 +14,17 @@ import Button from "./../../components/Forms/Button";
 import Popup from "../../components/Popup";
 import { updateUserStart } from "../../redux/User/user.actions";
 
-const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
-  userErr: user.userErr,
+const mapState = (state) => ({
+  currentUser: state.user.currentUser,
+  user: state.user.user,
 });
 
 const Profile = ({}) => {
   const [hideModal, setHideModal] = useState(true);
-  const { currentUser, userErr } = useSelector(mapState);
+  const { user } = useSelector(mapState);
   const [btnPopup, setBtnPopup] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
   const [weight, setWeight] = useState("");
   const [gear, setGear] = useState("");
   const [injuries, setInjuries] = useState("");
@@ -33,13 +34,24 @@ const Profile = ({}) => {
   //   hideModal,
   //   toggleModal,
   // };
-
+  // const { height } = user;
   const resetForm = () => {
     setHideModal(true);
     setWeight("");
     setGear("");
     setInjuries("");
   };
+  useEffect(() => {
+    if (weight < 1) {
+      setWeight(user.weight);
+    }
+    if (injuries.length < 1) {
+      setInjuries(user.injuries);
+    }
+    if (gear.length < 1) {
+      setGear(user.gear);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +63,8 @@ const Profile = ({}) => {
         injuries,
       })
     );
-    resetForm();
+
+    setBtnPopup(false);
   };
 
   return (

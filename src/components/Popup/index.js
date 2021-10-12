@@ -10,6 +10,7 @@ const Popup = (props) => {
           <FaTimes onClick={() => props.setTrigger(false)} className="close" />
           {props.children}
         </div>
+
       </div>
     </div>
   ) : (
