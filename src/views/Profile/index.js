@@ -35,16 +35,18 @@ const Profile = ({}) => {
   //   toggleModal,
   // };
   // const { height } = user;
-  const resetForm = () => {
-    setHideModal(true);
-    setWeight("");
-    setGear("");
-    setInjuries("");
-  };
+  // const resetForm = () => {
+  //   setHideModal(true);
+  //   setWeight("");
+  //   setGear("");
+  //   setInjuries("");
+  // };
+
   useEffect(() => {
-    if (weight < 1) {
-      setWeight(user.weight);
-    }
+    // if (weight < 1) {
+
+    // setWeight(user.weight);
+    // }
     if (injuries.length < 1) {
       setInjuries(user.injuries);
     }
@@ -95,7 +97,11 @@ const Profile = ({}) => {
                 name="weight"
                 value={weight}
                 placeholder="Weight in kilos"
-                handleChange={(e) => setWeight(e.target.value)}
+                handleChange={(e) =>
+                  setWeight(e.target.value) > 1
+                    ? setWeight(e.target.value)
+                    : (e) => setWeight(user.weight)
+                }
               />
 
               <p className="textLabels">
