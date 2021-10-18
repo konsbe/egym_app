@@ -57,7 +57,9 @@ span {
     /* width: fit-content; */
     /* height: 100%; */
     /* display: flex; */
-    /* justify-content: center; */
+    /* justify-content: center;
+    align-items: center; */
+
 }
 
 .weight{

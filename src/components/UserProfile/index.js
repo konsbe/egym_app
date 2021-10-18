@@ -39,7 +39,7 @@ const UserProfile = ({}) => {
       <div className="sidebarTop">
         {<h3>{firstName}</h3>}
         {<h4>{lastName}</h4>}
-        {<span>{userUID}</span>}
+        {<h6>{userUID}</h6>}
       </div>
       <div className="sidebarMiddle">
         {
