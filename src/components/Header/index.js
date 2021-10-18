@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -12,8 +12,6 @@ import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 
 import snatch from "./../../assets/snatch.jpg";
 
-
-
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
   users: user.currentUser,
@@ -21,6 +19,7 @@ const mapState = ({ user }) => ({
 
 const Header = (props) => {
   const dispatch = useDispatch();
+  const [scrolled, setScrolled] = useState(false);
   // const userID = useAuth();
   const { currentUser } = useSelector(mapState);
   const { users } = useSelector(mapState);
@@ -29,6 +28,25 @@ const Header = (props) => {
     dispatch(signOutUserStart());
   };
 
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 50) {
+      setScrolled(true);
+      console.log("scroll");
+    } else {
+      setScrolled(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
+
+  let x = ["navigation-bar"];
+  let y = ["navmenu"];
+  if (scrolled) {
+    x.push("navigation-bar scrolled");
+    y.push("navmenu scrolled");
+  }
   const configUser = { ...currentUser };
 
   // useEffect(() => {
@@ -36,15 +54,17 @@ const Header = (props) => {
   // }, []);
 
   return (
-    <header sticky="top">
+    <nav sticky="top" onScroll={handleScroll}>
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg="dark"
+        // bg="dark"
         variant="dark"
         fixed="top"
         sticky="top"
-        className="navigation-bar"
+        // onScroll={handleScroll}
+        // className="navigation-bar"
+        className={x.join(" ")}
       >
         <Navbar.Brand
           style={{ marginLeft: 10 }}
@@ -62,13 +82,13 @@ const Header = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto pc_display">
             <Nav.Link as={Link} to="/" className="navmenu">
-              HOME
+              <span className={y.join(" ")}>HOME</span>
             </Nav.Link>
             <Nav.Link as={Link} to="/courses" className="navmenu">
-              COURSES
+              <span className={y.join(" ")}>COURSES</span>
             </Nav.Link>
             <Nav.Link as={Link} to="/test" className="navmenu">
-              TEST
+              <span className={y.join(" ")}>TEST</span>
             </Nav.Link>
             <NavDropdown
               className="navmenu"
@@ -140,7 +160,7 @@ const Header = (props) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </header>
+    </nav>
   );
 };
 

@@ -16,7 +16,19 @@ const UserProfile = ({}) => {
 
   const { user } = useSelector(mapState);
 
-  const { userUID, firstName, lastName, pelvic, rightChest } = user;
+  const {
+    userUID,
+    firstName,
+    lastName,
+    pelvic,
+    rightChest,
+    weight,
+    injuries,
+    gear,
+    rightShouled,
+    rightSoleAnkle,
+    leftSoleAnkle,
+  } = user;
 
   useEffect(() => {
     dispatch(fetchUserStart(userID));
@@ -27,7 +39,26 @@ const UserProfile = ({}) => {
       <div className="sidebarTop">
         {<h3>{firstName}</h3>}
         {<h4>{lastName}</h4>}
-        {<h5>{userUID}</h5>}
+        {<span>{userUID}</span>}
+      </div>
+      <div className="sidebarMiddle">
+        {
+          <div className="weight">
+            <h6>Weight: {weight}</h6>
+          </div>
+        }
+        {
+          <div className="infos-lot">
+            <h6 className="infos">Injuries:</h6>
+            <span className="infos-text">{injuries}</span>
+          </div>
+        }
+        {
+          <div className="infos-lot">
+            <h6 className="infos">Gear:</h6>
+            <span className="infos-text">{gear}</span>
+          </div>
+        }
       </div>
       <div className="sidebarBottom">
         {
@@ -38,6 +69,21 @@ const UserProfile = ({}) => {
         {
           <h6>
             <span>rightChest:</span> {rightChest}
+          </h6>
+        }
+        {
+          <h6>
+            <span>Left Sole Ankle:</span> {leftSoleAnkle}
+          </h6>
+        }
+        {
+          <h6>
+            <span>Right Sole Ankle:</span> {rightSoleAnkle}
+          </h6>
+        }
+        {
+          <h6>
+            <span>Right Shoulder:</span> {rightShouled}
           </h6>
         }
       </div>

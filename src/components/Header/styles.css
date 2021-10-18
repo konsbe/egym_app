@@ -1,10 +1,37 @@
-header {
+/* .navbar {
         position: sticky;
     top: 0;
+     z-index: 999;
+} */
+/* .scrolled {
+        position: sticky;
+    top: 0;
+
+} */
+
+.navigation-bar{
+    background-color: rgb(41, 41, 41);
+}
+.navigation-bar.scrolled{
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(163, 148, 148,0.9);
+
+  transition: background 500ms;
+
+}
+.navmenu.scrolled{
+
+color:black;
+font-weight: 1000;
 }
 
 .navbar{
-    margin-left: 5 rem;
+    position: sticky;
+    top: 0;
+    /* margin-left: 5rem; */
 
 }
 .burger{
@@ -78,8 +105,8 @@ ul{
     font-size: 1.3rem;
 }
 
-.sticky {
+/* .sticky {
   position: fixed;
   top: 0;
   width: 100%;
-}
+} */
