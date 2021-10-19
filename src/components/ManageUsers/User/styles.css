@@ -15,7 +15,7 @@
 }
 
 
-.userLine:nth-child(even){
+.userLine:nth-child(odd) .user{
   background-color: lightgray;
 
 }

@@ -1,9 +1,10 @@
 import React from "react";
 import ManageUsers from "../../components/ManageUsers";
+import "./styles.css";
 
 const Users = ({}) => {
   return (
-    <div>
+    <div className="userdata">
       <ManageUsers />
     </div>
   );

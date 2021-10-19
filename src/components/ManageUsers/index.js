@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsersStart } from "../../redux/User/user.actions";
 
-// import "./styles.css";
+import "./styles.css";
 
 import User from "./User";
 
@@ -40,7 +40,7 @@ const ManageUsers = ({}) => {
 
         return (
           <div key={pos} className="userLine">
-            <User {...configUser} />
+            <User className="userdata" {...configUser} />
           </div>
         );
       })}
