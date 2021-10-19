@@ -136,6 +136,58 @@ export const handleUpdateInjuries = ({injuries}) => {
   });
 };
 
+export const handleUpdateMonth = ({ month, documentID }) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(documentID)
+      // .get()
+      // .ref(`gear`)
+      .update({ month })
+      // .update({ injuries: injuries })
+      // .update({ gear: gear })
+
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.num,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export const handleUpdatePayment = ({ payment, documentID }) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(documentID)
+      // .get()
+      // .ref(`gear`)
+      .update({ payment })
+      // .update({ injuries: injuries })
+      // .update({ gear: gear })
+
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.num,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 
 export const handleFetchUser = (userID) => {
   return new Promise((resolve, reject) => {

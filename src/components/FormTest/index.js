@@ -119,6 +119,8 @@ const FormTest = (props) => {
         email: userDetails.email,
         createdDate: userDetails.createdDate,
         userRoles: userDetails.userRoles,
+        payment: userDetails.payment,
+        month: userDetails.month,
       })
     );
   };

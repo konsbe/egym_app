@@ -31,6 +31,8 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [payment, setPayment] = useState(false);
+  const [month, setMonth] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -77,6 +79,8 @@ const SignUp = (props) => {
         confirmPassword,
         injuries,
         gear,
+        payment,
+        month,
       })
     );
   };

@@ -31,15 +31,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         userErr: action.payload,
       };
-    case userTypes.SET_USERS:
-      return {
-        ...state,
-        users: action.payload,
-      };
     case userTypes.SET_USER:
       return {
         ...state,
         user: action.payload,
+      };
+    case userTypes.SET_USERS:
+      return {
+        ...state,
+        users: action.payload,
       };
     default:
       return state;

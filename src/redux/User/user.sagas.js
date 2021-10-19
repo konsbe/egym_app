@@ -22,6 +22,8 @@ import {
   handleUpdateWeight,
   handleUpdateGear,
   handleUpdateInjuries,
+  handleUpdateMonth,
+  handleUpdatePayment,
 } from "./user.helpers";
 import { useAuth } from "./../../customHooks";
 
@@ -95,6 +97,8 @@ export function* signUpUser({
     confirmPassword,
     injuries,
     gear,
+    payment,
+    month,
   },
 }) {
   if (password !== confirmPassword) {
@@ -113,6 +117,8 @@ export function* signUpUser({
       weight,
       injuries,
       gear,
+      payment,
+      month,
     };
     yield getSnapshotFromUserAuth(user);
     yield call(handleUserProfile, {
@@ -181,6 +187,8 @@ export function* addData({
     email,
     createdDate,
     userRoles,
+    payment,
+    month,
   },
 }) {
   try {
@@ -214,6 +222,8 @@ export function* addData({
       email,
       createdDate,
       userRoles,
+      payment,
+      month,
       userUID: auth.currentUser.uid,
     });
   } catch (err) {}
@@ -259,6 +269,32 @@ export function* onUpdateUserInjuries() {
   yield takeLatest(userTypes.UPDATE_USER_DATA, updateInjuries);
 }
 
+export function* updateMonth({ payload: { month, documentID } }) {
+  try {
+    yield handleUpdateMonth({
+      month,
+      documentID,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserMonth() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updateMonth);
+}
+
+export function* updatePayment({ payload: { payment, documentID } }) {
+  try {
+    yield handleUpdatePayment({
+      payment,
+      documentID,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserPayment() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updatePayment);
+}
+
 export function* fetchUser({ payload }) {
   try {
     const user = yield handleFetchUser(payload);
@@ -283,5 +319,7 @@ export default function* userSagas() {
     call(onUpdateUserWeight),
     call(onUpdateUserGear),
     call(onUpdateUserInjuries),
+    call(onUpdateUserMonth),
+    call(onUpdateUserPayment),
   ]);
 }

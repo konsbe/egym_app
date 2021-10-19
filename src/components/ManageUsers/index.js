@@ -30,7 +30,7 @@ const ManageUsers = ({}) => {
 
   return (
     <div className="users">
-      <h1>Manage Users</h1>
+      <h1 className="manageUsers">Manage Users</h1>
       {users.map((user, pos) => {
         const { firstName, lastName, weight, birthDay } = user;
         if (!firstName || !lastName) return null;
@@ -40,7 +40,7 @@ const ManageUsers = ({}) => {
 
         return (
           <div key={pos} className="userLine">
-            <User className="userdata" {...configUser} />
+            <User {...configUser} />
           </div>
         );
       })}

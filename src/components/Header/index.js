@@ -140,7 +140,7 @@ const Header = (props) => {
                 </li>
                 <li>
                   <Nav.Link className="navmenu">
-                    <Button className="btnlinnk" variant="outline-success">
+                    <Button className="btnlink" variant="outline-success">
                       <span onClick={() => signOut()}>LOGOUT</span>
                     </Button>
                   </Nav.Link>

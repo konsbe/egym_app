@@ -7,6 +7,7 @@ const Footer = (props) => {
       <footer className="footer">
         <div>© Copyrights to Us</div>
       </footer>
+
     </div>
   );
 };
