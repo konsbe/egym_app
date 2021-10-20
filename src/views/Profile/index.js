@@ -31,9 +31,13 @@ const Profile = ({}) => {
   const toggleModal = () => setHideModal(!hideModal);
 
   let x = ["profile_body"];
+  let y = ["userPosts"];
+  let z = ["userCalendar"];
 
   if (btnPopup) {
-    x.push("navigation-bar popup");
+    x.push("profile_body popup");
+    y.push("userPosts popup");
+    z.push("userCalendar popup");
   }
   // const configModal = {
   //   hideModal,
@@ -85,75 +89,81 @@ const Profile = ({}) => {
           </div>
           <UserProfile />
         </div>
-        <div className="userPosts">
-          <Posts />
-          <Popup
-            trigger={btnPopup}
-            setTrigger={setBtnPopup}
-            className="addNewProductForm"
-          >
-            <div>
-              <form onSubmit={handleSubmit}>
-                <h2 className="editTitle">Edit Profile Info</h2>
+        {!btnPopup && (
+          <div className="userPosts">
+            <Posts />
+          </div>
+        )}
+        {btnPopup && (
+          <div className={y.join(" ")}>
+            <Popup
+              trigger={btnPopup}
+              setTrigger={setBtnPopup}
+              className="addNewProductForm"
+            >
+              <div>
+                <form onSubmit={handleSubmit}>
+                  <h2 className="editTitle">Edit Profile Info</h2>
 
-                <FormInput
-                  className="forminput"
-                  type="text"
-                  name="weight"
-                  value={weight}
-                  placeholder="Weight in kilos"
-                  handleChange={(e) =>
-                    setWeight(e.target.value) > 1
-                      ? setWeight(e.target.value)
-                      : (e) => setWeight(user.weight)
-                  }
-                />
+                  <FormInput
+                    className="forminput"
+                    type="text"
+                    name="weight"
+                    value={weight}
+                    placeholder="Weight in kilos"
+                    handleChange={(e) =>
+                      setWeight(e.target.value) > 1
+                        ? setWeight(e.target.value)
+                        : (e) => setWeight(user.weight)
+                    }
+                  />
 
-                <p className="textLabels">
-                  Please write your training gear here:
-                </p>
-                <textarea
-                  className="formtext"
-                  type="textarea"
-                  name="gear"
-                  rows="8"
-                  value={gear}
-                  placeholder="gym membership, exercise treadmills, bodyweight, swimming pool, dumbbells 2x5kg-2x10kg, etc.."
-                  onChange={(e) => setGear(e.target.value)}
-                />
+                  <p className="textLabels">
+                    Please write your training gear here:
+                  </p>
+                  <textarea
+                    className="formtext"
+                    type="textarea"
+                    name="gear"
+                    rows="8"
+                    value={gear}
+                    placeholder="gym membership, exercise treadmills, bodyweight, swimming pool, dumbbells 2x5kg-2x10kg, etc.."
+                    onChange={(e) => setGear(e.target.value)}
+                  />
 
-                <p className="textLabels">Please write any injuries here:</p>
-                <textarea
-                  className="formtext"
-                  type="textarea"
-                  name="injuries"
-                  rows="8"
-                  value={injuries}
-                  placeholder="ruptured right meniscus, tendonitis of the right wrist, etc"
-                  onChange={(e) => setInjuries(e.target.value)}
-                />
+                  <p className="textLabels">Please write any injuries here:</p>
+                  <textarea
+                    className="formtext"
+                    type="textarea"
+                    name="injuries"
+                    rows="8"
+                    value={injuries}
+                    placeholder="ruptured right meniscus, tendonitis of the right wrist, etc"
+                    onChange={(e) => setInjuries(e.target.value)}
+                  />
 
-                {/* <CKEditor
+                  {/* <CKEditor
                 onChange={(evt) => setProductDesc(evt.editor.getData())}
               /> */}
 
-                <br />
+                  <br />
 
-                <Button className="btnedit" type="submit">
-                  EDIT
-                </Button>
-                <Button
-                  onClick={() => setBtnPopup(false)}
-                  className="btnedit"
-                  type="submit"
-                >
-                  CANCEL
-                </Button>
-              </form>
-            </div>
-          </Popup>
-        </div>
-        <div className="userCalendar">
+                  <Button className="btnedit" type="submit">
+                    EDIT
+                  </Button>
+                  <Button
+                    onClick={() => setBtnPopup(false)}
+                    className="btnedit"
+                    type="submit"
+                  >
+                    CANCEL
+                  </Button>
+                </form>
+              </div>
+            </Popup>
+          </div>
+        )}
+        <div className={z.join(" ")}>
           <Calendar />
         </div>
       </div>
