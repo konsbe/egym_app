@@ -7,7 +7,10 @@ import "./styles.css";
 const MainLayout = (props) => {
   return (
     <div className="layout">
-      <Header {...props} />
+      <div className="navBar">
+        <Header {...props} />
+      </div>
+
       <div className="props">{props.children}</div>
       <div className="footerLayout">
         <Footer />

@@ -7,9 +7,9 @@ import Calendar from "../../components/Calendar";
 import UserProfile from "../../components/UserProfile";
 import Posts from "./../../components/Posts";
 
-import Modal from "./../../components/Modal";
+
 import FormInput from "../../components/Forms/FormInput";
-import FormSelect from "./../../components/Forms/FormSelect";
+
 import Button from "./../../components/Forms/Button";
 import Popup from "../../components/Popup";
 import { updateUserStart } from "../../redux/User/user.actions";
@@ -30,6 +30,11 @@ const Profile = ({}) => {
   const [injuries, setInjuries] = useState("");
   const toggleModal = () => setHideModal(!hideModal);
 
+  let x = ["profile_body"];
+
+  if (btnPopup) {
+    x.push("navigation-bar popup");
+  }
   // const configModal = {
   //   hideModal,
   //   toggleModal,
@@ -43,10 +48,6 @@ const Profile = ({}) => {
   // };
 
   useEffect(() => {
-    // if (weight < 1) {
-
-    // setWeight(user.weight);
-    // }
     if (injuries.length < 1) {
       setInjuries(user.injuries);
     }
@@ -71,7 +72,7 @@ const Profile = ({}) => {
 
   return (
     <div className="profilePage">
-      <div className="profile_body">
+      <div className={x.join(" ")}>
         <div className="userProfile">
           <div className="callToActions">
             <ul className="btnPopup">
@@ -82,15 +83,18 @@ const Profile = ({}) => {
               </li>
             </ul>
           </div>
-
           <UserProfile />
         </div>
         <div className="userPosts">
           <Posts />
-          <Popup trigger={btnPopup} setTrigger={setBtnPopup}>
-            <div className="addNewProductForm">
+          <Popup
+            trigger={btnPopup}
+            setTrigger={setBtnPopup}
+            className="addNewProductForm"
+          >
+            <div>
               <form onSubmit={handleSubmit}>
-                <h2>Edit Profile Info</h2>
+                <h2 className="editTitle">Edit Profile Info</h2>
 
                 <FormInput
                   className="forminput"
@@ -137,6 +141,13 @@ const Profile = ({}) => {
 
                 <Button className="btnedit" type="submit">
                   EDIT
+                </Button>
+                <Button
+                  onClick={() => setBtnPopup(false)}
+                  className="btnedit"
+                  type="submit"
+                >
+                  CANCEL
                 </Button>
               </form>
             </div>

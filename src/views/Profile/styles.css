@@ -1,25 +1,54 @@
 .profilePage{
-    display:flex;
-    flex-direction: column;
-    height: 100%;
-    padding-bottom: 1rem;
-    width:100%;
-         flex-wrap: wrap;
+    /* position:relative; */
+    /* position: relative; */
+    /* z-index: 100; */
+    /* background: #fff; */
+    /* margin-bottom: 200px; */
 
-  position:absolute;
+    /* display:flex; */
+    /* flex-direction: column; */
+    /* height: 100%; */
+    /* padding-bottom: 1rem; */
+    /* width:100%; */
+    /* flex-wrap: wrap; */
+    /* min-height: 100vh; */
+    /* display: block; */
+
+  /* position:absolute; */
 }
 
-.profile_body{
+/* background-color: rgba(0,0,0,0.8); */
 
+.profile_body.popup{
+
+    background-color: rgba(0,0,0,0.7);
+        min-height: 100vh;
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+        flex-direction: row;
     width:100%;
      flex-wrap: wrap;
   flex-direction: row;
   position:absolute;
   white-space: nowrap;
-    background-color: aquamarine;
+  min-height: 200vh;
+}
+.editTitle{
+    color: aliceblue;
+}
+
+.profile_body{
+
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+        flex-direction: row;
+    width:100%;
+     flex-wrap: wrap;
+  flex-direction: row;
+  position:absolute;
+  white-space: nowrap;
+    /* background-color: aquamarine; */
 
 }
 .callToActions {
