@@ -3,5 +3,7 @@
     width: 100%;
     text-align: center;
     flex: 0.8 ;
+        overflow-wrap:initial;
 
+    white-space: pre-line;
 }
