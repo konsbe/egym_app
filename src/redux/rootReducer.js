@@ -8,10 +8,12 @@ import storage from "redux-persist/lib/storage";
 
 import userReducer from "./User/user.reducer";
 import exerciseReducer from "./Exercises/exercises.reducers";
+import coursesReducer from "./User/user.reducer";
 
 export const rootReducer = combineReducers({
   user: userReducer,
   exercisesData: exerciseReducer,
+  coursesData: coursesReducer,
   // users: userReducer,
 });
 

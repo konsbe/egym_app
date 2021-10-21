@@ -57,7 +57,7 @@ export function* onDeleteCourseStart() {
   yield takeLatest(coursesTypes.DELETE_COURSE_START, deleteCourse);
 }
 
-export default function* exercisesSagas() {
+export default function* coursesSagas() {
   yield all([
     call(onAddCoursesStart),
     call(onFetchCoursesStart),

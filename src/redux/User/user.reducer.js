@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   user: [],
 };
 
-const userReducer = (state = INITIAL_STATE, action) => {
+const coursesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case userTypes.SIGN_IN_SUCCESS:
       return {
@@ -46,4 +46,4 @@ const userReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default userReducer;
+export default coursesReducer;
