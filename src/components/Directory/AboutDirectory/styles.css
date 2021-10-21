@@ -3,13 +3,38 @@
     flex-direction: column;
     box-sizing: border-box;
     margin-bottom: 5rem;
+     background-color: rgba(92, 92, 92, 0.7);
+}
+.aboutpage::before{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    background: url('image2.png') no-repeat center center/cover;
+    height: 900px;
+    width: 100%;
+    z-index: -1;
+    opacity: .8;
 }
 
 .pic {
     display: flex;
     padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     justify-content: center;
     align-items: center;
+}
+
+.aboutSection{
+
+    background-color: rgba(92, 92, 92, 0.7);
+}
+
+.aboutpage .pic {
+    border-radius: 15px;
+    background-color: aliceblue;
 }
 
 .aboutpage.pic {
@@ -17,7 +42,8 @@
 }
 
 .aboutpage h1 {
-    background-color: rgba(92, 92, 92, 0.7);
+    /* padding-top: 1rem; */
+    /* background-color: rgba(92, 92, 92, 0.7); */
     width: 100%;
 }
 
@@ -40,9 +66,24 @@
     margin-right: 2rem;
 }
 
+.pic:nth-child(odd) {
+    ;
+}
+
+.content h2 {
+    border-bottom: 1px solid red;
+
+}
 
 .contentHeading{
     text-align: end;
+    /* text-decoration: underline; */
+    /* padding: 0 0 4px; */
+
+
+
+    /* text-decoration-thickness: 40%; */
+/* text-decoration-thickness: 3px; */
 }
 
 
