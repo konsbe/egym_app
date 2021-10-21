@@ -40,9 +40,11 @@ const AddPrograms = (props) => {
   return (
     <div className="addCourse">
       <AddButton
-        className="btnCourse"
+        className="btnPrograms"
         onAdd={() => setShowAddCourse(!showAddCourse)}
-      />
+      >
+        ADD COURSE
+      </AddButton>
       {showAddCourse && (
         <form onSubmit={handleSubmit}>
           <div className="form">
@@ -80,7 +82,9 @@ const AddPrograms = (props) => {
               handleChange={(e) => setImgURL(e.target.value)}
             />
           </div>
-          <Button type="submit">ADD</Button>
+          <Button className="btnPrograms" type="submit">
+            ADD
+          </Button>
         </form>
       )}
       <div className="courses">

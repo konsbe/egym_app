@@ -22,21 +22,33 @@ const AdminToolbar = (props) => {
         <ul className="toolbar">
           <li>
             <Nav.Link as={Link} to="/manageusers" className="navmenu">
-              <Button className="btnlink" variant="outline-success">
+              <Button
+                className="btnlink"
+                variant="outline-success"
+                id="btnAdmin"
+              >
                 Manage Users
               </Button>
             </Nav.Link>
           </li>
           <li>
             <Nav.Link as={Link} to="/programs" className="navmenu">
-              <Button className="btnlink" variant="outline-success">
+              <Button
+                className="btnlink"
+                variant="outline-success"
+                id="btnAdmin"
+              >
                 My Programs
               </Button>
             </Nav.Link>
           </li>
           <li>
             <Nav.Link as={Link} to="/exercises" className="navmenu">
-              <Button className="btnlink" variant="outline-success">
+              <Button
+                className="btnlink"
+                variant="outline-success"
+                id="btnAdmin"
+              >
                 My Exercises
               </Button>
             </Nav.Link>

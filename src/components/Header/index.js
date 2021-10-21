@@ -111,14 +111,22 @@ const Header = (props) => {
               <ul>
                 <li>
                   <Nav.Link as={Link} to="/profile" className="navmenu">
-                    <Button className="btnlink" variant="outline-success">
+                    <Button
+                      className="btnlink"
+                      variant="outline-success"
+                      id="btnNavbar"
+                    >
                       My Profile
                     </Button>
                   </Nav.Link>
                 </li>
                 <li>
                   <Nav.Link as={Link} to="/login" className="navmenu">
-                    <Button className="btnlink" variant="outline-success">
+                    <Button
+                      className="btnlink"
+                      variant="outline-success"
+                      id="btnNavbar"
+                    >
                       LOG IN / SIGN UP
                     </Button>
                   </Nav.Link>
@@ -133,14 +141,22 @@ const Header = (props) => {
                     to={`/user/${users.id}`}
                     className="navmenu"
                   >
-                    <Button className="btnlink" variant="outline-success">
+                    <Button
+                      className="btnlink"
+                      variant="outline-success"
+                      id="btnNavbar"
+                    >
                       My Profile
                     </Button>
                   </Nav.Link>
                 </li>
                 <li>
                   <Nav.Link className="navmenu">
-                    <Button className="btnlink" variant="outline-success">
+                    <Button
+                      className="btnlink"
+                      variant="outline-success"
+                      id="btnNavbar"
+                    >
                       <span onClick={() => signOut()}>LOGOUT</span>
                     </Button>
                   </Nav.Link>

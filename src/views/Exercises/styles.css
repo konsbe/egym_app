@@ -13,7 +13,13 @@
     width: 100%;
 }
 
+.exerciseHeader{
+text-align: center;
+}
+
 .exercises{
+
+  margin-top: 1rem;
   display: inline-block;
   width: 99%;
 }

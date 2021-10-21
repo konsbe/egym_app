@@ -2,4 +2,18 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+
+
+}
+
+
+
+.addButton{
+    margin-bottom: 0.5rem;
+}
+
+.addButton:hover{
+    cursor: pointer;
+    background-color: rgb(197, 197, 197);
+     box-shadow: 1px 1px 3px rgba(224, 255, 49, 0.6), 0 0 6px rgba(224, 255, 49, 0.6), 0 0 9px rgba(224, 255, 49, 0.6);
 }
