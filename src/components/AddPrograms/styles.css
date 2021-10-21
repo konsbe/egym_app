@@ -1,0 +1,13 @@
+.addCourse{
+    display: flex;
+    flex-direction: column;
+}
+.addCourse .form {
+    display: flex;
+    flex-direction: column;
+}
+
+#description{
+    padding-top:3rem ;
+    padding-bottom:3rem ;
+}

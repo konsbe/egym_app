@@ -91,6 +91,17 @@ const App = (props) => {
           />
 
           <Route
+            path="/programs"
+            render={() => (
+              <WithAdminAuth>
+                <MainLayout>
+                  <Programs />
+                </MainLayout>
+              </WithAdminAuth>
+            )}
+          />
+
+          <Route
             path="/exercises"
             render={() => (
               <WithAdminAuth>
