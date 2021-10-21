@@ -1,10 +1,12 @@
 import React from "react";
-import Directoy from "./../../components/Directory";
+import HomeDirectoy from "../../components/Directory/HomeDirectory";
+import AboutDirectoy from "../../components/Directory/AboutDirectory";
 
 const Homepage = (props) => {
   return (
     <div>
-      <Directoy />
+      <HomeDirectoy />
+      <AboutDirectoy />
     </div>
   );
 };
