@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import Button from "../../Forms/Button";
 
 import "./styles.css";
+
+import { Link } from "react-scroll";
 
 const HomeDirectory = (props) => {
   return (
@@ -9,7 +11,9 @@ const HomeDirectory = (props) => {
       <section className="homepage">
         <div className="mainDetails">
           <h1 className="headings">This is the homepage</h1>
-          <Button className="btnDetails">Go to details</Button>
+          <Link to="aboutPageScroll" smooth={true} duration={100}>
+            <Button className="btnDetails">Go to details</Button>
+          </Link>
         </div>
       </section>
     </div>

@@ -4,9 +4,11 @@ import Button from "../../Forms/Button";
 import image2 from "./image2.png";
 import "./styles.css";
 
+// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
 const AboutDirectory = (props) => {
   return (
-    <div>
+    <div id="aboutPageScroll">
       <section className="aboutpage">
         <h1 className="headings">This is the About Page</h1>
         {/* <div className="aboutSection"> */}
