@@ -1,0 +1,8 @@
+const coursesTypes = {
+  ADD_NEW_COURSE: "ADD_NEW_COURSE",
+  FETCH_COURSES_START: "FETCH_COURSES_START",
+  SET_COURSE: "SET_COURSE",
+  DELETE_COURSE_START: "DELETE_COURSE_START",
+};
+
+export default coursesTypes;
