@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import HomeDirectoy from "../../components/Directory/HomeDirectory";
 import AboutDirectoy from "../../components/Directory/AboutDirectory";
 
@@ -7,17 +7,11 @@ import AboutDirectoy from "../../components/Directory/AboutDirectory";
 const Homepage = (props) => {
   // const myRef = useRef(null);
   // const executeScroll = () => scrollToRef(myRef);
-  const aboutSection = useRef(AboutDirectoy);
-  const goToAboutSection = () =>
-    window.scrollTo({
-      top: aboutSection.current.offsetTop,
-      behavior: "smooth",
-    });
 
   return (
     <div>
-      <HomeDirectoy {...goToAboutSection} />
-      <AboutDirectoy ref={aboutSection} />
+      <HomeDirectoy />
+      <AboutDirectoy />
     </div>
   );
 };

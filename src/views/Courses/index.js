@@ -1,12 +1,12 @@
 import React from "react";
-import Program from "../../components/Program";
+import Courses from "../../components/Courses";
 
-const Courses = (props) => {
+const CoursesView = (props) => {
   return (
     <div>
-      <Program />
+      <Courses />
     </div>
   );
 };
 
-export default Courses;
+export default CoursesView;

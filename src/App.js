@@ -23,11 +23,12 @@ import Login from "./views/Login";
 import Recovery from "./views/Recovery";
 import Dashboard from "./views/Dashboard";
 import Admin from "./views/Admin";
-import Courses from "./views/Courses";
+import CoursesView from "./views/Courses";
 import DoTest from "./views/DoTest";
 import Users from "./views/Users";
 import Profile from "./views/Profile";
 import Exercises from "./views/Exercises";
+import Programs from "./views/Programs";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const App = (props) => {
             path="/courses"
             render={() => (
               <MainLayout>
-                <Courses />
+                <CoursesView />
               </MainLayout>
             )}
           />
@@ -81,17 +82,22 @@ const App = (props) => {
           <Route
             path="/manageusers"
             render={() => (
-              <MainLayout>
-                <Users />
-              </MainLayout>
+              <WithAdminAuth>
+                <MainLayout>
+                  <Users />
+                </MainLayout>
+              </WithAdminAuth>
             )}
           />
+
           <Route
             path="/exercises"
             render={() => (
-              <MainLayout>
-                <Exercises />
-              </MainLayout>
+              <WithAdminAuth>
+                <MainLayout>
+                  <Exercises />
+                </MainLayout>
+              </WithAdminAuth>
             )}
           />
           <Route

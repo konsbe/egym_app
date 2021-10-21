@@ -1,6 +1,8 @@
 import React from "react";
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
+
+
 const Popup = (props) => {
   return props.trigger ? (
     // onClick={() => props.setTrigger(false)}

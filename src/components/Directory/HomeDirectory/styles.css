@@ -59,10 +59,13 @@
     right:10%;
 } */
 
-
 .headings {
     font-family: century;
     font-size: 3rem;
     text-align: center;
     /* margin: 4rem 0px; */
+}
+#homeHeading{
+    border-bottom: 1px solid red;
+    padding-left: 1rem;
 }

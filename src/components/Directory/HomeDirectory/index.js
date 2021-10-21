@@ -10,7 +10,9 @@ const HomeDirectory = (props) => {
     <div>
       <section className="homepage">
         <div className="mainDetails">
-          <h1 className="headings">This is the homepage</h1>
+          <h1 className="headings" id="homeHeading">
+            This is the homepage
+          </h1>
           <Link to="aboutPageScroll" smooth={true} duration={100}>
             <Button className="btnDetails">Go to details</Button>
           </Link>
