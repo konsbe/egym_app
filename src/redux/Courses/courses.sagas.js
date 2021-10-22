@@ -9,7 +9,7 @@ import {
 import { setCourses, fetchCoursesStart } from "./courses.actions";
 
 export function* addCourse({
-  payload: { courseName, courseMonths, courseDescription, imgURL },
+  payload: { courseName, courseMonths, courseDescription, price, imgURL },
 }) {
   try {
     const timestamp = new Date();
@@ -17,6 +17,7 @@ export function* addCourse({
       courseName,
       courseMonths,
       courseDescription,
+      price,
       imgURL,
       exerciseIDUSER: auth.currentUser.uid,
       createdDate: timestamp,
@@ -43,6 +44,7 @@ export function* fetchCourses() {
 export function* onFetchCoursesStart() {
   yield takeLatest(coursesTypes.FETCH_COURSES_START, fetchCourses);
 }
+
 
 export function* deleteCourse({ payload }) {
   try {

@@ -8,19 +8,19 @@ import storage from "redux-persist/lib/storage";
 
 import userReducer from "./User/user.reducer";
 import exerciseReducer from "./Exercises/exercises.reducers";
-import coursesReducer from "./User/user.reducer";
+import courseReducer from "./Courses/courses.reducers";
 
 export const rootReducer = combineReducers({
   user: userReducer,
   exercisesData: exerciseReducer,
-  coursesData: coursesReducer,
+  coursesData: courseReducer,
   // users: userReducer,
 });
 
 const configStorage = {
   key: "root",
   storage,
-  whitelist: ["user"],
+  whitelist: ["coursesData"],
 };
 
 export default persistReducer(configStorage, rootReducer);

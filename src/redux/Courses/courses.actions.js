@@ -10,9 +10,11 @@ export const fetchCoursesStart = () => ({
 });
 
 export const setCourses = (courses) => ({
-  type: coursesTypes.SET_COURSE,
+  type: coursesTypes.SET_COURSES,
   payload: courses,
 });
+
+
 
 export const deleteCourseStart = (courseID) => ({
   type: coursesTypes.DELETE_COURSE_START,

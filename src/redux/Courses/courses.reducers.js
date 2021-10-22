@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 const courseReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case coursesTypes.SET_COURSE:
+    case coursesTypes.SET_COURSES:
       return {
         ...state,
         courses: action.payload,

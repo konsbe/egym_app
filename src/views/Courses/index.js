@@ -1,7 +1,7 @@
 import React from "react";
 import Courses from "../../components/Courses";
 
-const CoursesView = (props) => {
+const CoursesView = ({}) => {
   return (
     <div>
       <Courses />
