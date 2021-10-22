@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
-// import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
+import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 import {
   addCourseStart,
@@ -13,6 +13,8 @@ import AddButton from "./../ExerciseForm/AddButton";
 import FormInput from "./../Forms/FormInput";
 import Button from "./../Forms/Button";
 
+import Program from "./Program";
+import image3 from "./image3.jpg";
 const mapState = ({ coursesData }) => ({
   courses: coursesData.courses,
 });
@@ -113,29 +115,53 @@ const AddPrograms = ({}) => {
           </Button>
         </form>
       )}
+      <h3 className="coursesHeader">Courses</h3>
       <div className="courses">
-        <h3 className="coursesHeader">Courses</h3>
-        {/* {courses.map((course, index) => {
-          const { courseName, courseMonhs, imgURL, courseDescription, price } =
-            course;
+        {courses.map((course, index) => {
+          const {
+            courseName,
+            courseMonths,
+            imgURL,
+            courseDescription,
+            price,
+            documentID,
+          } = course;
+          const configCourse = {
+            ...course,
+          };
           return (
-            <div className="courseCard" key={index}>
-              <div className="cardImg"></div>
+            <div className="card" key={index}>
+              {/* <Program {...configCourse} /> */}
+              <div className="card-image">
+                {/* <img src={image3} alt=""></img> */}
+              </div>
               {/* {imgUrl} */}
-        {/* <div className="cardText">
-                <p>{courseDescription}</p>
+              <div className="card-text">
+                <h2 className="cardName">{courseName}</h2>
 
-                <h2 className="cardName">{courseName}</h2> */}
-        {/* </div> */}
-        {/* <span className="deleteBtn">
-        <FaTimes
-        style={{ color: "red", cursor: "pointer" }}
-        onClick={() => dispatch(deleteExerciseStart(documentID))}
-        />
-        </span> */}
-        {/* </div>
+                <p>{courseDescription}</p>
+              </div>
+              <div className="card-stats">
+                <div class="stat">
+                  <div class="value">{courseMonths}</div>
+                  <div class="type">Months</div>
+                </div>
+                <div class="stat">
+                  <div class="value">{price}</div>
+                  <div class="type">Euro</div>
+                </div>
+                <div class="stat">
+                  <div class="value">
+                    <FaTimes
+                      style={{ color: "red", cursor: "pointer" }}
+                      onClick={() => dispatch(deleteCourseStart(documentID))}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           );
-        })} */}
+        })}
       </div>
     </div>
   );

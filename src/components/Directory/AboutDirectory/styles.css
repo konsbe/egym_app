@@ -67,10 +67,10 @@
 }
 
 .pic:nth-child(odd) {
-    ;
+
 }
 
-.content h2 {
+.headingTwo {
     border-bottom: 1px solid red;
 
 }
@@ -79,7 +79,7 @@
     text-align: end;
     /* text-decoration: underline; */
     /* padding: 0 0 4px; */
-
+    border-bottom: 1px solid red;
 
 
     /* text-decoration-thickness: 40%; */

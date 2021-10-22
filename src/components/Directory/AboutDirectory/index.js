@@ -15,7 +15,7 @@ const AboutDirectory = (props) => {
         <div className="pic">
           <img src={image2} alt=""></img>
           <div className="content">
-            <h2>this is a heading</h2>
+            <h2 className="headingTwo">this is a heading</h2>
             <div>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
               cursus dui erat, et ultrices elit vestibulum vel. Mauris ex
