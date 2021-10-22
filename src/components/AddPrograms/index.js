@@ -142,16 +142,16 @@ const AddPrograms = ({}) => {
                 <p>{courseDescription}</p>
               </div>
               <div className="card-stats">
-                <div class="stat">
-                  <div class="value">{courseMonths}</div>
-                  <div class="type">Months</div>
+                <div className="stat">
+                  <div className="value">{courseMonths}</div>
+                  <div className="type">Months</div>
                 </div>
-                <div class="stat">
-                  <div class="value">{price}</div>
-                  <div class="type">Euro</div>
+                <div className="stat">
+                  <div className="value">{price}</div>
+                  <div className="type">Euro</div>
                 </div>
-                <div class="stat">
-                  <div class="value">
+                <div className="stat">
+                  <div className="value">
                     <FaTimes
                       style={{ color: "red", cursor: "pointer" }}
                       onClick={() => dispatch(deleteCourseStart(documentID))}
