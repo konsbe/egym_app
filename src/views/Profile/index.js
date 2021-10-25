@@ -62,7 +62,7 @@ const Profile = ({}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    //****set the values down!***
     dispatch(
       updateUserStart({
         weight,
@@ -112,7 +112,7 @@ const Profile = ({}) => {
                     value={weight}
                     placeholder="Weight in kilos"
                     handleChange={(e) =>
-                      setWeight(e.target.value) > 1
+                      e.target.value > 1
                         ? setWeight(e.target.value)
                         : (e) => setWeight(user.weight)
                     }
