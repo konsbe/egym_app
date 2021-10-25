@@ -1,20 +1,15 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Router,
-  Redirect,
-} from "react-router-dom";
-import { auth, handleUserProfile } from "./firebase/utils";
-import { getauth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 
-import { connect } from "react-redux";
-import { setCurrentUser } from "./redux/User/user.actions";
+import { checkUserSession } from "./redux/User/user.actions";
+
+//components
+import AdminToolbar from "./components/AdminToolbar";
 
 //high order components
 import WithAuth from "./hoc/withAuth";
-
+import WithAdminAuth from "./hoc/withAdminAuth";
 //css and styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./default.css";
@@ -27,36 +22,25 @@ import Registration from "./views/Registration";
 import Login from "./views/Login";
 import Recovery from "./views/Recovery";
 import Dashboard from "./views/Dashboard";
+import Admin from "./views/Admin";
+import CoursesView from "./views/Courses";
+import DoTest from "./views/DoTest";
+import Users from "./views/Users";
+import Profile from "./views/Profile";
+import Exercises from "./views/Exercises";
+import Programs from "./views/Programs";
 
 const App = (props) => {
-  const { setCurrentUser, currentUser } = props;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const authListener = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      }
-      setCurrentUser(userAuth);
-    });
-
-    return () => {
-      authListener();
-    };
+    dispatch(checkUserSession());
   }, []);
-
-  // render() {
-  //   const { currentUser } = this.state;
-  // }
 
   return (
     <div className="App">
       <div className="main">
+        <AdminToolbar />
         <Switch>
           <Route
             exact
@@ -68,22 +52,78 @@ const App = (props) => {
             )}
           />
           <Route
+            exact
+            path="/courses"
+            render={() => (
+              <MainLayout>
+                <CoursesView />
+              </MainLayout>
+            )}
+          />
+          <Route
+            exact
+            path="/test"
+            render={() => (
+              <MainLayout>
+                <DoTest />
+              </MainLayout>
+            )}
+          />
+          <Route
             path="/registration"
             render={() => (
-              // currentUser ? (
-              //   <Redirect to="/" />
-              // ) :
               <MainLayout>
                 <Registration />
               </MainLayout>
             )}
           />
+
+          {/* FIX THOSE TWO ROUTS FOR ADMIN PERMISSIONS ONLY */}
+          <Route
+            path="/manageusers"
+            render={() => (
+              <WithAdminAuth>
+                <MainLayout>
+                  <Users />
+                </MainLayout>
+              </WithAdminAuth>
+            )}
+          />
+
+          <Route
+            path="/programs"
+            render={() => (
+              <WithAdminAuth>
+                <MainLayout>
+                  <Programs />
+                </MainLayout>
+              </WithAdminAuth>
+            )}
+          />
+
+          <Route
+            path="/exercises"
+            render={() => (
+              <WithAdminAuth>
+                <MainLayout>
+                  <Exercises />
+                </MainLayout>
+              </WithAdminAuth>
+            )}
+          />
+          <Route
+            path="/user/:userID"
+            render={() => (
+              <MainLayout>
+                <Profile />
+              </MainLayout>
+            )}
+          />
+          {/* FIX THOSE TWO ROUTS FOR ADMIN PERMISSIONS ONLY */}
+
           <Route
             path="/login"
             render={() => (
-              // currentUser ? (
-              //   <Redirect to="/" />
-              // ) :
               <MainLayout>
                 <Login />
               </MainLayout>
@@ -107,25 +147,20 @@ const App = (props) => {
               </WithAuth>
             )}
           />
-
-          {/* <MainLayout currentUser={currentUser}>
-              <Route exact path="/" component={Homepage} />
-
-              <Route path="/registration" component={Registration} />
-              <Route path="/login" component={Login} />
-            </MainLayout> */}
+          <Route
+            path="/admin"
+            render={() => (
+              <WithAdminAuth>
+                <MainLayout>
+                  <Admin />
+                </MainLayout>
+              </WithAdminAuth>
+            )}
+          />
         </Switch>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -1,0 +1,32 @@
+tr:nth-child(even) {
+    background-color:rgb(184, 190, 196)
+}
+
+
+.myH1{
+
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.checkLabel {
+    font-size: 20px;
+    padding-right: 1rem;
+    padding-left: 0.3rem;
+}
+
+.tableValues{
+    border:ridge;
+}
+
+.checkBox{
+
+    place-items: flex end;
+}
+
+td {
+
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+}

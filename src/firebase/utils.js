@@ -1,16 +1,13 @@
-// import firebase from "firebase/app";
-// import "firebase/firestore";
-// import "firebase/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+// import { getFirestore } from "firebase/firestore/lite";
 // import firebase from "firebase";
 
 import { firebaseConfig } from "./config";
 
 const app = firebase.initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
 export const auth = app.auth();
 export const firestore = app.firestore();
@@ -18,7 +15,7 @@ export const firestore = app.firestore();
 // const GoogleProvier = new firebase.auth.GoogleAuthProvider();
 // GoogleAuthProvider.seCustomParameters({ prompt: "select_account" });
 
-export const handleUserProfile = async (userAuth, additionalData) => {
+export const handleUserProfile = async ({ userAuth, additionalData }) => {
   if (!userAuth) return;
   const { uid } = userAuth;
 
@@ -26,17 +23,36 @@ export const handleUserProfile = async (userAuth, additionalData) => {
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
-    const { firstName, lastName, nickName, email, birthDay } = userAuth;
+    const {
+      firstName,
+      lastName,
+      genre,
+      height,
+      weight,
+      injuries,
+      gear,
+      email,
+      birthDay,
+      payment,
+      month,
+    } = userAuth;
     const timestamp = new Date();
-    //   const userRoles = ["user"];
+    const userRoles = ["user"];
     try {
       await userRef.set({
         firstName,
         lastName,
-        nickName,
+        genre,
+        height,
+        weight,
+        injuries,
+        gear,
         email,
         birthDay,
+        payment,
+        month,
         createdDate: timestamp,
+        userRoles,
         ...additionalData,
       });
     } catch (err) {
@@ -44,4 +60,13 @@ export const handleUserProfile = async (userAuth, additionalData) => {
     }
   }
   return userRef;
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 };

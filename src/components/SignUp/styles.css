@@ -1,26 +1,4 @@
-/* .registration{
-    display: grid;
-    place-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    border: 1px solid #9e9e9e;
-} */
 
-/* .registration > form {
-    display: flex;
-    flex-direction: column;
-} */
-
-/* .registration > form > input {
-    width: 35 rem;
-    height: 3rem;
-    font-size: 2rem;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
-    border-radius:0.5rem ;
-} */
 .forminput {
     width: 25rem;
     height: 3rem;
@@ -29,17 +7,42 @@
     margin-bottom: 1rem;
     border-radius:0.5rem ;
 }
-
-/* .registration > form > button {
-    width: 35 rem;
+.formSelect {
+    width: 25rem;
     height: 3rem;
     font-size: 2rem;
     padding-left: 1rem;
     margin-bottom: 1rem;
     border-radius:0.5rem ;
-    color: lemonchiffon;
-    background-color: rgb(0, 182, 24);
+    margin-left: 0.4rem;
+    border-width:0.16rem;
+}
+
+/* .forminput:nth-child(5){
+    width: 5rem;
 } */
+
+/* label {
+    margin-right: 0.8rem;
+    font-weight: 500;
+} */
+
+.formtext {
+    border-width: 0.15rem;
+    width: 24.8rem;
+    /* height: 3rem; */
+    font-size: 1rem;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    border-radius:0.5rem ;
+    margin-left: 0.4rem;
+}
+
+.textLabels {
+        margin-left: 0.4rem;
+        margin-bottom: 0.3rem;
+        font-weight: 500;
+}
 
 .logintext{
     font-size:1.3rem;
@@ -50,3 +53,4 @@ text-align: center  ;
     text-decoration: underline;
     color: blue;
 }
+

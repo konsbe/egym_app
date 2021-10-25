@@ -1,10 +1,17 @@
 import React from "react";
-import Directoy from "./../../components/Directory";
+import HomeDirectoy from "../../components/Directory/HomeDirectory";
+import AboutDirectoy from "../../components/Directory/AboutDirectory";
+
+// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const Homepage = (props) => {
+  // const myRef = useRef(null);
+  // const executeScroll = () => scrollToRef(myRef);
+
   return (
     <div>
-      <Directoy />
+      <HomeDirectoy />
+      <AboutDirectoy />
     </div>
   );
 };

@@ -1,60 +1,88 @@
-import React, { useState } from "react";
-import { withRouter } from "react-router";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpUserStart } from "../../redux/User/user.actions";
 
 import "./styles.css";
-import { Link } from "react-router-dom";
-import { auth, handleUserProfile } from "./../../firebase/utils";
+import { Link, useHistory } from "react-router-dom";
 
 import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
 import FormInput from "../Forms/FormInput";
+import FormSelect from "../Forms/FormSelect";
+
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+  userErr: user.userErr,
+});
 
 const SignUp = (props) => {
+  const { currentUser, userErr } = useSelector(mapState);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [nickName, setNickName] = useState("");
+  const [genre, setGenre] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
   const [email, setEmail] = useState("");
   const [birthDay, setBirthDay] = useState("");
+  const [gear, setGear] = useState("");
+  const [injuries, setInjuries] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [payment, setPayment] = useState(false);
+  const [month, setMonth] = useState(false);
+
+  useEffect(() => {
+    if (currentUser) {
+      resetForm();
+
+      history.push("/");
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (Array.isArray(userErr) && userErr.length > 0) {
+      setErrors(userErr);
+    }
+  }, [userErr]);
 
   const resetForm = () => {
     setFirstName("");
     setLastName("");
-    setNickName("");
+    setGenre("");
+    setHeight("");
+    setWeight("");
+    // setNickName("");
     setEmail("");
     setBirthDay("");
     setPassword("");
     setConfirmPassword("");
+    setInjuries("");
+    setGear("");
     setErrors([]);
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    if (password !== confirmPassword) {
-      const err = ["Password don't much"];
-      setErrors(err);
-      return;
-    }
-
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await handleUserProfile(user, {
+    dispatch(
+      signUpUserStart({
         firstName,
         lastName,
-        nickName,
+        genre,
+        height,
+        weight,
+        email,
         birthDay,
-      });
-
-      resetForm();
-      props.history.push("/");
-    } catch (err) {}
+        password,
+        confirmPassword,
+        injuries,
+        gear,
+        payment,
+        month,
+      })
+    );
   };
 
   const configAuthWrapper = {
@@ -62,9 +90,6 @@ const SignUp = (props) => {
   };
 
   return (
-    // <div className="registration">
-    //   <h1>Registration Form</h1>
-
     <AuthWrapper {...configAuthWrapper}>
       <div className="formWrap">
         {errors.length > 0 && (
@@ -92,13 +117,74 @@ const SignUp = (props) => {
             placeholder="Last Name"
             handleChange={(e) => setLastName(e.target.value)}
           />
+          <p className="textLabels">Birthday:</p>
+          <FormInput
+            className="forminput"
+            type="date"
+            name="birthDay"
+            value={birthDay}
+            handleChange={(e) => setBirthDay(e.target.value)}
+          />
+          <p className="textLabels">Genre:</p>
+          <FormSelect
+            // label="Genre"
+            className="formSelect"
+            // default="man"
+            options={[
+              {
+                value: "-",
+                // default: "man",
+                name: "-",
+              },
+              {
+                value: "man",
+                // default: "man",
+                name: "man",
+              },
+              {
+                value: "woman",
+                name: "woman",
+              },
+            ]}
+            // defaultValue:man
+            // placeholder="Genre"
+            handleChange={(e) => setGenre(e.target.value)}
+          />
           <FormInput
             className="forminput"
             type="text"
-            name="nickName"
-            value={nickName}
-            placeholder="Nick Name"
-            handleChange={(e) => setNickName(e.target.value)}
+            name="height"
+            value={height}
+            placeholder="Height in cm"
+            handleChange={(e) => setHeight(e.target.value)}
+          />
+          <FormInput
+            className="forminput"
+            type="text"
+            name="weight"
+            value={weight}
+            placeholder="Weight in kilos"
+            handleChange={(e) => setWeight(e.target.value)}
+          />
+          <p className="textLabels">Please write any injuries here:</p>
+          <textarea
+            className="formtext"
+            type="textarea"
+            name="injuries"
+            rows="8"
+            value={injuries}
+            placeholder="ruptured right meniscus, tendonitis of the right wrist, etc"
+            onChange={(e) => setInjuries(e.target.value)}
+          />
+          <p className="textLabels">Please write your training gear here:</p>
+          <textarea
+            className="formtext"
+            type="textarea"
+            name="gear"
+            rows="8"
+            value={gear}
+            placeholder="gym membership, exercise treadmills, bodyweight, swimming pool, dumbbells 2x5kg-2x10kg, etc.."
+            onChange={(e) => setGear(e.target.value)}
           />
           <FormInput
             className="forminput"
@@ -107,13 +193,6 @@ const SignUp = (props) => {
             value={email}
             placeholder="example@email.com"
             handleChange={(e) => setEmail(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="date"
-            name="birthDay"
-            value={birthDay}
-            handleChange={(e) => setBirthDay(e.target.value)}
           />
           <FormInput
             className="forminput"
@@ -131,7 +210,7 @@ const SignUp = (props) => {
             placeholder="Confirm Your Password"
             handleChange={(e) => setConfirmPassword(e.target.value)}
           />
-          {/* <button type="submit"> Sign Up </button> */}
+          {/* <textarea className="forminput" rows="5" /> */}
           <Button type="submit" className="btnform">
             Register
           </Button>
@@ -149,4 +228,4 @@ const SignUp = (props) => {
   );
 };
 
-export default withRouter(SignUp);
+export default SignUp;

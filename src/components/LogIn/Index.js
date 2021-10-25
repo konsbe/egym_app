@@ -1,31 +1,40 @@
-import React, { useState } from "react";
-import { withRouter } from "react-router";
+import React, { useState, useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { emailSignInStart } from "../../redux/User/user.actions";
 
 import "./styles.css";
-import { Link } from "react-router-dom";
-import { auth } from "./../../firebase/utils";
+import { Link, useHistory } from "react-router-dom";
 
 import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
 import FormInput from "../Forms/FormInput";
 
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const LogIn = (props) => {
+  const { currentUser } = useSelector(mapState);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const resetForm = () => {
     setEmail("");
     setPassword("");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
+  useEffect(() => {
+    if (currentUser) {
       resetForm();
-      props.history.push("/");
-    } catch (err) {}
+      history.push("/");
+    }
+  }, [currentUser]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(emailSignInStart({ email, password }));
   };
 
   const configAuthWrapper = {
@@ -34,9 +43,6 @@ const LogIn = (props) => {
 
   return (
     <AuthWrapper {...configAuthWrapper}>
-      {/* // <div className="login">
-      //   <div>
-      //     <h1>Log In</h1> */}
       <div className="formWrap">
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -62,8 +68,6 @@ const LogIn = (props) => {
               Here{" "}
             </Link>
           </p>
-
-          {/* onClick={}   this is a param on Button*/}
           <Button type="submit" className="btnform">
             Log In
           </Button>
@@ -76,11 +80,9 @@ const LogIn = (props) => {
             now
           </p>
         </form>
-        {/* </div>
-        </div> */}
       </div>
     </AuthWrapper>
   );
 };
 
-export default withRouter(LogIn);
+export default LogIn;

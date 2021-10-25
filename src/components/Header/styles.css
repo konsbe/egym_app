@@ -1,5 +1,44 @@
+/* .navbar {
+        position: sticky;
+    top: 0;
+     z-index: 999;
+} */
+/* .scrolled {
+        position: sticky;
+    top: 0;
+
+} */
+
+.navigation-bar{
+    background-color: rgb(41, 41, 41);
+}
+.navigation-bar.scrolled{
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(136, 136, 136, 0.9);
+
+  transition: background 500ms;
+
+}
+
+.navigation-bar{
+    height: 4rem;
+    /* margin-bottom: 0px; */
+}
+
+.navmenu.scrolled{
+
+color:black;
+font-weight: 1000;
+}
+
 .navbar{
-    margin-left: 5 rem;
+    position: sticky;
+    top: 0;
+    /* margin-left: 5rem; */
+
 }
 .burger{
     margin-right: 0.7rem;
@@ -20,8 +59,10 @@
     }
 
 .btnlink{
+    margin-top: 0.7rem;
     font-size: 1rem ;
     background-color: rgb(28, 29, 28);
+
 }
 
 /* .btnlink :hover{
@@ -49,6 +90,8 @@ ul{
 		justify-content: center;
 		align-items: center;
 		text-align: center;
+          background-color: rgba(37, 37, 37, 0.9);
+
     }
     .submenu{
         display: flex;
@@ -56,8 +99,12 @@ ul{
 		justify-content: center;
 		align-items: center;
 		text-align: center;
+          background-color: rgba(37, 37, 37, 0.9);
+
     }
     ul {
+          background-color: rgba(37, 37, 37, 0.9);
+
         display: flex;
         padding-left: 0;
         margin-left: 0.2rem;
@@ -66,8 +113,25 @@ ul{
 		align-items: center;
 		text-align: center;
     }
+    .navigation-bar.scrolled{
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(37, 37, 37, 0.9);
+
+  transition: background 500ms;
+
+}
 }
 .navigation-bar{
     font-family: 'Roboto', sans-serif;
     font-size: 1.3rem;
 }
+
+
+/* .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+} */
