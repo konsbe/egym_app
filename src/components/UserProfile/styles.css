@@ -16,6 +16,7 @@ h3 {
 }
 
 .sidebarTop{
+    margin-top: 8rem;
     padding-top: 5rem;
     background-color: rgb(240, 240, 240);
     margin-bottom: 0.5rem;
@@ -24,6 +25,11 @@ h3 {
     white-space: pre-line;
     padding-bottom: 1rem;
 }
+
+.sidebarTop  img {
+    margin-top: -200px;
+}
+
 .sidebarMiddle{
     display: inline-block;
     /* position: relative; */

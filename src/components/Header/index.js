@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   signOutUserStart,
-  fetchUsersStart,
+  // fetchUsersStart,
 } from "./../../redux/User/user.actions";
 
 import "./styles.css";

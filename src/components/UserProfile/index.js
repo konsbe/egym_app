@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserStart, setUser } from "../../redux/User/user.actions";
+import { fetchUserStart } from "../../redux/User/user.actions";
 
 import imgMen from "./imgMen.jpg";
 import imgWomen from "./imgWomen.jpg";
@@ -33,6 +33,7 @@ const UserProfile = ({}) => {
     rightSoleAnkle,
     leftSoleAnkle,
   } = user;
+  // const letters = genre.length
 
   useEffect(() => {
     dispatch(fetchUserStart(userID));
@@ -41,11 +42,13 @@ const UserProfile = ({}) => {
   return (
     <div className="sidebar">
       <div className="sidebarTop">
-        {genre.length > 3 ? (
-          <img src={imgWomen}></img>
-        ) : (
-          <img src={imgMen}></img>
-        )}
+        <h3>
+          {genre === "woman" ? (
+            <img src={imgWomen}></img>
+          ) : (
+            <img src={imgMen}></img>
+          )}
+        </h3>
         {<h3>{firstName}</h3>}
         {<h4>{lastName}</h4>}
         {<h6>{userUID}</h6>}
