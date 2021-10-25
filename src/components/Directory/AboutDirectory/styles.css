@@ -3,7 +3,7 @@
     flex-direction: column;
     box-sizing: border-box;
     margin-bottom: 5rem;
-     background-color: rgba(92, 92, 92, 0.7);
+    background-color: rgba(0,0,0,0.5);
 }
 .aboutpage::before{
     content:"";

@@ -1,0 +1,5 @@
+.testView  {
+  background-image: url("image2.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
