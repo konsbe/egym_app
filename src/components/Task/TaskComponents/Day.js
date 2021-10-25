@@ -1,10 +1,10 @@
 import Header from "./Header";
 import Tasks from "./Tasks";
-// import Tasks from "../Day";
+
 import { useState } from "react";
-// import { UseState } from "react";
+
 import AddTask from "../AddTask";
-// import AddDay from "../AddDay";
+
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 const Day = ({ day, onDelete }) => {
@@ -34,11 +34,6 @@ const Day = ({ day, onDelete }) => {
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
-
-  //Add Day
-  // const addDay = () => {
-  //   return;
-  // };
 
   return (
     <div>
