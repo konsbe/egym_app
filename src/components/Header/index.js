@@ -32,7 +32,7 @@ const Header = (props) => {
     const offset = window.scrollY;
     if (offset > 50) {
       setScrolled(true);
-      console.log("scroll");
+      // console.log("scroll");
     } else {
       setScrolled(false);
     }

@@ -35,6 +35,16 @@ const Day = ({ day, onDelete }) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  //Reminder
+  const toggleReminder = (id) => {
+    // console.log(id);
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
+
   return (
     <div>
       {/* <Day days={days} /> */}
@@ -49,7 +59,11 @@ const Day = ({ day, onDelete }) => {
         <Header />
         <AddTask onAdd={addTask} />
         {tasks.length > 0 ? (
-          <Tasks tasks={tasks} onDelete={deleteTask} />
+          <Tasks
+            tasks={tasks}
+            onDelete={deleteTask}
+            onToggle={toggleReminder}
+          />
         ) : (
           "No tasks"
         )}
