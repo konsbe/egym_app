@@ -11,15 +11,15 @@ const Day = ({ day, onDelete }) => {
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      text: "Doctors Appointment",
-      day: "Feb 5th at 2:30pm",
+      text: "Deadlift",
+      day: "3*50 3*70 3*100 3*150",
       reminder: true,
     },
     {
       id: 2,
-      text: "Meeting at School",
-      day: "Feb 6th at 1:30pm",
-      reminder: true,
+      text: "Shoulder Press",
+      day: "3*10 3*20 3*40 3*60",
+      reminder: false,
     },
   ]);
   //Add Task
