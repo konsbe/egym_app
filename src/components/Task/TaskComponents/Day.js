@@ -7,7 +7,11 @@ import AddTask from "../AddTask";
 
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
+import AddButton from "../../ExerciseForm/AddButton";
+
 const Day = ({ day, onDelete }) => {
+  const [showDay, setShowDay] = useState(false);
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -50,22 +54,28 @@ const Day = ({ day, onDelete }) => {
       {/* <Day days={days} /> */}
       <div className="basiContainer">
         <div className="headerAddDay">
-          <h2 style={{ fontSize: 30 }}>{day.text} </h2>
+          <h2 style={{ fontSize: 30 }} onClick={() => setShowDay(!showDay)}>
+            {day.text}{" "}
+          </h2>
           <FaTimes
             style={{ color: "black", cursor: "pointer", height: 20 }}
             onClick={() => onDelete(day.id)}
           />
         </div>
-        <Header />
-        <AddTask onAdd={addTask} />
-        {tasks.length > 0 ? (
-          <Tasks
-            tasks={tasks}
-            onDelete={deleteTask}
-            onToggle={toggleReminder}
-          />
-        ) : (
-          "No tasks"
+        {showDay && (
+          <div className="toggleWrapper">
+            <Header />
+            <AddTask onAdd={addTask} />
+            {tasks.length > 0 ? (
+              <Tasks
+                tasks={tasks}
+                onDelete={deleteTask}
+                onToggle={toggleReminder}
+              />
+            ) : (
+              "No tasks"
+            )}
+          </div>
         )}
       </div>
     </div>

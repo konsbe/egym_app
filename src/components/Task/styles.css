@@ -125,3 +125,22 @@ margin: auto;
   flex: 2;
   height: 20px;
 }
+
+.headerAddDay{
+  cursor: pointer;
+
+}
+
+.toggleWrapper{
+  /* height: 0;
+  display:none; */
+  transition: height ease 1s;
+  background: lightgray;
+  overflow: hidden;
+  height: auto;
+  display: contents;
+}
+
+/* .toggleWrapper.element{
+
+} */
