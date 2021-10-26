@@ -55,6 +55,7 @@ const Day = ({ day, onDelete }) => {
   const handleClick = (e) => {
     // e.preventDefault();
     // console.log("click");
+    console.log(day.text);
     tasks.map((task) => console.log(task));
   };
 
