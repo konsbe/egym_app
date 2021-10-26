@@ -8,6 +8,7 @@ import AddTask from "../AddTask";
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 import AddButton from "../../ExerciseForm/AddButton";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Day = ({ day, onDelete }) => {
   const [showDay, setShowDay] = useState(false);
@@ -26,6 +27,7 @@ const Day = ({ day, onDelete }) => {
       reminder: false,
     },
   ]);
+
   //Add Task
 
   const addTask = (task) => {
@@ -62,7 +64,15 @@ const Day = ({ day, onDelete }) => {
             onClick={() => onDelete(day.id)}
           />
         </div>
-        {showDay && (
+        {/* {showDay && ( */}
+        <CSSTransition
+          in={showDay}
+          appear={true}
+          timeout={500}
+          classNames="display"
+          unmountOnExit
+          // unmountOnEnter
+        >
           <div className="toggleWrapper">
             <Header />
             <AddTask onAdd={addTask} />
@@ -76,7 +86,8 @@ const Day = ({ day, onDelete }) => {
               "No tasks"
             )}
           </div>
-        )}
+        </CSSTransition>
+        {/* )} */}
       </div>
     </div>
   );

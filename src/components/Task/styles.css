@@ -134,11 +134,32 @@ margin: auto;
 .toggleWrapper{
   /* height: 0;
   display:none; */
-  transition: height ease 1s;
-  background: lightgray;
-  overflow: hidden;
-  height: auto;
-  display: contents;
+  /* transition: height ease 1s; */
+  /* background: lightgray; */
+  /* overflow: hidden; */
+  /* height: auto; */
+  /* display: contents; */
+}
+
+.display-enter, .display-appear {
+  opacity: 0.01;
+  transform: translate(0, -10px);
+}
+.display-enter-active, .display-appear-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: all 500ms ease-in;
+
+}
+.display-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.display-exit-active {
+  opacity: 0.01;
+  transform: translate(0, 10px);
+  transition: all 500ms ease-in;
+
 }
 
 /* .toggleWrapper.element{
