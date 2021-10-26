@@ -1,17 +1,18 @@
 import Header from "./Header";
 import Tasks from "./Tasks";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import AddTask from "../AddTask";
 
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
-import AddButton from "../../ExerciseForm/AddButton";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 const Day = ({ day, onDelete }) => {
   const [showDay, setShowDay] = useState(false);
+  const ref = useRef(showDay);
+  const nodeRef = useRef(null);
 
   const [tasks, setTasks] = useState([
     {
@@ -43,14 +44,14 @@ const Day = ({ day, onDelete }) => {
 
   //Reminder
   const toggleReminder = (id) => {
-    // console.log(id);
+    console.log(id);
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, reminder: !task.reminder } : task
       )
     );
   };
-
+  // const ref = { showDay };
   return (
     <div>
       {/* <Day days={days} /> */}
@@ -65,15 +66,18 @@ const Day = ({ day, onDelete }) => {
           />
         </div>
         {/* {showDay && ( */}
+
         <CSSTransition
+          // in={true}
+          nodeRef={nodeRef}
           in={showDay}
           appear={true}
           timeout={500}
-          classNames="display"
+          classNames="transition"
           unmountOnExit
           // unmountOnEnter
         >
-          <div className="toggleWrapper">
+          <div className="toggleWrapper" ref={nodeRef}>
             <Header />
             <AddTask onAdd={addTask} />
             {tasks.length > 0 ? (
