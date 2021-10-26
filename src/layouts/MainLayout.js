@@ -11,9 +11,7 @@ const MainLayout = (props) => {
         <Header {...props} />
       </div>
 
-      {/* <div className="props"> */}
-      {props.children}
-      {/* </div> */}
+      <div className="props">{props.children}</div>
       <div className="footerLayout">
         <Footer />
       </div>
