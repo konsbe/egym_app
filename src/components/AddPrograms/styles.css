@@ -47,7 +47,7 @@
     grid-template-columns: 300px;
     grid-template-rows: 210px 210px 80px;
     grid-template-areas: "image" "text" "stats";
-    /* overflow: hidden; */
+    overflow: hidden;
 
 
     font-family: roboto;

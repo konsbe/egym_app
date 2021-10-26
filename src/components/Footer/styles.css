@@ -1,26 +1,11 @@
 .wrapper{
-  /* bottom: 0; */
-  /* margin-top: 10rem; */
-  /* margin-top: auto; */
-  /* margin-top: auto;
-position:absolute;
-    width:100%;
-    bottom:0px; */
-    /* margin-top: auto; */
+
 }
 
-.footer {
-  margin-top: 1rem;
-  /* margin-top: auto;
-position:absolute;
-    width:100%;
-    bottom:0px; */
-  color: aliceblue;
-  padding: 1rem;
-  background-color: rgb(70, 70, 70);
+.wrapper > .footer{
 
-/* margin-top: auto; */
-  /* bottom: 0; */
-  /* left: 0; */
-  /* width: 100%; */
+}
+
+  .footer {
+
 }

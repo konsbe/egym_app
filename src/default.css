@@ -15,8 +15,12 @@ body,
     display: flex;
     flex-direction: column;
 } */
-footer, header, hgroup, menu, nav, section {
+header, hgroup, menu {
 	display: block;
+}
+
+footer{
+    display: flex;
 }
 
 /* * {
@@ -46,6 +50,13 @@ a:hover{
     color:inherit;
 }
 
-
-
+.profileViewPage{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.beforeFooter{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
 
