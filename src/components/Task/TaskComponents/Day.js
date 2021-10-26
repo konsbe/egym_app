@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Tasks from "./Tasks";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 import AddTask from "../AddTask";
 
@@ -11,7 +11,7 @@ import { CSSTransition } from "react-transition-group";
 
 const Day = ({ day, onDelete }) => {
   const [showDay, setShowDay] = useState(false);
-  const ref = useRef(showDay);
+
   const nodeRef = useRef(null);
 
   const [tasks, setTasks] = useState([
@@ -51,6 +51,13 @@ const Day = ({ day, onDelete }) => {
       )
     );
   };
+
+  const handleClick = (e) => {
+    // e.preventDefault();
+    // console.log("click");
+    tasks.map((task) => console.log(task));
+  };
+
   // const ref = { showDay };
   return (
     <div>
@@ -89,6 +96,9 @@ const Day = ({ day, onDelete }) => {
             ) : (
               "No tasks"
             )}
+            <button onClick={handleClick} className="btnAdd btn-block">
+              Add
+            </button>
           </div>
         </CSSTransition>
         {/* )} */}
