@@ -40,14 +40,12 @@ const Days = ({ week, onDelete }) => {
     console.log(day, data); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
   };
   const handleonClick = (e) => {
-    // e.preventDefault();
-    // console.log("click");
-    // const list = tasks.map((task) => list.push(task));
-    // days.map((day) => {
-    //   console.log(day);
-    //   console.log(newlist); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
-    // });
+    console.log(week);
   };
+
+  // const handleAddClick = (e) => {
+  //   console.log(week);
+  // };
 
   return (
     <div className="containerone">
@@ -74,6 +72,9 @@ const Days = ({ week, onDelete }) => {
       <button onClick={handleonClick} className="btnAdd btn-block">
         Add
       </button>
+      {/* <button onClick={handleAddClick} className="btnAdd btn-block">
+        Add
+      </button> */}
     </div>
   );
 };

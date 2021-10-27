@@ -51,6 +51,9 @@ const ProfilePage = (props) => {
   // };
 
   useEffect(() => {
+    if (weight < 1) {
+      setWeight(user.weight);
+    }
     if (injuries.length < 1) {
       setInjuries(user.injuries);
     }
@@ -107,12 +110,14 @@ const ProfilePage = (props) => {
                   className="forminput"
                   type="text"
                   name="weight"
-                  value={weight}
+                  // value={weight}
                   placeholder="Weight in kilos"
-                  handleChange={(e) =>
-                    e.target.value > 1
-                      ? setWeight(e.target.value)
-                      : (e) => setWeight(user.weight)
+                  onChange={
+                    (e) =>
+                      // e.target.value > 1
+                      // ?
+                      setWeight(e.target.value)
+                    // : setWeight(user.weight)
                   }
                 />
 
