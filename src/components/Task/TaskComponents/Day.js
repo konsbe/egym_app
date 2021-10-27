@@ -9,9 +9,12 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 import { CSSTransition } from "react-transition-group";
 
-const Day = ({ day, onDelete }) => {
-  const [showDay, setShowDay] = useState(false);
 
+
+
+const Day = ({ day, onDelete, onClick }) => {
+  const [showDay, setShowDay] = useState(false);
+  const list = [];
   const nodeRef = useRef(null);
 
   const [tasks, setTasks] = useState([
@@ -55,8 +58,11 @@ const Day = ({ day, onDelete }) => {
   const handleClick = (e) => {
     // e.preventDefault();
     // console.log("click");
-    tasks.map((task) => console.log(task));
+    tasks.map((task) => list.push(task));
+    console.log(list);
   };
+
+  tasks.map((task) => list.push(task));
 
   // const ref = { showDay };
   return (
