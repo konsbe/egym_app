@@ -25,6 +25,7 @@ const AddDay = ({ onAdd, week }) => {
             className="btnTask btn-block"
             onChange={(e) => setText(e.target.value)}
           />
+
         </header>
         <div className="form-control">
           <label>Day</label>

@@ -30,7 +30,7 @@ const Weeks = ({ onDelete, week }) => {
   return (
     <>
       <div className="containerWeek">
-        <AddWeek onAdd={addWeek} />
+        <AddWeek onAdd={addWeek} onDelete={deleteWeek} />
       </div>
       <div className="weeksContainer">
         {weeks.map((week) => (

@@ -3,8 +3,9 @@ import React from "react";
 import Day from "./Day";
 import { useState } from "react";
 import AddDay from "../AddDay";
+import Button from "./Button";
 
-const Days = ({ day, week }) => {
+const Days = ({ day, week, onDelete }) => {
   const [days, setDays] = useState([
     {
       id: 1,
@@ -36,6 +37,12 @@ const Days = ({ day, week }) => {
       <div className="containerone">
         <h2 className="weekHeader">{week.text}</h2>
         <AddDay onAdd={addDay} />
+        <button
+          className="weekDelete btn-block"
+          onClick={() => onDelete(week.id)}
+        >
+          Delete
+        </button>
       </div>
       {days.map((day) => (
         <Day key={day.id} day={day} onDelete={deleteDay} />
