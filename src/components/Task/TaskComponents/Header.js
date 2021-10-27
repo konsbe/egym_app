@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 
 const Header = ({ title }) => {
+
   const onClick = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1; //months from 1-12

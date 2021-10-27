@@ -7,7 +7,7 @@ import AddDay from "../AddDay";
 
 
 
-const Days = ({ day, week, onDelete, ...tasks }) => {
+const Days = ({ week, onDelete }) => {
   // const { ...list } = Day();
   const [days, setDays] = useState([
     {
@@ -33,14 +33,20 @@ const Days = ({ day, week, onDelete, ...tasks }) => {
   const deleteDay = (id) => {
     // console.log("delete", id);
     setDays(days.filter((day) => day.id !== id));
-    tasks.map((task) => console.log(task));
+    // tasks.map((task) => console.log(task));
   };
-
+  // const newlist = [];
+  const pull_data = (day, data) => {
+    console.log(day, data); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
+  };
   const handleonClick = (e) => {
     // e.preventDefault();
     // console.log("click");
     // const list = tasks.map((task) => list.push(task));
-    days.map((day) => console.log(day));
+    // days.map((day) => {
+    //   console.log(day);
+    //   console.log(newlist); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
+    // });
   };
 
   return (
@@ -62,6 +68,7 @@ const Days = ({ day, week, onDelete, ...tasks }) => {
           day={day}
           onDelete={deleteDay}
           onClick={handleonClick}
+          func={pull_data}
         />
       ))}
       <button onClick={handleonClick} className="btnAdd btn-block">

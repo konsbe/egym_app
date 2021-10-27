@@ -12,7 +12,7 @@ import { CSSTransition } from "react-transition-group";
 
 
 
-const Day = ({ day, onDelete, onClick }) => {
+const Day = ({ day, onDelete, func, ...days }) => {
   const [showDay, setShowDay] = useState(false);
   const list = [];
   const nodeRef = useRef(null);
@@ -55,14 +55,24 @@ const Day = ({ day, onDelete, onClick }) => {
     );
   };
 
+  // console.log(days);
+
   const handleClick = (e) => {
     // e.preventDefault();
     // console.log("click");
-    tasks.map((task) => list.push(task));
-    console.log(list);
+    // tasks.map((task) => list.push(task));
+    // console.log(
+    const list = [];
+    // console.log(day);
+    tasks.map((task) => {
+      list.push(task);
+      // console.log(task);
+    });
+    func(list, day);
+    // );
   };
 
-  tasks.map((task) => list.push(task));
+  // tasks.map((task) => list.push(task));
 
   // const ref = { showDay };
   return (

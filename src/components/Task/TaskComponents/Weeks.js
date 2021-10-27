@@ -6,7 +6,7 @@ import {
 import Days from "./Days";
 import AddWeek from "../AddWeek";
 
-const Weeks = ({ onDelete, week }) => {
+const Weeks = ({ onDelete }) => {
   //   const nodeRef = useRef(null);
   //   const [showWeek, setShowWeek] = useState(false);
   const [weeks, setWeeks] = useState([
