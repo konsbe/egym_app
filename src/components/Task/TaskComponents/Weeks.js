@@ -1,12 +1,17 @@
 import React from "react";
 // import Tasks from "./Tasks";
-import Day from "./Day";
-import { useState } from "react";
-import AddDay from "../AddDay";
+// import Day from "./Day";
+import {
+    useState
+    // , useRef
+} from "react";
+// import AddDay from "../AddDay";
 import Days from "./Days";
 import AddWeek from "../AddWeek";
 
 const Weeks = ({ onDelete, week }) => {
+//   const nodeRef = useRef(null);
+//   const [showWeek, setShowWeek] = useState(false);
   const [weeks, setWeeks] = useState([
     {
       id: 1,
@@ -32,14 +37,18 @@ const Weeks = ({ onDelete, week }) => {
       <div className="containerWeek">
         <AddWeek onAdd={addWeek} onDelete={deleteWeek} />
       </div>
-      <div className="weeksContainer">
+
+          <div className="weeksContainer"
+            //   onClick={() => setShowWeek(!showWeek)}
+          >
         {weeks.map((week) => (
-          <Days
-            onDelete={onDelete}
-            key={week.id}
-            week={week}
-            onDelete={deleteWeek}
-          />
+            <Days
+              onDelete={onDelete}
+              key={week.id}
+              week={week}
+              onDelete={deleteWeek}
+            />
+
         ))}
       </div>
       {/* </div> */}
