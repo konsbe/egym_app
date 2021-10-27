@@ -4,7 +4,7 @@ import Day from "./Day";
 import { useState } from "react";
 import AddDay from "../AddDay";
 
-const Days = ({ day }) => {
+const Days = ({ day, week }) => {
   const [days, setDays] = useState([
     {
       id: 1,
@@ -32,14 +32,15 @@ const Days = ({ day }) => {
   };
 
   return (
-    <>
+    <div className="containerone">
       <div className="containerone">
+        <h2 className="weekHeader">{week.text}</h2>
         <AddDay onAdd={addDay} />
       </div>
       {days.map((day) => (
         <Day key={day.id} day={day} onDelete={deleteDay} />
       ))}
-    </>
+    </div>
   );
 };
 

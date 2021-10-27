@@ -1,13 +1,16 @@
 import React from "react";
 import Button from "./TaskComponents/Button";
-
+// import App from "./App";
+// import Header from "./components/Header";
+// import AddTask from "./AddTask";
+// import Tasks from "./components/Tasks";
 import { useState } from "react";
-const AddDay = ({ onAdd, week }) => {
+const AddWeek = ({ onAdd }) => {
   const [text, setText] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
     if (!text) {
-      alert("please add Day");
+      alert("please add Week");
       return;
     }
     onAdd({ text });
@@ -17,28 +20,28 @@ const AddDay = ({ onAdd, week }) => {
   return (
     <>
       <form className="add-form" onSubmit={onSubmit}>
-        <header className="headerAddDay">
-          <h2>Add A Day</h2>
+        <header className="headerWeek">
+          <h2>Add A Week</h2>
           <Button
             color="green"
             text="Add"
-            className="btnTask btn-block"
+            className="btn btn-block"
             onChange={(e) => setText(e.target.value)}
           />
         </header>
         <div className="form-control">
-          <label>Day</label>
+          <label>Week</label>
           <input
             type="text"
-            placeholder="Day"
+            placeholder="Week"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
         </div>
-        <input type="submit" value="Save Day" className="btnTask btn-block" />
+        <input type="submit" value="Save Week" className="btn btn-block" />
       </form>
     </>
   );
 };
 
-export default AddDay;
+export default AddWeek;

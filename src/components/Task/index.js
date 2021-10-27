@@ -1,12 +1,12 @@
 import Days from "./TaskComponents/Days";
-
+import Weeks from "./TaskComponents/Weeks";
 
 import "./styles.css";
 
 const Task = ({ onDelete }) => {
   return (
     <div className="postTask">
-      <Days onDelete={onDelete} />
+      <Weeks onDelete={onDelete} />
     </div>
   );
 };
