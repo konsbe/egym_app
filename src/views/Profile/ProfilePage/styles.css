@@ -29,7 +29,7 @@
     width:100%;
      flex-wrap: wrap;
   flex-direction: row;
-  position:absolute;
+  /* position:absolute; */
   white-space: nowrap;
   min-height: 200vh;
 }
