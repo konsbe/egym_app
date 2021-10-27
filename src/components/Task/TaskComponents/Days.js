@@ -50,6 +50,7 @@ const Days = ({ day, week, onDelete }) => {
       {days.map((day) => (
         <Day key={day.id} day={day} onDelete={deleteDay} />
       ))}
+      <button className="btnAdd btn-block">Add</button>
     </div>
   );
 };
