@@ -5,7 +5,7 @@ const Profile = (props) => {
   return (
     <div className="profileViewPage">
       <ProfilePage />
-      <div className="beforeFooter"></div>
+
     </div>
   );
 };

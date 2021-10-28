@@ -169,7 +169,6 @@ const ProfilePage = (props) => {
       <div className={z.join(" ")}>
         <Calendar />
       </div>
-      <div className="extraSpace"></div>
     </div>
   );
 };

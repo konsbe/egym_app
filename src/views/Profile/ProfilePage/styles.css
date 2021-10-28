@@ -31,7 +31,7 @@
   flex-direction: row;
   /* position:absolute; */
   white-space: nowrap;
-  min-height: 200vh;
+  /* min-height: 200vh; */
 }
 .editTitle{
     color: aliceblue;
@@ -80,7 +80,7 @@ height: 2rem;
 font-size: 1.2rem;
 }
 .userProfile{
-        position: sticky;
+        /* position: sticky; */
     width: 100%;
     text-align: center;
     flex: 0.2 ;
@@ -99,7 +99,7 @@ font-size: 1.2rem;
         /* overflow-wrap:initial; */
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    white-space: pre-line;
+    /* white-space: pre-line; */
 }
 
 .userCalendar{
