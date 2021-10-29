@@ -23,12 +23,14 @@ const Day = ({ day, onDelete, func, ...days }) => {
       text: "Deadlift",
       day: "3*50 3*70 3*100 3*150",
       reminder: true,
+      youtube: "asdas",
     },
     {
       id: 2,
       text: "Shoulder Press",
       day: "3*10 3*20 3*40 3*60",
       reminder: false,
+      youtube: "asdasd",
     },
   ]);
 
