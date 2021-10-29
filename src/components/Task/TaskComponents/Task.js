@@ -8,7 +8,10 @@ const Task = ({ task, onDelete, onToggle }) => {
     <div className={`task ${task.reminder ? "reminder" : ""}`}>
       <h3>
         <div>
-          <a href={array[1]}>{array[0]}</a>
+          <a href={array[1]}>
+            <img className="imageExercise" src={array[2]} />
+            {array[0]}
+          </a>
         </div>
 
         <div>

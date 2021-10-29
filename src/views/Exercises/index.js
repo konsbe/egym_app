@@ -97,11 +97,12 @@ const Exercises = (props) => {
           const { youtubeURL, exerciseName, imgURL, documentID } = exercise;
           return (
             <div className="exerciseDetails" key={index}>
+              <img className="imageExercise" src={imgURL} />
               <span>{exerciseName}</span>
 
-              <span>{youtubeURL}</span>
-
-              <span>{imgURL}</span>
+              <span>
+                <a href={youtubeURL}> Click Me </a>
+              </span>
 
               <span className="deleteBtn">
                 <FaTimes

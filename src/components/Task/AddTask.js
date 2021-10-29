@@ -25,6 +25,7 @@ const AddTask = ({ onAdd }) => {
     setText("");
     setDay("");
     setYoutube("");
+    e.target.reset();
   };
 
   useEffect(() => {
@@ -53,7 +54,7 @@ const AddTask = ({ onAdd }) => {
             const { youtubeURL, exerciseName, imgURL, documentID } = exercise;
             return (
               <option
-                value={`${exerciseName},${youtubeURL}`}
+                value={`${exerciseName},${youtubeURL},${imgURL}`}
                 data-val={youtubeURL}
                 key={index}
               >
