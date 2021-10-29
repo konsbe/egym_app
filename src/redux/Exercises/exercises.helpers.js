@@ -20,7 +20,7 @@ export const handleFetchExercises = () => {
   return new Promise((resolve, reject) => {
     firestore
       .collection("exercises")
-      .orderBy("createdDate", "desc")
+      .orderBy("exerciseName")
       .get()
       .then((snapshot) => {
         const exercisesArray = snapshot.docs.map((doc) => {
