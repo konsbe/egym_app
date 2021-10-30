@@ -6,8 +6,16 @@ import AddDay from "../AddDay";
 
 import { CSSTransition } from "react-transition-group";
 
+import { useSelector } from "react-redux";
+
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+  users: user.currentUser,
+});
+
 const Days = ({ week, onDelete }) => {
   // const { ...list } = Day();
+  const { currentUser } = useSelector(mapState);
   const [showWeek, setShowWeek] = useState(false);
   const nodeRef = useRef(null);
   const [days, setDays] = useState([
@@ -68,13 +76,17 @@ const Days = ({ week, onDelete }) => {
       >
         <div ref={nodeRef}>
           <div className="containerone">
-            <AddDay onAdd={addDay} />
-            <button
-              className="weekDelete btn-block"
-              onClick={() => onDelete(week.id)}
-            >
-              Delete
-            </button>
+            {currentUser.userRoles[1] && (
+              <div>
+                <AddDay onAdd={addDay} />
+                <button
+                  className="weekDelete btn-block"
+                  onClick={() => onDelete(week.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
           {days.map((day) => (
             <Day

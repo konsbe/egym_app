@@ -10,9 +10,15 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 import { CSSTransition } from "react-transition-group";
 
 
+import { useSelector } from "react-redux";
 
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+  users: user.currentUser,
+});
 
 const Day = ({ day, onDelete, func, ...days }) => {
+  const { currentUser } = useSelector(mapState);
   const [showDay, setShowDay] = useState(false);
   const list = [];
   const nodeRef = useRef(null);
@@ -102,7 +108,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
         >
           <div className="toggleWrapper" ref={nodeRef}>
             <Header />
-            <AddTask onAdd={addTask} />
+            {currentUser.userRoles[1] && <AddTask onAdd={addTask} />}
             {tasks.length > 0 ? (
               <Tasks
                 tasks={tasks}

@@ -6,7 +6,16 @@ import {
 import Days from "./Days";
 import AddWeek from "../AddWeek";
 
+
+import { useSelector } from "react-redux";
+
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+  users: user.currentUser,
+});
+
 const Weeks = ({ onDelete }) => {
+  const { currentUser } = useSelector(mapState);
   //   const nodeRef = useRef(null);
   //   const [showWeek, setShowWeek] = useState(false);
   const [weeks, setWeeks] = useState([
@@ -31,9 +40,11 @@ const Weeks = ({ onDelete }) => {
 
   return (
     <>
-      <div className="containerWeek">
-        <AddWeek onAdd={addWeek} onDelete={deleteWeek} />
-      </div>
+      {currentUser.userRoles[1] && (
+        <div className="containerWeek">
+          <AddWeek onAdd={addWeek} onDelete={deleteWeek} />
+        </div>
+      )}
 
       <div
         className="weeksContainer"
