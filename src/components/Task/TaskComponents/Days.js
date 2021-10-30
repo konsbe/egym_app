@@ -1,14 +1,15 @@
 import React from "react";
 // import Tasks from "./Tasks";
 import Day from "./Day";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import AddDay from "../AddDay";
 
-
-
+import { CSSTransition } from "react-transition-group";
 
 const Days = ({ week, onDelete }) => {
   // const { ...list } = Day();
+  const [showWeek, setShowWeek] = useState(false);
+  const nodeRef = useRef(null);
   const [days, setDays] = useState([
     {
       id: 1,
@@ -52,32 +53,46 @@ const Days = ({ week, onDelete }) => {
 
   return (
     <div className="containerone">
-      <div className="containerone">
-        <h2 className="weekHeader">{week.text}</h2>
-
-        <AddDay onAdd={addDay} />
-        <button
-          className="weekDelete btn-block"
-          onClick={() => onDelete(week.id)}
-        >
-          Delete
-        </button>
-      </div>
-      {days.map((day) => (
-        <Day
-          key={day.id}
-          day={day}
-          onDelete={deleteDay}
-          onClick={handleonClick}
-          func={pull_data}
-        />
-      ))}
-      <button onClick={handleonClick} className="btnAdd btn-block">
-        Add
-      </button>
-      <button onClick={handleAddClick} className="btnAddWeek btn-block">
-        Add
-      </button>
+      <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
+        {week.text}
+      </h2>
+      <CSSTransition
+        // in={true}
+        nodeRef={nodeRef}
+        in={showWeek}
+        appear={true}
+        timeout={500}
+        classNames="transition"
+        unmountOnExit
+        // unmountOnEnter
+      >
+        <div ref={nodeRef}>
+          <div className="containerone">
+            <AddDay onAdd={addDay} />
+            <button
+              className="weekDelete btn-block"
+              onClick={() => onDelete(week.id)}
+            >
+              Delete
+            </button>
+          </div>
+          {days.map((day) => (
+            <Day
+              key={day.id}
+              day={day}
+              onDelete={deleteDay}
+              onClick={handleonClick}
+              func={pull_data}
+            />
+          ))}
+          <button onClick={handleonClick} className="btnAdd btn-block">
+            Add
+          </button>
+          <button onClick={handleAddClick} className="btnAddWeek btn-block">
+            Add
+          </button>
+        </div>
+      </CSSTransition>
     </div>
   );
 };

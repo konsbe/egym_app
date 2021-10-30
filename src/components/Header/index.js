@@ -7,7 +7,7 @@ import {
 } from "./../../redux/User/user.actions";
 
 import "./styles.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 
 import snatch from "./../../assets/snatch.jpg";
@@ -19,13 +19,15 @@ const mapState = ({ user }) => ({
 
 const Header = (props) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [scrolled, setScrolled] = useState(false);
   // const userID = useAuth();
   const { currentUser } = useSelector(mapState);
   const { users } = useSelector(mapState);
 
-  const signOut = () => {
-    dispatch(signOutUserStart());
+  const signOut = async () => {
+    await dispatch(signOutUserStart());
+    history.push("/");
   };
 
   const handleScroll = () => {
