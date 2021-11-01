@@ -137,12 +137,7 @@ const Days = ({ week, onDelete }) => {
                 func={pull_data}
               />
             ))}
-            <button onClick={handleonClick} className="btnAdd btn-block">
-              Add
-            </button>
-            <button onClick={handleAddClick} className="btnAddWeek btn-block">
-              Add
-            </button>
+
           </div>
         </CSSTransition>
       </div>
