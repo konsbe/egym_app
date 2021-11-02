@@ -11,18 +11,18 @@ const mapState = ({ exercisesData }) => ({
 const AddTask = ({ onAdd }) => {
   const { exercises } = useSelector(mapState);
   const dispatch = useDispatch();
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
   const [youtube, setYoutube] = useState("");
   const [day, setDay] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!text) {
+    if (!title) {
       alert("please add task");
       return;
     }
-    onAdd({ text, day, youtube });
-    setText("");
+    onAdd({ title, day, youtube });
+    setTitle("");
     setDay("");
     setYoutube("");
     e.target.reset();
@@ -34,7 +34,7 @@ const AddTask = ({ onAdd }) => {
 
   const extractValues = (e) => {
     console.log(e.target.value);
-    setText(e.target.value);
+    setTitle(e.target.value);
     // setYoutube(e.target.data);
   };
 

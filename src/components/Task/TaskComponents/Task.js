@@ -12,7 +12,7 @@ const mapState = ({ user }) => ({
 
 const Task = ({ task, onDelete, onToggle, tasks }) => {
   const { currentUser } = useSelector(mapState);
-  const array = task.text.split(",");
+  const array = task.title.split(",");
 
   const handleChange = (e) => {
     onToggle(task.id);

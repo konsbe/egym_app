@@ -3,15 +3,15 @@ import Button from "./TaskComponents/Button";
 
 import { useState } from "react";
 const AddDay = ({ onAdd, week }) => {
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!text) {
+    if (!title) {
       alert("please add Day");
       return;
     }
-    onAdd({ text });
-    setText("");
+    onAdd({ title });
+    setTitle("");
   };
 
   return (
@@ -23,17 +23,16 @@ const AddDay = ({ onAdd, week }) => {
             color="green"
             text="Add"
             className="btnTask btn-block"
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
-
         </header>
         <div className="form-control">
           <label>Day</label>
           <input
             type="text"
             placeholder="Day"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <input type="submit" value="Save Day" className="btnTask btn-block" />

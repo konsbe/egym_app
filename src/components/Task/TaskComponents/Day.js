@@ -30,13 +30,13 @@ const Day = ({ day, onDelete, func, ...days }) => {
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      text: "Deadlift",
+      title: "Deadlift",
       day: "3*50 3*70 3*100 3*150",
       reminder: true,
     },
     {
       id: 2,
-      text: "Shoulder Press",
+      title: "Shoulder Press",
       day: "3*10 3*20 3*40 3*60",
       reminder: false,
     },
@@ -84,7 +84,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
     calendarTracker.unshift(day);
     currentUser.calendarTracker.map((day) => {
       calendarTracker.push(day);
-    })
+    });
     list.push(calendarTracker);
     // calendarTracker.push(currentUser.calendarTracker);
     console.log(currentUser.calendarTracker);
@@ -107,7 +107,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
       <div className="basiContainer">
         <div className="headerAddDay">
           <h2 style={{ fontSize: 30 }} onClick={() => setShowDay(!showDay)}>
-            {day.text}{" "}
+            {day.title}{" "}
           </h2>
           <FaTimes
             style={{ color: "black", cursor: "pointer", height: 20 }}
