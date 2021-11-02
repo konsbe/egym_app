@@ -9,8 +9,10 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 import { CSSTransition } from "react-transition-group";
 
+import { updateUserStart } from "../../../redux/User/user.actions";
+import { checkUserIsAdmin } from "../../../Utils";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -18,6 +20,8 @@ const mapState = ({ user }) => ({
 });
 
 const Day = ({ day, onDelete, func, ...days }) => {
+  const dispatch = useDispatch();
+  const [calendarTracker, setCalendarTracker] = useState([]);
   const { currentUser } = useSelector(mapState);
   const [showDay, setShowDay] = useState(false);
   const list = [];
@@ -64,7 +68,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
   // console.log(days);
 
   const handleClick = (e) => {
-
     const list = [];
     tasks.map((task) => {
       list.push(task);
@@ -72,10 +75,27 @@ const Day = ({ day, onDelete, func, ...days }) => {
     list.unshift(day);
     func(list);
   };
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    const list = [];
+    tasks.map((task) => {
+      calendarTracker.push(task);
+    });
+    calendarTracker.unshift(day);
+    // setCalendarTracker(list);
+    console.log(calendarTracker);
+    dispatch(
+      updateUserStart({
+        calendarTracker,
+      })
+    );
+  };
 
   // tasks.map((task) => list.push(task));
 
   // const ref = { showDay };
+  const isAdmin = checkUserIsAdmin(currentUser);
+
   return (
     <div>
       {/* <Day days={days} /> */}
@@ -103,7 +123,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
         >
           <div className="toggleWrapper" ref={nodeRef}>
             <Header />
-            {currentUser.userRoles[1] && <AddTask onAdd={addTask} />}
+            {isAdmin && <AddTask onAdd={addTask} />}
             {tasks.length > 0 ? (
               <Tasks
                 tasks={tasks}
@@ -113,9 +133,18 @@ const Day = ({ day, onDelete, func, ...days }) => {
             ) : (
               "No tasks"
             )}
-            <button onClick={handleClick} className="btnAdd btn-block">
-              Add
-            </button>
+
+            {isAdmin && (
+              <button onClick={handleClick} className="btnAdd btn-block">
+                AddDay
+              </button>
+            )}
+
+            {!isAdmin && (
+              <button onClick={handleOnClick} className="btnAdd btn-block">
+                AddDay
+              </button>
+            )}
           </div>
         </CSSTransition>
         {/* )} */}

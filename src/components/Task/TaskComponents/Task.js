@@ -3,6 +3,8 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 import { useSelector } from "react-redux";
 
+import { checkUserIsAdmin } from "../../../Utils";
+
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
   users: user.currentUser,
@@ -16,6 +18,8 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
     onToggle(task.id);
   };
 
+  const isAdmin = checkUserIsAdmin(currentUser);
+
   return (
     <div className={`task ${task.reminder ? "reminder" : ""}`}>
       <h3>
@@ -25,7 +29,7 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
             {array[0]}
           </a>
         </div>
-        {!currentUser.userRoles[1] && (
+        {!isAdmin && (
           <div>
             <span>
               <input
@@ -38,7 +42,7 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
           </div>
         )}
 
-        {currentUser.userRoles[1] && (
+        {isAdmin && (
           <div>
             <FaTimes
               style={{ color: "red", cursor: "pointer" }}

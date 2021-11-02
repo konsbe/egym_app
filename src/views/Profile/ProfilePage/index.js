@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
 
-import Calendar from "../../../components/Calendar";
+import MyCalendar from "../../../components/MyCalendar";
 import UserProfile from "../../../components/UserProfile";
 import Posts from "./../../../components/Posts";
 
@@ -167,7 +167,7 @@ const ProfilePage = (props) => {
         </div>
       )}
       <div className={z.join(" ")}>
-        <Calendar />
+        <MyCalendar />
       </div>
     </div>
   );
