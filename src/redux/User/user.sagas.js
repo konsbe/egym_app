@@ -99,6 +99,7 @@ export function* signUpUser({
     gear,
     payment,
     month,
+    calendarTracker,
   },
 }) {
   if (password !== confirmPassword) {
@@ -119,6 +120,7 @@ export function* signUpUser({
       gear,
       payment,
       month,
+      calendarTracker,
     };
     yield getSnapshotFromUserAuth(user);
     yield call(handleUserProfile, {

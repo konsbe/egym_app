@@ -33,6 +33,7 @@ const SignUp = (props) => {
   const [errors, setErrors] = useState([]);
   const [payment, setPayment] = useState(false);
   const [month, setMonth] = useState(false);
+  const [calendarTracker, setCalendarTracker] = useState({});
 
   useEffect(() => {
     if (currentUser) {
@@ -81,6 +82,7 @@ const SignUp = (props) => {
         gear,
         payment,
         month,
+        calendarTracker,
       })
     );
   };
