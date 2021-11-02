@@ -64,18 +64,13 @@ const Day = ({ day, onDelete, func, ...days }) => {
   // console.log(days);
 
   const handleClick = (e) => {
-    // e.preventDefault();
-    // console.log("click");
-    // tasks.map((task) => list.push(task));
-    // console.log(
+
     const list = [];
-    // console.log(day);
     tasks.map((task) => {
       list.push(task);
-      // console.log(task);
     });
-    func(list, day);
-    // );
+    list.unshift(day);
+    func(list);
   };
 
   // tasks.map((task) => list.push(task));

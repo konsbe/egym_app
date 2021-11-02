@@ -47,12 +47,12 @@ const Days = ({ week, onDelete }) => {
   };
   // const newlist = [];
   const weekProgram = [];
-  const pull_data = (day, data) => {
-    weekProgram.push(day, data);
-    console.log(day, data); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
+  const pull_data = (data) => {
+    weekProgram.push(data);
+    console.log(data); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
   };
   const handleonClick = (e) => {
-    weekProgram.push(week);
+    weekProgram.unshift(week);
     console.log(week);
   };
 
