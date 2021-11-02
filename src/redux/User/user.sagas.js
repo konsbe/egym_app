@@ -24,6 +24,7 @@ import {
   handleUpdateInjuries,
   handleUpdateMonth,
   handleUpdatePayment,
+  handleUpdateCalendar,
 } from "./user.helpers";
 import { useAuth } from "./../../customHooks";
 
@@ -284,6 +285,18 @@ export function* onUpdateUserMonth() {
   yield takeLatest(userTypes.UPDATE_USER_DATA, updateMonth);
 }
 
+export function* updateCalendar({ payload: { calendarTracker } }) {
+  try {
+    yield handleUpdateCalendar({
+      calendarTracker,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserCalendar() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updateCalendar);
+}
+
 export function* updatePayment({ payload: { payment, documentID } }) {
   try {
     yield handleUpdatePayment({
@@ -323,5 +336,6 @@ export default function* userSagas() {
     call(onUpdateUserInjuries),
     call(onUpdateUserMonth),
     call(onUpdateUserPayment),
+    call(onUpdateUserCalendar),
   ]);
 }

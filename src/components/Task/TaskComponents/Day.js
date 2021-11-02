@@ -82,7 +82,12 @@ const Day = ({ day, onDelete, func, ...days }) => {
       calendarTracker.push(task);
     });
     calendarTracker.unshift(day);
-    // setCalendarTracker(list);
+    currentUser.calendarTracker.map((day) => {
+      calendarTracker.push(day);
+    })
+    list.push(calendarTracker);
+    // calendarTracker.push(currentUser.calendarTracker);
+    console.log(currentUser.calendarTracker);
     console.log(calendarTracker);
     dispatch(
       updateUserStart({
@@ -151,6 +156,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
       </div>
     </div>
   );
-};
+};;
 
 export default Day;

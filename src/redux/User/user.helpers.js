@@ -162,6 +162,30 @@ export const handleUpdateMonth = ({ month, documentID }) => {
   });
 };
 
+export const handleUpdateCalendar = ({ calendarTracker }) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      // .get()
+      // .ref(`calendarTracker`)
+      .update({ calendarTracker })
+
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.num,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 export const handleUpdatePayment = ({ payment, documentID }) => {
   return new Promise((resolve, reject) => {
     firestore
