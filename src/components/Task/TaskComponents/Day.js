@@ -33,12 +33,16 @@ const Day = ({ day, onDelete, func, ...days }) => {
       title: "Deadlift",
       day: "3*50 3*70 3*100 3*150",
       reminder: true,
+      start: "",
+      end: "",
     },
     {
       id: 2,
       title: "Shoulder Press",
       day: "3*10 3*20 3*40 3*60",
       reminder: false,
+      start: "",
+      end: "",
     },
   ]);
 
@@ -77,8 +81,18 @@ const Day = ({ day, onDelete, func, ...days }) => {
   };
   const handleOnClick = (e) => {
     e.preventDefault();
+
+    const dateObj = new Date();
+    const month = dateObj.getUTCMonth() + 1; //months from 1-12
+    const day = dateObj.getUTCDate();
+    const year = dateObj.getUTCFullYear();
+
+    const newdate = year + "/" + month + "/" + day;
+
     const list = [];
     tasks.map((task) => {
+      task.start = newdate;
+      task.end = newdate;
       calendarTracker.push(task);
     });
     calendarTracker.unshift(day);
