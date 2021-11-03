@@ -95,19 +95,23 @@ font-size: 1.2rem;
 }
 
 
-.userPosts {
-    /* border:solid; */
-    border-radius: 15px;
-    margin-top: 0.5rem;
-    /* background-color: rgb(240, 240, 240); */
-    position: sticky;
-    width: 100%;
-    text-align: center;
-    flex: 0.8 ;
-        /* overflow-wrap:initial; */
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    /* white-space: pre-line; */
+@media screen and (min-width: 900px){
+
+    .userPosts {
+        /* border:solid; */
+        border-radius: 15px;
+        margin-top: 0.5rem;
+        /* background-color: rgb(240, 240, 240); */
+        position: sticky;
+        width: 100%;
+        text-align: center;
+        flex: 0.8 ;
+            /* overflow-wrap:initial; */
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        /* white-space: pre-line; */
+    }
+
 }
 
 .userCalendar{

@@ -1,8 +1,15 @@
-.postTask {
+
+
+@media screen and (min-width: 900px){
+    .postTask {
     width: 70%;
 margin: auto;
 
 }
+}
+
+
+
 .headerWeek{
       display: flex;
   justify-content: space-between;
@@ -256,3 +263,17 @@ margin: auto;
 /* .toggleWrapper.element{
 
 } */
+
+
+.headerAddDay{
+  display:none;
+}
+
+@media screen and (max-width: 900px){
+    .postTask {
+    width: 90%;
+margin: auto;
+
+}
+}
+
