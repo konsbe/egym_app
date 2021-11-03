@@ -14,7 +14,7 @@ const Header = ({ title }) => {
   };
 
   return (
-    <header className="headerAddDay">
+    <header className="headerAddDayNone">
       <h2>{title}</h2>
       <Button color="green" text="Add" onClick={onClick} />
     </header>
