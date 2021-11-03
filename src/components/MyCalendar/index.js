@@ -16,7 +16,9 @@ import {
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 import "./styles.css";
+import calendarIcon from "./calendarIcon.jpg";
 
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
@@ -47,32 +49,39 @@ function MyCalendar() {
 
   return (
     <div className="App">
-      <h1 className="calendar">Calendar</h1>
+      <h1 className="calendar">
+        <div className="backcal">
+          <img src={calendarIcon}></img>
+        </div>
+      </h1>
+      <div className="calendarBox">
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 500, margin: "50px" }}
+          eventPropGetter={(event, start, end, isSelected) => {
+            let newStyle = {
+              backgroundColor: "red",
+              color: "black",
+              borderRadius: "0px",
+              border: "none",
+              height: "14px",
+              fontSize: "10px",
+            };
 
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 800, margin: "50px" }}
-        eventPropGetter={(event, start, end, isSelected) => {
-          let newStyle = {
-            backgroundColor: "red",
-            color: "black",
-            borderRadius: "0px",
-            border: "none",
-          };
+            if (event.reminder) {
+              newStyle.backgroundColor = "lightgreen";
+            }
 
-          if (event.reminder) {
-            newStyle.backgroundColor = "lightgreen";
-          }
-
-          return {
-            className: "",
-            style: newStyle,
-          };
-        }}
-      />
+            return {
+              className: "",
+              style: newStyle,
+            };
+          }}
+        />
+      </div>
     </div>
   );
 }

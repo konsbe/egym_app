@@ -48,4 +48,24 @@
 }
 .calendar{
   padding-top: 1rem;
+  background-color: rgb(240, 240, 240);
+}
+
+.calendarBox{
+  /* border:1px solid; */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 15px;
+  background-color:rgb(240, 240, 240);
+}
+
+
+.calendar img {
+  padding-bottom:1rem;
+  padding-top:1rem;
+  padding-right:1rem;
+  padding-left:1rem;
+  width: 250px;
+   margin-bottom: -75px;
+   background-color: white;
 }
