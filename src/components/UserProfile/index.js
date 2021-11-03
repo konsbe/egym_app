@@ -61,8 +61,8 @@ const UserProfile = ({}) => {
         }
         {
           <div className="infos-lot">
-            <h6 className="infos">Injuries:</h6>
-            <span className="infos-text">{injuries}</span>
+            <h6 className="weight">Injuries:</h6>
+            <span className="weight">{injuries}</span>
           </div>
         }
         {

@@ -89,6 +89,7 @@ const ProfilePage = (props) => {
           </ul>
         </div>
         <UserProfile />
+
       </div>
       {!btnPopup && (
         <div className="userPosts">

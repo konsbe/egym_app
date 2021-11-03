@@ -7,10 +7,17 @@
     bottom: 0;
     left: 0;
     right: 0;
-    margin-left: 1rem;
+
     flex: 0.2 ;
     height: 100%;
 }
+
+@media screen and (min-width: 900px){
+    .sidebar {
+    margin-left: 1rem;
+    }
+}
+
 h3 {
     font-weight: 500;
 }
@@ -74,6 +81,8 @@ span {
 }
 
 .infos-text{
+
+    margin:auto;
 }
 
 
@@ -87,4 +96,32 @@ span {
 img {
     border-radius: 50%;
     border-top: ridge ;
+}
+
+@media screen and (max-width: 900px){
+   .userProfile{
+       /* width: 90%; */
+       margin: 2rem auto;
+ }
+
+    .sidebar{
+        /* margin: 3rem auto; */
+/* margin-left: 0; */
+  /* margin-left: 1rem; */
+  /* margin-right: 1rem; */
+    }
+    .sidebarTop{
+        /* margin: 3rem auto; */
+    }
+    .sidebarMiddle{
+        /* width:100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center; */
+        display:none;
+    }
+
+    .sidebarBottom{
+        display:none;
+    }
 }

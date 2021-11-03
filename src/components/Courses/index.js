@@ -32,33 +32,35 @@ const Courses = (props) => {
               ...course,
             };
             return (
-              <div className="card" key={index}>
-                {/* <Program {...configCourse} /> */}
-                <div className="card-image">
-                  {/* <img src={image3} alt=""></img> */}
-                </div>
-                {/* {imgUrl} */}
-                <div className="card-text">
-                  <h2 className="cardName">{courseName}</h2>
+              <div className="mytable">
+                <div className="card" key={index}>
+                  {/* <Program {...configCourse} /> */}
+                  <div className="card-image">
+                    {/* <img src={image3} alt=""></img> */}
+                  </div>
+                  {/* {imgUrl} */}
+                  <div className="card-text">
+                    <h2 className="cardName">{courseName}</h2>
 
-                  <p>{courseDescription}</p>
-                </div>
-                <div className="card-stats">
-                  <div className="stat">
-                    <div className="value">{courseMonths}</div>
-                    <div className="type">Months</div>
+                    <p>{courseDescription}</p>
                   </div>
-                  <div className="stat">
-                    <div className="value">{price}</div>
-                    <div className="type">Euro</div>
-                  </div>
-                  <div className="stat">
-                    {/* <div class="value">
+                  <div className="card-stats">
+                    <div className="stat">
+                      <div className="value">{courseMonths}</div>
+                      <div className="type">Months</div>
+                    </div>
+                    <div className="stat">
+                      <div className="value">{price}</div>
+                      <div className="type">Euro</div>
+                    </div>
+                    <div className="stat">
+                      {/* <div class="value">
                     <FaTimes
                       style={{ color: "red", cursor: "pointer" }}
                       onClick={() => dispatch(deleteCourseStart(documentID))}
                     />
                   </div> */}
+                    </div>
                   </div>
                 </div>
               </div>

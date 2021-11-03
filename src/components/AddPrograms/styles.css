@@ -132,3 +132,97 @@
   cursor: pointer;
   margin:30px;
 } */
+@media screen and (max-width: 900px){
+
+    .card{
+
+    display:grid;
+
+    grid-template-columns: 220px;
+    grid-template-rows: 120px 150px 70px;
+    grid-template-areas: "image" "text" "stats";
+    overflow: hidden;
+
+
+    font-family: roboto;
+    border-radius: 18px;
+    background-color: aliceblue;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    text-align: center;
+    transition:0.5s ease;
+    cursor: pointer;
+    margin-bottom: 4rem;
+}
+
+.card:nth-child(even){
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-bottom: 2rem;
+}
+
+.courses{
+
+    width: 90%;
+    /* grid-column: auto; */
+    margin: 3rem auto;
+      display: flex;
+  flex-direction: column;
+
+
+}
+
+
+
+.card-image{
+    grid-area: image;
+        background: url('image3.jpg');
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover ;
+}
+
+
+.card-text {
+    grid-area: text;
+    margin: 25px
+}
+.card-text p{
+    color: gray;
+    font-size: 0.7rem;
+    font-weight: 1000;
+}
+.card-text h2{
+    margin-top: 0px;
+    font-size: 0.6rem;
+    font-weight: 1000;
+    border-bottom: 1px solid red;
+}
+
+
+
+.card-stats {
+  grid-area: stats;
+  display: grid;
+  margin-top: 1rem;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+  grid-template-rows: 1fr;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: rgba(173, 255, 180,0.9);
+}
+
+.card-stats .stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 1000;
+  color: rgb(255, 255, 255);
+  padding:10px;
+}
+
+.card-stats .value {
+    font-size:1.5rem;
+}
+
+}

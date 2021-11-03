@@ -7,3 +7,16 @@
 
     white-space: pre-line;
 } */
+
+
+@media screen and (max-width: 900px){
+
+    .posts{
+        display: flex;
+    flex-direction: column;
+    width: 100%;
+      margin: auto;
+    }
+
+
+}
