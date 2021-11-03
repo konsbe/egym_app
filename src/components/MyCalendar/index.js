@@ -16,7 +16,7 @@ import {
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import "./App.css";
+import "./styles.css";
 
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
@@ -47,8 +47,7 @@ function MyCalendar() {
 
   return (
     <div className="App">
-      <h1>Calendar</h1>
-      <h2>Add New Event</h2>
+      <h1 className="calendar">Calendar</h1>
 
       <Calendar
         localizer={localizer}
@@ -56,6 +55,23 @@ function MyCalendar() {
         startAccessor="start"
         endAccessor="end"
         style={{ height: 800, margin: "50px" }}
+        eventPropGetter={(event, start, end, isSelected) => {
+          let newStyle = {
+            backgroundColor: "red",
+            color: "black",
+            borderRadius: "0px",
+            border: "none",
+          };
+
+          if (event.reminder) {
+            newStyle.backgroundColor = "lightgreen";
+          }
+
+          return {
+            className: "",
+            style: newStyle,
+          };
+        }}
       />
     </div>
   );

@@ -11,7 +11,7 @@ import { CSSTransition } from "react-transition-group";
 
 import { updateUserStart } from "../../../redux/User/user.actions";
 import { checkUserIsAdmin } from "../../../Utils";
-
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const mapState = ({ user }) => ({
@@ -21,6 +21,7 @@ const mapState = ({ user }) => ({
 
 const Day = ({ day, onDelete, func, ...days }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [calendarTracker, setCalendarTracker] = useState([]);
   const { currentUser } = useSelector(mapState);
   const [showDay, setShowDay] = useState(false);
@@ -33,6 +34,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
       title: "Deadlift",
       day: "3*50 3*70 3*100 3*150",
       reminder: true,
+      allDay: true,
       start: "",
       end: "",
     },
@@ -41,6 +43,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
       title: "Shoulder Press",
       day: "3*10 3*20 3*40 3*60",
       reminder: false,
+      allDay: true,
       start: "",
       end: "",
     },
@@ -79,7 +82,12 @@ const Day = ({ day, onDelete, func, ...days }) => {
     list.unshift(day);
     func(list);
   };
-  const handleOnClick = (e) => {
+
+  function refreshPage() {
+    window.location.reload();
+  }
+
+  const handleOnClick = async (e) => {
     e.preventDefault();
 
     const dateObj = new Date();
@@ -90,21 +98,21 @@ const Day = ({ day, onDelete, func, ...days }) => {
     const newdate = year + "/" + month + "/" + day;
 
     const list = [];
-    tasks.map((task) => {
-      task.start = newdate;
-      task.end = newdate;
-      calendarTracker.push(task);
+    tasks.map(async (task) => {
+      task.start = await newdate;
+      task.end = await newdate;
+      await calendarTracker.push(task);
     });
-    calendarTracker.unshift(day);
-    currentUser.calendarTracker.map((day) => {
-      calendarTracker.push(day);
+    await calendarTracker.unshift(day);
+    currentUser.calendarTracker.map(async (day) => {
+      await calendarTracker.push(day);
     });
     list.push(calendarTracker);
     // calendarTracker.push(currentUser.calendarTracker);
     console.log(currentUser.calendarTracker);
     console.log(calendarTracker);
     dispatch(
-      updateUserStart({
+      await updateUserStart({
         calendarTracker,
       })
     );
