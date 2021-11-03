@@ -88,6 +88,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
   }
 
   const handleOnClick = async (e) => {
+
     e.preventDefault();
 
     const dateObj = new Date();
@@ -116,6 +117,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
         calendarTracker,
       })
     );
+    setTimeout(refreshPage, 300);
   };
 
   // tasks.map((task) => list.push(task));

@@ -167,9 +167,14 @@ export const handleUpdateCalendar = ({ calendarTracker }) => {
     firestore
       .collection("users")
       .doc(firebase.auth().currentUser.uid)
+
+      // .collection("calendarTracker")
+
       // .get()
       // .ref(`calendarTracker`)
       .update({ calendarTracker })
+      // .set({ calendarTracker: calendarTracker }, { merge: true })
+      // .add(calendarTracker)
 
       .then((snapshot) => {
         const usersArray = snapshot.docs.map((doc) => {
