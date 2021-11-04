@@ -1,5 +1,4 @@
 .sidebar {
-    width:310px;
 
     position: sticky;
     text-align: center;
@@ -8,14 +7,17 @@
     left: 0;
     right: 0;
 
-    flex: 0.2 ;
     height: 100%;
 }
 
 @media screen and (min-width: 900px){
     .sidebar {
+        width:310px;
+        flex: 0.2 ;
     margin-left: 1rem;
-    }
+    width: 100%;
+}
+
 }
 
 h3 {
@@ -40,12 +42,12 @@ h3 {
 .sidebarMiddle{
     display: inline-block;
     /* position: relative; */
-    width:310px;
+    width:100%;
     padding-top: 2rem;
     background-color: rgb(240, 240, 240);
     margin-bottom: 0.5rem;
     border-radius: 15px;
-
+    text-align: center;
 
     overflow-wrap:initial;
 
@@ -78,6 +80,7 @@ span {
 
 .weight{
     margin-bottom: 1rem;
+    width: 100%;
 }
 
 .infos-text{
@@ -87,11 +90,11 @@ span {
 
 
 .infos-lot {
-       width:310px;
+    /* width:310px; */
     margin-bottom: 1rem;
 
 
-    }
+}
 
 img {
     border-radius: 50%;
@@ -99,18 +102,21 @@ img {
 }
 
 @media screen and (max-width: 900px){
-   .userProfile{
-       /* width: 90%; */
-       margin: 2rem auto;
- }
+    .userProfile{
+        width: 100%;
+
+    }
 
     .sidebar{
+        width: 100%;
+        /* width: 100%; */
         /* margin: 3rem auto; */
-/* margin-left: 0; */
-  /* margin-left: 1rem; */
-  /* margin-right: 1rem; */
+        /* margin-left: 0; */
+        /* margin-left: 1rem; */
+        /* margin-right: 1rem; */
     }
     .sidebarTop{
+        width:100%;
         /* margin: 3rem auto; */
     }
     .sidebarMiddle{

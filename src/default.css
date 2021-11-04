@@ -36,7 +36,21 @@ body{
     line-height: 1;
     display: block
 }
+@media screen and (max-width: 900px){
+    body{width: 100%;}
+    #root{
+        width: 100%;
 
+    }
+    .App{
+        width: 100%;
+
+    }
+    .main{
+        width: 100%;
+
+    }
+}
 .Link{
     text-decoration: none;
 }

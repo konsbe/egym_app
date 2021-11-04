@@ -91,7 +91,7 @@ font-size: 1.2rem;
         /* position: sticky; */
     width: 100%;
     text-align: center;
-    flex: 0.2 ;
+    /* flex: 0.2 ; */
 }
 
 
@@ -111,6 +111,10 @@ font-size: 1.2rem;
         margin-right: 0.5rem;
         /* white-space: pre-line; */
     }
+    .userProfile{
+        /* position: sticky; */
+    flex: 0.2 ;
+}
 
 }
 
@@ -185,12 +189,13 @@ font-size: 1.2rem;
     .userProfile{
               display: flex;
   flex-direction: column;
+  width: 100%;
     }
     .userPosts{
         display: flex;
-    flex-direction: column;
-      margin: auto;
-  width: 100%;
+         flex-direction: column;
+         margin: auto;
+        width: 100%;
     }
 
 
