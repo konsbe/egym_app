@@ -8,7 +8,7 @@
 
 } */
 
-.App {
+.AppCalendar {
   text-align: center;
 }
 
@@ -68,4 +68,73 @@
   width: 250px;
    margin-bottom: -75px;
    background-color: white;
+}
+
+
+@media screen and  (max-width: 980px) {
+
+.rbc-calendar{
+  width:100%
+}
+.rbc-btn-group button{
+  /* font-size: 0.6rem; */
+  /* width:80% */
+  /* width */
+}
+
+.rbc-month-view{
+  margin: auto;
+  margin-right: 2.4rem;
+  width: 80%;
+}
+
+.rbc-calendar{
+  text-align: center;
+  width: 100%;
+  margin: auto!important;
+}
+.phone{
+  /* text-align: center; */
+  width: 100%;
+  /* margin: auto; */
+      display: flex;
+    flex-direction: column;
+}
+.AppCalendar{
+  text-align: center;
+  width: 100%!important;
+  margin: auto!important;
+
+}
+.calendar{
+  text-align: center;
+  width: 100%!important;
+  margin: auto!important;
+      display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.userCalendar{
+  width: 100%;
+  flex:none;
+}
+
+
+.rbc-btn-group{
+ text-align: center;
+  width: 100%!important;
+  /* margin: auto!important; */
+      display: flex;
+  margin: auto;
+  justify-content:center;
+    /* flex-direction: column; */
+}
+
+span:nth-child(1){
+  padding-right: 0.3rem;
+}
+span:last-child {
+    margin-left: 0.5rem;
+}
 }

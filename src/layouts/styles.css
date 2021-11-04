@@ -17,11 +17,25 @@ position: relative;
     min-height: 100vh;
 flex-grow: 1;
 }
+@media screen and (min-width: 901px){
+   .layout{
+   /* min-height: 100%; */
+    display: flex;
+    flex-direction: column;
+    /* width: 108%; */
+    }
+    .phone{
+        display:none;
+    }
+}
 @media screen and (max-width: 900px){
    .layout{
    /* min-height: 100%; */
     display: flex;
     flex-direction: column;
-    width: 108%;
+    /* width: 108%; */
+    }
+    .computer{
+        display: none;
     }
 }

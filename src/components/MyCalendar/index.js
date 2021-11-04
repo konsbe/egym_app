@@ -20,6 +20,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
 import calendarIcon from "./calendarIcon.jpg";
 
+import "./styles.css";
+
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
 };
@@ -48,7 +50,7 @@ function MyCalendar() {
   fetchData();
 
   return (
-    <div className="App">
+    <div className="AppCalendar">
       <h1 className="calendar">
         <div className="backcal">
           <img src={calendarIcon}></img>
@@ -84,6 +86,9 @@ function MyCalendar() {
       </div>
     </div>
   );
+}
+{
+  /* <div className="sidebar"></div> */
 }
 
 export default MyCalendar;

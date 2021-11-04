@@ -31,12 +31,14 @@ const ProfilePage = (props) => {
 
   let x = ["profile_body"];
   let y = ["userPosts"];
-  let z = ["userCalendar"];
+  let z = ["userCalendar computer"];
+  let k = ["userCalendar phone"];
 
   if (btnPopup) {
     x.push("profile_body popup");
     y.push("userPosts popup");
-    z.push("userCalendar popup");
+    z.push("userCalendar computer popup");
+    k.push("userCalendar phone popup");
   }
   // const configModal = {
   //   hideModal,
@@ -89,7 +91,9 @@ const ProfilePage = (props) => {
           </ul>
         </div>
         <UserProfile />
-
+      </div>
+      <div className={k.join(" ")}>
+        <MyCalendar />
       </div>
       {!btnPopup && (
         <div className="userPosts">
