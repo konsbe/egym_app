@@ -71,10 +71,20 @@
 }
 
 
-@media screen and  (max-width: 980px) {
+@media screen and  (min-width: 980px) {
+ .rbc-calendar{
+   height: 500px;
+   margin: 50px;
+ }
+}
+  @media screen and  (max-width: 980px) {
 
 .rbc-calendar{
-  width:100%
+  width:100%;
+    height: 300px;
+   margin: 50px;
+
+
 }
 .rbc-btn-group button{
   /* font-size: 0.6rem; */
@@ -137,4 +147,27 @@ span:nth-child(1){
 span:last-child {
     margin-left: 0.5rem;
 }
+
+.rbc-month-view{
+  border-radius: 10px;
+  border:solid 1px;
+}
+
+.calendar{
+  background-color: white;
+}
+.calendarBox{
+  padding-top: 8rem;
+}
+.calendar img {
+
+   margin-bottom: -120px;
+   margin-top: -95px;
+}
+.callToActions{
+background-color:   rgb(240, 240, 240);
+padding-bottom: 8rem;
+margin-bottom: -120px;
+}
+
 }
