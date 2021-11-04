@@ -1,4 +1,6 @@
-
+/* .weeksContainer {
+  background-color: rgba(58, 87, 75,1);
+} */
 
 @media screen and (min-width: 900px){
     .postTask {
@@ -242,6 +244,7 @@ margin: auto;
 .transition-enter, .transition-appear {
   opacity: 0.01;
   transform: translate(0, -10px);
+  /* background-color: rgba(58, 87, 75,1); */
 }
 .transition-enter-active, .transition-appear-active {
   opacity: 1;
@@ -271,9 +274,18 @@ margin: auto;
 
 @media screen and (max-width: 900px){
     .postTask {
-    width: 90%;
+    width: 100%;
 margin: auto;
 
+}
+ .task {
+  font-size: 1rem;
+  width: 100%;
+  margin:0px 0px 7px;
+  padding:0.3rem 0.5rem;
+}
+.task h3 {
+  font-size: 1rem;
 }
 }
 
