@@ -114,7 +114,12 @@
   text-align: center;
   width: 100%!important;
   margin: auto!important;
+  /* background-color: rgb(43, 43, 43); */
 
+}
+.backcal{
+  margin-top: -0.5rem;
+  /* backgroung-color:rgb(240, 240, 240); */
 }
 .calendar{
   text-align: center;
@@ -128,8 +133,12 @@
 .userCalendar{
   width: 100%;
   flex:none;
+  margin-top: 0;
 }
+.backcal{
 
+  background-color: rgb(240, 240, 240);
+}
 
 .rbc-btn-group{
  text-align: center;
@@ -157,14 +166,15 @@ span:last-child {
   background-color: white;
 }
 .calendarBox{
-  padding-top: 8rem;
+  padding-top: 7rem;
 }
 .calendar img {
 
-   margin-bottom: -120px;
-   margin-top: -95px;
+   margin-bottom: -150px;
+   margin-top: -180px;
 }
 .callToActions{
+
 background-color:   rgb(240, 240, 240);
 padding-bottom: 8rem;
 margin-bottom: -120px;
