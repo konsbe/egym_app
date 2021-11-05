@@ -9,6 +9,9 @@
 } */
 
 
+@media screen and (min-width: 900px){
+
+}
 @media screen and (max-width: 900px){
 
     .posts{
@@ -18,5 +21,14 @@
       margin: auto;
     }
 
+    .btnLoadMore{
+        background: rgba(0, 0, 0, 0.8);
+        color:white;
+        height: 3rem;
+        margin-bottom: 1rem;
+        border-radius: 7px;
+    }
+    .btnLoadMore:hover {box-shadow: 1px 1px 2px rgba(170, 0, 0, 0.6), 0 0 4px rgba(170, 0, 0, 0.6), 0 0 8px rgba(170, 0, 0, 0.6);
+}
 
 }

@@ -41,7 +41,7 @@ const Weeks = ({ onDelete }) => {
   const isAdmin = checkUserIsAdmin(currentUser); //   const nodeRef = useRef(null);
   if (isAdmin) {
     return (
-      <div>
+      <div className="containerMain">
         <div className="containerWeek">
           <AddWeek onAdd={addWeek} onDelete={deleteWeek} />
         </div>

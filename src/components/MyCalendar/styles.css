@@ -170,6 +170,7 @@ span:last-child {
 }
 .calendarBox{
   padding-top: 7rem;
+  border-radius: 0 0 15px 15px;
 }
 .calendar img {
 

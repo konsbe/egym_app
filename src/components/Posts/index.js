@@ -10,7 +10,7 @@ const Posts = (props) => {
   return (
     <div className="posts">
       <Task />
-      <Button type="submit" className="btnform">
+      <Button type="submit" className="btnLoadMore">
         Load More
       </Button>
     </div>
