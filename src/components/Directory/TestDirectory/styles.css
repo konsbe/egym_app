@@ -1,5 +1,32 @@
+
+.testpage{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.5);
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: url('image2.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    opacity: .8;
+}
+
+.testpage::before{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    min-height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
+
 .testView  {
   background-image: url("image2.png");
-  background-repeat: no-repeat;
+     background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
   background-attachment: fixed;
+  opacity: .8;
+
 }

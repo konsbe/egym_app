@@ -8,7 +8,7 @@ import { Link } from "react-scroll";
 const TestDirectory = (props) => {
   return (
     <div>
-      <section className="homepage">
+      <section className="testpage">
         <div className="mainDetails">
           <h1 className="headings" id="homeHeading">
             What is the test

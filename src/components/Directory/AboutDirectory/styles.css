@@ -4,6 +4,7 @@
     box-sizing: border-box;
     margin-bottom: 5rem;
     background-color: rgba(0,0,0,0.5);
+    background: url('image2.png') no-repeat center center/cover;
     min-height: 100vh;
 }
 .aboutpage::before{
@@ -11,7 +12,6 @@
     position:absolute;
     top:0;
     right:0;
-    background: url('image2.png') no-repeat center center/cover;
     /* height: 900px; */
     width: 100%;
     min-height: 100vh;
