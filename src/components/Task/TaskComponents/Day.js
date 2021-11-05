@@ -74,6 +74,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
 
   // console.log(days);
 
+
   const handleClick = (e) => {
     const list = [];
     tasks.map((task) => {
@@ -88,7 +89,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
   }
 
   const handleOnClick = async (e) => {
-
     e.preventDefault();
 
     const dateObj = new Date();
@@ -120,66 +120,126 @@ const Day = ({ day, onDelete, func, ...days }) => {
     setTimeout(refreshPage, 300);
   };
 
+  let x = { height: "auto" };
+  const handleShow = async () => {
+    // let x = await { height: "auto", marginBottom: "0.3rem" };
+    console.log(x);
+    setShowDay(!showDay);
+  };
+
   // tasks.map((task) => list.push(task));
 
   // const ref = { showDay };
   const isAdmin = checkUserIsAdmin(currentUser);
-
-  return (
-    <div>
-      {/* <Day days={days} /> */}
-      <div className="basiContainer">
-        <div className="headerAddDay">
-          <h2 style={{ fontSize: 30 }} onClick={() => setShowDay(!showDay)}>
-            {day.title}{" "}
-          </h2>
-          <FaTimes
-            style={{ color: "black", cursor: "pointer", height: 20 }}
-            onClick={() => onDelete(day.id)}
-          />
-        </div>
-        {/* {showDay && ( */}
-
-        <CSSTransition
-          // in={true}
-          nodeRef={nodeRef}
-          in={showDay}
-          appear={true}
-          timeout={500}
-          classNames="transition"
-          unmountOnExit
-          // unmountOnEnter
-        >
-          <div className="toggleWrapper" ref={nodeRef}>
-            <Header />
-            {isAdmin && <AddTask onAdd={addTask} />}
-            {tasks.length > 0 ? (
-              <Tasks
-                tasks={tasks}
-                onDelete={deleteTask}
-                onToggle={toggleReminder}
-              />
-            ) : (
-              "No tasks"
-            )}
-
-            {isAdmin && (
-              <button onClick={handleClick} className="btnAdd btn-block">
-                AddDay
-              </button>
-            )}
-
-            {!isAdmin && (
-              <button onClick={handleOnClick} className="btnAdd btn-block">
-                AddDay
-              </button>
-            )}
+  if (isAdmin) {
+    return (
+      <div>
+        {/* <Day days={days} /> */}
+        <div className="basiContainer">
+          <div className="headerAddDay">
+            <h2 style={{ fontSize: 30 }} onClick={handleShow}>
+              {day.title}{" "}
+            </h2>
+            <FaTimes
+              style={{ color: "black", cursor: "pointer", height: 20 }}
+              onClick={() => onDelete(day.id)}
+            />
           </div>
-        </CSSTransition>
-        {/* )} */}
+          {/* {showDay && ( */}
+
+          <CSSTransition
+            // in={true}
+            nodeRef={nodeRef}
+            in={showDay}
+            appear={true}
+            timeout={500}
+            classNames="transition"
+            unmountOnExit
+            // unmountOnEnter
+          >
+            <div className="toggleWrapper" ref={nodeRef}>
+              <Header />
+              {isAdmin && <AddTask onAdd={addTask} />}
+              {tasks.length > 0 ? (
+                <Tasks
+                  tasks={tasks}
+                  onDelete={deleteTask}
+                  onToggle={toggleReminder}
+                />
+              ) : (
+                "No tasks"
+              )}
+
+              {isAdmin && (
+                <button onClick={handleClick} className="btnAdd btn-block">
+                  AddDay
+                </button>
+              )}
+
+              {!isAdmin && (
+                <button onClick={handleOnClick} className="btnAdd btn-block">
+                  AddDay
+                </button>
+              )}
+            </div>
+          </CSSTransition>
+          {/* )} */}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="dayContainer" style={x}>
+        {/* <Day days={days} /> */}
+        <div className="basiContainer">
+          <div className="headerAddDay">
+            <h2 style={{ fontSize: 30 }} onClick={handleShow}>
+              {day.title}{" "}
+            </h2>
+          </div>
+          {/* {showDay && ( */}
+
+          <CSSTransition
+            // in={true}
+            nodeRef={nodeRef}
+            in={showDay}
+            appear={true}
+            timeout={500}
+            classNames="transition"
+            unmountOnExit
+            // unmountOnEnter
+          >
+            <div className="toggleWrapper" ref={nodeRef}>
+              <Header />
+              {isAdmin && <AddTask onAdd={addTask} />}
+              {tasks.length > 0 ? (
+                <Tasks
+                  tasks={tasks}
+                  onDelete={deleteTask}
+                  onToggle={toggleReminder}
+                />
+              ) : (
+                "No tasks"
+              )}
+
+              {isAdmin && (
+                <button onClick={handleClick} className="btnAdd btn-block">
+                  AddDay
+                </button>
+              )}
+
+              {!isAdmin && (
+                <button onClick={handleOnClick} className="btnAdd btn-block">
+                  AddDay
+                </button>
+              )}
+            </div>
+          </CSSTransition>
+          {/* )} */}
+        </div>
+      </div>
+    );
+  }
 };;
 
 export default Day;

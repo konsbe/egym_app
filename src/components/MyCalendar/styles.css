@@ -86,6 +86,9 @@
 
 
 }
+.rbc-toolbar-label{
+  margin-top: 5px;
+}
 .rbc-btn-group button{
   /* font-size: 0.6rem; */
   /* width:80% */

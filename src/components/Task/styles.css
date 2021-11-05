@@ -32,7 +32,8 @@ margin: auto;
   /* max-width: 500px; */
   margin: 30px auto;
   overflow: auto;
-  min-height: 300px;
+
+  /* min-height: 300px; */
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
@@ -243,7 +244,8 @@ margin: auto;
 
 .transition-enter, .transition-appear {
   opacity: 0.01;
-  transform: translate(0, -10px);
+  transform: translate(0, -30px);
+
   /* background-color: rgba(58, 87, 75,1); */
 }
 .transition-enter-active, .transition-appear-active {
@@ -258,7 +260,7 @@ margin: auto;
 }
 .transition-exit-active {
   opacity: 0.01;
-  transform: translate(0, 10px);
+  transform: translate(0, 30px);
   transition: all 500ms ease-in;
 
 }
@@ -286,6 +288,28 @@ margin: auto;
 }
 .task h3 {
   font-size: 1rem;
+}
+.headerAddDay h2 {
+  margin: auto;
+  border-bottom: 1px solid red;
+  padding-left: 1rem;
+}
+.dayContainer{
+  /* height: 100px; */
+}
+.dayContainer{
+  /* height: auto; */
+}
+.weeksContainer{
+  background-color: rgb(240, 240, 240);
+  box-shadow: 1px 1px 3px rgba(224, 255, 49, 0.6), 0 0 6px rgba(224, 255, 49, 0.6), 0 0 9px rgba(224, 255, 49, 0.6);
+
+}
+.weeksContainer:hover{
+  box-shadow: 1px 1px 3px rgba(0, 70, 46,0.6), 0 0 6px rgba(0, 70, 46,0.6), 0 0 9px rgba(0, 70, 46,0.6);
+}
+.task p {
+  text-align: center;
 }
 }
 
