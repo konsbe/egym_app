@@ -35,13 +35,8 @@ export const SideBarDataLogIn = [
     icon: <CgProfile />,
     cName: "nav-text",
   },
-  {
-    title: "LOG IN / SIGN UP",
-    path: "/login",
-    icon: <BiLogInCircle />,
-    cName: "nav-text",
-  },
 ];
+
 export const SideBarDataLogOut = [
   {
     title: "ΗΟΜΕ",
@@ -63,14 +58,8 @@ export const SideBarDataLogOut = [
   },
   {
     title: "My Profile",
-    path: "/profile",
-    icon: <CgProfile />,
-    cName: "nav-text",
-  },
-  {
-    title: "LOG OUT",
     path: "/login",
-    icon: <BiLogOutCircle />,
+    icon: <CgProfile />,
     cName: "nav-text",
   },
 ];

@@ -32,9 +32,9 @@ const Courses = (props) => {
               ...course,
             };
             return (
-              <div className="mytable">
+              <div className="mytable" key={index}>
                 <div className="card" key={index}>
-                  {/* <Program {...configCourse} /> */}
+                  {/* <Program {...configCourse} s/> */}
                   <div className="card-image">
                     {/* <img src={image3} alt=""></img> */}
                   </div>

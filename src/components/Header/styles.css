@@ -134,6 +134,7 @@ ul{
         height: 100vh;
     width: 80%;
  align-items: flex-end;
+
     /* text-align: start; */
 }
 
@@ -150,13 +151,14 @@ ul{
      top: 0;
      left: 0;
        left: -100%;
-  transition: 9800ms;
+  transition: 2s ease-in-out!important;
      /* bottom: 0; */
     }
 
     .nav-menu.active {
   left: 0;
-  transition: 3500ms;
+  transition: 2s ease-in-out!important;
+  z-index: 2;
 }
 
 
@@ -205,6 +207,7 @@ dl, ol, ul {
 }
 .navbar-toggle .menu-bars {
     margin-top: 10px;
+
 
 }
 

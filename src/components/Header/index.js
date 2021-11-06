@@ -14,6 +14,9 @@ import { SideBarDataLogIn, SideBarDataLogOut } from "./SideBarData";
 
 import { FaBars } from "@react-icons/all-files/fa/FaBars";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
+import { BiLogOutCircle } from "@react-icons/all-files/bi/BiLogOutCircle";
+import { BiLogInCircle } from "@react-icons/all-files/bi/BiLogInCircle";
+
 import snatch from "./../../assets/snatch.jpg";
 
 const mapState = ({ user }) => ({
@@ -194,7 +197,50 @@ const Header = (props) => {
             <FaBars onClick={showSideBar} />
           </Link>
         </div>
-        {sidebar && (
+        {currentUser && sidebar && (
+          <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+            <ul className="nav-menu-items" onClick={showSideBar}>
+              <li className="navbar-toggle">
+                <div onClick={showSideBar} className="menu-bars">
+                  <AiOutlineClose />
+                </div>
+              </li>
+              {SideBarDataLogIn.map((item, index) => {
+                if (index === 3) {
+                  return (
+                    <li key={index} className={item.cname}>
+                      <Link to={`/user/${users.id}`}>
+                        <span>{item.title}</span>
+                        <span className="icon">{item.icon}</span>
+                        {/* {item.icon} */}
+                      </Link>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={index} className={item.cname}>
+                      <Link to={item.path}>
+                        <span>{item.title}</span>
+                        <span className="icon">{item.icon}</span>
+                        {/* {item.icon} */}
+                      </Link>
+                    </li>
+                  );
+                }
+              })}
+              <li className="navbar-toggle">
+                <div onClick={() => signOut()} className="nav-text">
+                  <span onClick={() => signOut()}>LOGOUT</span>
+                  <span className="icon">
+                    <BiLogOutCircle />
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        )}
+
+        {!currentUser && sidebar && (
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
             <ul className="nav-menu-items" onClick={showSideBar}>
               <li className="navbar-toggle">
@@ -203,30 +249,24 @@ const Header = (props) => {
                 </div>
               </li>
               {SideBarDataLogOut.map((item, index) => {
-                {
-                  if (index === 3) {
-                    return (
-                      <li key={index} className={item.cname}>
-                        <Link to={"/user/${users.id}"}>
-                          <span>{item.title}</span>
-                          <span className="icon">{item.icon}</span>
-                          {/* {item.icon} */}
-                        </Link>
-                      </li>
-                    );
-                  } else {
-                    return (
-                      <li key={index} className={item.cname}>
-                        <Link to={item.path}>
-                          <span>{item.title}</span>
-                          <span className="icon">{item.icon}</span>
-                          {/* {item.icon} */}
-                        </Link>
-                      </li>
-                    );
-                  }
-                }
+                return (
+                  <li key={index} className={item.cname}>
+                    <Link to={item.path}>
+                      <span>{item.title}</span>
+                      <span className="icon">{item.icon}</span>
+                      {/* {item.icon} */}
+                    </Link>
+                  </li>
+                );
               })}
+              <li className="navbar-toggle">
+                <Link to="/login" className="nav-text">
+                  <span>LOGIN</span>
+                  <span className="icon">
+                    <BiLogInCircle />
+                  </span>
+                </Link>
+              </li>
             </ul>
           </nav>
         )}
