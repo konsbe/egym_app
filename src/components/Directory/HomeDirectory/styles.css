@@ -8,10 +8,14 @@
     background: url('image2.png') no-repeat center center/cover;
     opacity: .8;
 }
+.mainDetails{
+     position: absolute;
+  /* width: 50%; */
+}
 
 .homepage::before{
     content:"";
-    position:absolute;
+    /* position:absolute; */
     top:0;
     right:0;
     min-height: 100vh;
