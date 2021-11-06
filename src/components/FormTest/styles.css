@@ -27,7 +27,7 @@
         align-items: center;
         text-align: center;
         width: 100%;
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
     .labelTitle{
         text-align: center;
@@ -35,7 +35,33 @@
 .formRow{
     margin-left: 0rem!important;
 }
+.btnform{
+    height: 2rem;
+    font-size: 1rem;
+    border: 1px solid;
+}
+.btnform:hover{
+     box-shadow: 1px 1px 3px rgba(224, 255, 49, 0.6), 0 0 6px rgba(224, 255, 49, 0.6), 0 0 9px rgba(224, 255, 49, 0.6);
 
+}
+.nestedInputs{
+        min-width: 100%;
+    min-height: 100%;
+    margin:0;
+
+}
+.subinputs{
+     /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* overflow: hidden; */
+    display: flex;
+    justify-content: space-between;
+        min-width: 100%;
+    min-height: 100%;
+    margin:0;
+
+}
     /* position: absolute; */
     /* align-items: center; */
 
