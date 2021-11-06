@@ -10,7 +10,7 @@ import "./styles.css";
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
-  user: state.user.currentUser,
+  user: state.user.user,
 });
 
 const UserProfile = ({}) => {

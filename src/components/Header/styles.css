@@ -141,7 +141,7 @@ ul{
 .nav-menu{
     position: fixed;
       display: flex;
-      justify-content: space-between;
+      /* justify-content: space-between; */
       align-items: center;
       /* padding: 0.7rem 2rem; */
       overflow: hidden;
@@ -151,13 +151,13 @@ ul{
      top: 0;
      left: 0;
        left: -100%;
-  transition: 2s ease-in-out!important;
+  transition: left 2s ease-in-out;
      /* bottom: 0; */
     }
 
     .nav-menu.active {
   left: 0;
-  transition: 2s ease-in-out!important;
+  transition: left 2s ease-in-out;
   z-index: 2;
 }
 
@@ -227,7 +227,10 @@ span {
 
 }
 
+.nav-menu-items {
+    /* align-items: flex-start; */
 
+}
 
 
 }
