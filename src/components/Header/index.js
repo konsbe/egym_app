@@ -194,17 +194,18 @@ const Header = (props) => {
       <div className="phoneBar">
         <div className={x.join(" ")} sticky="top" onScroll={handleScroll}>
           <Link to="#" className="menu-bars">
-            <FaBars onClick={showSideBar} />
+            {!sidebar && <FaBars onClick={showSideBar} />}
+            {sidebar && <AiOutlineClose onClick={showSideBar} />}
           </Link>
         </div>
         {currentUser && sidebar && (
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
             <ul className="nav-menu-items" onClick={showSideBar}>
-              <li className="navbar-toggle">
-                <div onClick={showSideBar} className="menu-bars">
+              {/* <li className="navbar-toggle">
+                <div onClick={showSideBar} className="menu-bars close">
                   <AiOutlineClose />
                 </div>
-              </li>
+              </li> */}
               {SideBarDataLogIn.map((item, index) => {
                 if (index === 3) {
                   return (
@@ -243,11 +244,6 @@ const Header = (props) => {
         {!currentUser && sidebar && (
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
             <ul className="nav-menu-items" onClick={showSideBar}>
-              <li className="navbar-toggle">
-                <div onClick={showSideBar} className="menu-bars">
-                  <AiOutlineClose />
-                </div>
-              </li>
               {SideBarDataLogOut.map((item, index) => {
                 return (
                   <li key={index} className={item.cname}>

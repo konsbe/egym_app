@@ -1,6 +1,7 @@
 
+@media (min-width: 980px) {
 .forminput {
-    width: 25rem;
+    width: 35 rem;
     height: 3rem;
     font-size: 2rem;
     padding-left: 1rem;
@@ -53,4 +54,30 @@ text-align: center  ;
     text-decoration: underline;
     color: blue;
 }
+}
+@media (max-width: 980px) {
+.wrap{
 
+    display: flex;
+    flex-direction: column;
+}
+.forminput{
+    height: 2rem;
+       font-size: 2rem;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    border-radius:0.5rem ;
+
+}
+.formSelect{
+    height: 2rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius:0.5rem;
+    border:solid 2.9px;
+}
+.formtext{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+}

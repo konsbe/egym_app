@@ -96,9 +96,34 @@ ul{
 .navigation-bar{
     width: 100%;
     height: 3rem;
-    z-index: 2;
+    z-index: 4;
+    position: fixed;
+     background-color: rgba(37, 37, 37, 0.9);
     /* margin-bottom: 0px; */
 }
+.navigation-bar.scrolled{
+
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(37, 37, 37, 0.9);
+
+    transition: background 500ms;
+
+}
+
+
+
+.nav-menu-items  li{
+    max-height:1rem ;
+}
+
+.nav-menu-items:first-child{
+    margin-top: 7rem;
+    /* max-height: 30px; */
+}
+
 }
 .navigation-bar{
     font-family: 'Roboto', sans-serif;
@@ -227,11 +252,13 @@ span {
 
 }
 
-.nav-menu-items {
-    /* align-items: flex-start; */
-
+.navbar-toggle {
+    float: left!important;
+    justify-content: flex-start;
 }
-
+/* .navbar-toggle{
+    display: none;
+} */
 
 }
 @media screen and (min-width: 901px){

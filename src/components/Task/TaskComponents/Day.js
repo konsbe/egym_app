@@ -137,7 +137,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
         {/* <Day days={days} /> */}
         <div className="basiContainer">
           <div className="headerAddDay">
-            <h2 style={{ fontSize: 30 }} onClick={handleShow}>
+            <h2 onClick={handleShow} className="titleDay">
               {day.title}{" "}
             </h2>
             <FaTimes
@@ -193,7 +193,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
         {/* <Day days={days} /> */}
         <div className="basiContainer">
           <div className="headerAddDay">
-            <h2 style={{ fontSize: 30 }} onClick={handleShow}>
+            <h2 className='titleDay' onClick={handleShow}>
               {day.title}{" "}
             </h2>
           </div>

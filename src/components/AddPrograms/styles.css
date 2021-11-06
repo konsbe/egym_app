@@ -59,14 +59,20 @@
     cursor: pointer;
 }
 
+
+@media screen and (min-width: 901px){
+
+.card{
+    margin:2rem;
+}
 .card:nth-child(even){
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
 }
 
+
 .courses:hover .card:nth-child(even){
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 }
 
 .card-image{
@@ -97,10 +103,10 @@
 
 
 .card-stats {
-  grid-area: stats;
-  display: grid;
-  margin-top: 1rem;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-area: stats;
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
   grid-template-rows: 1fr;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -132,6 +138,8 @@
   cursor: pointer;
   margin:30px;
 } */
+
+
 @media screen and (max-width: 900px){
 
     .card{
@@ -154,10 +162,9 @@
     margin-bottom: 4rem;
 }
 
-.card:nth-child(even){
-    margin-left: 0.7rem;
-    margin-right: 0.7rem;
-    margin-bottom: 2rem;
+.card:first-child{
+
+    margin-top: 2rem;
 }
 
 .courses{

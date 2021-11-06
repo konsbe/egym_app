@@ -19,6 +19,10 @@
 }
 
 @media (max-width: 980px) {
+    .wrap h1{
+        text-align: center;
+        color: aliceblue;
+    }
     .forminput{
         align-items: center;
         text-align: center;
@@ -28,7 +32,9 @@
     .labelTitle{
         text-align: center;
     }
-
+.formRow{
+    margin-left: 0rem!important;
+}
 
     /* position: absolute; */
     /* align-items: center; */
