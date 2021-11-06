@@ -176,13 +176,13 @@ ul{
      top: 0;
      left: 0;
        left: -100%;
-  transition: left 2s ease-in-out;
+  transition: 2s ease-in-out;
      /* bottom: 0; */
     }
 
     .nav-menu.active {
-  left: 0;
-  transition: left 2s ease-in-out;
+        left: 0;
+        transition: 2s ease-in-out;
   z-index: 2;
 }
 
