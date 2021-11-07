@@ -39,14 +39,25 @@ flex-grow: 1;
         display: none;
     }
     .navBar{
+        display:none;
         display: flex;
         flex-direction: column;
+        height: 3rem;
+    }
+    .computerBar{
+        display:none;
     }
 
 }
 @media screen and (min-width: 901px){
     .navigationBar{
         display: none;
+    }
+    .phoneBar{
+        display: none;
+    }
+    .navigation-bar{
+        /* display: none; */
     }
 
 }

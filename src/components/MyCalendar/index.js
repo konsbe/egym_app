@@ -29,7 +29,7 @@ const localizer = momentLocalizer(moment); // or globalizeLocalizer
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
-  user: state.user.currentUser,
+  user: state.user.user,
 });
 
 function MyCalendar() {
