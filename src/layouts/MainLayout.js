@@ -9,8 +9,8 @@ const MainLayout = (props) => {
   return (
     <div className="layout">
       <div className="navBar">
-        <Header className="computerBar" {...props} />
         <NavigationBar className="phoneBar" {...props} />
+        <Header className="computerBar" {...props} />
       </div>
 
       <div className="props">{props.children}</div>

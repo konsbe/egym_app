@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
+  user: user.user,
   users: user.currentUser,
 });
 
@@ -23,6 +24,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [calendarTracker, setCalendarTracker] = useState([]);
+  const { user } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
   const [showDay, setShowDay] = useState(false);
   const list = [];
@@ -74,7 +76,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
 
   // console.log(days);
 
-
   const handleClick = (e) => {
     const list = [];
     tasks.map((task) => {
@@ -105,11 +106,11 @@ const Day = ({ day, onDelete, func, ...days }) => {
       await calendarTracker.push(task);
     });
     await calendarTracker.unshift(day);
-    currentUser.calendarTracker.map(async (day) => {
+    user.calendarTracker.map(async (day) => {
       await calendarTracker.push(day);
     });
     list.push(calendarTracker);
-    // calendarTracker.push(currentUser.calendarTracker);
+    calendarTracker.push(currentUser.calendarTracker);
     console.log(currentUser.calendarTracker);
     console.log(calendarTracker);
     dispatch(
@@ -193,7 +194,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
         {/* <Day days={days} /> */}
         <div className="basiContainer">
           <div className="headerAddDay">
-            <h2 className='titleDay' onClick={handleShow}>
+            <h2 className="titleDay" onClick={handleShow}>
               {day.title}{" "}
             </h2>
           </div>

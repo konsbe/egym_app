@@ -9,11 +9,13 @@ import storage from "redux-persist/lib/storage";
 import userReducer from "./User/user.reducer";
 import exerciseReducer from "./Exercises/exercises.reducers";
 import courseReducer from "./Courses/courses.reducers";
+import calendarTrackerReducer from "./CalendarTracker/calendarTracker.reducers";
 
 export const rootReducer = combineReducers({
   user: userReducer,
   exercisesData: exerciseReducer,
   coursesData: courseReducer,
+  calendarTrackers: calendarTrackerReducer,
   // users: userReducer,
 });
 

@@ -53,10 +53,10 @@ const NavigationBar = (props) => {
   });
 
   let x = ["navigation-bar-phone"];
-  let y = ["navmenu"];
+  let y = ["navmenu-phone"];
   if (scrolled) {
     x.push("navigation-bar-phone scrolled");
-    y.push("navmenu scrolled");
+    y.push("navmenu-phone scrolled");
   }
   const configUser = { ...currentUser };
 

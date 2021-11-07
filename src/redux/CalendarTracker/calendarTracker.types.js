@@ -1,0 +1,10 @@
+const calendarTrackerTypes = {
+  ADD_NEW_CALENDAR: "ADD_NEW_CALENDAR",
+  ADD_NEW_DAY: "ADD_NEW_DAY",
+  FETCH_CALENDAR_START: "FETCH_CALENDAR_START",
+  SET_CALENDAR: "SET_CALENDAR",
+  SET_DAY: "SET_DAY",
+  DELETE_DAY_START: "DELETE_DAY_START",
+};
+
+export default calendarTrackerTypes;

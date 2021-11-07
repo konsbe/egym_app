@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpUserStart } from "../../redux/User/user.actions";
+import { addCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
 
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
@@ -65,10 +66,11 @@ const SignUp = (props) => {
     setErrors([]);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     dispatch(
-      signUpUserStart({
+      await signUpUserStart({
         firstName,
         lastName,
         genre,
@@ -85,6 +87,7 @@ const SignUp = (props) => {
         calendarTracker,
       })
     );
+    dispatch(addCalendarStart({ email }));
   };
 
   const configAuthWrapper = {

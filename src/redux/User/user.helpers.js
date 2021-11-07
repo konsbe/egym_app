@@ -191,6 +191,23 @@ export const handleUpdateCalendar = ({ calendarTracker }) => {
   });
 };
 
+// export const handleUpdateCalendar = ({ calendarTracker }) => {
+//   return new Promise((resolve, reject) => {
+//     firestore
+//       .collection(`users/${firebase.auth().currentUser.uid}/calendarTracker`)
+//       .doc()
+//       .set({ calendarTracker })
+
+//       .then(() => {
+//         resolve();
+//       })
+//       .catch((err) => {
+//         reject(err);
+//       });
+//   });
+// };
+
+
 export const handleUpdatePayment = ({ payment, documentID }) => {
   return new Promise((resolve, reject) => {
     firestore
