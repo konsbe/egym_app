@@ -15,7 +15,7 @@ export const rootReducer = combineReducers({
   user: userReducer,
   exercisesData: exerciseReducer,
   coursesData: courseReducer,
-  calendarTrackers: calendarTrackerReducer,
+  calendarData: calendarTrackerReducer,
   // users: userReducer,
 });
 

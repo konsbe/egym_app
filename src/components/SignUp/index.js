@@ -69,6 +69,7 @@ const SignUp = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    dispatch(addCalendarStart({ email }));
     dispatch(
       await signUpUserStart({
         firstName,
@@ -87,7 +88,6 @@ const SignUp = (props) => {
         calendarTracker,
       })
     );
-    dispatch(addCalendarStart({ email }));
   };
 
   const configAuthWrapper = {

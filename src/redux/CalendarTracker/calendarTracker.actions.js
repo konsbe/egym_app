@@ -5,15 +5,25 @@ export const addCalendarStart = (calendarData) => ({
   payload: calendarData,
 });
 
-export const fetchCalendarStart = () => ({
-  type: calendarTrackerTypes.FETCH_CALENDAR_START,
+export const fetchCalendarsStart = () => ({
+  type: calendarTrackerTypes.FETCH_CALENDARS_START,
 });
 
-export const setCalendar = (calendars) => ({
-  type: calendarTrackerTypes.SET_CALENDAR,
-  payload: calendars,
+export const setCalendars = (calendarTracker) => ({
+  type: calendarTrackerTypes.SET_CALENDARS,
+  payload: calendarTracker,
 });
 
+///next
+export const fetchUserCalendarStart = (email) => ({
+  type: calendarTrackerTypes.FETCH_USER_CALENDAR,
+  payload: email,
+});
+
+export const setUserCalendar = (user) => ({
+  type: calendarTrackerTypes.SET_USER_CALENDAR,
+  payload: user,
+});
 // export const deleteExerciseStart = (exerciseID) => ({
 //   type: exerciseTypes.DELETE_EXERCISE_START,
 //   payload: exerciseID,

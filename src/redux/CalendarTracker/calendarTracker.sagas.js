@@ -4,10 +4,15 @@ import calendarTrackerTypes from "./calendarTracker.types";
 import {
   handleAddCalendarTracker,
   handleFetchCalendarTracker,
+  handleFetchUserCalendar,
   //   handleFetchExercises,
   //   handleDeleteExercise,
 } from "./calendarTracker.helpers";
-import { setCalendar, fetchCalendarStart } from "./calendarTracker.actions";
+import {
+  setCalendars,
+  fetchCalendarsStart,
+  setUserCalendar,
+} from "./calendarTracker.actions";
 
 export function* addCalendar({ payload: { email } }) {
   try {
@@ -17,7 +22,7 @@ export function* addCalendar({ payload: { email } }) {
       // userIDUSER: auth.currentUser.uid,
       createdDate: timestamp,
     });
-    yield put(fetchCalendarStart());
+    yield put(fetchCalendarsStart());
   } catch (err) {
     //
   }
@@ -29,13 +34,32 @@ export function* onAddCalendarStart() {
 
 export function* fetchCalendars() {
   try {
-    const calendars = yield handleFetchCalendarTracker();
-    yield put(setCalendar(calendars));
+    const calendarTracker = yield handleFetchCalendarTracker();
+    yield put(setCalendars(calendarTracker));
   } catch (err) {
     //
   }
 }
 
+export function* onFetchCalendarsStart() {
+  yield takeLatest(calendarTrackerTypes.FETCH_CALENDARS_START, fetchCalendars);
+}
+
+export function* fetchUserCalendar({ payload }) {
+  try {
+    const user = yield handleFetchUserCalendar(payload);
+    yield put(setUserCalendar(user));
+  } catch (err) {}
+}
+
+export function* onFetchUserCalendarStart() {
+  yield takeLatest(calendarTrackerTypes.FETCH_USER_CALENDAR, fetchUserCalendar);
+}
+
 export default function* calendarTrackerSagas() {
-  yield all([call(onAddCalendarStart)]);
+  yield all([
+    call(onAddCalendarStart),
+    call(onFetchUserCalendarStart),
+    call(onFetchCalendarsStart),
+  ]);
 }

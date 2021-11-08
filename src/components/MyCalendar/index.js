@@ -22,6 +22,8 @@ import calendarIcon from "./calendarIcon.jpg";
 
 import "./styles.css";
 
+import { fetchUserCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
+
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
 };
@@ -30,6 +32,7 @@ const localizer = momentLocalizer(moment); // or globalizeLocalizer
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
+  calendarTracker: state.calendarTrackers,
 });
 
 function MyCalendar() {
@@ -43,9 +46,13 @@ function MyCalendar() {
       const { calendarTracker } = await user;
       setEvents(calendarTracker);
       // calendarTracker.map((day) => events.push(day));
-      // console.log(events);
     } catch (err) {}
   };
+
+  const { email } = user;
+  useEffect(() => {
+    dispatch(fetchUserCalendarStart(email));
+  }, []);
 
   fetchData();
 

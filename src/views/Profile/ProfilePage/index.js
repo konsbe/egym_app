@@ -13,9 +13,12 @@ import Button from "./../../../components/Forms/Button";
 import Popup from "../../../components/Popup";
 import { updateUserStart } from "../../../redux/User/user.actions";
 
-const mapState = (state) => ({
-  currentUser: state.user.currentUser,
-  user: state.user.user,
+import { fetchCalendarsStart } from "../../../redux/CalendarTracker/calendarTracker.actions";
+
+const mapState = ({ user, calendarData }) => ({
+  currentUser: user.currentUser,
+  user: user.user,
+  calendars: calendarData.calendarTracker,
 });
 
 const ProfilePage = (props) => {
@@ -28,6 +31,7 @@ const ProfilePage = (props) => {
   const [gear, setGear] = useState("");
   const [injuries, setInjuries] = useState("");
   const toggleModal = () => setHideModal(!hideModal);
+  const { calendars } = useSelector(mapState);
 
   let x = ["profile_body"];
   let y = ["userPosts"];
@@ -53,6 +57,7 @@ const ProfilePage = (props) => {
   // };
 
   useEffect(() => {
+    dispatch(fetchCalendarsStart());
     if (weight < 1) {
       setWeight(user.weight);
     }
