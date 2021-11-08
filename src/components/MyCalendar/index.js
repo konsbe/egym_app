@@ -32,29 +32,34 @@ const localizer = momentLocalizer(moment); // or globalizeLocalizer
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
-  calendarTracker: state.calendarTrackers,
+  calendar: state.calendarTracker,
 });
 
 function MyCalendar() {
   const [events, setEvents] = useState([]);
+
   const dispatch = useDispatch();
   const { userID } = useParams();
 
   const { user } = useSelector(mapState);
-  const fetchData = async () => {
-    try {
-      const { calendarTracker } = await user;
-      setEvents(calendarTracker);
-      // calendarTracker.map((day) => events.push(day));
-    } catch (err) {}
-  };
 
   const { email } = user;
   useEffect(() => {
-    dispatch(fetchUserCalendarStart(email));
-  }, []);
+    const fetchData = async () => {
+      try {
+        const { calendarTracker } = await user;
+        // const mymail = await email;
+        setEvents(calendarTracker);
+        // calendarTracker.map((day) => events.push(day));
+      } catch (err) {}
+    };
+    const fetchDataDispatch = async () => {
+      await dispatch(fetchUserCalendarStart(email));
+    };
 
-  fetchData();
+    // console.log(email);
+    fetchData().then(fetchDataDispatch());
+  }, []);
 
   return (
     <div className="AppCalendar">

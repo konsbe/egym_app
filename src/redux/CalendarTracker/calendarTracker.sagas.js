@@ -47,8 +47,8 @@ export function* onFetchCalendarsStart() {
 
 export function* fetchUserCalendar({ payload }) {
   try {
-    const user = yield handleFetchUserCalendar(payload);
-    yield put(setUserCalendar(user));
+    const calendar = yield handleFetchUserCalendar(payload);
+    yield put(setUserCalendar(calendar));
   } catch (err) {}
 }
 
@@ -59,7 +59,7 @@ export function* onFetchUserCalendarStart() {
 export default function* calendarTrackerSagas() {
   yield all([
     call(onAddCalendarStart),
-    call(onFetchUserCalendarStart),
     call(onFetchCalendarsStart),
+    call(onFetchUserCalendarStart),
   ]);
 }

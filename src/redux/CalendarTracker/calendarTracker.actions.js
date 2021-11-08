@@ -20,9 +20,9 @@ export const fetchUserCalendarStart = (email) => ({
   payload: email,
 });
 
-export const setUserCalendar = (user) => ({
+export const setUserCalendar = (calendar) => ({
   type: calendarTrackerTypes.SET_USER_CALENDAR,
-  payload: user,
+  payload: calendar,
 });
 // export const deleteExerciseStart = (exerciseID) => ({
 //   type: exerciseTypes.DELETE_EXERCISE_START,

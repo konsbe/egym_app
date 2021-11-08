@@ -13,7 +13,10 @@ import Button from "./../../../components/Forms/Button";
 import Popup from "../../../components/Popup";
 import { updateUserStart } from "../../../redux/User/user.actions";
 
-import { fetchCalendarsStart } from "../../../redux/CalendarTracker/calendarTracker.actions";
+import {
+  fetchCalendarsStart,
+  fetchUserCalendarStart,
+} from "../../../redux/CalendarTracker/calendarTracker.actions";
 
 const mapState = ({ user, calendarData }) => ({
   currentUser: user.currentUser,
@@ -58,6 +61,7 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     dispatch(fetchCalendarsStart());
+    dispatch(fetchUserCalendarStart(user.email));
     if (weight < 1) {
       setWeight(user.weight);
     }

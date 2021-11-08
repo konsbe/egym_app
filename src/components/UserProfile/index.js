@@ -8,6 +8,8 @@ import imgWomen from "./imgWomen.jpg";
 
 import "./styles.css";
 
+import { fetchUserCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
+
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
@@ -32,12 +34,14 @@ const UserProfile = ({}) => {
     rightShouled,
     rightSoleAnkle,
     leftSoleAnkle,
+    email,
   } = user;
   // const letters = genre.length
 
   useEffect(() => {
     dispatch(fetchUserStart(userID));
   }, []);
+  // dispatch(fetchUserCalendarStart(email));
 
   return (
     <div className="sidebar">
