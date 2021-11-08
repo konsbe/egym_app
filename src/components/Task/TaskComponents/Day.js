@@ -117,13 +117,13 @@ const Day = ({ day, onDelete, func, ...days }) => {
     calendarTracker.push(currentUser.calendarTracker);
     console.log(currentUser.calendarTracker);
 
-    const actionDispatch = () => {
+    const actionDispatch = async () => {
       const calendarID = calendar[0].documentID;
       const calendarEmail = calendar[0].email;
       // console.log(calendarTracker);
       const calendarDay = calendar[0].day;
       // console.log(calendarTracker);
-      calendarTracker.push(...calendarDay);
+      await calendarTracker.push(...calendarDay);
       // console.log(calendarDay);
       dispatch(
         addCalendarDayStart({
