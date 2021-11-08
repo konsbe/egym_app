@@ -32,7 +32,7 @@ const localizer = momentLocalizer(moment); // or globalizeLocalizer
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
-  calendar: state.calendarTracker,
+  calendar: state.calendarData.calendar,
 });
 
 function MyCalendar() {
@@ -42,6 +42,9 @@ function MyCalendar() {
   const { userID } = useParams();
 
   const { user } = useSelector(mapState);
+  const { calendar } = useSelector(mapState);
+
+  const [bool, setBool] = useState(false);
 
   const { email } = user;
   useEffect(() => {
@@ -50,16 +53,23 @@ function MyCalendar() {
         const { calendarTracker } = await user;
         // const mymail = await email;
         setEvents(calendarTracker);
+        fetchDataDispatch();
         // calendarTracker.map((day) => events.push(day));
       } catch (err) {}
     };
-    const fetchDataDispatch = async () => {
-      await dispatch(fetchUserCalendarStart(email));
+    const fetchDataDispatch = () => {
+      setTimeout(() => {
+        dispatch(fetchUserCalendarStart(email));
+      }, 2000);
     };
 
     // console.log(email);
-    fetchData().then(fetchDataDispatch());
+    fetchData();
+
+    console.log(user);
   }, []);
+
+  // console.log(bool);
 
   return (
     <div className="AppCalendar">

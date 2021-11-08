@@ -60,8 +60,9 @@ const ProfilePage = (props) => {
   // };
 
   useEffect(() => {
-    dispatch(fetchCalendarsStart());
-    dispatch(fetchUserCalendarStart(user.email));
+    // dispatch(fetchCalendarsStart());
+    // dispatch(fetchUserCalendarStart(user.email));
+
     if (weight < 1) {
       setWeight(user.weight);
     }

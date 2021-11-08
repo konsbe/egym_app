@@ -13,6 +13,7 @@ import { fetchUserCalendarStart } from "../../redux/CalendarTracker/calendarTrac
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
+  calendar: state.calendarData.calendar,
 });
 
 const UserProfile = ({}) => {
@@ -20,6 +21,7 @@ const UserProfile = ({}) => {
   const { userID } = useParams();
 
   const { user } = useSelector(mapState);
+  const { calendar } = useSelector(mapState);
 
   const {
     userUID,
@@ -39,9 +41,25 @@ const UserProfile = ({}) => {
   // const letters = genre.length
 
   useEffect(() => {
-    dispatch(fetchUserStart(userID));
+    const fetchUser = () => {
+      setTimeout(() => {
+        dispatch(fetchUserStart(userID));
+      }, 1000);
+      fetchCalendar();
+    };
+    const fetchCalendar = () => {
+      setTimeout(() => {
+        // dispatch(fetchUserCalendarStart(email));
+      }, 2000);
+    };
+
+    fetchUser();
+    fetchCalendar();
+    // if (calendar.length === 0) {
+    // setBool(true);
+    // dispatch(fetchUserCalendarStart(email));
+    // }
   }, []);
-  // dispatch(fetchUserCalendarStart(email));
 
   return (
     <div className="sidebar">

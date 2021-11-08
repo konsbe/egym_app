@@ -22,7 +22,7 @@ export const rootReducer = combineReducers({
 const configStorage = {
   key: "root",
   storage,
-  whitelist: ["coursesData"],
+  whitelist: ["user"],
 };
 
 export default persistReducer(configStorage, rootReducer);

@@ -235,7 +235,7 @@ export const handleUpdatePayment = ({ payment, documentID }) => {
 };
 
 
-export const handleFetchUser = (userID) => {
+export const handleFetchUser = (userID, email) => {
   return new Promise((resolve, reject) => {
     firestore
       .collection("users")
