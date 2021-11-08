@@ -5,7 +5,7 @@ import {
   handleAddCalendarTracker,
   handleFetchCalendarTracker,
   handleFetchUserCalendar,
-  //   handleFetchExercises,
+  handleAddCalendarDay,
   //   handleDeleteExercise,
 } from "./calendarTracker.helpers";
 import {
@@ -56,10 +56,28 @@ export function* onFetchUserCalendarStart() {
   yield takeLatest(calendarTrackerTypes.FETCH_USER_CALENDAR, fetchUserCalendar);
 }
 
+export function* addCalendarDay({
+  payload: { calendarTracker, calendarID, calendarEmail },
+}) {
+  try {
+    yield handleAddCalendarDay(calendarTracker, calendarID, calendarEmail);
+    // yield put(setUserCalendar());
+    yield put(fetchCalendarsStart());
+  } catch (err) {}
+}
+
+export function* onAddCalendarDayStart() {
+  yield takeLatest(
+    calendarTrackerTypes.ADD_NEW_CALENDAR_DAY_START,
+    addCalendarDay
+  );
+}
+
 export default function* calendarTrackerSagas() {
   yield all([
     call(onAddCalendarStart),
     call(onFetchCalendarsStart),
     call(onFetchUserCalendarStart),
+    call(onAddCalendarDayStart),
   ]);
 }

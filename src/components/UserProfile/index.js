@@ -22,6 +22,7 @@ const UserProfile = ({}) => {
 
   const { user } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
+  // const { email } = calendar;
 
   const {
     userUID,

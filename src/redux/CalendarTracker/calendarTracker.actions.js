@@ -24,6 +24,11 @@ export const setUserCalendar = (calendar) => ({
   type: calendarTrackerTypes.SET_USER_CALENDAR,
   payload: calendar,
 });
+
+export const addCalendarDayStart = (calendarTracker) => ({
+  type: calendarTrackerTypes.ADD_NEW_CALENDAR_DAY_START,
+  payload: calendarTracker,
+});
 // export const deleteExerciseStart = (exerciseID) => ({
 //   type: exerciseTypes.DELETE_EXERCISE_START,
 //   payload: exerciseID,

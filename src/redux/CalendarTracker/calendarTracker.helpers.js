@@ -1,4 +1,5 @@
 import { firestore } from "../../firebase/utils";
+import { doc, setDoc } from "firebase/firestore";
 
 export const handleAddCalendarTracker = (calendar) => {
   return new Promise((resolve, reject) => {
@@ -15,22 +16,34 @@ export const handleAddCalendarTracker = (calendar) => {
       });
   });
 };
+export const handleAddCalendarDay = (
+  calendarTracker,
+  calendarID,
+  calendarEmail
+) => {
+  // const cityRef = doc('calendarTracker', calendarID, );
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("calendarTracker/")
+      .doc(calendarID)
+      .set(
+        {
+          day: calendarTracker,
+          email: calendarEmail,
+        }
+        // merge: true,
 
-// export const handleAddCalendarDay = (calendar) => {
-//   return new Promise((resolve, reject) => {
-//     firestore
-//       .collection("calendarTracker")
-//       .doc()
-//       .set(calendar)
-//       .then(() => {
-//         resolve();
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         reject(err);
-//       });
-//   });
-// };
+        // { merge: true }
+      )
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        console.log(err);
+        reject(err);
+      });
+  });
+};
 
 export const handleFetchCalendarTracker = () => {
   return new Promise((resolve, reject) => {

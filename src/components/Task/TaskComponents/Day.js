@@ -13,11 +13,13 @@ import { updateUserStart } from "../../../redux/User/user.actions";
 import { checkUserIsAdmin } from "../../../Utils";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { addCalendarDayStart } from "./../../../redux/CalendarTracker/calendarTracker.actions";
 
-const mapState = ({ user }) => ({
+const mapState = ({ user, calendarData }) => ({
   currentUser: user.currentUser,
   user: user.user,
   users: user.currentUser,
+  calendar: calendarData.calendar,
 });
 
 const Day = ({ day, onDelete, func, ...days }) => {
@@ -26,6 +28,8 @@ const Day = ({ day, onDelete, func, ...days }) => {
   const [calendarTracker, setCalendarTracker] = useState([]);
   const { user } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
+  const { calendar } = useSelector(mapState);
+
   const [showDay, setShowDay] = useState(false);
   const list = [];
   const nodeRef = useRef(null);
@@ -106,19 +110,39 @@ const Day = ({ day, onDelete, func, ...days }) => {
       await calendarTracker.push(task);
     });
     await calendarTracker.unshift(day);
-    user.calendarTracker.map(async (day) => {
-      await calendarTracker.push(day);
-    });
+    // user.calendarTracker.map(async (day) => {
+    //   await calendarTracker.push(day);
+    // });
     list.push(calendarTracker);
     calendarTracker.push(currentUser.calendarTracker);
     console.log(currentUser.calendarTracker);
+
+    const actionDispatch = () => {
+      const calendarID = calendar[0].documentID;
+      const calendarEmail = calendar[0].email;
+      // console.log(calendarTracker);
+      const calendarDay = calendar[0].day;
+      // console.log(calendarTracker);
+      calendarTracker.push(...calendarDay);
+      // console.log(calendarDay);
+      dispatch(
+        addCalendarDayStart({
+          calendarTracker,
+          calendarID,
+          calendarEmail,
+          // calendarDay,
+        })
+      );
+    };
+    setTimeout(actionDispatch, 300);
     console.log(calendarTracker);
-    dispatch(
-      await updateUserStart({
-        calendarTracker,
-      })
-    );
-    setTimeout(refreshPage, 300);
+    // console.log(calendarID);
+    // dispatch(
+    //   await updateUserStart({
+    //     calendarTracker,
+    //   })
+    // );
+    // setTimeout(refreshPage, 400);
   };
 
   let x = { height: "auto" };

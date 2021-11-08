@@ -44,6 +44,8 @@ function MyCalendar() {
   const { user } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
 
+  const { documentID } = calendar;
+
   const [bool, setBool] = useState(false);
 
   const { email } = user;
@@ -66,7 +68,9 @@ function MyCalendar() {
     // console.log(email);
     fetchData();
 
-    console.log(user);
+    // console.log(calendar[0].documentID);
+    // console.log(user);
+    // calendar.map((i) => console.log(i));
   }, []);
 
   // console.log(bool);
