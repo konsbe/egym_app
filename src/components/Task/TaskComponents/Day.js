@@ -123,7 +123,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
       // console.log(calendarTracker);
       const calendarDay = calendar[0].day;
       // console.log(calendarTracker);
-      await calendarTracker.push(...calendarDay);
+      // await calendarTracker.push(...calendarDay);
       // console.log(calendarDay);
       dispatch(
         addCalendarDayStart({

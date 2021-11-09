@@ -6,6 +6,7 @@ export const handleAddCalendarTracker = (calendar) => {
     firestore
       .collection("calendarTracker")
       .doc()
+
       .set(calendar)
       .then(() => {
         resolve();
@@ -24,12 +25,16 @@ export const handleAddCalendarDay = (
   // const cityRef = doc('calendarTracker', calendarID, );
   return new Promise((resolve, reject) => {
     firestore
-      .collection("calendarTracker/")
+      .collection("calendarTracker")
       .doc(calendarID)
+      // .doc(calendarID)
+      .collection("day")
+      .doc()
       .set(
         {
-          day: calendarTracker,
-          email: calendarEmail,
+          ...calendarTracker,
+          // day: calendarTracker,
+          // email: calendarEmail,
         }
         // merge: true,
 
