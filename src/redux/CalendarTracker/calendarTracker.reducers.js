@@ -3,6 +3,7 @@ import calendarTrackerTypes from "./calendarTracker.types";
 const INITIAL_STATE = {
   calendarTracker: [],
   calendar: [],
+  calendarDays: [],
 };
 
 const calendarTrackerReducer = (state = INITIAL_STATE, action) => {
@@ -16,6 +17,11 @@ const calendarTrackerReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         calendar: action.payload,
+      };
+    case calendarTrackerTypes.SET_USER_CALENDAR_DAYS:
+      return {
+        ...state,
+        calendarDays: action.payload,
       };
     default:
       return state;

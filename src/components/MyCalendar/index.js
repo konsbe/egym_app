@@ -22,7 +22,10 @@ import calendarIcon from "./calendarIcon.jpg";
 
 import "./styles.css";
 
-import { fetchUserCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
+import {
+  fetchUserCalendarStart,
+  // fetchUserCalendarDays,
+} from "../../redux/CalendarTracker/calendarTracker.actions";
 
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
@@ -44,9 +47,7 @@ function MyCalendar() {
   const { user } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
 
-  const { documentID } = calendar;
-
-  const [bool, setBool] = useState(false);
+  // const { documentID } = calendar;
 
   const { email } = user;
   useEffect(() => {
@@ -55,14 +56,24 @@ function MyCalendar() {
         const { calendarTracker } = await user;
         // const mymail = await email;
         setEvents(calendarTracker);
-        fetchDataDispatch();
+        await fetchDataDispatch();
         // calendarTracker.map((day) => events.push(day));
       } catch (err) {}
     };
-    const fetchDataDispatch = () => {
-      setTimeout(() => {
-        dispatch(fetchUserCalendarStart(email));
+    const fetchDataDispatch = async () => {
+      await setTimeout(() => {
+        dispatch(
+          fetchUserCalendarStart(
+            email
+            // , documentID
+          )
+        );
       }, 2000);
+      // await setTimeout(() => {
+      //   const calID = calendar[0].documentID;
+      //   console.log(calID);
+      //   dispatch(fetchUserCalendarDays(calID));
+      // }, 3000);
     };
 
     // console.log(email);

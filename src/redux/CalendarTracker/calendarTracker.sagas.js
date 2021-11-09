@@ -6,6 +6,7 @@ import {
   handleFetchCalendarTracker,
   handleFetchUserCalendar,
   handleAddCalendarDay,
+  // handleFetchUserCalendarDays,
   //   handleDeleteExercise,
 } from "./calendarTracker.helpers";
 import {
@@ -56,6 +57,21 @@ export function* onFetchUserCalendarStart() {
   yield takeLatest(calendarTrackerTypes.FETCH_USER_CALENDAR, fetchUserCalendar);
 }
 
+//
+// export function* fetchUserCalendarDays({ payload }) {
+//   try {
+//     const calendarDays = yield handleFetchUserCalendarDays(payload);
+//     yield put(setUserCalendar(calendarDays));
+//   } catch (err) {}
+// }
+// export function* onFetchUserCalendarDaysStart() {
+//   yield takeLatest(
+//     calendarTrackerTypes.FETCH_USER_CALENDAR_DAYS,
+//     fetchUserCalendarDays
+//   );
+// }
+///
+
 export function* addCalendarDay({
   payload: { calendarTracker, calendarID, calendarEmail },
 }) {
@@ -79,5 +95,6 @@ export default function* calendarTrackerSagas() {
     call(onFetchCalendarsStart),
     call(onFetchUserCalendarStart),
     call(onAddCalendarDayStart),
+    // call(onFetchUserCalendarDaysStart),
   ]);
 }
