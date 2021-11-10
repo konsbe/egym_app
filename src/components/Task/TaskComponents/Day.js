@@ -41,8 +41,8 @@ const Day = ({ day, onDelete, func, ...days }) => {
       day: "3*50 3*70 3*100 3*150",
       reminder: true,
       allDay: true,
-      start: "",
-      end: "",
+      start: Date,
+      end: Date,
     },
     {
       id: 2,
@@ -114,8 +114,8 @@ const Day = ({ day, onDelete, func, ...days }) => {
     const calendarTracker = [];
 
     tasks.map(async (task) => {
-      task.start = await newdate;
-      task.end = await newdate;
+      task.start = await dateObj;
+      task.end = await dateObj;
       await calendarTracker.push(task);
     });
 

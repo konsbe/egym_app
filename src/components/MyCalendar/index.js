@@ -7,12 +7,13 @@ import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 
-import moment from "moment";
 import {
   Calendar,
   dateFnsLocalizer,
   momentLocalizer,
+  globalizeLocalizer,
 } from "react-big-calendar";
+import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -30,15 +31,15 @@ import {
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
 };
-// const localizer = momentLocalizer(moment); // or globalizeLocalizer
+const localizer = momentLocalizer(moment); // or globalizeLocalizer
 
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-});
+// const localizer = dateFnsLocalizer({
+//   format,
+//   parse,
+//   startOfWeek,
+//   getDay,
+//   locales,
+// });
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
@@ -84,10 +85,8 @@ function MyCalendar() {
     const fetchCalendarDispatch = async () => {
       await setTimeout(async () => {
         const myCalendar = { ...calendar };
-        // const calID = [myCalendar[0]]
         const calID = await calendar[0].documentID;
         dispatch(fetchUserCalendarDaysStart(calID));
-        console.log(myCalendar[0].documentID);
       }, 2000);
     };
 
@@ -118,7 +117,7 @@ function MyCalendar() {
   // userCalendar.map((day) => {
   //   console.log(day );
   // });
-  events.map((day) => console.log(day));
+  // events.map((day) => console.log(day));
   // console.log(events);
   // console.log([userCalendar]);
   // console.log(bool);
@@ -136,7 +135,7 @@ function MyCalendar() {
       <div className="calendarBox">
         <Calendar
           localizer={localizer}
-          events={[userCalendar]}
+          events={events}
           startAccessor="start"
           endAccessor="end"
           // style={{ height: 500, margin: "50px" }}
