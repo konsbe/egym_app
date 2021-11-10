@@ -30,12 +30,21 @@ import {
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
 };
-const localizer = momentLocalizer(moment); // or globalizeLocalizer
+// const localizer = momentLocalizer(moment); // or globalizeLocalizer
+
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
+});
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
   calendar: state.calendarData.calendar,
+  userCalendar: state.calendarData.calendarDays,
 });
 
 function MyCalendar() {
@@ -46,6 +55,8 @@ function MyCalendar() {
 
   const { user } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
+  const { userCalendar } = useSelector(mapState);
+  // const events = [];
 
   // const { documentID } = calendar;
 
@@ -53,9 +64,8 @@ function MyCalendar() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { calendarTracker } = await user;
+        // const { calendarTracker } = await user;
         // const mymail = await email;
-        // setEvents(calendarTracker);
         await fetchDataDispatch().then(fetchCalendarDispatch());
 
         // calendarTracker.map((day) => events.push(day));
@@ -83,28 +93,38 @@ function MyCalendar() {
 
     fetchData();
   }, []);
-
+  // const bees = [];
+  // console.log(bees);
   const events = [
     {
       title: "Big Meeting",
       allDay: true,
-      start: new Date(2021, 11, 11),
-      end: new Date(2021, 11, 11),
+      start: new Date(2021, 10, 11),
+      end: new Date(2021, 10, 11),
     },
     {
       title: "Vacation",
       allDay: true,
-      start: new Date(2021, 11, 9),
-      end: new Date(2021, 11, 9),
+      start: new Date(2021, 10, 9),
+      end: new Date(2021, 10, 9),
     },
     {
       title: "Conference",
       allDay: true,
-      start: new Date(2021, 11, 8),
-      end: new Date(2021, 11, 8),
+      start: new Date(2021, 10, 8),
+      end: new Date(2021, 10, 8),
     },
   ];
+  // userCalendar.map((day) => {
+  //   console.log(day );
+  // });
+  events.map((day) => console.log(day));
+  // console.log(events);
+  // console.log([userCalendar]);
   // console.log(bool);
+
+  // console.log(typeof userCalendar);
+  // console.log(typeof events);
 
   return (
     <div className="AppCalendar">
@@ -116,28 +136,26 @@ function MyCalendar() {
       <div className="calendarBox">
         <Calendar
           localizer={localizer}
-          events={events}
+          events={[userCalendar]}
           startAccessor="start"
           endAccessor="end"
           // style={{ height: 500, margin: "50px" }}
           eventPropGetter={(event, start, end, isSelected) => {
-            let newStyle = {
-              backgroundColor: "red",
-              color: "black",
-              borderRadius: "0px",
-              border: "none",
-              height: "14px",
-              fontSize: "10px",
-            };
-
-            if (event.reminder) {
-              newStyle.backgroundColor = "lightgreen";
-            }
-
-            return {
-              className: "",
-              style: newStyle,
-            };
+            // let newStyle = {
+            //   backgroundColor: "red",
+            //   color: "black",
+            //   borderRadius: "0px",
+            //   border: "none",
+            //   height: "14px",
+            //   fontSize: "10px",
+            // };
+            // if (event.reminder) {
+            //   newStyle.backgroundColor = "lightgreen";
+            // }
+            // return {
+            //   className: "",
+            //   style: newStyle,
+            // };
           }}
         />
       </div>

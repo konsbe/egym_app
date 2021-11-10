@@ -102,6 +102,14 @@ const Day = ({ day, onDelete, func, ...days }) => {
 
     const newdate = year + "/" + month + "/" + day;
 
+    // const newdate = new Date(parseInt(year), parseInt(month), parseInt(day));
+    // // .toISOString();
+    // // const newdate = year + "/" + month + "/" + day;
+
+    // console.log(month, "lolloololloolololololololololol");
+    // console.log(day, "lolloololloolololololololololol");
+    // console.log(year, "lolloololloolololololololololol");
+
     const list = [];
     const calendarTracker = [];
 
