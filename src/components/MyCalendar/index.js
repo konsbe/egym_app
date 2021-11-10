@@ -24,7 +24,7 @@ import "./styles.css";
 
 import {
   fetchUserCalendarStart,
-  // fetchUserCalendarDays,
+  fetchUserCalendarDaysStart,
 } from "../../redux/CalendarTracker/calendarTracker.actions";
 
 const locales = {
@@ -56,7 +56,8 @@ function MyCalendar() {
         const { calendarTracker } = await user;
         // const mymail = await email;
         setEvents(calendarTracker);
-        await fetchDataDispatch();
+        await fetchDataDispatch().then(fetchCalendarDispatch());
+
         // calendarTracker.map((day) => events.push(day));
       } catch (err) {}
     };
@@ -68,20 +69,19 @@ function MyCalendar() {
             // , documentID
           )
         );
+      }, 1000);
+    };
+    const fetchCalendarDispatch = async () => {
+      await setTimeout(async () => {
+        const myCalendar = { ...calendar };
+        // const calID = [myCalendar[0]]
+        const calID = await calendar[0].documentID;
+        dispatch(fetchUserCalendarDaysStart(calID));
+        console.log(myCalendar[0].documentID);
       }, 2000);
-      // await setTimeout(() => {
-      //   const calID = calendar[0].documentID;
-      //   console.log(calID);
-      //   dispatch(fetchUserCalendarDays(calID));
-      // }, 3000);
     };
 
-    // console.log(email);
     fetchData();
-
-    // console.log(calendar[0].documentID);
-    // console.log(user);
-    // calendar.map((i) => console.log(i));
   }, []);
 
   // console.log(bool);

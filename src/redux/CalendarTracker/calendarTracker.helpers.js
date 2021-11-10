@@ -91,3 +91,28 @@ export const handleFetchUserCalendar = (email) => {
       });
   });
 };
+
+
+
+export const handleFetchUserCalendarDays = (documentID) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("calendarTracker")
+      .doc(documentID)
+      // .doc(calendarID)
+      .collection("day")
+      .get()
+      .then((snapshot) => {
+        const daysArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documenID: doc.id,
+          };
+        });
+        resolve(daysArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
