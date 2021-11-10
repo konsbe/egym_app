@@ -142,7 +142,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
     //     calendarTracker,
     //   })
     // );
-    // setTimeout(refreshPage, 400);
+    setTimeout(refreshPage, 1000);
   };
 
   let x = { height: "auto" };
