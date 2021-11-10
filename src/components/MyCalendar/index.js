@@ -39,7 +39,7 @@ const mapState = (state) => ({
 });
 
 function MyCalendar() {
-  const [events, setEvents] = useState([]);
+  // const [events, setEvents] = useState([]);
 
   const dispatch = useDispatch();
   const { userID } = useParams();
@@ -55,7 +55,7 @@ function MyCalendar() {
       try {
         const { calendarTracker } = await user;
         // const mymail = await email;
-        setEvents(calendarTracker);
+        // setEvents(calendarTracker);
         await fetchDataDispatch().then(fetchCalendarDispatch());
 
         // calendarTracker.map((day) => events.push(day));
@@ -84,6 +84,26 @@ function MyCalendar() {
     fetchData();
   }, []);
 
+  const events = [
+    {
+      title: "Big Meeting",
+      allDay: true,
+      start: new Date(2021, 11, 11),
+      end: new Date(2021, 11, 11),
+    },
+    {
+      title: "Vacation",
+      allDay: true,
+      start: new Date(2021, 11, 9),
+      end: new Date(2021, 11, 9),
+    },
+    {
+      title: "Conference",
+      allDay: true,
+      start: new Date(2021, 11, 8),
+      end: new Date(2021, 11, 8),
+    },
+  ];
   // console.log(bool);
 
   return (

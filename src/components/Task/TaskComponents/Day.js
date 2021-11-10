@@ -25,7 +25,7 @@ const mapState = ({ user, calendarData }) => ({
 const Day = ({ day, onDelete, func, ...days }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [calendarTracker, setCalendarTracker] = useState([]);
+  // const [calendarTracker, setCalendarTracker] = useState([]);
   const { user } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
@@ -95,7 +95,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
 
   const handleOnClick = async (e) => {
     e.preventDefault();
-
     const dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1; //months from 1-12
     const day = dateObj.getUTCDate();
@@ -104,38 +103,31 @@ const Day = ({ day, onDelete, func, ...days }) => {
     const newdate = year + "/" + month + "/" + day;
 
     const list = [];
+    const calendarTracker = [];
+
     tasks.map(async (task) => {
       task.start = await newdate;
       task.end = await newdate;
       await calendarTracker.push(task);
     });
-    await calendarTracker.unshift(day);
-    // user.calendarTracker.map(async (day) => {
-    //   await calendarTracker.push(day);
-    // });
-    list.push(calendarTracker);
-    calendarTracker.push(currentUser.calendarTracker);
-    console.log(currentUser.calendarTracker);
+
+    console.log(calendarTracker);
 
     const actionDispatch = async () => {
       const calendarID = calendar[0].documentID;
       const calendarEmail = calendar[0].email;
-      // console.log(calendarTracker);
       const calendarDay = calendar[0].day;
-      // console.log(calendarTracker);
-      // await calendarTracker.push(...calendarDay);
-      // console.log(calendarDay);
+
       dispatch(
         addCalendarDayStart({
           calendarTracker,
           calendarID,
           calendarEmail,
-          // calendarDay,
         })
       );
     };
     setTimeout(actionDispatch, 300);
-    console.log(calendarTracker);
+    // console.log(calendarTracker);
     // console.log(calendarID);
     // dispatch(
     //   await updateUserStart({
@@ -148,7 +140,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
   let x = { height: "auto" };
   const handleShow = async () => {
     // let x = await { height: "auto", marginBottom: "0.3rem" };
-    console.log(x);
+    // console.log(x);
     setShowDay(!showDay);
   };
 
