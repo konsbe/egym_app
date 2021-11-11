@@ -44,5 +44,5 @@ export function* onAddTrainingScheduleStart() {
 // }
 
 export default function* weekTrainingSagas() {
-  yield all([call(onAddTrainingScheduleStart)]);
+  yield all([call(onAddTrainingScheduleStart),]);
 }
