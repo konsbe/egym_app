@@ -41,8 +41,8 @@ const Day = ({ day, onDelete, func, ...days }) => {
       day: "3*50 3*70 3*100 3*150",
       reminder: true,
       allDay: true,
-      start: Date,
-      end: Date,
+      start: new Date(2021, 23, 12),
+      end: new Date(2021, 23, 12),
     },
     {
       id: 2,
@@ -95,12 +95,13 @@ const Day = ({ day, onDelete, func, ...days }) => {
 
   const handleOnClick = async (e) => {
     e.preventDefault();
-    const dateObj = new Date();
-    const month = dateObj.getUTCMonth() + 1; //months from 1-12
-    const day = dateObj.getUTCDate();
-    const year = dateObj.getUTCFullYear();
+    const dateObj = new Date().toISOString();
+    // const month = dateObj.getUTCMonth() + 1; //months from 1-12
+    // const day = dateObj.getUTCDate();
+    // const year = dateObj.getUTCFullYear();
 
-    const newdate = year + "/" + month + "/" + day;
+    // const newdate = year + "-" + month + "-" + day;
+    // const newDateObj = new Date(Date.UTC(year, month, day));
 
     // const newdate = new Date(parseInt(year), parseInt(month), parseInt(day));
     // // .toISOString();

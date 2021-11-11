@@ -95,35 +95,50 @@ function MyCalendar() {
   // const bees = [];
   // console.log(bees);
   const events = [
-    {
-      title: "Big Meeting",
-      allDay: true,
-      start: new Date(2021, 10, 11),
-      end: new Date(2021, 10, 11),
-    },
-    {
-      title: "Vacation",
-      allDay: true,
-      start: new Date(2021, 10, 9),
-      end: new Date(2021, 10, 9),
-    },
-    {
-      title: "Conference",
-      allDay: true,
-      start: new Date(2021, 10, 8),
-      end: new Date(2021, 10, 8),
-    },
+    // {
+    //   title: "Big Meeting",
+    //   allDay: true,
+    //   start: new Date(2021, 10, 11),
+    //   end: new Date(2021, 10, 11),
+    // },
+    // {
+    //   title: "Vacation",
+    //   allDay: true,
+    //   start: new Date(2021, 10, 9),
+    //   end: new Date(2021, 10, 9),
+    // },
+    // {
+    //   title: "Conference",
+    //   allDay: true,
+    //   start: new Date(2021, 10, 8),
+    //   end: new Date(2021, 10, 8),
+    // },
   ];
-  // userCalendar.map((day) => {
-  //   console.log(day );
-  // });
+
+  const getDays = () => {
+    let x = 0;
+    userCalendar.map((day) => {
+      Object.keys(day).map(function (key, index) {
+        // console.log(index);
+        // console.log(userCalendar[x][key]);
+        events.push(userCalendar[x][key]);
+      });
+      x += 1;
+    });
+  };
+  getDays();
   // events.map((day) => console.log(day));
   // console.log(events);
   // console.log([userCalendar]);
   // console.log(bool);
-
-  // console.log(typeof userCalendar);
-  // console.log(typeof events);
+  // console.log(userCalendar.length, "lloloololololloolololloloololol");
+  // console.log(userCalendar[0].length, "lloloololololloolololloloololol");
+  // console.log(
+  //   userCalendar[0][1],
+  //   " THIS IS IT THIS IS IT THIS IS IT THIS IS IT THIS IS IT"
+  // );
+  console.log(userCalendar);
+  console.log(events);
 
   return (
     <div className="AppCalendar">
@@ -132,29 +147,31 @@ function MyCalendar() {
           <img src={calendarIcon}></img>
         </div>
       </h1>
+
       <div className="calendarBox">
         <Calendar
           localizer={localizer}
+          // events={userCalendar[0][1]}
           events={events}
           startAccessor="start"
           endAccessor="end"
-          // style={{ height: 500, margin: "50px" }}
+          style={{ height: 500, margin: "50px" }}
           eventPropGetter={(event, start, end, isSelected) => {
-            // let newStyle = {
-            //   backgroundColor: "red",
-            //   color: "black",
-            //   borderRadius: "0px",
-            //   border: "none",
-            //   height: "14px",
-            //   fontSize: "10px",
-            // };
-            // if (event.reminder) {
-            //   newStyle.backgroundColor = "lightgreen";
-            // }
-            // return {
-            //   className: "",
-            //   style: newStyle,
-            // };
+            let newStyle = {
+              backgroundColor: "grey",
+              color: "black",
+              borderRadius: "0px",
+              border: "none",
+              height: "14px",
+              fontSize: "10px",
+            };
+            if (event.reminder) {
+              newStyle.backgroundColor = "lightgreen";
+            }
+            return {
+              className: "",
+              style: newStyle,
+            };
           }}
         />
       </div>
