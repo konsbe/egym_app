@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpUserStart } from "../../redux/User/user.actions";
 import { addCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
+import { addTrainingScheduleStart } from "./../../redux/WeekTraining/weekTraining.actions";
 
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
@@ -70,6 +71,7 @@ const SignUp = (props) => {
     event.preventDefault();
 
     dispatch(addCalendarStart({ email }));
+    dispatch(await addTrainingScheduleStart({ email }));
     dispatch(
       await signUpUserStart({
         firstName,

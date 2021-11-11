@@ -65,21 +65,12 @@ function MyCalendar() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const { calendarTracker } = await user;
-        // const mymail = await email;
         await fetchDataDispatch().then(fetchCalendarDispatch());
-
-        // calendarTracker.map((day) => events.push(day));
       } catch (err) {}
     };
     const fetchDataDispatch = async () => {
       await setTimeout(() => {
-        dispatch(
-          fetchUserCalendarStart(
-            email
-            // , documentID
-          )
-        );
+        dispatch(fetchUserCalendarStart(email));
       }, 1000);
     };
     const fetchCalendarDispatch = async () => {
@@ -127,16 +118,7 @@ function MyCalendar() {
     });
   };
   getDays();
-  // events.map((day) => console.log(day));
-  // console.log(events);
-  // console.log([userCalendar]);
-  // console.log(bool);
-  // console.log(userCalendar.length, "lloloololololloolololloloololol");
-  // console.log(userCalendar[0].length, "lloloololololloolololloloololol");
-  // console.log(
-  //   userCalendar[0][1],
-  //   " THIS IS IT THIS IS IT THIS IS IT THIS IS IT THIS IS IT"
-  // );
+
   console.log(userCalendar);
   console.log(events);
 
