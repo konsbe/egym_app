@@ -7,6 +7,7 @@ import {
   fetchUsersStart,
   signUpUserStart,
 } from "./../../redux/User/user.actions";
+import { fetchTrainingSchedulesStart } from "./../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -24,9 +25,6 @@ const Admin = (props) => {
   useEffect(() => {
     dispatch(fetchUsersStart());
   }, []);
-
-
-
 
   const isAdmin = checkUserIsAdmin(currentUser);
   if (!isAdmin) {

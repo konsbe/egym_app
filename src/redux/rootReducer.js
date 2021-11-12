@@ -24,7 +24,7 @@ export const rootReducer = combineReducers({
 const configStorage = {
   key: "root",
   storage,
-  whitelist: ["user", "calendarData"],
+  whitelist: ["user", "calendarData", "trainingData"],
 };
 
 export default persistReducer(configStorage, rootReducer);

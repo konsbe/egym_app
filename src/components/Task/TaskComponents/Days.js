@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Tasks from "./Tasks";
 import Day from "./Day";
 import { useState, useRef } from "react";
@@ -6,17 +6,25 @@ import AddDay from "../AddDay";
 
 import { CSSTransition } from "react-transition-group";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { checkUserIsAdmin } from "../../../Utils";
 
+import {
+  // fetchUserTrainingScheduleStart,
+  fetchTrainingSchedulesStart,
+} from "./../../../redux/WeekTraining/weekTraining.actions";
+
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
+  user: user.user,
 });
 
 const Days = ({ week, onDelete }) => {
   // const { ...list } = Day();
+  const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
+  const { user } = useSelector(mapState);
   const [showWeek, setShowWeek] = useState(false);
   const nodeRef = useRef(null);
   const [days, setDays] = useState([
@@ -33,6 +41,12 @@ const Days = ({ week, onDelete }) => {
       reminder: true,
     },
   ]);
+  const { email } = user;
+  useEffect(() => {
+    dispatch(fetchTrainingSchedulesStart());
+    // dispatch(fetchUserTrainingScheduleStart(email));
+  }, []);
+
   const addDay = (day) => {
     const id = days.length + 1;
     const newDay = { id, ...day };
@@ -57,7 +71,7 @@ const Days = ({ week, onDelete }) => {
   };
 
   const handleAddClick = (e) => {
-    console.log(weekProgram);
+    console.log(weekProgram); //THIS IS MY WEEK PROGRAMM TRAINING
   };
 
   const isAdmin = checkUserIsAdmin(currentUser);
@@ -137,7 +151,6 @@ const Days = ({ week, onDelete }) => {
                 func={pull_data}
               />
             ))}
-
           </div>
         </CSSTransition>
       </div>

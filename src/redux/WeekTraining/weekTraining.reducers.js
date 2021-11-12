@@ -1,7 +1,7 @@
 import weekTrainingTypes from "./weekTraining.types";
 
 const INITIAL_STATE = {
-  weekSchedule: [],
+  trainingSchedules: [],
 };
 
 const weekTrainingReducer = (state = INITIAL_STATE, action) => {
@@ -9,7 +9,7 @@ const weekTrainingReducer = (state = INITIAL_STATE, action) => {
     case weekTrainingTypes.SET_TRAINING_SCHEDULES:
       return {
         ...state,
-        weekSchedule: action.payload,
+        trainingSchedules: action.payload,
       };
     default:
       return state;

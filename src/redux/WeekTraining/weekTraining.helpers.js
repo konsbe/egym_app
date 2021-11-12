@@ -18,3 +18,25 @@ export const handleAddTrainingSchedule = (trainingData) => {
   });
 };
 //
+
+
+export const handleFetchTrainingSchedules = () => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("trainingSchedule")
+
+      .get()
+      .then((snapshot) => {
+        const calendarArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.id,
+          };
+        });
+        resolve(calendarArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

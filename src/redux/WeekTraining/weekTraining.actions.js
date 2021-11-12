@@ -5,11 +5,11 @@ export const addTrainingScheduleStart = (trainingData) => ({
   payload: trainingData,
 });
 
-export const fetchTrainingScheduleStart = () => ({
-  type: weekTrainingTypes.FETCH_TRAINING_SCHEDULE_START,
+export const fetchTrainingSchedulesStart = () => ({
+  type: weekTrainingTypes.FETCH_TRAINING_SCHEDULES_START,
 });
 
-export const setTainingSchedules = (trainingSchedule) => ({
+export const setTainingSchedules = (trainingSchedules) => ({
   type: weekTrainingTypes.SET_TRAINING_SCHEDULES,
-  payload: weekTrainingTypes,
+  payload: trainingSchedules,
 });

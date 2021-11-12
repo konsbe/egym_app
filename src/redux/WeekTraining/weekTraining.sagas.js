@@ -3,9 +3,12 @@ import { takeLatest, put, all, call } from "redux-saga/effects";
 
 import weekTrainingTypes from "./weekTraining.types";
 
-import { handleAddTrainingSchedule } from "./weekTraining.helpers";
+import {
+  handleAddTrainingSchedule,
+  handleFetchTrainingSchedules,
+} from "./weekTraining.helpers";
 
-// import { fetchTrainingScheduleStart } from "./weekTraining.actions";
+import { setTainingSchedules } from "./weekTraining.actions";
 
 export function* addTrainingSchedule({ payload: { email } }) {
   try {
@@ -27,22 +30,25 @@ export function* onAddTrainingScheduleStart() {
   );
 }
 
-// export function* fetchTrainingSchedules() {
-//   try {
-//     const trainingSchedules = yield handleFetchTrainingSchedules();
-//     yield put(setTrainingSchedules(trainingSchedules));
-//   } catch (err) {
-//  //
-//   }
-// }
+export function* fetchTrainingSchedules() {
+  try {
+    const trainingSchedules = yield handleFetchTrainingSchedules();
+    yield put(setTainingSchedules(trainingSchedules));
+  } catch (err) {
+    //
+  }
+}
 
-// export function* onfetchTrainingSchedulesStart() {
-//   yield takeLatest(
-//     weekTrainingTypes.FETCH_TRAINING_SCHEDULE_START,
-//     fetchTrainingSchedules
-//   );
-// }
+export function* onFetchTrainingSchedulesStart() {
+  yield takeLatest(
+    weekTrainingTypes.FETCH_TRAINING_SCHEDULES_START,
+    fetchTrainingSchedules
+  );
+}
 
 export default function* weekTrainingSagas() {
-  yield all([call(onAddTrainingScheduleStart),]);
+  yield all([
+    call(onAddTrainingScheduleStart),
+    call(onFetchTrainingSchedulesStart),
+  ]);
 }

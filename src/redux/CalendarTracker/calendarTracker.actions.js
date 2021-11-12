@@ -14,7 +14,7 @@ export const setCalendars = (calendarTracker) => ({
   payload: calendarTracker,
 });
 
-///next
+/////////////////////////////////////////////////////////////////////////////////////////
 export const fetchUserCalendarStart = (email) => ({
   type: calendarTrackerTypes.FETCH_USER_CALENDAR,
   payload: email,
@@ -24,7 +24,7 @@ export const setUserCalendar = (calendar) => ({
   type: calendarTrackerTypes.SET_USER_CALENDAR,
   payload: calendar,
 });
-
+/////////////////////////////////////////////////////////////////////////////////////////
 
 export const addCalendarDayStart = (calendarTracker) => ({
   type: calendarTrackerTypes.ADD_NEW_CALENDAR_DAY_START,
