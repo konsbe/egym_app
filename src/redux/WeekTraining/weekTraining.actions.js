@@ -23,3 +23,8 @@ export const setUserTrainingSchedule = (userScheduleData) => ({
   type: weekTrainingTypes.SET_USER_TRAINING_SCHEDULE,
   payload: userScheduleData,
 });
+
+export const addWeekTrainingStart = (weekProgram) => ({
+  type: weekTrainingTypes.ADD_NEW_TRAINING_WEEK_START,
+  payload: weekProgram,
+});

@@ -13,17 +13,20 @@ import { checkUserIsAdmin } from "../../../Utils";
 import {
   fetchUserTrainingScheduleStart,
   fetchTrainingSchedulesStart,
+  addWeekTrainingStart,
 } from "./../../../redux/WeekTraining/weekTraining.actions";
 
-const mapState = ({ user }) => ({
+const mapState = ({ user, trainingData }) => ({
   currentUser: user.currentUser,
   user: user.user,
+  userScheduleData: trainingData.userScheduleData,
 });
 
 const Days = ({ week, onDelete }) => {
   // const { ...list } = Day();
   const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
+  const { userScheduleData } = useSelector(mapState);
   const { user } = useSelector(mapState);
   const [showWeek, setShowWeek] = useState(false);
   const nodeRef = useRef(null);
@@ -46,6 +49,8 @@ const Days = ({ week, onDelete }) => {
     // dispatch(fetchTrainingSchedulesStart());
     dispatch(fetchUserTrainingScheduleStart(email));
   }, []);
+  const scheduleID = userScheduleData[0].documentID;
+  // console.log(calID);
 
   const addDay = (day) => {
     const id = days.length + 1;
@@ -72,6 +77,7 @@ const Days = ({ week, onDelete }) => {
 
   const handleAddClick = (e) => {
     console.log(weekProgram); //THIS IS MY WEEK PROGRAMM TRAINING
+    dispatch(addWeekTrainingStart({ weekProgram, scheduleID }));
   };
 
   const isAdmin = checkUserIsAdmin(currentUser);

@@ -7,6 +7,7 @@ import {
   handleAddTrainingSchedule,
   handleFetchTrainingSchedules,
   handleFetchUserTrainingSchedule,
+  handleAddWeekTraining,
 } from "./weekTraining.helpers";
 
 import {
@@ -64,11 +65,28 @@ export function* onFetchUserTrainingScheduleStart() {
     fetchUserTrainingSchedule
   );
 }
+////////////////////////////////////////////////////////////////////
+
+export function* addWeekTraining({ payload: { weekProgram, scheduleID } }) {
+  try {
+    yield handleAddWeekTraining(weekProgram, scheduleID);
+
+    // yield put(fetchCalendarsStart());
+  } catch (err) {}
+}
+
+export function* onAddWeekTrainingStart() {
+  yield takeLatest(
+    weekTrainingTypes.ADD_NEW_TRAINING_WEEK_START,
+    addWeekTraining
+  );
+}
 
 export default function* weekTrainingSagas() {
   yield all([
     call(onAddTrainingScheduleStart),
     call(onFetchTrainingSchedulesStart),
     call(onFetchUserTrainingScheduleStart),
+    call(onAddWeekTrainingStart),
   ]);
 }

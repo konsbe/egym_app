@@ -40,7 +40,6 @@ export const handleFetchTrainingSchedules = () => {
       });
   });
 };
-/////////////////////////////////////////////////////////////////////
 
 export const handleFetchUserTrainingSchedule = (email) => {
   return new Promise((resolve, reject) => {
@@ -62,3 +61,27 @@ export const handleFetchUserTrainingSchedule = (email) => {
       });
   });
 };
+/////////////////////////////////////////////////////////////////////
+
+export const handleAddWeekTraining = ({ weekProgram, scheduleID }) => {
+  // const cityRef = doc('calendarTracker', calendarID, );
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("trainingSchedule")
+      .doc(scheduleID)
+
+      .collection("week")
+      .doc()
+      .set({ ...weekProgram })
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        console.log(err);
+        reject(err);
+      });
+  });
+};
+
+
+
