@@ -63,7 +63,7 @@ export const handleFetchUserTrainingSchedule = (email) => {
 };
 /////////////////////////////////////////////////////////////////////
 
-export const handleAddWeekTraining = ({ weekProgram, scheduleID }) => {
+export const handleAddWeekTraining = (weekProgram, scheduleID) => {
   // const cityRef = doc('calendarTracker', calendarID, );
   return new Promise((resolve, reject) => {
     firestore
