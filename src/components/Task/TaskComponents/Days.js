@@ -14,6 +14,7 @@ import {
   fetchUserTrainingScheduleStart,
   fetchTrainingSchedulesStart,
   addWeekTrainingStart,
+  fetchUserTrainingWeeksStart,
 } from "./../../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user, trainingData }) => ({
@@ -48,6 +49,7 @@ const Days = ({ week, onDelete }) => {
   useEffect(() => {
     // dispatch(fetchTrainingSchedulesStart());
     dispatch(fetchUserTrainingScheduleStart(email));
+    dispatch(fetchUserTrainingWeeksStart(scheduleID));
   }, []);
   const scheduleID = userScheduleData[0].documentID;
   // console.log(calID);

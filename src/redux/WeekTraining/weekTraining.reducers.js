@@ -3,6 +3,7 @@ import weekTrainingTypes from "./weekTraining.types";
 const INITIAL_STATE = {
   trainingSchedules: [],
   userScheduleData: [],
+  trainingWeeks: [],
 };
 
 const weekTrainingReducer = (state = INITIAL_STATE, action) => {
@@ -16,6 +17,11 @@ const weekTrainingReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userScheduleData: action.payload,
+      };
+    case weekTrainingTypes.SET_USER_TRAINING_WEEKS:
+      return {
+        ...state,
+        trainingWeeks: action.payload,
       };
     default:
       return state;

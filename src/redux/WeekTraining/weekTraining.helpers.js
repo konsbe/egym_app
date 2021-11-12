@@ -85,3 +85,29 @@ export const handleAddWeekTraining = (weekProgram, scheduleID) => {
 
 
 
+
+export const handleFetchUserTrainingWeeks = (scheduleID) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("trainingSchedule")
+      .doc(scheduleID)
+      // .doc(calendarID)
+      .collection("week")
+      .get()
+      .then((snapshot) => {
+        const daysArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documenID: doc.id,
+          };
+        });
+        resolve(daysArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+
+
