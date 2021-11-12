@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { checkUserIsAdmin } from "../../../Utils";
 
 import {
-  // fetchUserTrainingScheduleStart,
+  fetchUserTrainingScheduleStart,
   fetchTrainingSchedulesStart,
 } from "./../../../redux/WeekTraining/weekTraining.actions";
 
@@ -43,8 +43,8 @@ const Days = ({ week, onDelete }) => {
   ]);
   const { email } = user;
   useEffect(() => {
-    dispatch(fetchTrainingSchedulesStart());
-    // dispatch(fetchUserTrainingScheduleStart(email));
+    // dispatch(fetchTrainingSchedulesStart());
+    dispatch(fetchUserTrainingScheduleStart(email));
   }, []);
 
   const addDay = (day) => {

@@ -6,9 +6,13 @@ import weekTrainingTypes from "./weekTraining.types";
 import {
   handleAddTrainingSchedule,
   handleFetchTrainingSchedules,
+  handleFetchUserTrainingSchedule,
 } from "./weekTraining.helpers";
 
-import { setTainingSchedules } from "./weekTraining.actions";
+import {
+  setTainingSchedules,
+  setUserTrainingSchedule,
+} from "./weekTraining.actions";
 
 export function* addTrainingSchedule({ payload: { email } }) {
   try {
@@ -45,10 +49,26 @@ export function* onFetchTrainingSchedulesStart() {
     fetchTrainingSchedules
   );
 }
+//////////////////////////////////////////////////////////////////////
+
+export function* fetchUserTrainingSchedule({ payload }) {
+  try {
+    const userScheduleData = yield handleFetchUserTrainingSchedule(payload);
+    yield put(setUserTrainingSchedule(userScheduleData));
+  } catch (err) {}
+}
+
+export function* onFetchUserTrainingScheduleStart() {
+  yield takeLatest(
+    weekTrainingTypes.FETCH_USER_TRAINING_SCHEDULE,
+    fetchUserTrainingSchedule
+  );
+}
 
 export default function* weekTrainingSagas() {
   yield all([
     call(onAddTrainingScheduleStart),
     call(onFetchTrainingSchedulesStart),
+    call(onFetchUserTrainingScheduleStart),
   ]);
 }

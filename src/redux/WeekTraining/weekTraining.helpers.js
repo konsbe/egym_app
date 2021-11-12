@@ -40,3 +40,25 @@ export const handleFetchTrainingSchedules = () => {
       });
   });
 };
+/////////////////////////////////////////////////////////////////////
+
+export const handleFetchUserTrainingSchedule = (email) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("trainingSchedule")
+      .where("email", "==", email)
+      .get()
+      .then((snapshot) => {
+        const calendarArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.id,
+          };
+        });
+        resolve(calendarArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
