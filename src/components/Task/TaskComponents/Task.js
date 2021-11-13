@@ -26,7 +26,7 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
         <div>
           <a href={array[1]}>
             <img className="imageExercise" src={array[2]} />
-            {array[0]}
+            <span className="exercsiseName">{array[0]}</span>
           </a>
         </div>
         {!isAdmin && (

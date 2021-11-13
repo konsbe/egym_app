@@ -13,10 +13,7 @@ import Button from "./../../../components/Forms/Button";
 import Popup from "../../../components/Popup";
 import { updateUserStart } from "../../../redux/User/user.actions";
 
-import {
-  fetchCalendarsStart,
-  fetchUserCalendarStart,
-} from "../../../redux/CalendarTracker/calendarTracker.actions";
+import { fetchUserCalendarDaysStart } from "../../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user, calendarData }) => ({
   currentUser: user.currentUser,

@@ -46,7 +46,7 @@ export function* fetchCalendars() {
 export function* onFetchCalendarsStart() {
   yield takeLatest(calendarTrackerTypes.FETCH_CALENDARS_START, fetchCalendars);
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 export function* fetchUserCalendar({ payload }) {
   try {
     const calendar = yield handleFetchUserCalendar(payload);
@@ -57,6 +57,12 @@ export function* fetchUserCalendar({ payload }) {
 export function* onFetchUserCalendarStart() {
   yield takeLatest(calendarTrackerTypes.FETCH_USER_CALENDAR, fetchUserCalendar);
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 export function* fetchUserCalendarDays({ payload }) {
   try {

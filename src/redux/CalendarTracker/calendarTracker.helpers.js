@@ -17,6 +17,7 @@ export const handleAddCalendarTracker = (calendar) => {
       });
   });
 };
+
 export const handleAddCalendarDay = (
   calendarTracker,
   calendarID,

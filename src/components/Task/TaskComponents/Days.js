@@ -21,6 +21,7 @@ const mapState = ({ user, trainingData }) => ({
   currentUser: user.currentUser,
   user: user.user,
   userScheduleData: trainingData.userScheduleData,
+  userWeeks: trainingData.trainingWeeks,
 });
 
 const Days = ({ week, onDelete }) => {
@@ -28,6 +29,7 @@ const Days = ({ week, onDelete }) => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
   const { userScheduleData } = useSelector(mapState);
+  const { userWeeks } = useSelector(mapState);
   const { user } = useSelector(mapState);
   const [showWeek, setShowWeek] = useState(false);
   const nodeRef = useRef(null);
@@ -49,11 +51,35 @@ const Days = ({ week, onDelete }) => {
   useEffect(() => {
     // dispatch(fetchTrainingSchedulesStart());
     dispatch(fetchUserTrainingScheduleStart(email));
-    dispatch(fetchUserTrainingWeeksStart(scheduleID));
-  }, []);
-  const scheduleID = userScheduleData[0].documentID;
-  // console.log(calID);
 
+    // dispatch(fetchUserTrainingWeeksStart(scheduleID));
+    const fetchData = async () => {
+      try {
+        await fetchDataDispatch().then(fetchProgramDispatch());
+      } catch (err) {}
+    };
+
+    const fetchDataDispatch = async () => {
+      await setTimeout(() => {
+        dispatch(fetchUserTrainingScheduleStart(email));
+      }, 300);
+    };
+
+    const fetchProgramDispatch = async () => {
+      await setTimeout(async () => {
+        const scheduleID = await userScheduleData[0].documentID;
+        dispatch(fetchUserTrainingWeeksStart(scheduleID));
+      }, 1000);
+    };
+
+    fetchData();
+  }, []);
+
+  // console.log(userWeeks, "lolololololollolololololol");
+  userWeeks.map((weeks) => {
+    console.log(weeks);
+    console.log(weeks[0].text);
+  });
   const addDay = (day) => {
     const id = days.length + 1;
     const newDay = { id, ...day };
@@ -79,6 +105,7 @@ const Days = ({ week, onDelete }) => {
 
   const handleAddClick = (e) => {
     console.log(weekProgram); //THIS IS MY WEEK PROGRAMM TRAINING
+    const scheduleID = userScheduleData[0].documentID;
     dispatch(addWeekTrainingStart({ weekProgram, scheduleID }));
   };
 
