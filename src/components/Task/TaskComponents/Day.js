@@ -152,6 +152,11 @@ const Day = ({ day, onDelete, func, ...days }) => {
     // console.log(x);
     setShowDay(!showDay);
   };
+  Object.keys(day).map(function (key, index) {
+    if (key > 0) {
+      console.log(day[key]);
+    }
+  });
 
   // tasks.map((task) => list.push(task));
 
@@ -238,6 +243,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
             <div className="toggleWrapper" ref={nodeRef}>
               <Header />
               {isAdmin && <AddTask onAdd={addTask} />}
+
               {tasks.length > 0 ? (
                 <Tasks
                   tasks={tasks}
