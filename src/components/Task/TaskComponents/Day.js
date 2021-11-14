@@ -220,7 +220,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
         <div className="basiContainer">
           <div className="headerAddDay">
             <h2 className="titleDay" onClick={handleShow}>
-              {day.title}{" "}
+              {day[0].title}{" "}
             </h2>
           </div>
           {/* {showDay && ( */}

@@ -75,11 +75,24 @@ const Days = ({ week, onDelete }) => {
     fetchData();
   }, []);
 
+  const getDays = () => {
+    let x = 0;
+    userWeeks.map((week) => {
+      Object.keys(week).map(function (key, index) {
+        if (key > 0) {
+          console.log(week, "olololloolololololololol");
+          console.log(week[key], "xooxoxoxoxoxoxoxoxoxox");
+        }
+      });
+      x = +1;
+    });
+  };
+  getDays();
   // console.log(userWeeks, "lolololololollolololololol");
-  userWeeks.map((weeks) => {
-    console.log(weeks);
-    console.log(weeks[0].text);
-  });
+  // userWeeks.map((weeks) => {
+  //   console.log(weeks);
+  //   console.log(weeks[0].text);
+  // });
   const addDay = (day) => {
     const id = days.length + 1;
     const newDay = { id, ...day };
@@ -164,7 +177,7 @@ const Days = ({ week, onDelete }) => {
     return (
       <div className="containerone">
         <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
-          {week.text}
+          {week[0].text}
         </h2>
         <CSSTransition
           // in={true}
@@ -177,15 +190,22 @@ const Days = ({ week, onDelete }) => {
           // unmountOnEnter
         >
           <div ref={nodeRef}>
-            {days.map((day) => (
-              <Day
-                key={day.id}
-                day={day}
-                onDelete={deleteDay}
-                onClick={handleonClick}
-                func={pull_data}
-              />
-            ))}
+            {/* {days.map((day) => ( */}
+            {Object.keys(week).map(function (key, index) {
+              {
+                if (key > 0)
+                  return (
+                    <Day
+                      key={key}
+                      day={week[key]}
+                      onDelete={deleteDay}
+                      onClick={handleonClick}
+                      func={pull_data}
+                    />
+                  );
+              }
+            })}
+            {/* ))} */}
           </div>
         </CSSTransition>
       </div>

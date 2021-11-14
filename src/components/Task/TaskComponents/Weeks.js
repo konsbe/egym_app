@@ -10,12 +10,14 @@ import AddWeek from "../AddWeek";
 import { useSelector } from "react-redux";
 import { checkUserIsAdmin } from "../../../Utils";
 
-const mapState = ({ user }) => ({
+const mapState = ({ user, trainingData }) => ({
   currentUser: user.currentUser,
+  userWeeks: trainingData.trainingWeeks,
 });
 
 const Weeks = ({ onDelete }) => {
   const { currentUser } = useSelector(mapState);
+  const { userWeeks } = useSelector(mapState);
 
   //   const [showWeek, setShowWeek] = useState(false);
   const [weeks, setWeeks] = useState([
@@ -37,6 +39,10 @@ const Weeks = ({ onDelete }) => {
 
     setWeeks(weeks.filter((week) => week.id !== id));
   };
+
+  userWeeks.map((week) =>
+    console.log(week, "frfrrffrfrfrfrfrfrrfrffrfrrffrfrrffrfrfrfrfr")
+  );
 
   const isAdmin = checkUserIsAdmin(currentUser); //   const nodeRef = useRef(null);
   if (isAdmin) {
@@ -68,7 +74,7 @@ const Weeks = ({ onDelete }) => {
           className="weeksContainer"
           //   onClick={() => setShowWeek(!showWeek)}
         >
-          {weeks.map((week) => (
+          {userWeeks.map((week) => (
             <Days
               onDelete={onDelete}
               key={week.id}
