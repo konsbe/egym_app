@@ -110,4 +110,38 @@ export const handleFetchUserTrainingWeeks = (scheduleID) => {
 };
 
 
+export const handleUpdateReminder = ({
+  reminder,
+  scheduleID,
+  documentID,
+  num,
+  id,
+}) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("trainingSchedule")
+      .doc(scheduleID)
+      .collection("week")
+      .doc(documentID)
+      .collection(num)
+      .where("id", "==", id)
+      // .get()
+      // .ref(`gear`)
+      .update({ reminder })
+      // .update({ injuries: injuries })
+      // .update({ gear: gear })
 
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.num,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};

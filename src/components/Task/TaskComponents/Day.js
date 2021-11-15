@@ -30,6 +30,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
   const { currentUser } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
 
+  const [reminder, setReminder] = useState(false);
   const [showDay, setShowDay] = useState(false);
   const list = [];
   const nodeRef = useRef(null);
@@ -39,7 +40,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
       id: 1,
       title: "Deadlift",
       day: "3*50 3*70 3*100 3*150",
-      reminder: true,
+      // reminder: true,
       allDay: true,
       start: new Date(2021, 23, 12),
       end: new Date(2021, 23, 12),
@@ -48,7 +49,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
       id: 2,
       title: "Shoulder Press",
       day: "3*10 3*20 3*40 3*60",
-      reminder: false,
+      // reminder: false,
       allDay: true,
       start: "",
       end: "",
@@ -72,10 +73,14 @@ const Day = ({ day, onDelete, func, ...days }) => {
   const toggleReminder = (id) => {
     console.log(id);
     setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
+      tasks.map((task) =>{
+        setReminder(!reminder)
+
+        day[id].reminder = reminder
+      }// task.id === id ? { ...task, reminder: !task.reminder } : task
       )
-    );
+      );
+      console.log(day[id]);
   };
 
   // console.log(days);
@@ -114,11 +119,24 @@ const Day = ({ day, onDelete, func, ...days }) => {
     const list = [];
     const calendarTracker = [];
 
-    tasks.map(async (task) => {
-      task.start = await dateObj;
-      task.end = await dateObj;
-      await calendarTracker.push(task);
-    });
+    // tasks.map(async (task) => {
+    //   task.start = await dateObj;
+    //   task.end = await dateObj;
+    //   await calendarTracker.push(task);
+    // });
+     Object.keys(day).map(async function (key, index) {
+       if (key > 0) {
+         day[key].start = await dateObj;
+         day[key].end = await dateObj;
+         day[key].allDay = await true;
+        //  day[key].reminder = ;
+
+         const array = day[key].title.split(",");
+         day[key].title = array[0]
+         await calendarTracker.push(day[key]);
+        //  console.log(day[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
+       }
+     });
 
     console.log(calendarTracker);
 
@@ -136,7 +154,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
       );
     };
     setTimeout(actionDispatch, 300);
-    // console.log(calendarTracker);
+    console.log(calendarTracker);
     // console.log(calendarID);
     // dispatch(
     //   await updateUserStart({
@@ -152,11 +170,11 @@ const Day = ({ day, onDelete, func, ...days }) => {
     // console.log(x);
     setShowDay(!showDay);
   };
-  Object.keys(day).map(function (key, index) {
-    if (key > 0) {
-      console.log(day[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
-    }
-  });
+  // Object.keys(day).map(function (key, index) {
+  //   if (key > 0) {
+  //     console.log(day[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
+  //   }
+  // });
 
   // tasks.map((task) => list.push(task));
 
@@ -281,6 +299,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
       </div>
     );
   }
-};;
+};;;
 
 export default Day;

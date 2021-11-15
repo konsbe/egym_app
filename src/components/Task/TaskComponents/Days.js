@@ -164,7 +164,7 @@ const Days = ({ week, onDelete }) => {
               />
             ))}
             <button onClick={handleonClick} className="btnAdd btn-block">
-              Add
+              Add Week
             </button>
             <button onClick={handleAddClick} className="btnAddWeek btn-block">
               Add

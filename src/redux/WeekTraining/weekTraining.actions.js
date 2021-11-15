@@ -38,3 +38,9 @@ export const setUserTrainingWeeks = (trainingWeeks) => ({
   type: weekTrainingTypes.SET_USER_TRAINING_WEEKS,
   payload: trainingWeeks,
 });
+
+
+export const updateUserReminder = (upData) => ({
+  type: weekTrainingTypes.UPDATE_USER_REMINDER,
+  payload: upData,
+});
