@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "./Header";
 import Tasks from "./Tasks";
 
@@ -36,29 +37,30 @@ const Day = ({ day, onDelete, func, ...days }) => {
   const nodeRef = useRef(null);
 
   const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Deadlift",
-      day: "3*50 3*70 3*100 3*150",
-      // reminder: true,
-      allDay: true,
-      start: new Date(2021, 23, 12),
-      end: new Date(2021, 23, 12),
-    },
-    {
-      id: 2,
-      title: "Shoulder Press",
-      day: "3*10 3*20 3*40 3*60",
-      // reminder: false,
-      allDay: true,
-      start: "",
-      end: "",
-    },
+    // {
+    //   id: 1,
+    //   title: "Deadlift",
+    //   day: "3*50 3*70 3*100 3*150",
+    //   // reminder: true,
+    //   allDay: true,
+    //   start: new Date(2021, 23, 12),
+    //   end: new Date(2021, 23, 12),
+    // },
+    // {
+    //   id: 2,
+    //   title: "Shoulder Press",
+    //   day: "3*10 3*20 3*40 3*60",
+    //   // reminder: false,
+    //   allDay: true,
+    //   start: "",
+    //   end: "",
+    // },
   ]);
 
   //Add Task
 
   const addTask = (task) => {
+    console.log(task);
     const id = tasks.length + 1;
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
@@ -73,14 +75,15 @@ const Day = ({ day, onDelete, func, ...days }) => {
   const toggleReminder = (id) => {
     console.log(id);
     setTasks(
-      tasks.map((task) =>{
-        setReminder(!reminder)
+      tasks.map(
+        (task) => {
+          setReminder(!reminder);
 
-        day[id].reminder = reminder
-      }// task.id === id ? { ...task, reminder: !task.reminder } : task
+          day[id].reminder = reminder;
+        } // task.id === id ? { ...task, reminder: !task.reminder } : task
       )
-      );
-      console.log(day[id]);
+    );
+    console.log(day[id]);
   };
 
   // console.log(days);
@@ -97,46 +100,27 @@ const Day = ({ day, onDelete, func, ...days }) => {
   function refreshPage() {
     window.location.reload();
   }
+  useEffect(() => {}, []);
 
   const handleOnClick = async (e) => {
     e.preventDefault();
     const dateObj = new Date().toISOString();
-    // const month = dateObj.getUTCMonth() + 1; //months from 1-12
-    // const day = dateObj.getUTCDate();
-    // const year = dateObj.getUTCFullYear();
-
-    // const newdate = year + "-" + month + "-" + day;
-    // const newDateObj = new Date(Date.UTC(year, month, day));
-
-    // const newdate = new Date(parseInt(year), parseInt(month), parseInt(day));
-    // // .toISOString();
-    // // const newdate = year + "/" + month + "/" + day;
-
-    // console.log(month, "lolloololloolololololololololol");
-    // console.log(day, "lolloololloolololololololololol");
-    // console.log(year, "lolloololloolololololololololol");
 
     const list = [];
     const calendarTracker = [];
 
-    // tasks.map(async (task) => {
-    //   task.start = await dateObj;
-    //   task.end = await dateObj;
-    //   await calendarTracker.push(task);
-    // });
-     Object.keys(day).map(async function (key, index) {
-       if (key > 0) {
-         day[key].start = await dateObj;
-         day[key].end = await dateObj;
-         day[key].allDay = await true;
+    Object.keys(day).map(async function (key, index) {
+      if (key > 0) {
+        day[key].start = await dateObj;
+        day[key].end = await dateObj;
+        day[key].allDay = await true;
         //  day[key].reminder = ;
 
-         const array = day[key].title.split(",");
-         day[key].title = array[0]
-         await calendarTracker.push(day[key]);
-        //  console.log(day[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
-       }
-     });
+        const array = day[key].title.split(",");
+        day[key].title = array[0];
+        await calendarTracker.push(day[key]);
+      }
+    });
 
     console.log(calendarTracker);
 
@@ -153,15 +137,8 @@ const Day = ({ day, onDelete, func, ...days }) => {
         })
       );
     };
-    setTimeout(actionDispatch, 300);
+    // setTimeout(actionDispatch, 300);
     console.log(calendarTracker);
-    // console.log(calendarID);
-    // dispatch(
-    //   await updateUserStart({
-    //     calendarTracker,
-    //   })
-    // );
-    // setTimeout(refreshPage, 1000);
   };
 
   let x = { height: "auto" };
@@ -170,15 +147,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
     // console.log(x);
     setShowDay(!showDay);
   };
-  // Object.keys(day).map(function (key, index) {
-  //   if (key > 0) {
-  //     console.log(day[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
-  //   }
-  // });
 
-  // tasks.map((task) => list.push(task));
-
-  // const ref = { showDay };
   const isAdmin = checkUserIsAdmin(currentUser);
   if (isAdmin) {
     return (
@@ -299,6 +268,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
       </div>
     );
   }
-};;;
+};
 
 export default Day;
