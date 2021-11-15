@@ -154,7 +154,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
   };
   Object.keys(day).map(function (key, index) {
     if (key > 0) {
-      console.log(day[key]);
+      console.log(day[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
     }
   });
 
@@ -244,15 +244,24 @@ const Day = ({ day, onDelete, func, ...days }) => {
               <Header />
               {isAdmin && <AddTask onAdd={addTask} />}
 
-              {tasks.length > 0 ? (
-                <Tasks
-                  tasks={tasks}
-                  onDelete={deleteTask}
-                  onToggle={toggleReminder}
-                />
-              ) : (
+              {/* {tasks.length > 0 ? ( */}
+              {Object.keys(day).map(function (key, index) {
+                {
+                  if (key > 0)
+                    return (
+                      <Tasks
+                        key={key}
+                        tasks={day[key]}
+                        onDelete={deleteTask}
+                        onToggle={toggleReminder}
+                      />
+                    );
+                }
+              })}
+
+              {/* ) : (
                 "No tasks"
-              )}
+              )} */}
 
               {isAdmin && (
                 <button onClick={handleClick} className="btnAdd btn-block">
