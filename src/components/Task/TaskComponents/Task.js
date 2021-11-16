@@ -6,19 +6,15 @@ import { useSelector } from "react-redux";
 import { checkUserIsAdmin } from "../../../Utils";
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
   users: user.currentUser,
 });
 
 const Task = ({ task, onDelete, onToggle, tasks }) => {
-  const { currentUser } = useSelector(mapState);
   const array = task.title.split(",");
 
   const handleChange = (e) => {
     onToggle(task.id);
   };
-
-  const isAdmin = checkUserIsAdmin(currentUser);
 
   return (
     <div className={`task ${task.reminder ? "reminder" : ""}`}>
@@ -29,27 +25,17 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
             <span className="exercsiseName">{array[0]}</span>
           </a>
         </div>
-        {!isAdmin && (
-          <div>
-            <span>
-              <input
-                type="checkbox"
-                checked={task.reminder}
-                onChange={handleChange}
-              ></input>
-              {/* <label>Pay</label> */}
-            </span>
-          </div>
-        )}
 
-        {isAdmin && (
-          <div>
-            <FaTimes
-              style={{ color: "red", cursor: "pointer" }}
-              onClick={() => onDelete(task.id)}
-            />
-          </div>
-        )}
+        <div>
+          <span>
+            <input
+              type="checkbox"
+              checked={task.reminder}
+              onChange={handleChange}
+            ></input>
+            {/* <label>Pay</label> */}
+          </span>
+        </div>
       </h3>
       <p onClick={() => onToggle(task.id)}>{task.day}</p>
     </div>

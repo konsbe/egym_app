@@ -8,7 +8,7 @@ import AddWeek from "../AddWeek";
 
 
 import { useSelector } from "react-redux";
-import { checkUserIsAdmin } from "../../../Utils";
+
 
 const mapState = ({ user, trainingData }) => ({
   currentUser: user.currentUser,
@@ -45,56 +45,26 @@ const Weeks = ({ onDelete }) => {
   //   console.log(week, "frfrrffrfrfrfrfrfrrfrffrfrrffrfrrffrfrfrfrfr")
   // );
 
-  const isAdmin = checkUserIsAdmin(currentUser); //   const nodeRef = useRef(null);
-  if (isAdmin) {
-    return (
-      <div className="containerMain">
-        <div className="containerWeek">
-          <AddWeek onAdd={addWeek} onDelete={deleteWeek} />
-        </div>
+  //   const nodeRef = useRef(null);
 
-        <div
-          className="weeksContainer"
-          //   onClick={() => setShowWeek(!showWeek)}
-        >
-          {weeks.map((week) => (
-            <Days
-              onDelete={onDelete}
-              key={week.id}
-              week={week}
-              onDelete={deleteWeek}
-            />
-          ))}
-          {/* {userWeeks.map((week) => (
-            <Days
-              onDelete={onDelete}
-              key={week.id}
-              week={week}
-              onDelete={deleteWeek}
-            />
-          ))} */}
-        </div>
+  return (
+    <div>
+      <div
+        className="weeksContainer"
+        //   onClick={() => setShowWeek(!showWeek)}
+      >
+        {userWeeks.map((week) => (
+          <Days
+            onDelete={onDelete}
+            key={week.id}
+            week={week}
+            onDelete={deleteWeek}
+          />
+        ))}
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <div
-          className="weeksContainer"
-          //   onClick={() => setShowWeek(!showWeek)}
-        >
-          {userWeeks.map((week) => (
-            <Days
-              onDelete={onDelete}
-              key={week.id}
-              week={week}
-              onDelete={deleteWeek}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 };
+
 
 export default Weeks;

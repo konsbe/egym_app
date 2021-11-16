@@ -9,8 +9,6 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 import { CSSTransition } from "react-transition-group";
 
-import { updateUserStart } from "../../../redux/User/user.actions";
-import { checkUserIsAdmin } from "../../../Utils";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCalendarDayStart } from "./../../../redux/CalendarTracker/calendarTracker.actions";
@@ -196,5 +194,6 @@ const Day = ({ day, onDelete, func, ...days }) => {
     </div>
   );
 };
+
 
 export default Day;

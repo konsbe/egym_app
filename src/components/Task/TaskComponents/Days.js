@@ -8,7 +8,7 @@ import { CSSTransition } from "react-transition-group";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { checkUserIsAdmin } from "../../../Utils";
+
 
 import {
   fetchUserTrainingScheduleStart,
@@ -122,94 +122,42 @@ const Days = ({ week, onDelete }) => {
     dispatch(addWeekTrainingStart({ weekProgram, scheduleID }));
   };
 
-  const isAdmin = checkUserIsAdmin(currentUser);
-
-  if (isAdmin) {
-    return (
-      <div className="containerone">
-        <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
-          {week.text}
-        </h2>
-        <CSSTransition
-          // in={true}
-          nodeRef={nodeRef}
-          in={showWeek}
-          appear={true}
-          timeout={500}
-          classNames="transition"
-          unmountOnExit
-          // unmountOnEnter
-        >
-          <div ref={nodeRef}>
-            <div className="containerone">
-              {currentUser.userRoles[1] && (
-                <div>
-                  <AddDay onAdd={addDay} />
-                  <button
-                    className="weekDelete btn-block"
-                    onClick={() => onDelete(week.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
-            {days.map((day) => (
-              <Day
-                key={day.id}
-                day={day}
-                onDelete={deleteDay}
-                onClick={handleonClick}
-                func={pull_data}
-              />
-            ))}
-            <button onClick={handleonClick} className="btnAdd btn-block">
-              Add Week
-            </button>
-            <button onClick={handleAddClick} className="btnAddWeek btn-block">
-              Add
-            </button>
-          </div>
-        </CSSTransition>
-      </div>
-    );
-  } else {
-    return (
-      <div className="containerone">
-        <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
-          {week[0].text}
-        </h2>
-        <CSSTransition
-          // in={true}
-          nodeRef={nodeRef}
-          in={showWeek}
-          appear={true}
-          timeout={500}
-          classNames="transition"
-          unmountOnExit
-          // unmountOnEnter
-        >
-          <div ref={nodeRef}>
-            {/* {days.map((day) => ( */}
-            {Object.keys(week).map(function (key, index) {
-              {
-                if (key > 0)
-                  return (
-                    <Day
-                      key={key}
-                      day={week[key]}
-                      onDelete={deleteDay}
-                      onClick={handleonClick}
-                      func={pull_data}
-                    />
-                  );
-              }
-            })}
-            {/* ))} */}
-          </div>
-        </CSSTransition>
-      </div>
-    );
-  }
+  return (
+    <div className="containerone">
+      <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
+        {week[0].text}
+      </h2>
+      <CSSTransition
+        // in={true}
+        nodeRef={nodeRef}
+        in={showWeek}
+        appear={true}
+        timeout={500}
+        classNames="transition"
+        unmountOnExit
+        // unmountOnEnter
+      >
+        <div ref={nodeRef}>
+          {/* {days.map((day) => ( */}
+          {Object.keys(week).map(function (key, index) {
+            {
+              if (key > 0)
+                return (
+                  <Day
+                    key={key}
+                    day={week[key]}
+                    onDelete={deleteDay}
+                    onClick={handleonClick}
+                    func={pull_data}
+                  />
+                );
+            }
+          })}
+          {/* ))} */}
+        </div>
+      </CSSTransition>
+    </div>
+  );
 };
+
 export default Days;
