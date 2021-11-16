@@ -32,6 +32,7 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
   const { userScheduleData } = useSelector(mapState);
 
   // const [reminder, setReminder] = useState(false);
+  // const [reminder, setReminder] = useState();
   const [showDay, setShowDay] = useState(false);
   const list = [];
   const nodeRef = useRef(null);
@@ -83,42 +84,40 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
       userScheduleData[0].documentID,
       ":document id of USERSCHEDULE DATA in firebase"
     );
-    console.log(day);
+    console.log(day,"whole Day");
     console.log(day[id].title);
-    console.log(day[id].reminder, "my day");
+    console.log(day[id].reminder, day[id].title, "my day");
 
-    // Object.keys(week).map(async function (key, index) {
-    //   // if (day[key].title === day[id].title) {
-    //   // console.log(week[(key, index)]);
-    //   if (key > 0) {
-    //     Object.keys(week[key]).map(async function (y, z) {
-
-    //       // console.log(week[key][z].title);
-    //     });
-    //   }
-    //   // }
-    // });
     const taskID = id;
     //  console.log(documentID);
     const scheduleID = userScheduleData[0].documentID;
-    const documenID = week.documenID;
-    const num = day[0].id;
-    let reminder = !day[id].reminder;
-    // dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
-  };
-  // setTasks(
-  //   tasks.map(
-  //     (task) => {
-  //       setReminder(!reminder);
-  //       day[id].reminder = reminder;
-  //     }
-  //     task.id === id ? { ...task, reminder: !task.reminder } : task
-  //   )
-  // );
-  // console.log(day[id]);
+    const documentID = week.documenID;
+    const dayNum = day[0].id;
+    // const reminder = false
+    // Object.keys(day).map(async function (key, index) {
+      //   if (key > 0) {
+        //       // (day[id] === id ? {...day[key], reminder: !day[key].reminder} : day[key])
+        //     if (day[key].id === id) {
+          //       // console.log(day[id].title, 'lllololololololololololololololol')
+          //       console.log(!day[key].reminder, "olololololololloolololol")
+          //     }
+          //     }
+          // })
 
-  // console.log(days);
-  //
+          const reminder = false
+          dispatch(
+            updateUserReminder({
+              reminder: !reminder,
+              scheduleID,
+              documentID,
+              dayNum,
+        id,
+      })
+      );
+      console.log(reminder)
+    };
+
+
   const handleClick = (e) => {
     const list = [];
     tasks.map((task) => {
@@ -233,7 +232,7 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
       </div>
     </div>
   );
-};
+};;
 
 
 export default Day;

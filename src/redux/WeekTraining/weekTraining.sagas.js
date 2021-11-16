@@ -104,14 +104,14 @@ export function* onFetchUserTrainingWeeksStart() {
 ///////////////////////////////////////////////////////////////
 
 export function* updateReminder({
-  payload: { reminder, scheduleID, documenID, num, id },
+  payload: { reminder, scheduleID, documentID, dayNum, id },
 }) {
   try {
     yield handleUpdateReminder({
       reminder,
       scheduleID,
-      documenID,
-      num,
+      documentID,
+      dayNum,
       id,
     });
   } catch (err) {}

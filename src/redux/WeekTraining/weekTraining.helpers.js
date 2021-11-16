@@ -1,5 +1,8 @@
 import { firestore } from "../../firebase/utils";
 import { doc, setDoc } from "firebase/firestore";
+import { auth } from "../../firebase/utils";
+
+import firebase from "firebase/compat/app";
 
 export const handleAddTrainingSchedule = (trainingData) => {
   return new Promise((resolve, reject) => {
@@ -18,7 +21,6 @@ export const handleAddTrainingSchedule = (trainingData) => {
   });
 };
 //
-
 
 export const handleFetchTrainingSchedules = () => {
   return new Promise((resolve, reject) => {
@@ -83,9 +85,6 @@ export const handleAddWeekTraining = (weekProgram, scheduleID) => {
   });
 };
 
-
-
-
 export const handleFetchUserTrainingWeeks = (scheduleID) => {
   return new Promise((resolve, reject) => {
     firestore
@@ -113,37 +112,37 @@ export const handleFetchUserTrainingWeeks = (scheduleID) => {
 export const handleUpdateReminder = ({
   reminder,
   scheduleID,
-  documenID,
-  num,
+  documentID,
+  dayNum,
   id,
 }) => {
+  // console.log(reminder, scheduleID, documenID, dayNum, id);
   return new Promise((resolve, reject) => {
     firestore
-      // .ref(`trainingSchedule/${scheduleID}/week/${documenID}/${num}/${id}`)
+      // .collection("trainingSchedule/" + scheduleID + "/week")
       .collection("trainingSchedule")
       .doc(scheduleID)
       .collection("week")
-      .doc(documenID)
-      .collection(num)
-      // .doc(id)
-      .where("id", "==", id)
-      // .get()
-      // .ref(`gear`)
+      .doc(documentID)
+      .collection(dayNum)
+      .doc(id)
       .update({ reminder })
-      // .update({ injuries: injuries })
-      // .update({ gear: gear })
+      // .get()
+      // .get()    .then((snapshot) => {
 
-      .then((snapshot) => {
-        const usersArray = snapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            id: doc.num,
-          };
-        });
-        resolve(usersArray);
+      .then(() => {
+        // .then((snapshot) => {
+        //   const usersArray = snapshot.docs.map((doc) => {
+        //     return {
+        //       ...doc.data(),
+        //       documentID: doc.num,
+        //     };
+        //   });
+        resolve();
+        // console.log(usersArray, "ololloloololooololololol");
+        console.log(documentID, "ololloloololooololololol");
       })
       .catch((err) => {
-        console.log(err);
         reject(err);
       });
   });

@@ -44,8 +44,9 @@ const User = ({
         documentID,
       })
     );
+    console.log(payment);
   };
-
+  //
   if (!documentID || !firstName || !lastName) return null;
   return (
     <div className="user">
@@ -87,6 +88,6 @@ const User = ({
       </span>
     </div>
   );
-};
+};;
 
 export default User;

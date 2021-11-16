@@ -53,10 +53,10 @@ const Weeks = ({ onDelete }) => {
         className="weeksContainer"
         //   onClick={() => setShowWeek(!showWeek)}
       >
-        {userWeeks.map((week) => (
+        {userWeeks.map((week, index) => (
           <Days
             onDelete={onDelete}
-            key={week.id}
+            key={index}
             week={week}
             onDelete={deleteWeek}
           />

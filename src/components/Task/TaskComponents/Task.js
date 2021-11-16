@@ -28,8 +28,8 @@ const Task = ({
     // const scheduleID = userScheduleData[0].documentID;
     // const documenID = week.documenID;
     // const num = day[0].id;
-    let reminder = !task.reminder;
-    let id = task.id;
+    // let reminder = !task.reminder;
+    // let id = task.id;
     // console.log(reminder, id, "grgrgrggrgrgrgrgrgrgrgrrggrgrgrgrrg");
     // dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
   };

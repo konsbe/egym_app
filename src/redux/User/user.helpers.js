@@ -227,6 +227,8 @@ export const handleUpdatePayment = ({ payment, documentID }) => {
           };
         });
         resolve(usersArray);
+        console.log(usersArray);
+
       })
       .catch((err) => {
         reject(err);
