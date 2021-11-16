@@ -12,6 +12,7 @@ import { CSSTransition } from "react-transition-group";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCalendarDayStart } from "./../../../redux/CalendarTracker/calendarTracker.actions";
+import { updateUserReminder } from "./../../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user, calendarData }) => ({
   currentUser: user.currentUser,
@@ -20,7 +21,7 @@ const mapState = ({ user, calendarData }) => ({
   calendar: calendarData.calendar,
 });
 
-const Day = ({ day, onDelete, func, ...days }) => {
+const Day = ({ day, onDelete, func, weekTitle, week }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   // const [calendarTracker, setCalendarTracker] = useState([]);
@@ -70,6 +71,29 @@ const Day = ({ day, onDelete, func, ...days }) => {
   //Reminder
   const toggleReminder = (id) => {
     console.log(id);
+    // console.log(day[id].title);
+    console.log(weekTitle);
+    console.log(week);
+    console.log(day[0].title);
+    console.log(day);
+    console.log(day[id].title);
+    // Object.keys(day).map(async function (key, index) {
+    //   console.log(day);
+    // });
+    // Object.keys(week).map(async function (key, index) {
+    //   // if (day[key].title === day[id].title) {
+    //   // console.log(week[(key, index)]);
+    //   if (key > 0) {
+    //     Object.keys(week[key]).map(async function (y, z) {
+
+    //       // console.log(week[key][z].title);
+    //     });
+    //   }
+    //   // }
+    // });
+
+    //  console.log(documentID);
+    // dispatch(updateUserReminder({}));
     setTasks(
       tasks.map(
         (task) => {
@@ -83,7 +107,7 @@ const Day = ({ day, onDelete, func, ...days }) => {
   };
 
   // console.log(days);
-
+  //
   const handleClick = (e) => {
     const list = [];
     tasks.map((task) => {

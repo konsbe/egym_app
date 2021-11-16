@@ -121,6 +121,9 @@ const Days = ({ week, onDelete }) => {
     const scheduleID = userScheduleData[0].documentID;
     dispatch(addWeekTrainingStart({ weekProgram, scheduleID }));
   };
+  // const handleClick = () => {
+  //   console.log(week[0].text);
+  // };
 
   return (
     <div className="containerone">
@@ -137,7 +140,10 @@ const Days = ({ week, onDelete }) => {
         unmountOnExit
         // unmountOnEnter
       >
-        <div ref={nodeRef}>
+        <div
+          ref={nodeRef}
+          // onClick={handleClick}
+        >
           {/* {days.map((day) => ( */}
           {Object.keys(week).map(function (key, index) {
             {
@@ -149,6 +155,8 @@ const Days = ({ week, onDelete }) => {
                     onDelete={deleteDay}
                     onClick={handleonClick}
                     func={pull_data}
+                    weekTitle={week[0].text}
+                    week={week}
                   />
                 );
             }
