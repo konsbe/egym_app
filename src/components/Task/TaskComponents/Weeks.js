@@ -21,12 +21,13 @@ const Weeks = ({ onDelete }) => {
 
   //   const [showWeek, setShowWeek] = useState(false);
   const [weeks, setWeeks] = useState([
-    {
-      id: 1,
-      text: "Week 1",
-      day: "Feb 5th at 2:30pm",
-      reminder: true,
-    },
+    // {
+    //   id: 1,
+    //   text: "Week 1",
+    //   day: "Feb 5th at 2:30pm",
+    //   reminder: true,
+    // },
+    //
   ]);
   const addWeek = (week) => {
     const id = weeks.length + 1;
@@ -40,9 +41,9 @@ const Weeks = ({ onDelete }) => {
     setWeeks(weeks.filter((week) => week.id !== id));
   };
 
-  userWeeks.map((week) =>
-    console.log(week, "frfrrffrfrfrfrfrfrrfrffrfrrffrfrrffrfrfrfrfr")
-  );
+  // userWeeks.map((week) =>
+  //   console.log(week, "frfrrffrfrfrfrfrfrrfrffrfrrffrfrrffrfrfrfrfr")
+  // );
 
   const isAdmin = checkUserIsAdmin(currentUser); //   const nodeRef = useRef(null);
   if (isAdmin) {
@@ -64,6 +65,14 @@ const Weeks = ({ onDelete }) => {
               onDelete={deleteWeek}
             />
           ))}
+          {/* {userWeeks.map((week) => (
+            <Days
+              onDelete={onDelete}
+              key={week.id}
+              week={week}
+              onDelete={deleteWeek}
+            />
+          ))} */}
         </div>
       </div>
     );

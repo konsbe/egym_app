@@ -13,10 +13,9 @@ const mapState = ({ user }) => ({
 const Task = ({ task, onDelete, onToggle, tasks }) => {
   const { currentUser } = useSelector(mapState);
   const array = task.title.split(",");
-  const reminder = false;
+
   const handleChange = (e) => {
     onToggle(task.id);
-    console.log(task.id);
   };
 
   const isAdmin = checkUserIsAdmin(currentUser);

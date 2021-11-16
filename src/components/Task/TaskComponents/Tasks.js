@@ -16,9 +16,9 @@ const Tasks = ({ tasks, onDelete, onToggle, func }) => {
   if (isAdmin) {
     return (
       <div>
-        {tasks.map((task) => (
+        {tasks.map((task, index) => (
           <Task
-            // key={key}
+            key={index}
             task={task}
             onDelete={onDelete}
             onToggle={onToggle}

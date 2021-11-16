@@ -1,5 +1,5 @@
 import Header from "./Header";
-import Tasks from "./Tasks";
+import AdminTasks from "./AdminTasks";
 
 import { useState, useRef } from "react";
 
@@ -93,64 +93,29 @@ const Day = ({ day, onDelete, func, ...days }) => {
     });
     list.unshift(day);
     func(list);
+    // console.log(list);
   };
 
   function refreshPage() {
     window.location.reload();
   }
 
-  const handleOnClick = async (e) => {
-    e.preventDefault();
-    const dateObj = new Date().toISOString();
-    const list = [];
-    const calendarTracker = [];
-
-    Object.keys(day).map(async function (key, index) {
-      if (key > 0) {
-        day[key].start = await dateObj;
-        day[key].end = await dateObj;
-        day[key].allDay = await true;
-        //  day[key].reminder = ;
-
-        const array = day[key].title.split(",");
-        day[key].title = array[0];
-        await calendarTracker.push(day[key]);
-        //  console.log(day[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
-      }
-    });
-
-    console.log(calendarTracker);
-
-    const actionDispatch = async () => {
-      const calendarID = calendar[0].documentID;
-      const calendarEmail = calendar[0].email;
-      const calendarDay = calendar[0].day;
-
-      dispatch(
-        addCalendarDayStart({
-          calendarTracker,
-          calendarID,
-          calendarEmail,
-        })
-      );
-    };
-    setTimeout(actionDispatch, 300);
-    console.log(calendarTracker);
-  };
-
   let x = { height: "auto" };
   const handleShow = async () => {
     setShowDay(!showDay);
   };
-
   return (
-    <div className="dayContainer" style={x}>
+    <div>
       {/* <Day days={days} /> */}
       <div className="basiContainer">
         <div className="headerAddDay">
-          <h2 className="titleDay" onClick={handleShow}>
-            {day[0].title}{" "}
+          <h2 onClick={handleShow} className="titleDay">
+            {day.title}{" "}
           </h2>
+          <FaTimes
+            style={{ color: "black", cursor: "pointer", height: 20 }}
+            onClick={() => onDelete(day.id)}
+          />
         </div>
         {/* {showDay && ( */}
 
@@ -166,27 +131,18 @@ const Day = ({ day, onDelete, func, ...days }) => {
         >
           <div className="toggleWrapper" ref={nodeRef}>
             <Header />
+            <AddTask onAdd={addTask} />
+            {tasks.length > 0 ? (
+              <AdminTasks
+                tasks={tasks}
+                onDelete={deleteTask}
+                onToggle={toggleReminder}
+              />
+            ) : (
+              "No tasks"
+            )}
 
-            {/* {tasks.length > 0 ? ( */}
-            {Object.keys(day).map(function (key, index) {
-              {
-                if (key > 0)
-                  return (
-                    <Tasks
-                      key={key}
-                      tasks={day[key]}
-                      onDelete={deleteTask}
-                      onToggle={toggleReminder}
-                    />
-                  );
-              }
-            })}
-
-            {/* ) : (
-                "No tasks"
-              )} */}
-
-            <button onClick={handleOnClick} className="btnAdd btn-block">
+            <button onClick={handleClick} className="btnAdd btn-block">
               AddDay
             </button>
           </div>
