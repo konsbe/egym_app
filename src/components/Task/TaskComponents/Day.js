@@ -14,11 +14,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCalendarDayStart } from "./../../../redux/CalendarTracker/calendarTracker.actions";
 import { updateUserReminder } from "./../../../redux/WeekTraining/weekTraining.actions";
 
-const mapState = ({ user, calendarData }) => ({
+const mapState = ({ user, calendarData, trainingData }) => ({
   currentUser: user.currentUser,
   user: user.user,
   users: user.currentUser,
   calendar: calendarData.calendar,
+  userScheduleData: trainingData.userScheduleData,
 });
 
 const Day = ({ day, onDelete, func, weekTitle, week }) => {
@@ -28,6 +29,7 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
   const { user } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
+  const { userScheduleData } = useSelector(mapState);
 
   const [reminder, setReminder] = useState(false);
   const [showDay, setShowDay] = useState(false);
@@ -70,16 +72,20 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
 
   //Reminder
   const toggleReminder = (id) => {
-    console.log(id);
+    console.log(id, ":exercise number in firebase");
     // console.log(day[id].title);
     console.log(weekTitle);
-    console.log(week);
-    console.log(day[0].title);
+
+    // console.log(week[documenID], "dasdasdasdasdasdasasdsadsdadasdsadsa");
+    console.log(day[0].id, ":day number in firebase");
+    console.log(week.documenID, ":document id in firebase");
+    console.log(
+      userScheduleData[0].documentID,
+      ":document id of USERSCHEDULE DATA in firebase"
+    );
     console.log(day);
     console.log(day[id].title);
-    // Object.keys(day).map(async function (key, index) {
-    //   console.log(day);
-    // });
+
     // Object.keys(week).map(async function (key, index) {
     //   // if (day[key].title === day[id].title) {
     //   // console.log(week[(key, index)]);
