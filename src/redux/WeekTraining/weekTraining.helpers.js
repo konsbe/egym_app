@@ -119,13 +119,14 @@ export const handleUpdateReminder = ({
 }) => {
   return new Promise((resolve, reject) => {
     firestore
+      // .ref(`trainingSchedule/${scheduleID}/week/${documenID}/${num}/${id}`)
       .collection("trainingSchedule")
       .doc(scheduleID)
       .collection("week")
       .doc(documenID)
       .collection(num)
-      .doc(id)
-      // .where("id", "==", id)
+      // .doc(id)
+      .where("id", "==", id)
       // .get()
       // .ref(`gear`)
       .update({ reminder })
@@ -136,12 +137,13 @@ export const handleUpdateReminder = ({
         const usersArray = snapshot.docs.map((doc) => {
           return {
             ...doc.data(),
-            documentID: doc.num,
+            id: doc.num,
           };
         });
         resolve(usersArray);
       })
       .catch((err) => {
+        console.log(err);
         reject(err);
       });
   });

@@ -1,15 +1,25 @@
 import React from "react";
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
-import { useSelector } from "react-redux";
 
+import { useDispatch, useSelector } from "react-redux";
 import { checkUserIsAdmin } from "../../../Utils";
+import { updateUserReminder } from "./../../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user }) => ({
   users: user.currentUser,
 });
 
-const Task = ({ task, onDelete, onToggle, tasks }) => {
+const Task = ({
+  task,
+  onDelete,
+  onToggle,
+  tasks,
+  num,
+  documenID,
+  scheduleID,
+}) => {
+  const dispatch = useDispatch();
   const array = task.title.split(",");
 
   const handleChange = (e) => {
@@ -18,7 +28,9 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
     // const scheduleID = userScheduleData[0].documentID;
     // const documenID = week.documenID;
     // const num = day[0].id;
-
+    let reminder = !task.reminder;
+    let id = task.id;
+    // console.log(reminder, id, "grgrgrggrgrgrgrgrgrgrgrrggrgrgrgrrg");
     // dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
   };
 

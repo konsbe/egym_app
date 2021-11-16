@@ -31,7 +31,7 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
   const { calendar } = useSelector(mapState);
   const { userScheduleData } = useSelector(mapState);
 
-  const [reminder, setReminder] = useState(false);
+  // const [reminder, setReminder] = useState(false);
   const [showDay, setShowDay] = useState(false);
   const list = [];
   const nodeRef = useRef(null);
@@ -85,6 +85,7 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
     );
     console.log(day);
     console.log(day[id].title);
+    console.log(day[id].reminder, "my day");
 
     // Object.keys(week).map(async function (key, index) {
     //   // if (day[key].title === day[id].title) {
@@ -97,24 +98,24 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
     //   }
     //   // }
     // });
-
+    const taskID = id;
     //  console.log(documentID);
     const scheduleID = userScheduleData[0].documentID;
     const documenID = week.documenID;
     const num = day[0].id;
-
-    dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
-    setTasks(
-      tasks.map(
-        (task) => {
-          setReminder(!reminder);
-
-          // day[id].reminder = reminder;
-        } // task.id === id ? { ...task, reminder: !task.reminder } : task
-      )
-    );
-    console.log(day[id]);
+    let reminder = !day[id].reminder;
+    // dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
   };
+  // setTasks(
+  //   tasks.map(
+  //     (task) => {
+  //       setReminder(!reminder);
+  //       day[id].reminder = reminder;
+  //     }
+  //     task.id === id ? { ...task, reminder: !task.reminder } : task
+  //   )
+  // );
+  // console.log(day[id]);
 
   // console.log(days);
   //
@@ -209,6 +210,11 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
                       tasks={day[key]}
                       onDelete={deleteTask}
                       onToggle={toggleReminder}
+                      scheduleID={userScheduleData[0].documentID}
+                      documenID={week.documenID}
+                      // taskID={taskID}
+                      // reminder={!day[id].reminder}
+                      num={day[0].id}
                     />
                   );
               }
