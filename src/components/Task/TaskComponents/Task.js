@@ -14,6 +14,12 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
 
   const handleChange = (e) => {
     onToggle(task.id);
+
+    // const scheduleID = userScheduleData[0].documentID;
+    // const documenID = week.documenID;
+    // const num = day[0].id;
+
+    // dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
   };
 
   return (
@@ -30,7 +36,7 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
           <span>
             <input
               type="checkbox"
-              checked={task.reminder}
+              defaultChecked={task.reminder}
               onChange={handleChange}
             ></input>
             {/* <label>Pay</label> */}

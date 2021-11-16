@@ -99,13 +99,17 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
     // });
 
     //  console.log(documentID);
-    // dispatch(updateUserReminder({}));
+    const scheduleID = userScheduleData[0].documentID;
+    const documenID = week.documenID;
+    const num = day[0].id;
+
+    dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
     setTasks(
       tasks.map(
         (task) => {
           setReminder(!reminder);
 
-          day[id].reminder = reminder;
+          // day[id].reminder = reminder;
         } // task.id === id ? { ...task, reminder: !task.reminder } : task
       )
     );

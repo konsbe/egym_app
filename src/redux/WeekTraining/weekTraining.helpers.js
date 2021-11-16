@@ -108,12 +108,12 @@ export const handleFetchUserTrainingWeeks = (scheduleID) => {
       });
   });
 };
-
+//
 
 export const handleUpdateReminder = ({
   reminder,
   scheduleID,
-  documentID,
+  documenID,
   num,
   id,
 }) => {
@@ -122,9 +122,10 @@ export const handleUpdateReminder = ({
       .collection("trainingSchedule")
       .doc(scheduleID)
       .collection("week")
-      .doc(documentID)
+      .doc(documenID)
       .collection(num)
-      .where("id", "==", id)
+      .doc(id)
+      // .where("id", "==", id)
       // .get()
       // .ref(`gear`)
       .update({ reminder })
