@@ -73,49 +73,66 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
 
   //Reminder
   const toggleReminder = (id) => {
+    // const list = [];
+    day[id].reminder = !day[id].reminder;
+    // list.unshift(day);
+    // console.log(list, "listlistlistlistlistlistlistlistlistlistlistlist");
+    // tasks.map((task) => {
+    //   list.push(task);
+    // });
+    // console.log(week);
+
+    // Object.keys(week).map(async function (key, index) {
+    //   console.log(week[key]);
+    // });
+
     console.log(id, ":exercise number in firebase");
     // console.log(day[id].title);
-    console.log(weekTitle);
+    console.log(weekTitle, "asdadsasdadsasddas");
 
     // console.log(week[documenID], "dasdasdasdasdasdasasdsadsdadasdsadsa");
+
     console.log(day[0].id, ":day number in firebase");
     console.log(week.documenID, ":document id in firebase");
+    console.log(week, ":week in firebase");
     console.log(
       userScheduleData[0].documentID,
       ":document id of USERSCHEDULE DATA in firebase"
     );
-    console.log(day,"whole Day");
+    console.log(day, "whole Day");
     console.log(day[id].title);
     console.log(day[id].reminder, day[id].title, "my day");
 
-    const taskID = id;
-    //  console.log(documentID);
+    const exerciseID = id;
+    console.log(exerciseID, "exerciseID");
     const scheduleID = userScheduleData[0].documentID;
-    const documentID = week.documenID;
+    const documenID = week.documenID;
     const dayNum = day[0].id;
+    // const weekTitle = day[id].title;
     // const reminder = false
     // Object.keys(day).map(async function (key, index) {
-      //   if (key > 0) {
-        //       // (day[id] === id ? {...day[key], reminder: !day[key].reminder} : day[key])
-        //     if (day[key].id === id) {
-          //       // console.log(day[id].title, 'lllololololololololololololololol')
-          //       console.log(!day[key].reminder, "olololololololloolololol")
-          //     }
-          //     }
-          // })
-
-          const reminder = false
-          dispatch(
-            updateUserReminder({
-              reminder: !reminder,
-              scheduleID,
-              documentID,
-              dayNum,
-        id,
+    //   day[1].reminder = !day[1].reminder;
+    //   console.log(
+    //     day[1],
+    //     "day[key]day[key]day[key]day[key]day[key]day[key]day[key]"
+    //   );
+    // if (key > 0) {
+    //     // (day[id] === id ? {...day[key], reminder: !day[key].reminder} : day[key])
+    //   }
+    // });
+    dispatch(
+      updateUserReminder({
+        reminder: !day[id].reminder,
+        scheduleID,
+        documenID,
+        dayNum,
+        exerciseID,
+        list,
+        week,
       })
-      );
-      console.log(reminder)
-    };
+    );
+    // console.log(reminder);
+  };
 
 
   const handleClick = (e) => {

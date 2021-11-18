@@ -73,6 +73,10 @@ const Days = ({ week, onDelete }) => {
     };
 
     fetchData();
+    console.log(
+      week[0].text,
+      "week[0]week[0]week[0]week[0]week[0]week[0]week[0]week[0]week[0]"
+    );
   }, []);
 
   // const getDays = () => {
@@ -129,6 +133,7 @@ const Days = ({ week, onDelete }) => {
     <div className="containerone">
       <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
         {week[0].text}
+        {/* {"ASdasddasasd"} */}
       </h2>
       <CSSTransition
         // in={true}

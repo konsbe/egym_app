@@ -112,38 +112,66 @@ export const handleFetchUserTrainingWeeks = (scheduleID) => {
 export const handleUpdateReminder = ({
   reminder,
   scheduleID,
-  documentID,
+  documenID,
   dayNum,
-  id,
+  exerciseID,
+  list,
+  week,
 }) => {
   // console.log(reminder, scheduleID, documenID, dayNum, id);
+
   return new Promise((resolve, reject) => {
     firestore
       // .collection("trainingSchedule/" + scheduleID + "/week")
       .collection("trainingSchedule")
       .doc(scheduleID)
       .collection("week")
-      .doc(documentID)
-      .collection(dayNum)
-      .doc(id)
-      .update({ reminder })
+      .doc(documenID)
+      // .where("0.text", "==", "Week 2")
+      // .doc()
+      // .doc(documenID)
+      // .collection(dayNum+'/'+id+'/')
+      // .doc(id)
+      // .update([week])
       // .get()
-      // .get()    .then((snapshot) => {
+      .set({ ...week });
+    // .then((snapshot) => {
+    //   const usersArray = snapshot.docs.map((doc) => {
+    //     return {
+    //       ...doc.data(),
+    //       documentID: doc.id,
+    //     };
+    //   });
+    //   resolve(usersArray);
+    // })
+    // .catch((err) => {
+    //   reject(err);
+    // });
+    // .then((snapshot) => {
+    // const usersArray = snapshot.docs(doc.data());
 
-      .then(() => {
-        // .then((snapshot) => {
-        //   const usersArray = snapshot.docs.map((doc) => {
-        //     return {
-        //       ...doc.data(),
-        //       documentID: doc.num,
-        //     };
-        //   });
-        resolve();
-        // console.log(usersArray, "ololloloololooololololol");
-        console.log(documentID, "ololloloololooololololol");
-      })
-      .catch((err) => {
-        reject(err);
-      });
+    // const weekArray = snapshot.docs.map((doc) => {
+    //   console.log(...doc.data());
+    //   return {
+    //     ...doc.data(),
+    //     documenID: doc.id,
+    //   };
+    // });
+
+    // const obj = usersArray.map((item) => {
+    //   if (item.documenID === documenID) {
+    //     console.log(item[dayNum][exerciseID]);
+    //   }
+    // });
+
+    // resolve(weekArray);
+    // console.log(weekArray, "ololloloololooololololol");
+    // console.log([week], "ololloloololooololololol");
+
+    // console.log(documentID, "ololloloololooololololol");
+    // })
+    // .catch((err) => {
+    //   reject(err);
+    // });
   });
 };
