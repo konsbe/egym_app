@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
+import { FaRegPlusSquare } from "@react-icons/all-files/fa/FaRegPlusSquare";
 
 import { fetchExercisesStart } from "../../redux/Exercises/exercises.actions";
 
@@ -9,6 +11,7 @@ const mapState = ({ exercisesData }) => ({
 });
 
 const AddTask = ({ onAdd }) => {
+  const [count, setCount] = useState(1);
   const { exercises } = useSelector(mapState);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
@@ -37,6 +40,25 @@ const AddTask = ({ onAdd }) => {
     setTitle(e.target.value);
     // setYoutube(e.target.data);
   };
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+  const deleteCount = () => {
+    setCount(count - 1);
+  };
+  let menuItems = [];
+  for (var i = 0; i < count; i++) {
+    // if (i === count - 1) {
+    menuItems.push(
+      <div className="setsNrepsSelects">
+        <select className="setsNreps">ads</select>
+        <select className="setsNreps">ads</select>
+        <select className="setsNreps">ads</select>
+        <span className="setsNreps">{i + 1}</span>
+      </div>
+    );
+    // } else {
+  }
 
   return (
     <form className="add-form" onSubmit={onSubmit}>
@@ -75,15 +97,27 @@ const AddTask = ({ onAdd }) => {
       </div>
       <div className="form-control">
         <div className="grid-container">
-          <label>sets | reps | kg</label>
-          <button>Add Sets | Reps | kg</button>
+          <label>
+            <span>
+              <FaTimes
+                style={{ color: "red", cursor: "pointer", height: 20 }}
+                onClick={deleteCount}
+              />
+            </span>
+            <span>sets | reps | kg</span>
+            <span>
+              <FaRegPlusSquare
+                style={{ color: "green", cursor: "pointer", height: 20 }}
+                onClick={handleClick}
+              />
+            </span>
+          </label>
         </div>
-        <div className="setsNrepsSelects">
-          <select className="setsNreps">ads</select>
-          <select className="setsNreps">ads</select>
-          <select className="setsNreps">ads</select>
-        </div>
+
+        <div>{menuItems}</div>
+        {/* <div className="spansAddDeleteSets"> */}
       </div>
+      {/* </div> */}
 
       <input type="submit" value="Save Task" className="btnTask btn-block" />
     </form>

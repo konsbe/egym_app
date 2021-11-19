@@ -218,10 +218,27 @@ margin: auto;
 }
 
 .grid-container{
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  /* display: grid; */
   /* grid-template-columns: auto auto; */
 }
+.grid-container{
+  justify-content: center;
+  align-items: center;
+}
+.grid-container label span{
+  margin: 1rem;
+}
 
+/* .spansAddDeleteSets span{
+  margin:2rem;
+
+
+} */
+/* .deleteCount{
+  padding-right: 0.3rem;
+} */
 
 .form-control {
   margin: 20px 0;
