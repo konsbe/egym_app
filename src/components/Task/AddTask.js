@@ -12,11 +12,16 @@ const mapState = ({ exercisesData }) => ({
 
 const AddTask = ({ onAdd }) => {
   const [count, setCount] = useState(1);
+  const [newCount, setNewCount] = useState(0);
   const { exercises } = useSelector(mapState);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [youtube, setYoutube] = useState("");
   const [day, setDay] = useState("");
+  // const [select, setSelect] = useState([]);
+  const [myReps, setMyReps] = useState([]);
+
+  const select = [];
   const sets = [];
   for (let i = 0; i < 100; i++) {
     sets.push(i);
@@ -52,31 +57,58 @@ const AddTask = ({ onAdd }) => {
     setTitle(e.target.value);
     // setYoutube(e.target.data);
   };
-  const handleClick = () => {
+  const addValues = (e) => {
+    console.log(e.target.value);
+    select.push(e.target.value);
+    console.log(select);
+    // setYoutube(e.target.data);
+  };
+  const handleClick = async () => {
     setCount(count + 1);
+    setNewCount(1);
+    const id = count;
+    await select.push({ id: count });
+    console.log(select);
+
+    myReps.push(select);
+    console.log("dasdasadsdasadsasd");
+    console.log(myReps);
   };
   const deleteCount = () => {
     setCount(count - 1);
+    if (newCount === 1) {
+      setNewCount(0);
+    } else {
+      console.log(count);
+      myReps.map((i) => {
+        if (i[3].id === count) {
+          // console.log(i[3].id);
+          console.log(i);
+          myReps.pop();
+          console.log(myReps);
+        }
+      });
+    }
   };
   let menuItems = [];
   for (var i = 0; i < count; i++) {
     // if (i === count - 1) {
     menuItems.push(
       <div className="setsNrepsSelects">
-        <select className="setsNreps">
-          <option value="">--sets--</option>
+        <select className="setsNreps" onChange={addValues}>
+          <option value={i}>--sets--</option>
           {sets.map((i) => {
             return <option value={i}>{i}</option>;
           })}
         </select>
-        <select className="setsNreps">
-          <option value="">--reps--</option>
+        <select className="setsNreps" onChange={addValues}>
+          <option value={i}>--reps--</option>
           {reps.map((i) => {
             return <option value={i}>{i}</option>;
           })}
         </select>
-        <select className="setsNreps">
-          <option value="">--kg--</option>
+        <select className="setsNreps" onChange={addValues}>
+          <option value={i}>--kg--</option>
           {kilos.map((i) => {
             return <option value={i}>{i}</option>;
           })}
@@ -90,7 +122,7 @@ const AddTask = ({ onAdd }) => {
   return (
     <form className="add-form" onSubmit={onSubmit}>
       <div className="form-control">
-        <label>Task</label>
+        <label>Exercise</label>
         {/* <input
           type="text"
           placeholder="add task"
