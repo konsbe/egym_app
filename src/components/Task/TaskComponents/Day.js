@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Header from "./Header";
 import Tasks from "./Tasks";
 
@@ -73,24 +75,10 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
 
   //Reminder
   const toggleReminder = (id) => {
-    // const list = [];
     day[id].reminder = !day[id].reminder;
-    // list.unshift(day);
-    // console.log(list, "listlistlistlistlistlistlistlistlistlistlistlist");
-    // tasks.map((task) => {
-    //   list.push(task);
-    // });
-    // console.log(week);
-
-    // Object.keys(week).map(async function (key, index) {
-    //   console.log(week[key]);
-    // });
 
     console.log(id, ":exercise number in firebase");
-    // console.log(day[id].title);
     console.log(weekTitle, "asdadsasdadsasddas");
-
-    // console.log(week[documenID], "dasdasdasdasdasdasasdsadsdadasdsadsa");
 
     console.log(day[0].id, ":day number in firebase");
     console.log(week.documenID, ":document id in firebase");
@@ -108,18 +96,7 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
     const scheduleID = userScheduleData[0].documentID;
     const documenID = week.documenID;
     const dayNum = day[0].id;
-    // const weekTitle = day[id].title;
-    // const reminder = false
-    // Object.keys(day).map(async function (key, index) {
-    //   day[1].reminder = !day[1].reminder;
-    //   console.log(
-    //     day[1],
-    //     "day[key]day[key]day[key]day[key]day[key]day[key]day[key]"
-    //   );
-    // if (key > 0) {
-    //     // (day[id] === id ? {...day[key], reminder: !day[key].reminder} : day[key])
-    //   }
-    // });
+
     dispatch(
       updateUserReminder({
         reminder: !day[id].reminder,
@@ -133,7 +110,6 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
     );
     // console.log(reminder);
   };
-
 
   const handleClick = (e) => {
     const list = [];
@@ -249,7 +225,6 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
       </div>
     </div>
   );
-};;
-
+};
 
 export default Day;

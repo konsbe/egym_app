@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
-
 
 import { useDispatch, useSelector } from "react-redux";
 import { checkUserIsAdmin } from "../../../Utils";
@@ -21,17 +20,8 @@ const Task = ({
 }) => {
   const dispatch = useDispatch();
   const array = task.title.split(",");
-
   const handleChange = (e) => {
     onToggle(task.id);
-
-    // const scheduleID = userScheduleData[0].documentID;
-    // const documenID = week.documenID;
-    // const num = day[0].id;
-    // let reminder = !task.reminder;
-    // let id = task.id;
-    // console.log(reminder, id, "grgrgrggrgrgrgrgrgrgrgrrggrgrgrgrrg");
-    // dispatch(updateUserReminder({ reminder, scheduleID, documenID, num, id }));
   };
 
   return (
@@ -51,7 +41,6 @@ const Task = ({
               defaultChecked={task.reminder}
               onChange={handleChange}
             ></input>
-            {/* <label>Pay</label> */}
           </span>
         </div>
       </h3>

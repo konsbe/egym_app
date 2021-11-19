@@ -73,6 +73,17 @@ const AddTask = ({ onAdd }) => {
           onChange={(e) => setDay(e.target.value)}
         />
       </div>
+      <div className="form-control">
+        <div className="grid-container">
+          <label>sets | reps | kg</label>
+          <button>Add Sets | Reps | kg</button>
+        </div>
+        <div className="setsNrepsSelects">
+          <select className="setsNreps">ads</select>
+          <select className="setsNreps">ads</select>
+          <select className="setsNreps">ads</select>
+        </div>
+      </div>
 
       <input type="submit" value="Save Task" className="btnTask btn-block" />
     </form>

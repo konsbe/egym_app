@@ -117,6 +117,7 @@ export const handleUpdateReminder = ({
   exerciseID,
   list,
   week,
+  weekTitle,
 }) => {
   // console.log(reminder, scheduleID, documenID, dayNum, id);
 

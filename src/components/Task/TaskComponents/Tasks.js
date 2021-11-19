@@ -13,23 +13,11 @@ const Tasks = ({
   documenID,
   scheduleID,
 }) => {
-  // Object.keys(tasks).map(function (key, index) {
-  //   if (key > 0) {
-  //     console.log(tasks[key], "ggrgrgrgrrggrgrgrrgrgrgrgr");
-  //   }
-  // });
+
 
   return (
     <div>
-      {/* {tasks.map((task) => ( */}
-      {/* {Object.keys(tasks).map(function (key, index) {
-        {
-          { */}
-      {/* if (key > 0) */}
-      {/* } */}
-      {/* return ( */}
       <Task
-        // key={key}
         task={tasks}
         onDelete={onDelete}
         onToggle={onToggle}
@@ -38,10 +26,6 @@ const Tasks = ({
         // reminder={!day[id].reminder}
         num={num}
       />
-      {/* );
-        }
-      })} */}
-      {/* ))} */}
     </div>
   );
 };
