@@ -208,11 +208,11 @@ margin: auto;
   font-size: 17px;
 }
 .setsNreps{
-  width:4rem;
+  width:5rem;
 
 }
 .setsNreps:nth-child(odd){
-  width:4rem;
+  /* width:4rem; */
   margin-left: 1rem;
   margin-right: 1rem;
 }

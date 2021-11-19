@@ -17,6 +17,18 @@ const AddTask = ({ onAdd }) => {
   const [title, setTitle] = useState("");
   const [youtube, setYoutube] = useState("");
   const [day, setDay] = useState("");
+  const sets = [];
+  for (let i = 0; i < 100; i++) {
+    sets.push(i);
+  }
+  const reps = [];
+  for (let i = 0; i < 100; i++) {
+    reps.push(i);
+  }
+  const kilos = [];
+  for (let i = 0; i < 300; i += 0.25) {
+    kilos.push(i);
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -51,9 +63,24 @@ const AddTask = ({ onAdd }) => {
     // if (i === count - 1) {
     menuItems.push(
       <div className="setsNrepsSelects">
-        <select className="setsNreps">ads</select>
-        <select className="setsNreps">ads</select>
-        <select className="setsNreps">ads</select>
+        <select className="setsNreps">
+          <option value="">--sets--</option>
+          {sets.map((i) => {
+            return <option value={i}>{i}</option>;
+          })}
+        </select>
+        <select className="setsNreps">
+          <option value="">--reps--</option>
+          {reps.map((i) => {
+            return <option value={i}>{i}</option>;
+          })}
+        </select>
+        <select className="setsNreps">
+          <option value="">--kg--</option>
+          {kilos.map((i) => {
+            return <option value={i}>{i}</option>;
+          })}
+        </select>
         <span className="setsNreps">{i + 1}</span>
       </div>
     );
@@ -87,10 +114,10 @@ const AddTask = ({ onAdd }) => {
         </select>
       </div>
       <div className="form-control">
-        <label>sets & reps</label>
+        <label>Training Comments</label>
         <input
           type="text"
-          placeholder="reps*kg"
+          placeholder="write a quick comment about his training e.g. rest.."
           value={day}
           onChange={(e) => setDay(e.target.value)}
         />
