@@ -12,7 +12,7 @@ const mapState = ({ exercisesData }) => ({
 
 const AddTask = ({ onAdd }) => {
   const [count, setCount] = useState(1);
-  const [newCount, setNewCount] = useState(0);
+  const [newCount, setNewCount] = useState(1);
   const { exercises } = useSelector(mapState);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
@@ -22,6 +22,7 @@ const AddTask = ({ onAdd }) => {
   const [myReps, setMyReps] = useState([]);
 
   const select = [];
+  let newObj = new Object();
   const sets = [];
   for (let i = 0; i < 100; i++) {
     sets.push(i);
@@ -55,22 +56,49 @@ const AddTask = ({ onAdd }) => {
   const extractValues = (e) => {
     console.log(e.target.value);
     setTitle(e.target.value);
+
     // setYoutube(e.target.data);
   };
-  const addValues = (e) => {
+  const addSetsValues = (e) => {
     console.log(e.target.value);
     select.push(e.target.value);
     console.log(select);
+    const sets = e.target.value;
+    // setYoutube(e.target.data);
+  };
+  const addRepsValues = (e) => {
+    console.log(e.target.value);
+    select.push(e.target.value);
+    console.log(select);
+    const reps = e.target.value;
+    // setYoutube(e.target.data);
+  };
+  const addKiloValues = (e) => {
+    console.log(e.target.value);
+    select.push(e.target.value);
+    console.log(select);
+    const kilos = e.target.value;
     // setYoutube(e.target.data);
   };
   const handleClick = async () => {
     setCount(count + 1);
-    setNewCount(1);
     const id = count;
-    await select.push({ id: count });
-    console.log(select);
-
-    myReps.push(select);
+    if (newCount === 0) {
+      setNewCount(1);
+    } else {
+      await select.push({ id: count });
+      console.log(select);
+      myReps.push(select);
+      setNewCount(1);
+    }
+    const newObj = {
+      sets: sets,
+      reps: reps,
+      kilos: kilos,
+      id: count,
+    };
+    // myReps.push(newObj);
+    // myReps.push(select);
     console.log("dasdasadsdasadsasd");
     console.log(myReps);
   };
@@ -95,19 +123,19 @@ const AddTask = ({ onAdd }) => {
     // if (i === count - 1) {
     menuItems.push(
       <div className="setsNrepsSelects">
-        <select className="setsNreps" onChange={addValues}>
+        <select className="setsNreps" onChange={addSetsValues}>
           <option value={i}>--sets--</option>
           {sets.map((i) => {
             return <option value={i}>{i}</option>;
           })}
         </select>
-        <select className="setsNreps" onChange={addValues}>
+        <select className="setsNreps" onChange={addRepsValues}>
           <option value={i}>--reps--</option>
           {reps.map((i) => {
             return <option value={i}>{i}</option>;
           })}
         </select>
-        <select className="setsNreps" onChange={addValues}>
+        <select className="setsNreps" onChange={addKiloValues}>
           <option value={i}>--kg--</option>
           {kilos.map((i) => {
             return <option value={i}>{i}</option>;
