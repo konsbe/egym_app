@@ -42,10 +42,12 @@ const AddTask = ({ onAdd }) => {
       alert("please add task");
       return;
     }
-    onAdd({ title, day, youtube });
+    onAdd({ title, day, youtube, myReps });
     setTitle("");
     setDay("");
     setYoutube("");
+    setCount(1);
+    setMyReps([]);
     e.target.reset();
   };
 
@@ -100,6 +102,7 @@ const AddTask = ({ onAdd }) => {
     // myReps.push(newObj);
     // myReps.push(select);
     console.log("dasdasadsdasadsasd");
+
     console.log(myReps);
   };
   const deleteCount = () => {
