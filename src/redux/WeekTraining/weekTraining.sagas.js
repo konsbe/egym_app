@@ -73,7 +73,7 @@ export function* onFetchUserTrainingScheduleStart() {
 
 export function* addWeekTraining({ payload: { weekProgram, scheduleID } }) {
   try {
-    const timestamp = new Date();
+    // const timestamp = new Date();
     // const createdDate = timestamp;
     // weekProgram.push(createdDate);
     yield handleAddWeekTraining(weekProgram, scheduleID );

@@ -90,7 +90,7 @@ const AddTask = ({ onAdd }) => {
     } else {
       await select.push({ id: count });
       console.log(select);
-      myReps.push(select);
+      myReps.push({ ...select });
       setNewCount(1);
     }
     const newObj = {
@@ -125,23 +125,35 @@ const AddTask = ({ onAdd }) => {
   for (var i = 0; i < count; i++) {
     // if (i === count - 1) {
     menuItems.push(
-      <div className="setsNrepsSelects">
+      <div className="setsNrepsSelects" key={i}>
         <select className="setsNreps" onChange={addSetsValues}>
-          <option value={i}>--sets--</option>
-          {sets.map((i) => {
-            return <option value={i}>{i}</option>;
+          {/* <option key={-1}>--sets--</option> */}
+          {sets.map((i, index) => {
+            return (
+              <option key={i.toString()} value={i}>
+                {i}
+              </option>
+            );
           })}
         </select>
         <select className="setsNreps" onChange={addRepsValues}>
-          <option value={i}>--reps--</option>
-          {reps.map((i) => {
-            return <option value={i}>{i}</option>;
+          {/* <option key={-1}>--reps--</option> */}
+          {reps.map((i, index) => {
+            return (
+              <option key={i.toString()} value={i}>
+                {i}
+              </option>
+            );
           })}
         </select>
         <select className="setsNreps" onChange={addKiloValues}>
-          <option value={i}>--kg--</option>
-          {kilos.map((i) => {
-            return <option value={i}>{i}</option>;
+          {/* <option key={-1}>--kg--</option> */}
+          {kilos.map((i, index) => {
+            return (
+              <option key={i.toString()} value={i}>
+                {i}
+              </option>
+            );
           })}
         </select>
         <span className="setsNreps">{i + 1}</span>
