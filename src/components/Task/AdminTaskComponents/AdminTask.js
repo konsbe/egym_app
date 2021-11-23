@@ -37,8 +37,8 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
       </h3>
       <p onClick={() => onToggle(task.id)}>{task.day}</p>
       {/* {Object.keys(tasks.myReps).map(function (key, index) { */}
-      {task.myReps.map((sets) => (
-        <p>
+      {task.myReps.map((sets, index) => (
+        <p key={index}>
           <span>
             {sets[0]} x {sets[1]} x {sets[2]}
             {/* {task.myReps} */}
