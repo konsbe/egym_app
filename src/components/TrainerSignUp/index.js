@@ -19,7 +19,7 @@ const TrainerSignUp = () => {
     <div>
       <form className="trainersRegistrationForm">
         <div className="countrySelector">
-          <CountrySelector country={setCountry()} region={setRegion()} />
+          <CountrySelector />
         </div>
         <select
           className="trainersFormInput gymTrainer"

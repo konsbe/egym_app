@@ -15,6 +15,7 @@ class Example extends Component {
   selectCountry(val) {
     this.setState({ country: val });
     // ontoggleCountry(val);
+
     console.log(val)
   }
 
