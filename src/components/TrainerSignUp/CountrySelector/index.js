@@ -14,10 +14,14 @@ class Example extends Component {
 
   selectCountry(val) {
     this.setState({ country: val });
+    // ontoggleCountry(val);
+    console.log(val)
   }
 
   selectRegion(val) {
     this.setState({ region: val });
+    // ontoggleRegion(val);
+      console.log(val)
   }
 
   render() {
