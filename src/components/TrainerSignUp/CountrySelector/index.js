@@ -25,10 +25,12 @@ class Example extends Component {
     return (
       <div>
         <CountryDropdown
+          className="countryDropdown"
           value={country}
           onChange={(val) => this.selectCountry(val)}
         />
         <RegionDropdown
+          className="regionDropdown"
           country={country}
           value={region}
           onChange={(val) => this.selectRegion(val)}

@@ -13,7 +13,7 @@
        /* font-size: 2rem; */
     padding-left: 1rem;
     margin-bottom: 1rem;
-    border-radius:0.5rem ;
+    border-radius:0.3rem ;
 }
 
 .trainersFormInput:nth-child(0){
@@ -27,3 +27,43 @@
     padding-bottom:1px;
     text-align: center;
 }
+.countryDropdown{
+    border: 2px solid;
+   border-radius:0.3rem ;
+}
+.regionDropdown{
+    border: 2px solid;
+   border-radius:0.3rem ;
+}
+
+.trainerTextArea{
+        border: 2px solid;
+   border-radius:0.3rem ;
+   width: 20rem;
+}
+.trainerUsername{
+    margin-right:0.4rem;
+}
+.generalInfo{
+    margin-top: 1rem;
+}
+
+.enroll{
+    margin-top: 0.5rem;
+    width: 20rem;
+   border-radius:0.3rem ;
+padding: 0.3rem;
+border: 2px solid #198754;
+color: black;
+}
+.enroll:hover{
+    color:white;
+    background-color: rgba(0, 70, 46,0.6);
+
+}
+
+.enroll:active{
+
+    box-shadow: 1px 1px 2px rgba(224, 255, 49, 0.6), 0 0 4px rgba(224, 255, 49, 0.6), 0 0 8px rgba(224, 255, 49, 0.6);
+}
+

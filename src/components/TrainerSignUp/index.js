@@ -1,12 +1,18 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import CountrySelector from "./CountrySelector";
 
 import FormInput from "../Forms/FormInput";
 
 import "./styles.css";
-import { Form } from "react-bootstrap";
+
+import Button from "./../Forms/Button";
 
 const TrainerSignUp = () => {
+  const [country, setCountry] = useState("");
+  const [trainerType, setTrainerType] = useState("");
+  const [username, setUsername] = useState("");
+  const [generalInfo, setGeneralInfo] = useState("");
+
   return (
     <div>
       <form className="trainersRegistrationForm">
@@ -18,18 +24,19 @@ const TrainerSignUp = () => {
           <option value="gym">Gym</option>
           <option value="trainer">Trainer</option>
         </select>
-        <div>
+        <div className="trainerUsername">
           <label>Username</label>
           <FormInput className="trainersFormInput" type="text"></FormInput>
         </div>
+        <label>Training Types</label>
         <div>
-          <label>Training Types</label>
-          <FormInput className="trainersFormInput" type="textarea"></FormInput>
+          <textarea className="trainerTextArea" type="textarea" rows="8" />
         </div>
+        <label className="generalInfo">General info</label>
         <div>
-          <label>General info</label>
-          <FormInput className="trainersFormInput" type="textarea"></FormInput>
+          <textarea className="trainerTextArea" type="textarea" rows="8" />
         </div>
+        <Button className="enroll"> Enrol as trainer </Button>
       </form>
     </div>
   );
