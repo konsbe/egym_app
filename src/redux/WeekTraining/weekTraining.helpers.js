@@ -77,6 +77,7 @@ export const handleAddWeekTraining = (weekProgram, scheduleID) => {
       .set({ ...weekProgram })
       .then(() => {
         resolve();
+        console.log(...weekProgram);
       })
       .catch((err) => {
         console.log(err);
@@ -92,6 +93,7 @@ export const handleFetchUserTrainingWeeks = (scheduleID) => {
       .doc(scheduleID)
       // .doc(calendarID)
       .collection("week")
+      .orderBy("0/createdDate", "asc")
       .get()
       .then((snapshot) => {
         const daysArray = snapshot.docs.map((doc) => {

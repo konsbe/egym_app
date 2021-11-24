@@ -23,7 +23,7 @@ const Task = ({
   const handleChange = (e) => {
     onToggle(task.id);
   };
-
+  //
   return (
     <div className={`task ${task.reminder ? "reminder" : ""}`}>
       <h3>
@@ -45,6 +45,14 @@ const Task = ({
         </div>
       </h3>
       <p onClick={() => onToggle(task.id)}>{task.day}</p>
+      {task.myReps.map((sets, index) => (
+        <p key={index}>
+          <span>
+            {sets[0]} x {sets[1]} x {sets[2]}
+            {/* {task.myReps} */}
+          </span>
+        </p>
+      ))}
     </div>
   );
 };
