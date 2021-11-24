@@ -29,6 +29,8 @@ import Users from "./views/Users";
 import Profile from "./views/Profile";
 import Exercises from "./views/Exercises";
 import Programs from "./views/Programs";
+import Trainers from "./views/Trainers";
+import TrainerRegistration from "./views/TrainerRegistration";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -48,6 +50,15 @@ const App = (props) => {
             render={() => (
               <MainLayout>
                 <Homepage />
+              </MainLayout>
+            )}
+          />
+          <Route
+            exact
+            path="/fortrainers"
+            render={() => (
+              <MainLayout>
+                <Trainers />
               </MainLayout>
             )}
           />
@@ -74,6 +85,14 @@ const App = (props) => {
             render={() => (
               <MainLayout>
                 <Registration />
+              </MainLayout>
+            )}
+          />
+          <Route
+            path="/trainer-registration"
+            render={() => (
+              <MainLayout>
+                <TrainerRegistration />
               </MainLayout>
             )}
           />

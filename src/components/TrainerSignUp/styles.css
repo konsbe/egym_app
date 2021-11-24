@@ -1,0 +1,29 @@
+.trainersRegistrationForm{
+    margin-top: 4rem;
+}
+
+.countrySelector{
+    margin-bottom: 1rem;
+}
+
+.trainersFormInput{
+        height: 2rem;
+        width: 20rem;
+        /* box-sizing: border-box; */
+       /* font-size: 2rem; */
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    border-radius:0.5rem ;
+}
+
+.trainersFormInput:nth-child(0){
+        margin-top:1rem;
+}
+
+.gymTrainer{
+    padding-right: 2px;
+    border: 2px solid;
+    padding-top:1px;
+    padding-bottom:1px;
+    text-align: center;
+}

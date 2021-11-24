@@ -98,6 +98,14 @@ const SignUp = (props) => {
 
   return (
     <AuthWrapper {...configAuthWrapper}>
+      <p className="logintext">
+        Would you Like to
+        <Link className="loginlink" to="/trainer-registration">
+          {" "}
+          Sign Up{" "}
+        </Link>
+        As a Trainer
+      </p>
       <div className="formWrap">
         {errors.length > 0 && (
           <ul className="errorline">

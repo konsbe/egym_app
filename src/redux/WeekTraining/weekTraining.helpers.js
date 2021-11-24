@@ -93,7 +93,7 @@ export const handleFetchUserTrainingWeeks = (scheduleID) => {
       .doc(scheduleID)
       // .doc(calendarID)
       .collection("week")
-      .orderBy("0/createdDate", "asc")
+      .orderBy("0/createdDate", "desc")
       .get()
       .then((snapshot) => {
         const daysArray = snapshot.docs.map((doc) => {
