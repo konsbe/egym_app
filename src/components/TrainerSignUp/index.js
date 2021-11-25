@@ -15,11 +15,30 @@ const TrainerSignUp = () => {
   const [username, setUsername] = useState("");
   const [generalInfo, setGeneralInfo] = useState("");
 
+  const pull_country = (data) => {
+    console.log(data);
+    setCountry(data); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
+  };
+  const pull_region = (data) => {
+    console.log(data);
+    setRegion(data);
+  };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(country, region, type, trainerType, username, generalInfo);
+    setCountry("");
+    setRegion("");
+    setType("");
+    setUsername("");
+    setTrainerType("");
+    setGeneralInfo("");
+  };
+
   return (
     <div>
-      <form className="trainersRegistrationForm">
+      <form onSubmit={handleFormSubmit} className="trainersRegistrationForm">
         <div className="countrySelector">
-          <CountrySelector />
+          <CountrySelector func={pull_country} func2={pull_region} />
         </div>
         <select
           className="trainersFormInput gymTrainer"
@@ -55,7 +74,10 @@ const TrainerSignUp = () => {
             onChange={(e) => setGeneralInfo(e.target.value)}
           />
         </div>
-        <Button className="enroll"> Enrol as trainer </Button>
+        <Button type="submit" className="enroll">
+          {" "}
+          Enrol as trainer{" "}
+        </Button>
       </form>
     </div>
   );

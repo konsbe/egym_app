@@ -16,16 +16,19 @@ class Example extends Component {
     this.setState({ country: val });
     // ontoggleCountry(val);
 
-    console.log(val)
+    this.props.func(val)
+
   }
 
   selectRegion(val) {
+
     this.setState({ region: val });
     // ontoggleRegion(val);
-      console.log(val)
+    this.props.func2(val)
   }
+  render(
 
-  render() {
+  ) {
     const { country, region } = this.state;
     return (
       <div>
