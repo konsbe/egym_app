@@ -112,6 +112,7 @@ const Days = ({ week, onDelete }) => {
     console.log(data); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
   };
   const handleonClick = (e) => {
+    weekProgram.unshift(new Date());
     weekProgram.unshift(week);
     console.log(week);
   };

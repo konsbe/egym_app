@@ -65,7 +65,7 @@ export const handleFetchUserTrainingSchedule = (email) => {
 };
 /////////////////////////////////////////////////////////////////////
 
-export const handleAddWeekTraining = (weekProgram, scheduleID) => {
+export const handleAddWeekTraining = (weekProgram, scheduleID, createdDate) => {
   // const cityRef = doc('calendarTracker', calendarID, );
   return new Promise((resolve, reject) => {
     firestore
@@ -93,7 +93,7 @@ export const handleFetchUserTrainingWeeks = (scheduleID) => {
       .doc(scheduleID)
       // .doc(calendarID)
       .collection("week")
-      .orderBy("0/createdDate", "desc")
+      .orderBy("1", "desc")
       .get()
       .then((snapshot) => {
         const daysArray = snapshot.docs.map((doc) => {

@@ -48,36 +48,36 @@ const Days = ({ week, onDelete }) => {
     },
   ]);
   const { email } = user;
-  useEffect(() => {
-    // dispatch(fetchTrainingSchedulesStart());
-    dispatch(fetchUserTrainingScheduleStart(email));
+  // useEffect(() => {
+  //   // dispatch(fetchTrainingSchedulesStart());
+  //   // dispatch(fetchUserTrainingScheduleStart(email));
 
-    // dispatch(fetchUserTrainingWeeksStart(scheduleID));
-    const fetchData = async () => {
-      try {
-        await fetchDataDispatch().then(fetchProgramDispatch());
-      } catch (err) {}
-    };
+  //   // dispatch(fetchUserTrainingWeeksStart(scheduleID));
+  //   const fetchData = async () => {
+  //     try {
+  //       await fetchDataDispatch().then(fetchProgramDispatch());
+  //     } catch (err) {}
+  //   };
 
-    const fetchDataDispatch = async () => {
-      await setTimeout(() => {
-        dispatch(fetchUserTrainingScheduleStart(email));
-      }, 300);
-    };
+  //   const fetchDataDispatch = async () => {
+  //     await setTimeout(() => {
+  //       dispatch(fetchUserTrainingScheduleStart(email));
+  //     }, 5000);
+  //   };
 
-    const fetchProgramDispatch = async () => {
-      await setTimeout(async () => {
-        const scheduleID = await userScheduleData[0].documentID;
-        dispatch(fetchUserTrainingWeeksStart(scheduleID));
-      }, 1000);
-    };
+  //   const fetchProgramDispatch = async () => {
+  //     await setTimeout(async () => {
+  //       const scheduleID = await userScheduleData[0].documentID;
+  //       dispatch(fetchUserTrainingWeeksStart(scheduleID));
+  //     }, 10000);
+  //   };
 
-    fetchData();
-    console.log(
-      week[0].text,
-      "week[0]week[0]week[0]week[0]week[0]week[0]week[0]week[0]week[0]"
-    );
-  }, []);
+  //   fetchData();
+  //   // console.log(
+  //   //   week[0].text,
+  //   //   "week[0]week[0]week[0]week[0]week[0]week[0]week[0]week[0]week[0]"
+  //   // );
+  // }, []);
 
   // const getDays = () => {
   //   let x = 0;
@@ -132,7 +132,8 @@ const Days = ({ week, onDelete }) => {
   return (
     <div className="containerone">
       <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
-        {week[0].text}
+        {week[0] ? week[0].text : "no tasks"}
+        {/* sdaasd */}
         {/* {"ASdasddasasd"} */}
       </h2>
       <CSSTransition
@@ -152,7 +153,7 @@ const Days = ({ week, onDelete }) => {
           {/* {days.map((day) => ( */}
           {Object.keys(week).map(function (key, index) {
             {
-              if (key > 0)
+              if (key > 1)
                 return (
                   <Day
                     key={key}

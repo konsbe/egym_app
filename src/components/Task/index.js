@@ -8,7 +8,7 @@ import { checkUserIsAdmin } from "../../Utils";
 
 const mapState = ({ user, trainingData }) => ({
   currentUser: user.currentUser,
-  userWeeks: trainingData.trainingWeeks,
+  // userWeeks: trainingData.trainingWeeks,
 });
 
 const Task = ({ onDelete }) => {

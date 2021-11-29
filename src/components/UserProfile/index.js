@@ -10,16 +10,27 @@ import "./styles.css";
 
 import { fetchUserCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
 
+import {
+  fetchUserTrainingScheduleStart,
+  fetchTrainingSchedulesStart,
+  addWeekTrainingStart,
+  fetchUserTrainingWeeksStart,
+} from "./../../redux/WeekTraining/weekTraining.actions";
+
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
   calendar: state.calendarData.calendar,
+  userScheduleData: state.trainingData.userScheduleData,
+  // userWeeks: state.trainingData.trainingWeeks,
 });
 
 const UserProfile = ({}) => {
   const dispatch = useDispatch();
   const { userID } = useParams();
 
+  const { userScheduleData } = useSelector(mapState);
+  const { userWeeks } = useSelector(mapState);
   const { user } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
   // const { email } = calendar;
@@ -43,19 +54,41 @@ const UserProfile = ({}) => {
 
   useEffect(() => {
     const fetchUser = () => {
-      setTimeout(() => {
-        dispatch(fetchUserStart(userID));
-      }, 1000);
-      fetchCalendar();
+      // setTimeout(() => {
+
+      dispatch(fetchUserStart(userID));
+      // }, 1000);
+      // fetchCalendar();
     };
-    const fetchCalendar = () => {
-      setTimeout(() => {
-        // dispatch(fetchUserCalendarStart(email));
+    // const fetchCalendar = () => {
+    // setTimeout(() => {
+    // dispatch(fetchUserCalendarStart(email));
+    // }, 2000);
+    // };
+
+    const fetchData = async () => {
+      try {
+        await fetchDataDispatch();
+        fetchProgramDispatch();
+      } catch (err) {}
+    };
+
+    const fetchDataDispatch = async () => {
+      await setTimeout(() => {
+        dispatch(fetchUserTrainingScheduleStart(email));
+      }, 1000);
+    };
+
+    const fetchProgramDispatch = async () => {
+      await setTimeout(async () => {
+        const scheduleID = await userScheduleData[0].documentID;
+        dispatch(fetchUserTrainingWeeksStart(scheduleID));
       }, 2000);
     };
 
     fetchUser();
-    fetchCalendar();
+    // fetchCalendar();
+    fetchData();
     // if (calendar.length === 0) {
     // setBool(true);
     // dispatch(fetchUserCalendarStart(email));

@@ -93,7 +93,7 @@ export function* onAddWeekTrainingStart() {
     addWeekTraining
   );
 }
-
+///////////////////////////////////////////////////////////////////////////////
 export function* fetchUserTrainingWeeks({ payload }) {
   try {
     const trainingWeeks = yield handleFetchUserTrainingWeeks(payload);
