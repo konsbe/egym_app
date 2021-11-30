@@ -21,6 +21,8 @@ export const rootReducer = combineReducers({
   // users: userReducer,
 });
 
+
+
 const configStorage = {
   key: "root",
   storage,
@@ -28,3 +30,4 @@ const configStorage = {
 };
 
 export default persistReducer(configStorage, rootReducer);
+// export default rootReducer;

@@ -53,10 +53,10 @@ const UserProfile = ({}) => {
   // const letters = genre.length
 
   useEffect(() => {
-    const fetchUser = () => {
+    const fetchUser = async () => {
       // setTimeout(() => {
 
-      dispatch(fetchUserStart(userID));
+      await dispatch(fetchUserStart(userID));
       // }, 1000);
       // fetchCalendar();
     };
@@ -74,8 +74,8 @@ const UserProfile = ({}) => {
     };
 
     const fetchDataDispatch = async () => {
-      await setTimeout(() => {
-        dispatch(fetchUserTrainingScheduleStart(email));
+      await setTimeout(async () => {
+        dispatch(await fetchUserTrainingScheduleStart(email));
       }, 1000);
     };
 
@@ -83,9 +83,12 @@ const UserProfile = ({}) => {
       await setTimeout(async () => {
         const scheduleID = await userScheduleData[0].documentID;
         dispatch(fetchUserTrainingWeeksStart(scheduleID));
-      }, 2000);
+      }, 1500);
     };
-
+    console.log(
+      userScheduleData[0].email === email,
+      "asddasdasadsdassdadsadasasddsa"
+    );
     fetchUser();
     // fetchCalendar();
     fetchData();
@@ -93,7 +96,7 @@ const UserProfile = ({}) => {
     // setBool(true);
     // dispatch(fetchUserCalendarStart(email));
     // }
-  }, []);
+  }, [userScheduleData[0].email !== email]);
 
   return (
     <div className="sidebar">

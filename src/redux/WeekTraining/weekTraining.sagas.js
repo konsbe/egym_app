@@ -17,6 +17,7 @@ import {
   setUserTrainingSchedule,
   setUserTrainingWeeks,
   updateUserReminder,
+  goBackSuccess,
 } from "./weekTraining.actions";
 
 export function* addTrainingSchedule({ payload: { email } }) {
@@ -81,7 +82,8 @@ export function* addWeekTraining({ payload: { weekProgram, scheduleID } }) {
     // weekProgram[0].push(createdDate)
     // const createdDate = timestamp;
     // weekProgram.push(createdDate);
-    yield handleAddWeekTraining(weekProgram, scheduleID,);
+    const v = timestamp;
+    yield handleAddWeekTraining(weekProgram, scheduleID, createdDate);
 
     // yield put(fetchCalendarsStart());
   } catch (err) {}
@@ -126,6 +128,18 @@ export function* updateReminder({
 
 export function* onUpdateUserPayment() {
   yield takeLatest(weekTrainingTypes.UPDATE_USER_REMINDER, updateReminder);
+}
+
+export function* goBackToUsers() {
+  try {
+    yield put(goBackSuccess());
+  } catch (err) {
+    // console.log(err);
+  }
+}
+
+export function* onGoBackToUsersStart() {
+  yield takeLatest(weekTrainingTypes.GO_BACK_USERS_START, goBackToUsers);
 }
 
 export default function* weekTrainingSagas() {

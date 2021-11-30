@@ -23,6 +23,11 @@ const weekTrainingReducer = (state = INITIAL_STATE, action) => {
         ...state,
         trainingWeeks: action.payload,
       };
+    case weekTrainingTypes.GO_BACK_USERS_START:
+      return {
+        ...state,
+        ...INITIAL_STATE,
+      };
     default:
       return state;
   }

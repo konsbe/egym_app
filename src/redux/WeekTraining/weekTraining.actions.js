@@ -44,3 +44,8 @@ export const updateUserReminder = (upData) => ({
   type: weekTrainingTypes.UPDATE_USER_REMINDER,
   payload: upData,
 });
+
+
+export const goBackSuccess = () => ({
+  type: weekTrainingTypes.SIGN_OUT_USER_SUCCESS,
+});

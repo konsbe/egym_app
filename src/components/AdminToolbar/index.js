@@ -1,10 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { Button, Nav } from "react-bootstrap";
 import { checkUserIsAdmin } from "./../../Utils";
 // WithAdminAuth;
 import "./styles.css";
+
+import { goBackSuccess } from "../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -12,6 +14,8 @@ const mapState = ({ user }) => ({
 
 const AdminToolbar = (props) => {
   const { currentUser } = useSelector(mapState);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const isAdmin = checkUserIsAdmin(currentUser);
   if (!isAdmin) {
