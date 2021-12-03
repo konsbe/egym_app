@@ -116,6 +116,7 @@ export const handleFetchUserTrainingWeeks = ({
             };
           }),
         ];
+        console.log(totalCount, "asddasdasdasdsadasasdasdasdasddasdas");
         resolve({
           data,
           queryDoc: snapshot.docs[totalCount - 1],

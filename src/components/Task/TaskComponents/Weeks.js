@@ -33,6 +33,7 @@ const Weeks = ({ onDelete }) => {
   const { userWeeks } = useSelector(mapState);
   const { data, queryDoc, isLastPage } = userWeeks;
   //   const [showWeek, setShowWeek] = useState(false);
+  const scheduleID = userScheduleData[0].documentID;
   const { user } = useSelector(mapState);
   const {
     userUID,
@@ -75,7 +76,6 @@ const Weeks = ({ onDelete }) => {
   // );
 
   //   const nodeRef = useRef(null);
-  const scheduleID = userScheduleData[0].documentID;
   useEffect(() => {
     const fetchUser = async () => {
       await dispatch(fetchUserStart(userID));
@@ -103,7 +103,7 @@ const Weeks = ({ onDelete }) => {
     fetchUser();
     fetchData();
   }, [userScheduleData[0].email !== email]);
-
+  // userScheduleData[0].email !== email;
   const handleLoadMore = () => {
     dispatch(
       fetchUserTrainingWeeksStart({
@@ -117,7 +117,7 @@ const Weeks = ({ onDelete }) => {
   const configLoadMore = {
     onLoadMoreEvt: handleLoadMore,
   };
-  console.log(data, ":slsllsslsllslslslslslsllslsls");
+  console.log(data, queryDoc, ":slsllsslsllslslslslslsllslsls");
   return (
     <div>
       <div

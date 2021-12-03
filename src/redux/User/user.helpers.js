@@ -19,20 +19,36 @@ export const handleResetPasswordAPI = (email) => {
   });
 };
 
-export const handleFetchUsers = () => {
+export const handleFetchUsers = ({ bla, startAfterDoc, persistUsers = [] }) => {
   return new Promise((resolve, reject) => {
-    firestore
+    const pageSize = 4;
+
+    let ref = firestore
       .collection("users")
+
       .orderBy("createdDate", "asc")
+      .limit(pageSize);
+    if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
+
+    ref
       .get()
       .then((snapshot) => {
-        const usersArray = snapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            documentID: doc.id,
-          };
+        const totalCount = snapshot.size;
+        const data = [
+          ...persistUsers,
+          ...snapshot.docs.map((doc) => {
+            return {
+              ...doc.data(),
+              documentID: doc.id,
+            };
+          }),
+        ];
+
+        resolve({
+          data,
+          queryDoc: snapshot.docs[totalCount - 1],
+          isLastPage: totalCount < 1,
         });
-        resolve(usersArray);
       })
       .catch((err) => {
         reject(err);

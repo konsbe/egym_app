@@ -44,10 +44,10 @@ export const resetPasswordSuccess = () => ({
 
 // export const addNewUserStart
 
-export const fetchUsersStart = () => ({
+export const fetchUsersStart = (bla) => ({
   type: userTypes.FETCH_USERS_START,
-
-})
+  payload: bla,
+});
 
 export const setUsers = (users) => ({
   type: userTypes.SET_USERS,

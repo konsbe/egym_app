@@ -148,9 +148,9 @@ export function* onResetPasswordStart() {
   yield takeLatest(userTypes.RESET_PASSWORD_START, resetPassword);
 }
 
-export function* fetchUsers() {
+export function* fetchUsers({ payload }) {
   try {
-    const users = yield handleFetchUsers();
+    const users = yield handleFetchUsers(payload);
     yield put(setUsers(users));
   } catch (err) {}
 }

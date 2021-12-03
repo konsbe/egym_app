@@ -5,7 +5,7 @@ import { fetchUsersStart } from "../../redux/User/user.actions";
 import "./styles.css";
 
 import User from "./User";
-
+import LoadMore from "./../LoadMore";
 const mapState = ({ user }) => ({
   users: user.users,
 });
@@ -13,14 +13,30 @@ const mapState = ({ user }) => ({
 const ManageUsers = ({}) => {
   const dispatch = useDispatch();
   const { users } = useSelector(mapState);
+  const bla = "ads";
+  const { data, queryDoc, isLastPage } = users;
 
   useEffect(() => {
-    dispatch(fetchUsersStart());
+    dispatch(fetchUsersStart({ bla }));
   }, []);
 
-  if (!Array.isArray(users)) return null;
+  if (!Array.isArray(data)) return null;
 
-  if (users.length < 1) {
+  const handleLoadMore = () => {
+    dispatch(
+      fetchUsersStart({
+        bla,
+        startAfterDoc: queryDoc,
+        persistUsers: data,
+      })
+    );
+  };
+
+  const configLoadMore = {
+    onLoadMoreEvt: handleLoadMore,
+  };
+  console.log(data, "dasasddasasdadsasdasdasd");
+  if (data.length < 1) {
     return (
       <div className="users">
         <p>No users..</p>
@@ -31,7 +47,7 @@ const ManageUsers = ({}) => {
   return (
     <div className="users">
       <h1 className="manageUsers">Manage Users</h1>
-      {users.map((user, pos) => {
+      {data.map((user, pos) => {
         const { firstName, lastName, weight, birthDay } = user;
         if (!firstName || !lastName) return null;
         const configUser = {
@@ -45,6 +61,7 @@ const ManageUsers = ({}) => {
           </div>
         );
       })}
+      {!isLastPage && <LoadMore {...configLoadMore} />}
     </div>
   );
 };
