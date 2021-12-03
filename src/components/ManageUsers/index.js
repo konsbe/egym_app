@@ -36,6 +36,7 @@ const ManageUsers = ({}) => {
         if (!firstName || !lastName) return null;
         const configUser = {
           ...user,
+          pos,
         };
 
         return (

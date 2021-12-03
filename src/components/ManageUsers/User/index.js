@@ -13,6 +13,7 @@ const User = ({
   birthDay,
   payment,
   month,
+  pos,
 }) => {
   // const [conjuctionPayment, setConjuctionPayment] = useState(false);
   // const [monthProgram, setMonthProgram] = useState(false);
@@ -50,6 +51,9 @@ const User = ({
   if (!documentID || !firstName || !lastName) return null;
   return (
     <div className="user">
+      <span>
+        <Link to={`/user/${documentID}`}>{pos}</Link>
+      </span>
       <span>
         <Link to={`/user/${documentID}`}>{firstName}</Link>
       </span>
