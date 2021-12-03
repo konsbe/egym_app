@@ -66,37 +66,37 @@ const UserProfile = ({}) => {
     // }, 2000);
     // };
 
-    const fetchData = async () => {
-      try {
-        await fetchDataDispatch();
-        fetchProgramDispatch();
-      } catch (err) {}
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     await fetchDataDispatch();
+    //     // fetchProgramDispatch();
+    //   } catch (err) {}
+    // };
 
-    const fetchDataDispatch = async () => {
-      await setTimeout(async () => {
-        dispatch(await fetchUserTrainingScheduleStart(email));
-      }, 1000);
-    };
+    // const fetchDataDispatch = async () => {
+    //   await setTimeout(async () => {
+    //     dispatch(await fetchUserTrainingScheduleStart(email));
+    //   }, 1000);
+    // };
 
-    const fetchProgramDispatch = async () => {
-      await setTimeout(async () => {
-        const scheduleID = await userScheduleData[0].documentID;
-        dispatch(fetchUserTrainingWeeksStart(scheduleID));
-      }, 1500);
-    };
+    // const fetchProgramDispatch = async () => {
+    //   await setTimeout(async () => {
+    //     const scheduleID = await userScheduleData[0].documentID;
+    //     dispatch(fetchUserTrainingWeeksStart(scheduleID));
+    //   }, 1500);
+    // };
     console.log(
       userScheduleData[0].email === email,
       "asddasdasadsdassdadsadasasddsa"
     );
     fetchUser();
-    // fetchCalendar();
-    fetchData();
+    //// fetchCalendar();
+    // fetchData();
     // if (calendar.length === 0) {
     // setBool(true);
     // dispatch(fetchUserCalendarStart(email));
     // }
-  }, [userScheduleData[0].email !== email]);
+  }, []);
 
   return (
     <div className="sidebar">

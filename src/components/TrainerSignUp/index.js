@@ -34,6 +34,24 @@ const TrainerSignUp = () => {
     setGeneralInfo("");
   };
 
+  /*   const paramX = 99999;
+  if (paramX < 9) {
+    const paramY = "0000" + paramX;
+    console.log(paramY, "asdadsadsadsasdadsdasdasdas");
+  } else if (paramX > 9 && paramX < 100) {
+    const paramY = "000" + paramX;
+    console.log(paramY, "asdadsadsadsasdadsdasdasdas");
+  } else if (paramX > 99 && paramX < 1000) {
+    const paramY = "00" + paramX;
+    console.log(paramY, "asdadsadsadsasdadsdasdasdas");
+  } else if (paramX > 999 && paramX < 10000) {
+    const paramY = "0" + paramX;
+    console.log(paramY, "asdadsadsadsasdadsdasdasdas");
+  } else if (paramX > 9999) {
+    const paramY = paramX;
+    console.log(paramY, "asdadsadsadsasdadsdasdasdas");
+  } */
+
   return (
     <div>
       <form onSubmit={handleFormSubmit} className="trainersRegistrationForm">

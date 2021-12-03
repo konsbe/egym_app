@@ -53,15 +53,14 @@ function MyCalendar() {
 
   const dispatch = useDispatch();
   const { userID } = useParams();
-
   const { user } = useSelector(mapState);
   const { calendar } = useSelector(mapState);
   const { userCalendar } = useSelector(mapState);
   // const events = [];
 
   // const { documentID } = calendar;
-
   const { email } = user;
+
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -88,12 +88,14 @@ export const handleAddWeekTraining = (weekProgram, scheduleID, createdDate) => {
 
 export const handleFetchUserTrainingWeeks = (scheduleID) => {
   return new Promise((resolve, reject) => {
+    const pageSize = 4;
     firestore
       .collection("trainingSchedule")
       .doc(scheduleID)
       // .doc(calendarID)
       .collection("week")
       .orderBy("1", "desc")
+      .limit(pageSize)
       .get()
       .then((snapshot) => {
         const daysArray = snapshot.docs.map((doc) => {
