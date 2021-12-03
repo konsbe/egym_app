@@ -1,25 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   useState,
   // , useRef
 } from "react";
 import Days from "./Days";
 import AddWeek from "../AddWeek";
+import { fetchUserStart } from "./../../../redux/User/user.actions";
+import {
+  fetchUserTrainingScheduleStart,
+  fetchTrainingSchedulesStart,
+  addWeekTrainingStart,
+  fetchUserTrainingWeeksStart,
+} from "./../../../redux/WeekTraining/weekTraining.actions";
 
-
-import { useSelector } from "react-redux";
-
+import LoadMore from "./../../LoadMore";
 
 const mapState = ({ user, trainingData }) => ({
+  user: user.user,
   currentUser: user.currentUser,
   userWeeks: trainingData.trainingWeeks,
+  userScheduleData: trainingData.userScheduleData,
 });
 
 const Weeks = ({ onDelete }) => {
+  const dispatch = useDispatch();
+  const { userID } = useParams();
+  const { userScheduleData } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
   const { userWeeks } = useSelector(mapState);
-
+  const { data, queryDoc } = userWeeks;
   //   const [showWeek, setShowWeek] = useState(false);
+  const { user } = useSelector(mapState);
+  const {
+    userUID,
+    firstName,
+    lastName,
+    genre,
+    pelvic,
+    rightChest,
+    weight,
+    injuries,
+    gear,
+    rightShouled,
+    rightSoleAnkle,
+    leftSoleAnkle,
+    email,
+  } = user;
   const [weeks, setWeeks] = useState([
     // {
     //   id: 1,
@@ -46,14 +75,52 @@ const Weeks = ({ onDelete }) => {
   // );
 
   //   const nodeRef = useRef(null);
+  const scheduleID = userScheduleData[0].documentID;
+  useEffect(() => {
+    const fetchUser = async () => {
+      await dispatch(fetchUserStart(userID));
+    };
 
+    const fetchData = async () => {
+      try {
+        await fetchDataDispatch();
+        fetchProgramDispatch();
+      } catch (err) {}
+    };
+
+    const fetchDataDispatch = async () => {
+      await setTimeout(async () => {
+        dispatch(await fetchUserTrainingScheduleStart(email));
+      }, 1000);
+    };
+
+    const fetchProgramDispatch = async () => {
+      await setTimeout(async () => {
+        const scheduleID = await userScheduleData[0].documentID;
+        dispatch(fetchUserTrainingWeeksStart({ scheduleID }));
+      }, 1500);
+    };
+    fetchUser();
+    fetchData();
+  }, [userScheduleData[0].email !== email]);
+
+  const handleLoadMore = () => {
+    dispatch(
+      fetchUserTrainingWeeksStart({ scheduleID, startAfterDoc: queryDoc })
+    );
+  };
+
+  const configLoadMore = {
+    onLoadMoreEvt: handleLoadMore,
+  };
+  console.log(data, ":slsllsslsllslslslslslsllslsls");
   return (
     <div>
       <div
         className="weeksContainer"
         //   onClick={() => setShowWeek(!showWeek)}
       >
-        {userWeeks.map((week, index) => (
+        {data.map((week, index) => (
           <Days
             onDelete={onDelete}
             key={index}
@@ -61,10 +128,10 @@ const Weeks = ({ onDelete }) => {
             onDelete={deleteWeek}
           />
         ))}
+        <LoadMore {...configLoadMore} />
       </div>
     </div>
   );
 };
-
 
 export default Weeks;

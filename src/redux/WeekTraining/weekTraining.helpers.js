@@ -86,25 +86,36 @@ export const handleAddWeekTraining = (weekProgram, scheduleID, createdDate) => {
   });
 };
 
-export const handleFetchUserTrainingWeeks = (scheduleID) => {
+export const handleFetchUserTrainingWeeks = ({ scheduleID, startAfterDoc }) => {
   return new Promise((resolve, reject) => {
     const pageSize = 4;
-    firestore
+
+    let ref = firestore
       .collection("trainingSchedule")
       .doc(scheduleID)
-      // .doc(calendarID)
       .collection("week")
       .orderBy("1", "desc")
-      .limit(pageSize)
+      .limit(pageSize);
+    if (startAfterDoc) ref = ref.startAfter(startAfterDoc);
+
+    ref
       .get()
       .then((snapshot) => {
-        const daysArray = snapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            documenID: doc.id,
-          };
+        const totalCount = snapshot.size;
+
+        const data = [
+          ...snapshot.docs.map((doc) => {
+            return {
+              ...doc.data(),
+              documenID: doc.id,
+            };
+          }),
+        ];
+        resolve({
+          data,
+          queryDoc: snapshot.docs[totalCount - 1],
+          isLastPage: totalCount < 1,
         });
-        resolve(daysArray);
       })
       .catch((err) => {
         reject(err);

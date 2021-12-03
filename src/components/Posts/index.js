@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Task from "../Task";
 
 import Button from "./../Forms/Button";
-import LoadMore from "../LoadMore/iinex";
+import LoadMore from "../LoadMore";
 
 import { fetchUserStart } from "../../redux/User/user.actions";
 import {
@@ -20,7 +20,7 @@ import "./styles.css";
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
   user: state.user.user,
-
+  userWeeks: state.trainingData.trainingWeeks,
   userScheduleData: state.trainingData.userScheduleData,
   // userWeeks: state.trainingData.trainingWeeks,
 });
@@ -29,6 +29,8 @@ const Posts = (props) => {
   const dispatch = useDispatch();
   const { userID } = useParams();
   const { userScheduleData } = useSelector(mapState);
+  const { userWeeks } = useSelector(mapState);
+  const { data, queryDoc } = userWeeks;
   const { user } = useSelector(mapState);
   const {
     userUID,
@@ -46,12 +48,7 @@ const Posts = (props) => {
     email,
   } = user;
 
-  const handleLoadMore = () => {};
-
-  const configLoadMore = {
-    onLoadMoreEvt: handleLoadMore,
-  };
-
+  const scheduleID = userScheduleData[0].documentID;
   useEffect(() => {
     const fetchUser = async () => {
       await dispatch(fetchUserStart(userID));
@@ -80,6 +77,15 @@ const Posts = (props) => {
     fetchData();
   }, [userScheduleData[0].email !== email]);
 
+  const handleLoadMore = () => {
+    dispatch(
+      fetchUserTrainingWeeksStart(scheduleID, { startAfterDoc: queryDoc })
+    );
+  };
+
+  const configLoadMore = {
+    onLoadMoreEvt: handleLoadMore,
+  };
   return (
     <div className="posts">
       <Task />
