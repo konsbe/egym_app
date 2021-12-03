@@ -31,7 +31,7 @@ const Weeks = ({ onDelete }) => {
   const { userScheduleData } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
   const { userWeeks } = useSelector(mapState);
-  const { data, queryDoc } = userWeeks;
+  const { data, queryDoc, isLastPage } = userWeeks;
   //   const [showWeek, setShowWeek] = useState(false);
   const { user } = useSelector(mapState);
   const {
@@ -106,7 +106,11 @@ const Weeks = ({ onDelete }) => {
 
   const handleLoadMore = () => {
     dispatch(
-      fetchUserTrainingWeeksStart({ scheduleID, startAfterDoc: queryDoc })
+      fetchUserTrainingWeeksStart({
+        scheduleID,
+        startAfterDoc: queryDoc,
+        persistWeeks: data,
+      })
     );
   };
 
@@ -128,7 +132,7 @@ const Weeks = ({ onDelete }) => {
             onDelete={deleteWeek}
           />
         ))}
-        <LoadMore {...configLoadMore} />
+        {!isLastPage && <LoadMore {...configLoadMore} />}
       </div>
     </div>
   );

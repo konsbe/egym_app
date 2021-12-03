@@ -86,7 +86,11 @@ export const handleAddWeekTraining = (weekProgram, scheduleID, createdDate) => {
   });
 };
 
-export const handleFetchUserTrainingWeeks = ({ scheduleID, startAfterDoc }) => {
+export const handleFetchUserTrainingWeeks = ({
+  scheduleID,
+  startAfterDoc,
+  persistWeeks = [],
+}) => {
   return new Promise((resolve, reject) => {
     const pageSize = 4;
 
@@ -104,6 +108,7 @@ export const handleFetchUserTrainingWeeks = ({ scheduleID, startAfterDoc }) => {
         const totalCount = snapshot.size;
 
         const data = [
+          ...persistWeeks,
           ...snapshot.docs.map((doc) => {
             return {
               ...doc.data(),
