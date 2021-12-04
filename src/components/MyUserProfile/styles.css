@@ -1,0 +1,136 @@
+.sidebar {
+
+    position: sticky;
+    text-align: center;
+    top: 10rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 100%;
+}
+.mySidebarBottom{
+    background-color: rgb(238, 238, 238);
+    margin-bottom: 0.5rem;
+    padding-bottom: 5rem;
+    border-radius: 15px;
+}
+
+@media screen and (min-width: 900px){
+    .sidebar {
+        width:310px;
+        flex: 0.2 ;
+    margin-left: 1rem;
+    width: 100%;
+}
+
+}
+
+h3 {
+    font-weight: 500;
+}
+
+.mySidebarTop{
+    margin-top: 8rem;
+    padding-top: 5rem;
+    background-color: rgb(240, 240, 240);
+    margin-bottom: 0.5rem;
+    border-radius: 15px;
+    overflow-wrap:initial;
+    white-space: pre-line;
+    padding-bottom: 1rem;
+}
+
+.mySidebarTop  img {
+    margin-top: -200px;
+
+}
+
+.mySidebarMiddle{
+    display: inline-block;
+    /* position: relative; */
+    width:100%;
+    padding-top: 2rem;
+    background-color: rgb(240, 240, 240);
+    margin-bottom: 0.5rem;
+    border-radius: 15px;
+    text-align: center;
+
+    overflow-wrap:initial;
+
+    white-space: pre-line;
+
+
+
+}
+
+
+
+
+span {
+    /* display: block; */
+    /* position: absolute; */
+    /* font-weight: 500; */
+    /* text-align: center; */
+    /* width: fit-content; */
+    /* height: 100%; */
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+
+}
+
+.weight{
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.infos-text{
+
+    margin:auto;
+}
+
+
+.infos-lot {
+    /* width:310px; */
+    margin-bottom: 1rem;
+
+
+}
+
+img {
+    border-radius: 50%;
+    border-top: ridge ;
+}
+
+@media screen and (max-width: 900px){
+    .userProfile{
+        width: 100%;
+        margin-bottom: -1rem;
+
+    }
+
+    .sidebar{
+        width: 100%;
+        /* width: 100%; */
+        /* margin: 3rem auto; */
+        /* margin-left: 0; */
+        /* margin-left: 1rem; */
+        /* margin-right: 1rem; */
+    }
+    .sidebarTop{
+        width:100%;
+        padding-bottom: 13rem;
+        border-radius: 0px 0px 15px 15px ;
+        /* margin: 3rem auto; */
+    }
+    .mySidebarMiddle{
+        /* width:100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center; */
+        /* display:none; */
+    }
+
+
+}

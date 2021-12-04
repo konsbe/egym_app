@@ -9,6 +9,7 @@ import { BiLogInCircle } from "@react-icons/all-files/bi/BiLogInCircle";
 import { BiLogOutCircle } from "@react-icons/all-files/bi/BiLogOutCircle";
 import { IoMdAnalytics } from "@react-icons/all-files/io/IoMdAnalytics";
 import { CgProfile } from "@react-icons/all-files/cg/CgProfile";
+import { GiStrongMan } from "@react-icons/all-files/gi/GiStrongMan";
 
 export const SideBarDataLogIn = [
   {
@@ -30,8 +31,14 @@ export const SideBarDataLogIn = [
     cName: "nav-text",
   },
   {
-    title: "My Profile",
+    title: "My Workout",
     path: "/profile",
+    icon: <GiStrongMan />,
+    cName: "nav-text",
+  },
+  {
+    title: "My Profile",
+    path: "/myprofile",
     icon: <CgProfile />,
     cName: "nav-text",
   },

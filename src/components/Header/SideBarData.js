@@ -35,6 +35,12 @@ export const SideBarDataLogIn = [
     icon: <CgProfile />,
     cName: "nav-text",
   },
+  {
+    title: "My Workout",
+    path: "/profile",
+    icon: <CgProfile />,
+    cName: "nav-text",
+  },
 ];
 
 export const SideBarDataLogOut = [

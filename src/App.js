@@ -27,6 +27,7 @@ import CoursesView from "./views/Courses";
 import DoTest from "./views/DoTest";
 import Users from "./views/Users";
 import Profile from "./views/Profile";
+import Myprofile from "./views/Myprofile";
 import Exercises from "./views/Exercises";
 import Programs from "./views/Programs";
 import Trainers from "./views/Trainers";
@@ -135,6 +136,14 @@ const App = (props) => {
             render={() => (
               <MainLayout>
                 <Profile />
+              </MainLayout>
+            )}
+          />
+          <Route
+            path="/myprofile"
+            render={() => (
+              <MainLayout>
+                <Myprofile />
               </MainLayout>
             )}
           />
