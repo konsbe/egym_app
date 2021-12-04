@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 import { FaRegPlusSquare } from "@react-icons/all-files/fa/FaRegPlusSquare";
+import Button from "./../Forms/Button";
 
 import { fetchExercisesStart } from "../../redux/Exercises/exercises.actions";
 
@@ -65,21 +66,21 @@ const AddTask = ({ onAdd }) => {
     console.log(e.target.value);
     select.push(e.target.value);
     console.log(select);
-    const sets = e.target.value;
+    const set = e.target.value;
     // setYoutube(e.target.data);
   };
   const addRepsValues = (e) => {
     console.log(e.target.value);
     select.push(e.target.value);
     console.log(select);
-    const reps = e.target.value;
+    const rep = e.target.value;
     // setYoutube(e.target.data);
   };
   const addKiloValues = (e) => {
     console.log(e.target.value);
     select.push(e.target.value);
     console.log(select);
-    const kilos = e.target.value;
+    const kilo = e.target.value;
     // setYoutube(e.target.data);
   };
   const handleClick = async () => {
@@ -121,6 +122,7 @@ const AddTask = ({ onAdd }) => {
       });
     }
   };
+
   let menuItems = [];
   for (var i = 0; i < count; i++) {
     // if (i === count - 1) {
