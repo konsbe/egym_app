@@ -45,7 +45,7 @@ const UserProfile = ({}) => {
     weight,
     injuries,
     gear,
-    rightShouled,
+    rightShoulder,
     rightSoleAnkle,
     leftSoleAnkle,
     email,
@@ -110,7 +110,7 @@ const UserProfile = ({}) => {
         </h3>
         {<h3>{firstName}</h3>}
         {<h4>{lastName}</h4>}
-        {<h6>{userUID}</h6>}
+        {/* {<h6>{userUID}</h6>} */}
       </div>
       <div className="sidebarMiddle">
         {
@@ -154,7 +154,7 @@ const UserProfile = ({}) => {
         }
         {
           <h6>
-            <span>Right Shoulder:</span> {rightShouled}
+            <span>Right Shoulder:</span> {rightShoulder}
           </h6>
         }
       </div>

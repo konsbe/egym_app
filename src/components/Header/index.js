@@ -105,23 +105,6 @@ const Header = (props) => {
               <Nav.Link as={Link} to="/fortrainers" className="navmenu">
                 <span className={y.join(" ")}>TRAINERS</span>
               </Nav.Link>
-              <NavDropdown
-                className="navmenu"
-                title="TEST"
-                id="collasible-nav-dropdown"
-              >
-                <NavDropdown.Item className="submenu">Action</NavDropdown.Item>
-                <NavDropdown.Item className="submenu">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item className="submenu">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item className="submenu">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
             </Nav>
             <Nav>
               {!currentUser && (

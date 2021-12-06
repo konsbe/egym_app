@@ -17,7 +17,7 @@ const mapState = ({ user }) => ({
 });
 
 const FormTest = (props) => {
-  const userDetails = useAuth();
+  // const userDetails = useAuth();
   const { currentUser, userErr } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -108,19 +108,19 @@ const FormTest = (props) => {
         goodmorning,
         anterior,
         posterior,
-        birthDay: userDetails.birthDay,
-        firstName: userDetails.firstName,
-        lastName: userDetails.lastName,
-        genre: userDetails.genre,
-        height: userDetails.height,
-        weight: userDetails.weight,
-        injuries: userDetails.injuries,
-        gear: userDetails.gear,
-        email: userDetails.email,
-        createdDate: userDetails.createdDate,
-        userRoles: userDetails.userRoles,
-        payment: userDetails.payment,
-        month: userDetails.month,
+        birthDay: currentUser.birthDay,
+        firstName: currentUser.firstName,
+        lastName: currentUser.lastName,
+        genre: currentUser.genre,
+        height: currentUser.height,
+        weight: currentUser.weight,
+        injuries: currentUser.injuries,
+        gear: currentUser.gear,
+        email: currentUser.email,
+        createdDate: currentUser.createdDate,
+        userRoles: currentUser.userRoles,
+        payment: currentUser.payment,
+        month: currentUser.month,
       })
     );
   };
