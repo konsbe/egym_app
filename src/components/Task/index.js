@@ -14,6 +14,7 @@ const mapState = ({ user, trainingData }) => ({
 const Task = ({ onDelete }) => {
   const { currentUser } = useSelector(mapState);
   const isAdmin = checkUserIsAdmin(currentUser);
+
   if (isAdmin) {
     return (
       <div className="postTask">

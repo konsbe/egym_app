@@ -187,6 +187,13 @@ font-size: 1.2rem;
     margin-bottom: 200px;
 }
 
+@media screen and (max-width: 901px){
+    .btnPopup{
+        display:none
+    }
+
+}
+
 @media screen and (max-width: 900px){
     .userProfile{
               display: flex;

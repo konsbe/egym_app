@@ -32,6 +32,7 @@ import Exercises from "./views/Exercises";
 import Programs from "./views/Programs";
 import Trainers from "./views/Trainers";
 import TrainerRegistration from "./views/TrainerRegistration";
+import EditInfos from "./views/EditInfos";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -144,6 +145,14 @@ const App = (props) => {
             render={() => (
               <MainLayout>
                 <Myprofile />
+              </MainLayout>
+            )}
+          />
+          <Route
+            path="/edit-profile-infos"
+            render={() => (
+              <MainLayout>
+                <EditInfos />
               </MainLayout>
             )}
           />
