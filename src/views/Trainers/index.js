@@ -1,10 +1,11 @@
 import React from "react";
-import FormTest from "../../components/FormTest";
+
+
 
 const Trainers = () => {
   return (
     <div>
-      <FormTest />
+      <div>This is the trainers site</div>
       <p>Here you render all the trainers</p>
     </div>
   );
