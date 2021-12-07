@@ -4,6 +4,16 @@
     /* position: absolute; */
     align-items: center;
 }
+
+.onSelectTest{
+        align-items: center;
+        text-align: center;
+        width: 10rem;
+        margin:0.5rem;
+        font-size: 0.7rem;
+        font-size: 1rem;
+    }
+
 .subinputs {
 
     display: inline-flex;

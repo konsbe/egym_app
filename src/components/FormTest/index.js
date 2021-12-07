@@ -45,6 +45,10 @@ const FormTest = (props) => {
   const [posterior, setPosterior] = useState("");
 
   const [errors, setErrors] = useState([]);
+  const item = [];
+  for (let i = 0; i <= 3; i++) {
+    item.push(i);
+  }
 
   //   useEffect(() => {
   //     if (currentUser) {
@@ -147,22 +151,48 @@ const FormTest = (props) => {
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftShoulder(e.target.value)}
+                >
+                  <option key={-1}>--Left Shoulder--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightShoulder(e.target.value)}
+                >
+                  <option key={-1}>--Right Shoulder--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="shoulder"
                   value={leftShoulder}
                   placeholder="Left Shoulder"
                   handleChange={(e) => setLeftShoulder(e.target.value)}
-                />
-                <FormInput
+                /> */}
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="shoulder"
                   value={rightShoulder}
                   placeholder="Right Shoulder"
                   handleChange={(e) => setRightShoulder(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="labelTitle" style={{ marginTop: 10 }}>
@@ -171,7 +201,33 @@ const FormTest = (props) => {
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftPlentar(e.target.value)}
+                >
+                  <option key={-1}>--Left Plentar--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightPlentar(e.target.value)}
+                >
+                  <option key={-1}>--Right Plentar--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="plentar"
@@ -186,21 +242,34 @@ const FormTest = (props) => {
                   value={rightPlentar}
                   placeholder="Right Plentar"
                   handleChange={(e) => setRightPlentar(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="labelTitle" style={{ marginTop: 10 }}>
               Pelvic Tilt
             </div>
             <div>
-              <FormInput
+              <select
+                className="onSelectTest"
+                onChange={(e) => setPelvic(e.target.value)}
+              >
+                <option key={-1}>--Pelvic--</option>
+                {item.map((i, index) => {
+                  return (
+                    <option key={i.toString()} value={i}>
+                      {i}
+                    </option>
+                  );
+                })}
+              </select>
+              {/* <FormInput
                 className="forminput allspace"
                 type="text"
                 name="pelvic"
                 value={pelvic}
                 placeholder="Pelvic"
                 handleChange={(e) => setPelvic(e.target.value)}
-              />
+              /> */}
             </div>
             <div className="labelTitle" style={{ marginTop: 10 }}>
               Chest Mobility
@@ -208,7 +277,33 @@ const FormTest = (props) => {
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftChest(e.target.value)}
+                >
+                  <option key={-1}>--Left Chest--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightChest(e.target.value)}
+                >
+                  <option key={-1}>--Right Chest--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="chest"
@@ -223,7 +318,7 @@ const FormTest = (props) => {
                   value={rightChest}
                   placeholder="Right Chest"
                   handleChange={(e) => setRightChest(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="labelTitle" style={{ marginTop: 10 }}>
@@ -232,7 +327,33 @@ const FormTest = (props) => {
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftBack(e.target.value)}
+                >
+                  <option key={-1}>--Left Back--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightBack(e.target.value)}
+                >
+                  <option key={-1}>--Right Back--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="back"
@@ -247,7 +368,7 @@ const FormTest = (props) => {
                   value={rightBack}
                   placeholder="Right Wide Back"
                   handleChange={(e) => setRightBack(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="labelTitle" style={{ marginTop: 10 }}>
@@ -256,7 +377,33 @@ const FormTest = (props) => {
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftAnkle(e.target.value)}
+                >
+                  <option key={-1}>--Left Ankle--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightAnkle(e.target.value)}
+                >
+                  <option key={-1}>--Right Ankle--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="ankle"
@@ -271,7 +418,7 @@ const FormTest = (props) => {
                   value={rightAnkle}
                   placeholder="Right Ankle"
                   handleChange={(e) => setRightAnkle(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
 
@@ -279,14 +426,27 @@ const FormTest = (props) => {
               Goodmorning
             </div>
             <div>
-              <FormInput
+              <select
+                className="onSelectTest"
+                onChange={(e) => setGoodmorning(e.target.value)}
+              >
+                <option key={-1}>--Goodmorning--</option>
+                {item.map((i, index) => {
+                  return (
+                    <option key={i.toString()} value={i}>
+                      {i}
+                    </option>
+                  );
+                })}
+              </select>
+              {/* <FormInput
                 className="forminput allspace"
                 type="text"
                 name="goodmorning"
                 value={goodmorning}
                 placeholder="Goodmorning"
                 handleChange={(e) => setGoodmorning(e.target.value)}
-              />
+              /> */}
             </div>
             <div className="labelTitle" style={{ marginTop: 10 }}>
               Squat
@@ -294,7 +454,33 @@ const FormTest = (props) => {
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftAdductor(e.target.value)}
+                >
+                  <option key={-1}>--Left Adductor--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightAdductor(e.target.value)}
+                >
+                  <option key={-1}>--Right Adductor--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="adductor"
@@ -309,13 +495,39 @@ const FormTest = (props) => {
                   value={rightAdductor}
                   placeholder="Right Adductor"
                   handleChange={(e) => setRightAdductor(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftSoleAnkle(e.target.value)}
+                >
+                  <option key={-1}>--Left Sole Ankle--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightSoleAnkle(e.target.value)}
+                >
+                  <option key={-1}>--Right Sole Ankle--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="soleAnkle"
@@ -330,13 +542,39 @@ const FormTest = (props) => {
                   value={rightSoleAnkle}
                   placeholder="Right Sole/ Ankle"
                   handleChange={(e) => setRightSoleAnkle(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftDisplacement(e.target.value)}
+                >
+                  <option key={-1}>--Left Displacement--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightDisplacement(e.target.value)}
+                >
+                  <option key={-1}>--Right Displacement--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="leftDisplacement"
@@ -351,7 +589,7 @@ const FormTest = (props) => {
                   value={rightDisplacement}
                   placeholder="Right Pelvic Displacement"
                   handleChange={(e) => setRightDisplacement(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="labelTitle" style={{ marginTop: 10 }}>
@@ -360,7 +598,33 @@ const FormTest = (props) => {
             <div className="nestedInputs">
               {/* <div className="subLabelTitle">Adductor:</div> */}
               <div className="subinputs">
-                <FormInput
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setLeftGluteus(e.target.value)}
+                >
+                  <option key={-1}>--Left Gluteus--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setRightGluteus(e.target.value)}
+                >
+                  <option key={-1}>--Right Gluteus--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <FormInput
                   className="forminput"
                   type="text"
                   name="leftGluteus"
@@ -375,28 +639,70 @@ const FormTest = (props) => {
                   value={rightGluteus}
                   placeholder="Right Medius Gluteus"
                   handleChange={(e) => setRightGluteus(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
 
             {/* <div className="subLabelTitle">Adductor:</div> */}
-            <FormInput
+            <div className="labelTitle" style={{ marginTop: 10 }}>
+              Anterior Kinetics
+            </div>
+            <div className="nestedInputs">
+              {/* <div className="subLabelTitle">Adductor:</div> */}
+              <div className="subinputs">
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setAnterior(e.target.value)}
+                >
+                  <option key={-1}>--Anterior Kinetics--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
+            {/* <FormInput
               className="forminput allspace"
               type="text"
               name="anterior"
               value={anterior}
               placeholder="Anterior Kinetics"
               handleChange={(e) => setAnterior(e.target.value)}
-            />
+            /> */}
             {/* <div className="subLabelTitle">Adductor:</div> */}
-            <FormInput
+            {/* <FormInput
               className="forminput allspace"
               type="text"
               name="posterior"
               value={posterior}
               placeholder="Posterior Kinetics"
               handleChange={(e) => setPosterior(e.target.value)}
-            />
+            /> */}
+            <div className="labelTitle" style={{ marginTop: 10 }}>
+              Posterior Kinetics
+            </div>
+            <div className="nestedInputs">
+              {/* <div className="subLabelTitle">Adductor:</div> */}
+              <div className="subinputs">
+                <select
+                  className="onSelectTest"
+                  onChange={(e) => setPosterior(e.target.value)}
+                >
+                  <option key={-1}>--Posterior Kinetics--</option>
+                  {item.map((i, index) => {
+                    return (
+                      <option key={i.toString()} value={i}>
+                        {i}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            </div>
             {/* <FormInput
             className="forminput"
             type="text"
