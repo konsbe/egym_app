@@ -14,6 +14,7 @@ const User = ({
   payment,
   month,
   pos,
+  createdDate,
 }) => {
   // const [conjuctionPayment, setConjuctionPayment] = useState(false);
   // const [monthProgram, setMonthProgram] = useState(false);
@@ -48,6 +49,11 @@ const User = ({
     console.log(payment);
   };
   //
+  const c = new Date(createdDate.seconds * 1000).toLocaleDateString("en-US");
+  // const z = new Date(createdDate.nanoseconds * 1000).toLocaleDateString(
+  //   "en-US"
+  // );
+  // console.log(createdDate, c, z, "dasdasdsadsaasdddddddddd");
   if (!documentID || !firstName || !lastName) return null;
   return (
     <div className="user">
@@ -66,6 +72,9 @@ const User = ({
       </span>
       <span>
         <Link to={`/user/${documentID}`}>{weight} kg</Link>
+      </span>
+      <span>
+        <Link to={`/user/${documentID}`}> {c}</Link>
       </span>
       <span>
         <input
