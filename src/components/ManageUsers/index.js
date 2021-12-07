@@ -47,6 +47,17 @@ const ManageUsers = ({}) => {
   return (
     <div className="users">
       <h1 className="manageUsers">Manage Users</h1>
+      <div className="user">
+        <span>Pos</span>
+        <span>First Name</span>
+
+        <span>Last Name</span>
+        <span>BirthDay</span>
+        <span>Kilos</span>
+        <span>Created Date</span>
+        <span>Pay</span>
+        <span>Month Program</span>
+      </div>
       {data.map((user, pos) => {
         const { firstName, lastName, weight, birthDay } = user;
         if (!firstName || !lastName) return null;
