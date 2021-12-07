@@ -47,8 +47,8 @@ const ManageUsers = ({}) => {
   return (
     <div className="users">
       <h1 className="manageUsers">Manage Users</h1>
-      <div className="user">
-        <span>Pos</span>
+      <div className="user userLabels">
+        <span>index</span>
         <span>First Name</span>
 
         <span>Last Name</span>
