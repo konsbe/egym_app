@@ -116,6 +116,7 @@ const Day = ({ day, onDelete, func, weekTitle, week }) => {
     tasks.map((task) => {
       list.push(task);
     });
+    // list.unshift()
     list.unshift(day);
     func(list);
   };

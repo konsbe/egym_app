@@ -127,20 +127,23 @@ const Days = ({ week, onDelete }) => {
   };
   const handleChange = () => {
     console.log(week);
+    week[2] = !week[2];
+    console.log(week);
   };
 
+  console.log(week[2]);
   return (
     <div className="containerone">
       <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
         {week[0] ? week[0].text : "no tasks"}
-        <input
-          className="checkboxShowHide"
-          type="checkbox"
-          // defaultChecked={payment}
-          onChange={handleChange}
-        ></input>
         {/* sdaasd */}
         {/* {"ASdasddasasd"} */}
+        <input
+          type="checkbox"
+          className="checkboxShowHide"
+          defaultChecked={week[2]}
+          onChange={handleChange}
+        ></input>
       </h2>
       <CSSTransition
         // in={true}
@@ -159,7 +162,7 @@ const Days = ({ week, onDelete }) => {
           {/* {days.map((day) => ( */}
           {Object.keys(week).map(function (key, index) {
             {
-              if (key > 1)
+              if (key > 2)
                 return (
                   <Day
                     key={key}
