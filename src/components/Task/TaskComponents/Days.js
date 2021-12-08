@@ -5,7 +5,8 @@ import { useState, useRef } from "react";
 import AddDay from "../AddDay";
 
 import { CSSTransition } from "react-transition-group";
-
+import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
+import { BsTrash } from "@react-icons/all-files/bs/BsTrash";
 import { useSelector, useDispatch } from "react-redux";
 import { checkUserIsAdmin } from "../../../Utils";
 
@@ -147,14 +148,19 @@ const Days = ({ week, onDelete }) => {
       <div className="containerone">
         <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
           {week[0] ? week[0].text : "no tasks"}
-          {/* sdaasd */}
-          {/* {"ASdasddasasd"} */}
-          <input
-            type="checkbox"
-            className="checkboxShowHide"
-            defaultChecked={week[2]}
-            onChange={handleChange}
-          ></input>
+          <div className="hideAndDelete">
+            <div className="floatLeft">
+              <BsTrash />
+            </div>
+            <div className="floatRight">
+              hide
+              <input
+                type="checkbox"
+                defaultChecked={week[2]}
+                onChange={handleChange}
+              ></input>
+            </div>
+          </div>
         </h2>
         <CSSTransition
           // in={true}
