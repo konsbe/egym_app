@@ -25,6 +25,7 @@ import {
   handleUpdateMonth,
   handleUpdatePayment,
   handleUpdateCalendar,
+  handleUpdateLastProgram,
 } from "./user.helpers";
 import { useAuth } from "./../../customHooks";
 
@@ -314,6 +315,19 @@ export function* onUpdateUserPayment() {
   yield takeLatest(userTypes.UPDATE_USER_DATA, updatePayment);
 }
 
+export function* updateLastProgram({ payload: { lastProgram, documentID } }) {
+  try {
+    yield handleUpdateLastProgram({
+      lastProgram,
+      documentID,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserLastProgram() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updateLastProgram);
+}
+
 export function* fetchUser({ payload }) {
   try {
     const user = yield handleFetchUser(payload);
@@ -341,5 +355,6 @@ export default function* userSagas() {
     call(onUpdateUserMonth),
     call(onUpdateUserPayment),
     call(onUpdateUserCalendar),
+    call(onUpdateUserLastProgram),
   ]);
 }

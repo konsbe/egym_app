@@ -29,9 +29,7 @@ const User = ({
   //   setMonthProgram(!monthProgram);
   // };
 
-  const handleClick = () => {
-    console.log(z);
-  };
+
 
   const handleChangeMonth = (e) => {
     console.log(documentID);
@@ -52,6 +50,18 @@ const User = ({
       })
     );
     console.log(payment);
+  };
+
+  const handleChangeLastProgram = async (e) => {
+    const lastProgram = new Date();
+    // console.log(newDate);
+    dispatch(
+      updateUserStart({
+        lastProgram: lastProgram,
+        documentID,
+      })
+    );
+    console.log(lastProgram);
   };
   //
   const c = new Date(createdDate.seconds * 1000).toLocaleDateString("en-US");
@@ -92,7 +102,7 @@ const User = ({
       </span>
       <span>
         {z}{" "}
-        <span className="changeDay" onClick={handleClick}>
+        <span className="changeDay" onClick={handleChangeLastProgram}>
           <AiOutlineFileDone />
         </span>
       </span>
