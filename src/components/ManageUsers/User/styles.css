@@ -1,4 +1,11 @@
+.changeDay:hover{
+    color: red;
 
+}
+.changeDay:active{
+    color: greenyellow;
+
+}
 .user{
 
     display: flex;

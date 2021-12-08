@@ -56,6 +56,7 @@ const ManageUsers = ({}) => {
         <span>Kilos</span>
         <span>Created Date</span>
         <span>Pay</span>
+        <span>Last Program</span>
         <span>Month Program</span>
       </div>
       {data.map((user, pos) => {

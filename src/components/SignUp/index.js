@@ -67,9 +67,10 @@ const SignUp = (props) => {
     setErrors([]);
   };
 
+  const lastProgram = new Date();
+  // console.log(lastProgram, "sadsadasdasdasasdsdasdaasdsad");
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     dispatch(addCalendarStart({ email }));
     dispatch(await addTrainingScheduleStart({ email }));
     dispatch(
@@ -88,6 +89,7 @@ const SignUp = (props) => {
         payment,
         month,
         calendarTracker,
+        lastProgram,
       })
     );
   };

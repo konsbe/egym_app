@@ -33,6 +33,7 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
       gear,
       email,
       birthDay,
+      lastProgram,
       payment,
       month,
     } = userAuth;
@@ -52,6 +53,7 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
         payment,
         month,
         createdDate: timestamp,
+        lastProgram,
         userRoles,
         ...additionalData,
       });

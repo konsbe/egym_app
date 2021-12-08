@@ -113,6 +113,7 @@ const FormTest = (props) => {
         anterior,
         posterior,
         birthDay: currentUser.birthDay,
+        lastProgram: currentUser.lastProgram,
         firstName: currentUser.firstName,
         lastName: currentUser.lastName,
         genre: currentUser.genre,

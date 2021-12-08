@@ -101,6 +101,7 @@ export function* signUpUser({
     payment,
     month,
     calendarTracker,
+    lastProgram,
   },
 }) {
   if (password !== confirmPassword) {
@@ -122,6 +123,7 @@ export function* signUpUser({
       payment,
       month,
       calendarTracker,
+      lastProgram,
     };
     yield getSnapshotFromUserAuth(user);
     yield call(handleUserProfile, {
@@ -180,6 +182,7 @@ export function* addData({
     anterior,
     posterior,
     birthDay,
+    lastProgram,
     firstName,
     lastName,
     genre,
@@ -216,6 +219,7 @@ export function* addData({
       posterior,
       birthDay,
       firstName,
+      lastProgram,
       lastName,
       genre,
       height,

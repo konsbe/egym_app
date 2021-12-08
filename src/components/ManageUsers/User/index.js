@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { updateUserStart } from "../../../redux/User/user.actions";
-
+import { AiOutlineFileDone } from "@react-icons/all-files/ai/AiOutlineFileDone";
 import { useDispatch } from "react-redux";
 
 const User = ({
@@ -15,6 +15,7 @@ const User = ({
   month,
   pos,
   createdDate,
+  lastProgram,
 }) => {
   // const [conjuctionPayment, setConjuctionPayment] = useState(false);
   // const [monthProgram, setMonthProgram] = useState(false);
@@ -27,6 +28,10 @@ const User = ({
   // const handleChangeMonth = (e) => {
   //   setMonthProgram(!monthProgram);
   // };
+
+  const handleClick = () => {
+    console.log(z);
+  };
 
   const handleChangeMonth = (e) => {
     console.log(documentID);
@@ -50,9 +55,7 @@ const User = ({
   };
   //
   const c = new Date(createdDate.seconds * 1000).toLocaleDateString("en-US");
-  // const z = new Date(createdDate.nanoseconds * 1000).toLocaleDateString(
-  //   "en-US"
-  // );
+  const z = new Date(lastProgram.seconds * 1000).toLocaleDateString("en-US");
   // console.log(createdDate, c, z, "dasdasdsadsaasdddddddddd");
   if (!documentID || !firstName || !lastName) return null;
   return (
@@ -86,6 +89,12 @@ const User = ({
           // onChange={handleChange}
         ></input>
         <label>Pay</label>
+      </span>
+      <span>
+        {z}{" "}
+        <span className="changeDay" onClick={handleClick}>
+          <AiOutlineFileDone />
+        </span>
       </span>
       <span>
         <input
