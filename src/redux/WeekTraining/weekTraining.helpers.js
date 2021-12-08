@@ -197,3 +197,17 @@ export const handleUpdateReminder = ({
     // });
   });
 };
+
+export const handleUpdateShowHide = ({ scheduleID, documenID, week }) => {
+  // console.log(reminder, scheduleID, documenID, dayNum, id);
+
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("trainingSchedule")
+      .doc(scheduleID)
+      .collection("week")
+      .doc(documenID)
+
+      .set({ ...week });
+  });
+};

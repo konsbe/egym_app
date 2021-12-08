@@ -7,14 +7,14 @@ import AddDay from "../AddDay";
 import { CSSTransition } from "react-transition-group";
 
 import { useSelector, useDispatch } from "react-redux";
-
-
+import { checkUserIsAdmin } from "../../../Utils";
 
 import {
   fetchUserTrainingScheduleStart,
   fetchTrainingSchedulesStart,
   addWeekTrainingStart,
   fetchUserTrainingWeeksStart,
+  updateUserShowHide,
 } from "./../../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user, trainingData }) => ({
@@ -126,61 +126,117 @@ const Days = ({ week, onDelete }) => {
     dispatch(addWeekTrainingStart({ weekProgram, scheduleID }));
   };
   const handleChange = () => {
+    const scheduleID = userScheduleData[0].documentID;
+    const documenID = week.documenID;
+
     console.log(week);
     week[2] = !week[2];
     console.log(week);
+    dispatch(
+      updateUserShowHide({
+        scheduleID,
+        documenID,
+        week,
+      })
+    );
   };
-
+  const isAdmin = checkUserIsAdmin(currentUser);
   console.log(week[2]);
-  return (
-    <div className="containerone">
-      <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
-        {week[0] ? week[0].text : "no tasks"}
-        {/* sdaasd */}
-        {/* {"ASdasddasasd"} */}
-        <input
-          type="checkbox"
-          className="checkboxShowHide"
-          defaultChecked={week[2]}
-          onChange={handleChange}
-        ></input>
-      </h2>
-      <CSSTransition
-        // in={true}
-        nodeRef={nodeRef}
-        in={showWeek}
-        appear={true}
-        timeout={500}
-        classNames="transition"
-        unmountOnExit
-        // unmountOnEnter
-      >
-        <div
-          ref={nodeRef}
-          // onClick={handleClick}
+  if (isAdmin) {
+    return (
+      <div className="containerone">
+        <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
+          {week[0] ? week[0].text : "no tasks"}
+          {/* sdaasd */}
+          {/* {"ASdasddasasd"} */}
+          <input
+            type="checkbox"
+            className="checkboxShowHide"
+            defaultChecked={week[2]}
+            onChange={handleChange}
+          ></input>
+        </h2>
+        <CSSTransition
+          // in={true}
+          nodeRef={nodeRef}
+          in={showWeek}
+          appear={true}
+          timeout={500}
+          classNames="transition"
+          unmountOnExit
+          // unmountOnEnter
         >
-          {/* {days.map((day) => ( */}
-          {Object.keys(week).map(function (key, index) {
-            {
-              if (key > 2)
-                return (
-                  <Day
-                    key={key}
-                    day={week[key]}
-                    onDelete={deleteDay}
-                    onClick={handleonClick}
-                    func={pull_data}
-                    weekTitle={week[0].text}
-                    week={week}
-                  />
-                );
-            }
-          })}
-          {/* ))} */}
-        </div>
-      </CSSTransition>
-    </div>
-  );
+          <div
+            ref={nodeRef}
+            // onClick={handleClick}
+          >
+            {/* {days.map((day) => ( */}
+            {Object.keys(week).map(function (key, index) {
+              {
+                if (key > 2)
+                  return (
+                    <Day
+                      key={key}
+                      day={week[key]}
+                      onDelete={deleteDay}
+                      onClick={handleonClick}
+                      func={pull_data}
+                      weekTitle={week[0].text}
+                      week={week}
+                    />
+                  );
+              }
+            })}
+            {/* ))} */}
+          </div>
+        </CSSTransition>
+      </div>
+    );
+  } else {
+    return (
+      <div className="containerone">
+        <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
+          {week[0] ? week[0].text : "no tasks"}
+          {/* sdaasd */}
+          {/* {"ASdasddasasd"} */}
+        </h2>
+        <CSSTransition
+          // in={true}
+          nodeRef={nodeRef}
+          in={showWeek}
+          appear={true}
+          timeout={500}
+          classNames="transition"
+          unmountOnExit
+          // unmountOnEnter
+        >
+          <div
+            ref={nodeRef}
+            // onClick={handleClick}
+          >
+            {/* {days.map((day) => ( */}
+            {Object.keys(week).map(function (key, index) {
+              {
+                if (key > 2)
+                  return (
+                    <Day
+                      key={key}
+                      day={week[key]}
+                      onDelete={deleteDay}
+                      onClick={handleonClick}
+                      func={pull_data}
+                      weekTitle={week[0].text}
+                      week={week}
+                    />
+                  );
+              }
+            })}
+            {/* ))} */}
+          </div>
+        </CSSTransition>
+      </div>
+    );
+  }
 };
 
 export default Days;

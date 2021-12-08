@@ -15,6 +15,7 @@ const weekTrainingTypes = {
   GO_BACK_USERS_START: "GO_BACK_USERS_START",
 
   UPDATE_USER_REMINDER: "UPDATE_USER_REMINDER",
+  UPDATE_USER_SHOW_HIDE: "UPDATE_USER_SHOW_HIDE",
 };
 
 export default weekTrainingTypes;

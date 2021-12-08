@@ -10,6 +10,7 @@ import {
   handleAddWeekTraining,
   handleFetchUserTrainingWeeks,
   handleUpdateReminder,
+  handleUpdateShowHide,
 } from "./weekTraining.helpers";
 
 import {
@@ -130,6 +131,26 @@ export function* onUpdateUserPayment() {
   yield takeLatest(weekTrainingTypes.UPDATE_USER_REMINDER, updateReminder);
 }
 
+export function* updateShowHide({
+  payload: { reminder, scheduleID, documenID, dayNum, exerciseID, list, week },
+}) {
+  try {
+    yield handleUpdateShowHide({
+      reminder,
+      scheduleID,
+      documenID,
+      dayNum,
+      exerciseID,
+      list,
+      week,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateUserShowHide() {
+  yield takeLatest(weekTrainingTypes.UPDATE_USER_SHOW_HIDE, updateShowHide);
+}
+
 export function* goBackToUsers() {
   try {
     yield put(goBackSuccess());
@@ -150,5 +171,6 @@ export default function* weekTrainingSagas() {
     call(onAddWeekTrainingStart),
     call(onFetchUserTrainingWeeksStart),
     call(onUpdateUserPayment),
+    call(onUpdateUserShowHide),
   ]);
 }
