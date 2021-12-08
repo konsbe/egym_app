@@ -125,14 +125,20 @@ const Days = ({ week, onDelete }) => {
     const scheduleID = userScheduleData[0].documentID;
     dispatch(addWeekTrainingStart({ weekProgram, scheduleID }));
   };
-  // const handleClick = () => {
-  //   console.log(week[0].text);
-  // };
+  const handleChange = () => {
+    console.log(week);
+  };
 
   return (
     <div className="containerone">
       <h2 className="weekHeader" onClick={() => setShowWeek(!showWeek)}>
         {week[0] ? week[0].text : "no tasks"}
+        <input
+          className="checkboxShowHide"
+          type="checkbox"
+          // defaultChecked={payment}
+          onChange={handleChange}
+        ></input>
         {/* sdaasd */}
         {/* {"ASdasddasasd"} */}
       </h2>

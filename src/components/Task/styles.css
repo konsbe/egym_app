@@ -48,9 +48,13 @@ margin: auto;
   padding: 30px;
   border-radius: 5px;
 }
+.checkboxShowHide{
+  float: right;
+}
 
 .weekHeader:hover{
   cursor: pointer;
+
 }
 
 .headerAddDay{
