@@ -10,6 +10,7 @@ import "./styles.css";
 
 import { fetchUserCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
 
+
 import {
   fetchUserTrainingScheduleStart,
   fetchTrainingSchedulesStart,
@@ -57,6 +58,9 @@ const UserProfile = ({}) => {
       // setTimeout(() => {
 
       await dispatch(fetchUserStart(userID));
+      dispatch(fetchTrainingSchedulesStart());
+      dispatch(fetchUserTrainingScheduleStart(email));
+
       // }, 1000);
       // fetchCalendar();
     };
@@ -85,10 +89,10 @@ const UserProfile = ({}) => {
     //     dispatch(fetchUserTrainingWeeksStart(scheduleID));
     //   }, 1500);
     // };
-    console.log(
-      userScheduleData[0].email === email,
-      "asddasdasadsdassdadsadasasddsa"
-    );
+    // console.log(
+    //   userScheduleData[0].email === email,
+    //   "asddasdasadsdassdadsadasasddsa"
+    // );
     fetchUser();
     //// fetchCalendar();
     // fetchData();
