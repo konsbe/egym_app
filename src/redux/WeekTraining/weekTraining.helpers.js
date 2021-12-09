@@ -211,3 +211,23 @@ export const handleUpdateShowHide = ({ scheduleID, documenID, week }) => {
       .set({ ...week });
   });
 };
+
+
+
+export const handleDeleteWeek = ({ scheduleID, documenID }) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("trainingSchedule")
+      .doc(scheduleID)
+      .collection("week")
+      .doc(documenID)
+      .delete()
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+

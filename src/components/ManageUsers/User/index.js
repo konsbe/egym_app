@@ -28,8 +28,7 @@ const User = ({
   // const handleChangeMonth = (e) => {
   //   setMonthProgram(!monthProgram);
   // };
-
-
+  const [bool, setBool] = useState(false);
 
   const handleChangeMonth = (e) => {
     console.log(documentID);
@@ -54,7 +53,8 @@ const User = ({
 
   const handleChangeLastProgram = async (e) => {
     const lastProgram = new Date();
-    // console.log(newDate);
+    setBool(!bool);
+
     dispatch(
       updateUserStart({
         lastProgram: lastProgram,
@@ -65,7 +65,8 @@ const User = ({
   };
   //
   const c = new Date(createdDate.seconds * 1000).toLocaleDateString("en-US");
-  const z = new Date(lastProgram.seconds * 1000).toLocaleDateString("en-US");
+
+  let z = new Date(lastProgram.seconds * 1000).toLocaleDateString("en-US");
   // console.log(createdDate, c, z, "dasdasdsadsaasdddddddddd");
   if (!documentID || !firstName || !lastName) return null;
   return (
@@ -101,7 +102,7 @@ const User = ({
         <label>Pay</label>
       </span>
       <span>
-        {z}{" "}
+        {z}
         <span className="changeDay" onClick={handleChangeLastProgram}>
           <AiOutlineFileDone />
         </span>

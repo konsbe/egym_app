@@ -54,3 +54,9 @@ export const updateUserShowHide = (upData) => ({
 export const goBackSuccess = () => ({
   type: weekTrainingTypes.SIGN_OUT_USER_SUCCESS,
 });
+
+
+export const deleteWeekStart = (upData) => ({
+  type: weekTrainingTypes.DELETE_EXERCISE_START,
+  payload: upData,
+});

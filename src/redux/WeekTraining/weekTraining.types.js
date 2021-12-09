@@ -16,6 +16,8 @@ const weekTrainingTypes = {
 
   UPDATE_USER_REMINDER: "UPDATE_USER_REMINDER",
   UPDATE_USER_SHOW_HIDE: "UPDATE_USER_SHOW_HIDE",
+
+  DELETE_EXERCISE_START: "DELETE_EXERCISE_START",
 };
 
 export default weekTrainingTypes;

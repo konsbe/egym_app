@@ -16,6 +16,7 @@ import {
   addWeekTrainingStart,
   fetchUserTrainingWeeksStart,
   updateUserShowHide,
+  deleteWeekStart,
 } from "./../../../redux/WeekTraining/weekTraining.actions";
 
 const mapState = ({ user, trainingData }) => ({
@@ -141,6 +142,14 @@ const Days = ({ week, onDelete }) => {
       })
     );
   };
+
+  const handleDelete = () => {
+    const scheduleID = userScheduleData[0].documentID;
+    const documenID = week.documenID;
+    console.log("Delete", scheduleID, documenID);
+    dispatch(deleteWeekStart({ scheduleID, documenID }));
+  };
+
   const isAdmin = checkUserIsAdmin(currentUser);
   console.log(week[2]);
   if (isAdmin) {
@@ -150,7 +159,7 @@ const Days = ({ week, onDelete }) => {
           {week[0] ? week[0].text : "no tasks"}
           <div className="hideAndDelete">
             <div className="floatLeft">
-              <BsTrash />
+              <BsTrash onClick={handleDelete} />
             </div>
             <div className="floatRight">
               hide

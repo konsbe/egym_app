@@ -11,6 +11,7 @@ import {
   handleFetchUserTrainingWeeks,
   handleUpdateReminder,
   handleUpdateShowHide,
+  handleDeleteWeek,
 } from "./weekTraining.helpers";
 
 import {
@@ -19,6 +20,7 @@ import {
   setUserTrainingWeeks,
   updateUserReminder,
   goBackSuccess,
+  fetchUserTrainingWeeksStart,
 } from "./weekTraining.actions";
 
 export function* addTrainingSchedule({ payload: { email } }) {
@@ -163,6 +165,19 @@ export function* onGoBackToUsersStart() {
   yield takeLatest(weekTrainingTypes.GO_BACK_USERS_START, goBackToUsers);
 }
 
+export function* deleteWeek({ payload: { scheduleID, documenID } }) {
+  try {
+    yield handleDeleteWeek({ scheduleID, documenID });
+    yield put(fetchUserTrainingWeeksStart());
+  } catch (err) {
+    //
+  }
+}
+
+export function* onDeleteExerciseStart() {
+  yield takeLatest(weekTrainingTypes.DELETE_EXERCISE_START, deleteWeek);
+}
+
 export default function* weekTrainingSagas() {
   yield all([
     call(onAddTrainingScheduleStart),
@@ -172,5 +187,6 @@ export default function* weekTrainingSagas() {
     call(onFetchUserTrainingWeeksStart),
     call(onUpdateUserPayment),
     call(onUpdateUserShowHide),
+    call(onDeleteExerciseStart),
   ]);
 }
