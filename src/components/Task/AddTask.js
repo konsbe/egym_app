@@ -5,7 +5,10 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 import { FaRegPlusSquare } from "@react-icons/all-files/fa/FaRegPlusSquare";
 import Button from "./../Forms/Button";
 
+import AddReps from "./AddReps";
+
 import { fetchExercisesStart } from "../../redux/Exercises/exercises.actions";
+import { listen } from "dom-helpers";
 
 const mapState = ({ exercisesData }) => ({
   exercises: exercisesData.exercises,
@@ -19,10 +22,11 @@ const AddTask = ({ onAdd }) => {
   const [title, setTitle] = useState("");
   const [youtube, setYoutube] = useState("");
   const [day, setDay] = useState("");
-  // const [select, setSelect] = useState([]);
+  const [select, setSelect] = useState([]);
   const [myReps, setMyReps] = useState([]);
+  const [alist, setAList] = useState([1]);
 
-  const select = [];
+  // const select = [];
   let newObj = new Object();
   const sets = [];
   for (let i = 0; i < 100; i++) {
@@ -83,44 +87,59 @@ const AddTask = ({ onAdd }) => {
     const kilo = e.target.value;
     // setYoutube(e.target.data);
   };
+
+  const pull_data = (i, set, rep, kg) => {
+    console.log(i, set, rep, kg);
+    select.push(set);
+    select.push(rep);
+    select.push(kg);
+    select.push({ id: i });
+    console.log(select);
+    myReps.push({ ...select });
+    console.log(myReps);
+    setSelect([]);
+  };
+
   const handleClick = async () => {
     setCount(count + 1);
-    const id = count;
-    if (newCount === 0) {
-      setNewCount(1);
-    } else {
-      await select.push({ id: count });
-      console.log(select);
-      myReps.push({ ...select });
-      setNewCount(1);
-    }
-    const newObj = {
-      sets: sets,
-      reps: reps,
-      kilos: kilos,
-      id: count,
-    };
-    // myReps.push(newObj);
-    // myReps.push(select);
-    console.log("dasdasadsdasadsasd");
+    alist.push(count);
+    // const id = count;
+    // if (newCount === 0) {
+    //   setNewCount(1);
+    // } else {
+    //   await select.push({ id: count });
+    //   console.log(select);
+    //   myReps.push({ ...select });
+    //   setNewCount(1);
+    // }
+    // const newObj = {
+    //   sets: sets,
+    //   reps: reps,
+    //   kilos: kilos,
+    //   id: count,
+    // };
+    // // myReps.push(newObj);
+    // // myReps.push(select);
+    // console.log("dasdasadsdasadsasd");
 
-    console.log(myReps);
+    // console.log(myReps);
   };
   const deleteCount = () => {
     setCount(count - 1);
-    if (newCount === 1) {
-      setNewCount(0);
-    } else {
-      console.log(count);
-      myReps.map((i) => {
-        if (i[3].id === count) {
-          // console.log(i[3].id);
-          console.log(i);
-          myReps.pop();
-          console.log(myReps);
-        }
-      });
-    }
+    alist.pop();
+    // if (newCount === 1) {
+    //   setNewCount(0);
+    // } else {
+    //   console.log(count);
+    //   myReps.map((i) => {
+    //     if (i[3].id === count) {
+    //       // console.log(i[3].id);
+    //       console.log(i);
+    //       myReps.pop();
+    //       console.log(myReps);
+    //     }
+    //   });
+    // }
   };
 
   let menuItems = [];
@@ -218,7 +237,11 @@ const AddTask = ({ onAdd }) => {
           </label>
         </div>
 
-        <div>{menuItems}</div>
+        {/* <div>{menuItems}</div> */}
+        {alist.map((i, index) => (
+          <AddReps i={index} func={pull_data} />
+        ))}
+        {count}
         {/* <div className="spansAddDeleteSets"> */}
       </div>
       {/* </div> */}
