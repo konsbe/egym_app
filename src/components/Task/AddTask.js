@@ -227,7 +227,7 @@ const AddTask = ({ onAdd }) => {
                 onClick={deleteCount}
               />
             </span>
-            <span>sets | reps | kg</span>
+            <span>sets | reps | kg | rest</span>
             <span>
               <FaRegPlusSquare
                 style={{ color: "green", cursor: "pointer", height: 20 }}
@@ -239,7 +239,7 @@ const AddTask = ({ onAdd }) => {
 
         {/* <div>{menuItems}</div> */}
         {alist.map((i, index) => (
-          <AddReps i={index} func={pull_data} />
+          <AddReps i={index} key={index} func={pull_data} />
         ))}
         {count}
         {/* <div className="spansAddDeleteSets"> */}

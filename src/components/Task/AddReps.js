@@ -5,6 +5,7 @@ const AddReps = ({ i, func }) => {
   const [rep, setRep] = useState("");
   const [kg, setKg] = useState("");
   const [list, setList] = useState("");
+
   const sets = [];
   for (let i = 0; i < 100; i++) {
     sets.push(i);
@@ -24,18 +25,21 @@ const AddReps = ({ i, func }) => {
     // rest.push(parseFloat(i + "." + i));
     sec.push(i);
   }
-  {
-    Object.keys(sec).map(function (key, index) {
-      for (let i = 0; i < 60; i += 1) {
-        // key.map((i) => (
-        rest.push(parseFloat(sec[key] + "." + i));
-        // console.log(rest[key], i);
-      }
-      // ))
-    });
-  }
   //   // sec.push(i);
-
+  const gank = () => {
+    {
+      Object.keys(sec).map(function (key, index) {
+        for (let i = 0; i < 60; i += 1) {
+          // key.map((i) => (
+          rest.push(parseFloat(index + "." + i));
+          // console.log(rest[key], i);
+        }
+        // ))
+      });
+    }
+    return rest;
+  };
+  gank();
   const addSetsValues = (e) => {
     setSet(e.target.value);
   };
@@ -87,7 +91,7 @@ const AddReps = ({ i, func }) => {
           {/* <option key={-1}>--kg--</option> */}
           {rest.map((i, index) => {
             return (
-              <option key={i.toString()} value={i}>
+              <option key={index} value={i}>
                 {i}
               </option>
             );
