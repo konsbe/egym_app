@@ -228,12 +228,19 @@ const AddTask = ({ onAdd }) => {
               />
             </span>
             <span>sets | reps | kg | rest</span>
+
             <span>
               <FaRegPlusSquare
                 style={{ color: "green", cursor: "pointer", height: 20 }}
                 onClick={handleClick}
               />
             </span>
+            <div>
+              <span>or</span>
+            </div>
+            <div>
+              <span>reps | min | km | rest</span>
+            </div>
           </label>
         </div>
 

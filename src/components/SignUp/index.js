@@ -12,6 +12,8 @@ import Button from "./../Forms/Button";
 import FormInput from "../Forms/FormInput";
 import FormSelect from "../Forms/FormSelect";
 
+
+
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
   userErr: user.userErr,
@@ -93,6 +95,16 @@ const SignUp = (props) => {
       })
     );
   };
+  const [nextState, setNextState] = useState(false);
+  const [nextText, setNextText] = useState("NEXT");
+  const handleNext = () => {
+    setNextState(!nextState);
+    if (nextText === "NEXT") {
+      setNextText("BACK");
+    } else {
+      setNextText("NEXT");
+    }
+  };
 
   const configAuthWrapper = {
     headline: "Registration",
@@ -116,121 +128,135 @@ const SignUp = (props) => {
             })}
           </ul>
         )}
-
         <form onSubmit={handleFormSubmit}>
-          <FormInput
-            className="forminput"
-            type="text"
-            name="firstName"
-            value={firstName}
-            placeholder="First Name"
-            handleChange={(e) => setFirstName(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="text"
-            name="lastName"
-            value={lastName}
-            placeholder="Last Name"
-            handleChange={(e) => setLastName(e.target.value)}
-          />
-          <p className="textLabels">Birthday:</p>
-          <FormInput
-            className="forminput"
-            type="date"
-            name="birthDay"
-            value={birthDay}
-            handleChange={(e) => setBirthDay(e.target.value)}
-          />
-          <p className="textLabels">Genre:</p>
-          <FormSelect
-            // label="Genre"
-            className="formSelect"
-            // default="man"
-            options={[
-              {
-                value: "-",
-                // default: "man",
-                name: "-",
-              },
-              {
-                value: "man",
-                // default: "man",
-                name: "man",
-              },
-              {
-                value: "woman",
-                name: "woman",
-              },
-            ]}
-            // defaultValue:man
-            // placeholder="Genre"
-            handleChange={(e) => setGenre(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="text"
-            name="height"
-            value={height}
-            placeholder="Height in cm"
-            handleChange={(e) => setHeight(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="text"
-            name="weight"
-            value={weight}
-            placeholder="Weight in kilos"
-            handleChange={(e) => setWeight(e.target.value)}
-          />
-          <p className="textLabels">Please write any injuries here:</p>
-          <textarea
-            className="formtext"
-            type="textarea"
-            name="injuries"
-            rows="8"
-            value={injuries}
-            placeholder="ruptured right meniscus, tendonitis of the right wrist, etc"
-            onChange={(e) => setInjuries(e.target.value)}
-          />
-          <p className="textLabels">Please write your training gear here:</p>
-          <textarea
-            className="formtext"
-            type="textarea"
-            name="gear"
-            rows="8"
-            value={gear}
-            placeholder="gym membership, exercise treadmills, bodyweight, swimming pool, dumbbells 2x5kg-2x10kg, etc.."
-            onChange={(e) => setGear(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="email"
-            name="email"
-            value={email}
-            placeholder="example@email.com"
-            handleChange={(e) => setEmail(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            handleChange={(e) => setPassword(e.target.value)}
-          />
-          <FormInput
-            className="forminput"
-            type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            placeholder="Confirm Your Password"
-            handleChange={(e) => setConfirmPassword(e.target.value)}
-          />
+          {!nextState && (
+            <div>
+              <FormInput
+                className="forminput"
+                type="text"
+                name="firstName"
+                value={firstName}
+                placeholder="First Name"
+                handleChange={(e) => setFirstName(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="text"
+                name="lastName"
+                value={lastName}
+                placeholder="Last Name"
+                handleChange={(e) => setLastName(e.target.value)}
+              />
+              <p className="textLabels">Birthday:</p>
+              <FormInput
+                className="forminput"
+                type="date"
+                name="birthDay"
+                value={birthDay}
+                handleChange={(e) => setBirthDay(e.target.value)}
+              />
+              <p className="textLabels">Genre:</p>
+              <FormSelect
+                // label="Genre"
+                className="formSelect"
+                // default="man"
+                options={[
+                  {
+                    value: "-",
+                    // default: "man",
+                    name: "-",
+                  },
+                  {
+                    value: "man",
+                    // default: "man",
+                    name: "man",
+                  },
+                  {
+                    value: "woman",
+                    name: "woman",
+                  },
+                ]}
+                // defaultValue:man
+                // placeholder="Genre"
+                handleChange={(e) => setGenre(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="text"
+                name="height"
+                value={height}
+                placeholder="Height in cm"
+                handleChange={(e) => setHeight(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="text"
+                name="weight"
+                value={weight}
+                placeholder="Weight in kilos"
+                handleChange={(e) => setWeight(e.target.value)}
+              />
+              <p className="textLabels">Please write any injuries here:</p>
+              <textarea
+                className="formtext"
+                type="textarea"
+                name="injuries"
+                rows="8"
+                value={injuries}
+                placeholder="ruptured right meniscus, tendonitis of the right wrist, etc"
+                onChange={(e) => setInjuries(e.target.value)}
+              />
+              <p className="textLabels">
+                Please write your training gear here:
+              </p>
+              <textarea
+                className="formtext"
+                type="textarea"
+                name="gear"
+                rows="8"
+                value={gear}
+                placeholder="gym membership, exercise treadmills, bodyweight, swimming pool, dumbbells 2x5kg-2x10kg, etc.."
+                onChange={(e) => setGear(e.target.value)}
+              />
+            </div>
+          )}
+          {nextState && (
+            <div>
+              <FormInput
+                className="forminput"
+                type="email"
+                name="email"
+                value={email}
+                placeholder="example@email.com"
+                handleChange={(e) => setEmail(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                handleChange={(e) => setPassword(e.target.value)}
+              />
+              <FormInput
+                className="forminput"
+                type="password"
+                name="confirmPassword"
+                value={confirmPassword}
+                placeholder="Confirm Your Password"
+                handleChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <Button type="submit" className="btnform">
+                Register
+              </Button>
+            </div>
+          )}
+          <div className="next" onClick={handleNext}>
+            {/* <span> */}
+            {nextText}
+            {/* </span> */}
+          </div>
           {/* <textarea className="forminput" rows="5" /> */}
-          <Button type="submit" className="btnform">
-            Register
-          </Button>
           <p className="logintext">
             Are you already have an acount
             <Link className="loginlink" to="/login">
