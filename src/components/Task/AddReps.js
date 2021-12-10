@@ -17,6 +17,24 @@ const AddReps = ({ i, func }) => {
   for (let i = 0; i < 300; i += 0.25) {
     kilos.push(i);
   }
+  const rest = [];
+  const sec = [];
+  // for (let i = 0; i < 60; i += 0.1) {}
+  for (let i = 0; i < 60; i += 1) {
+    // rest.push(parseFloat(i + "." + i));
+    sec.push(i);
+  }
+  {
+    Object.keys(sec).map(function (key, index) {
+      for (let i = 0; i < 60; i += 1) {
+        // key.map((i) => (
+        rest.push(parseFloat(sec[key] + "." + i));
+        // console.log(rest[key], i);
+      }
+      // ))
+    });
+  }
+  //   // sec.push(i);
 
   const addSetsValues = (e) => {
     setSet(e.target.value);
@@ -65,7 +83,19 @@ const AddReps = ({ i, func }) => {
         })}
       </select>
       <span className="setsNreps" onClick={handleClick}>
-        {0 + i}
+        <select className="setsNreps" onChange={addKiloValues}>
+          {/* <option key={-1}>--kg--</option> */}
+          {rest.map((i, index) => {
+            return (
+              <option key={i.toString()} value={i}>
+                {i}
+              </option>
+            );
+          })}
+        </select>
+        <span className="setsNreps" onClick={handleClick}>
+          {0 + i}
+        </span>
       </span>
       {/* <div onClick={handleClick}>asd</div> */}
     </div>
