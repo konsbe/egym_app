@@ -648,23 +648,22 @@ const FormTest = (props) => {
             <div className="labelTitle" style={{ marginTop: 10 }}>
               Anterior Kinetics
             </div>
-            <div className="nestedInputs">
-              {/* <div className="subLabelTitle">Adductor:</div> */}
-              <div className="subinputs">
-                <select
-                  className="onSelectTest"
-                  onChange={(e) => setAnterior(e.target.value)}
-                >
-                  <option key={-1}>--Anterior Kinetics--</option>
-                  {item.map((i, index) => {
-                    return (
-                      <option key={i.toString()} value={i}>
-                        {i}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+
+            {/* <div className="subLabelTitle">Adductor:</div> */}
+            <div>
+              <select
+                className="onSelectTest"
+                onChange={(e) => setAnterior(e.target.value)}
+              >
+                <option key={-1}>--Anterior Kinetics--</option>
+                {item.map((i, index) => {
+                  return (
+                    <option key={i.toString()} value={i}>
+                      {i}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
             {/* <FormInput
               className="forminput allspace"
@@ -686,24 +685,24 @@ const FormTest = (props) => {
             <div className="labelTitle" style={{ marginTop: 10 }}>
               Posterior Kinetics
             </div>
-            <div className="nestedInputs">
-              {/* <div className="subLabelTitle">Adductor:</div> */}
-              <div className="subinputs">
-                <select
-                  className="onSelectTest"
-                  onChange={(e) => setPosterior(e.target.value)}
-                >
-                  <option key={-1}>--Posterior Kinetics--</option>
-                  {item.map((i, index) => {
-                    return (
-                      <option key={i.toString()} value={i}>
-                        {i}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
+
+            {/* <div className="subLabelTitle">Adductor:</div> */}
+            <div>
+              <select
+                className="onSelectTest"
+                onChange={(e) => setPosterior(e.target.value)}
+              >
+                <option key={-1}>--Posterior Kinetics--</option>
+                {item.map((i, index) => {
+                  return (
+                    <option key={i.toString()} value={i}>
+                      {i}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
+
             {/* <FormInput
             className="forminput"
             type="text"
