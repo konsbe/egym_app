@@ -4,6 +4,7 @@ const AddReps = ({ i, func }) => {
   const [set, setSet] = useState("");
   const [rep, setRep] = useState("");
   const [kg, setKg] = useState("");
+  const [rests, setRests] = useState("");
   const [list, setList] = useState("");
 
   const sets = [];
@@ -49,9 +50,12 @@ const AddReps = ({ i, func }) => {
   const addKiloValues = (e) => {
     setKg(e.target.value);
   };
+  const addRestsValues = (e) => {
+    setRests(e.target.value);
+  };
   const handleClick = () => {
-    // console.log(i, set, rep, kg);
-    func(i, set, rep, kg);
+    // console.log(i, set, rep, kg, rests);
+    func(i, set, rep, kg, rests);
   };
 
   return (
@@ -86,21 +90,20 @@ const AddReps = ({ i, func }) => {
           );
         })}
       </select>
+      <select className="setsNreps" onChange={addRestsValues}>
+        {/* <option key={-1}>--kg--</option> */}
+        {rest.map((i, index) => {
+          return (
+            <option key={index} value={i}>
+              {i}
+            </option>
+          );
+        })}
+      </select>
       <span className="setsNreps" onClick={handleClick}>
-        <select className="setsNreps" onChange={addKiloValues}>
-          {/* <option key={-1}>--kg--</option> */}
-          {rest.map((i, index) => {
-            return (
-              <option key={index} value={i}>
-                {i}
-              </option>
-            );
-          })}
-        </select>
-        <span className="setsNreps" onClick={handleClick}>
-          {0 + i}
-        </span>
+        {0 + i}
       </span>
+      <span className="setsNreps" onClick={handleClick}></span>
       {/* <div onClick={handleClick}>asd</div> */}
     </div>
   );

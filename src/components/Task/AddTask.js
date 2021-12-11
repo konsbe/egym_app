@@ -88,11 +88,12 @@ const AddTask = ({ onAdd }) => {
     // setYoutube(e.target.data);
   };
 
-  const pull_data = (i, set, rep, kg) => {
+  const pull_data = (i, set, rep, kg, rests) => {
     console.log(i, set, rep, kg);
     select.push(set);
     select.push(rep);
     select.push(kg);
+    select.push(rests);
     select.push({ id: i });
     console.log(select);
     myReps.push({ ...select });
