@@ -83,8 +83,7 @@ const Weeks = ({ onDelete }) => {
 
     const fetchData = async () => {
       try {
-        await fetchDataDispatch();
-        fetchProgramDispatch();
+        await fetchDataDispatch().then(fetchProgramDispatch());
       } catch (err) {}
     };
 
@@ -98,7 +97,7 @@ const Weeks = ({ onDelete }) => {
       await setTimeout(async () => {
         const scheduleID = await userScheduleData[0].documentID;
         dispatch(fetchUserTrainingWeeksStart({ scheduleID }));
-      }, 1500);
+      }, 2000);
     };
     fetchUser();
     fetchData();

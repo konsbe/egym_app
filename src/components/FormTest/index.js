@@ -91,43 +91,47 @@ const FormTest = (props) => {
   };
 
   const handleFormSubmit = (event) => {
-    event.preventDefault();
-    dispatch(
-      addDataStart({
-        rightShoulder,
-        leftShoulder,
-        rightPlentar,
-        leftPlentar,
-        pelvic,
-        rightChest,
-        leftChest,
-        rightAnkle,
-        leftAnkle,
-        rightAdductor,
-        leftAdductor,
-        rightSoleAnkle,
-        leftSoleAnkle,
-        rightGluteus,
-        leftGluteus,
-        goodmorning,
-        anterior,
-        posterior,
-        birthDay: currentUser.birthDay,
-        lastProgram: currentUser.lastProgram,
-        firstName: currentUser.firstName,
-        lastName: currentUser.lastName,
-        genre: currentUser.genre,
-        height: currentUser.height,
-        weight: currentUser.weight,
-        injuries: currentUser.injuries,
-        gear: currentUser.gear,
-        email: currentUser.email,
-        createdDate: currentUser.createdDate,
-        userRoles: currentUser.userRoles,
-        payment: currentUser.payment,
-        month: currentUser.month,
-      })
-    );
+    if (!currentUser) {
+      history.push("/registration");
+    } else {
+      event.preventDefault();
+      dispatch(
+        addDataStart({
+          rightShoulder,
+          leftShoulder,
+          rightPlentar,
+          leftPlentar,
+          pelvic,
+          rightChest,
+          leftChest,
+          rightAnkle,
+          leftAnkle,
+          rightAdductor,
+          leftAdductor,
+          rightSoleAnkle,
+          leftSoleAnkle,
+          rightGluteus,
+          leftGluteus,
+          goodmorning,
+          anterior,
+          posterior,
+          birthDay: currentUser.birthDay,
+          lastProgram: currentUser.lastProgram,
+          firstName: currentUser.firstName,
+          lastName: currentUser.lastName,
+          genre: currentUser.genre,
+          height: currentUser.height,
+          weight: currentUser.weight,
+          injuries: currentUser.injuries,
+          gear: currentUser.gear,
+          email: currentUser.email,
+          createdDate: currentUser.createdDate,
+          userRoles: currentUser.userRoles,
+          payment: currentUser.payment,
+          month: currentUser.month,
+        })
+      );
+    }
   };
 
   const configAuthWrapper = {

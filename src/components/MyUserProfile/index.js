@@ -56,7 +56,10 @@ const MyUserProfile = ({}) => {
     const fetchUser = async () => {
       // setTimeout(() => {
 
-      await dispatch(fetchUserStart(userID));
+
+            await dispatch(fetchUserStart(userID));
+            dispatch(fetchTrainingSchedulesStart());
+            dispatch(fetchUserTrainingScheduleStart(email));
       // }, 1000);
       // fetchCalendar();
     };
