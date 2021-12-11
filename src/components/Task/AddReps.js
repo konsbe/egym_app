@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { GrTableAdd } from "@react-icons/all-files/gr/GrTableAdd";
 const AddReps = ({ i, func }) => {
   const [set, setSet] = useState("");
   const [rep, setRep] = useState("");
@@ -101,7 +101,7 @@ const AddReps = ({ i, func }) => {
         })}
       </select>
       <span className="setsNreps" onClick={handleClick}>
-        {0 + i}
+        {0 + i} <GrTableAdd className="setsNrepsAdd" />
       </span>
       <span className="setsNreps" onClick={handleClick}></span>
       {/* <div onClick={handleClick}>asd</div> */}

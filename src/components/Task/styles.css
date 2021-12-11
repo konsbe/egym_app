@@ -271,6 +271,24 @@ box-shadow: 1px 1px 2px rgba(49, 255, 100, 0.6), 0 0 4px rgba(49, 255, 100, 0.6)
   margin-left: 1rem;
   margin-right: 1rem;
 }
+.setsNrepsAdd{
+  /* width:4rem; */
+  background-color: rgb(142, 255, 166);
+  margin-left: -3px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.setsNrepsAdd:hover{
+
+  background-color: greenyellow;
+  color: antiquewhite;
+   box-shadow: 1px 1px 2px rgba(224, 255, 49, 0.6), 0 0 4px rgba(224, 255, 49, 0.6), 0 0 8px rgba(224, 255, 49, 0.6);
+}
+.setsNrepsAdd:active{
+
+  background-color: rgb(142, 255, 166);
+   box-shadow: 1px 1px 2px rgba(0, 255, 106, 0.6), 0 0 4px rgba(0, 255, 106, 0.6), 0 0 8px rgba(0, 255, 106, 0.6);
+}
 
 .grid-container{
   display: flex;
