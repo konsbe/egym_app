@@ -5,7 +5,7 @@ import {
   signOutUserStart,
   // fetchUsersStart,
 } from "./../../redux/User/user.actions";
-
+import { checkUserIsAdmin } from "./../../Utils";
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
@@ -63,7 +63,7 @@ const Header = (props) => {
   // useEffect(() => {
   //   dispatch(fetchUsersStart());
   // }, []);
-
+  const isAdmin = checkUserIsAdmin(currentUser);
   return (
     <div>
       <nav sticky="top" onScroll={handleScroll} className="computerBar">
@@ -135,21 +135,23 @@ const Header = (props) => {
               )}
               {currentUser && (
                 <ul>
-                  <li>
-                    <Nav.Link
-                      as={Link}
-                      to={`/user/${users.id}`}
-                      className="navmenu"
-                    >
-                      <Button
-                        className="btnlink"
-                        variant="outline-success"
-                        id="btnNavbar"
+                  {!isAdmin && (
+                    <li>
+                      <Nav.Link
+                        as={Link}
+                        to={`/user/${users.id}`}
+                        className="navmenu"
                       >
-                        My Profile
-                      </Button>
-                    </Nav.Link>
-                  </li>
+                        <Button
+                          className="btnlink"
+                          variant="outline-success"
+                          id="btnNavbar"
+                        >
+                          My Profile
+                        </Button>
+                      </Nav.Link>
+                    </li>
+                  )}
                   <li>
                     <Nav.Link className="navmenu">
                       <Button

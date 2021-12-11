@@ -95,7 +95,7 @@ const Weeks = ({ onDelete }) => {
 
     const fetchProgramDispatch = async () => {
       await setTimeout(async () => {
-        const scheduleID = await userScheduleData[0].documentID;
+        const scheduleID = userScheduleData[0].documentID;
         dispatch(fetchUserTrainingWeeksStart({ scheduleID }));
       }, 2000);
     };
