@@ -46,7 +46,14 @@ margin: auto;
   min-height: 50px;
   border: 1px solid steelblue;
   padding: 30px;
-  border-radius: 5px;
+  border-radius: 15px;
+
+}
+
+.containerone:hover {
+  /* max-width: 500px; */
+  background-color: aliceblue;
+
 }
 .deleteWeek{
   width:1rem;

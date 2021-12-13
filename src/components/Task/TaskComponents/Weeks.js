@@ -29,9 +29,12 @@ const Weeks = ({ onDelete }) => {
   const dispatch = useDispatch();
   const { userID } = useParams();
   const { userScheduleData } = useSelector(mapState);
+  const userSchedule = { ...userScheduleData[0] };
   const { currentUser } = useSelector(mapState);
   const { userWeeks } = useSelector(mapState);
   const { data, queryDoc, isLastPage } = userWeeks;
+  // console.log(userSchedule, "dasdasdassdadsaasdasdasasddasasd");
+  console.log(userSchedule.email, "dasdasdassdadsaasdasdasasddasasd");
   //   const [showWeek, setShowWeek] = useState(false);
   const { user } = useSelector(mapState);
   const {
@@ -77,9 +80,9 @@ const Weeks = ({ onDelete }) => {
   //   const nodeRef = useRef(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      await dispatch(fetchUserStart(userID));
-    };
+    // const fetchUser = async () => {
+    //   await dispatch(fetchUserStart(userID));
+    // };
 
     const fetchData = async () => {
       try {
@@ -95,13 +98,12 @@ const Weeks = ({ onDelete }) => {
 
     const fetchProgramDispatch = async () => {
       await setTimeout(async () => {
-        const scheduleID = userScheduleData[0].documentID;
+        const scheduleID = userSchedule.documentID;
         dispatch(fetchUserTrainingWeeksStart({ scheduleID }));
       }, 2000);
     };
-    fetchUser();
     fetchData();
-  }, [userScheduleData[0].email !== email]);
+  }, [userSchedule.email !== email]);
   // userScheduleData[0].email !== email;
   const handleLoadMore = () => {
     const scheduleID = userScheduleData[0].documentID;

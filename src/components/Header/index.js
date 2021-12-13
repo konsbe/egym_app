@@ -135,23 +135,23 @@ const Header = (props) => {
               )}
               {currentUser && (
                 <ul>
-                  {!isAdmin && (
-                    <li>
-                      <Nav.Link
-                        as={Link}
-                        to={`/user/${users.id}`}
-                        className="navmenu"
+                  {/* {!isAdmin && ( */}
+                  <li>
+                    <Nav.Link
+                      as={Link}
+                      to={`/user/${users.id}`}
+                      className="navmenu"
+                    >
+                      <Button
+                        className="btnlink"
+                        variant="outline-success"
+                        id="btnNavbar"
                       >
-                        <Button
-                          className="btnlink"
-                          variant="outline-success"
-                          id="btnNavbar"
-                        >
-                          My Profile
-                        </Button>
-                      </Nav.Link>
-                    </li>
-                  )}
+                        My Profile
+                      </Button>
+                    </Nav.Link>
+                  </li>
+                  {/* )} */}
                   <li>
                     <Nav.Link className="navmenu">
                       <Button

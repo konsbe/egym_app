@@ -40,7 +40,7 @@ const Task = ({ task, onDelete, onToggle, tasks }) => {
       {task.myReps.map((sets, index) => (
         <p key={index}>
           <span>
-            {sets[0]} x {sets[1]} x {sets[2]}, rest: {sets[3]} min
+            {sets[0]} set x {sets[1]} reps / {sets[2]} kg/ rest: {sets[3]} min
             {/* {task.myReps} */}
           </span>
         </p>
