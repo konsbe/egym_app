@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "./static/css/main.9091747a.chunk.css",
+    "main.js": "./static/js/main.f0dbf592.chunk.js",
+    "main.js.map": "./static/js/main.f0dbf592.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.e9e253ba.js",
+    "runtime-main.js.map": "./static/js/runtime-main.e9e253ba.js.map",
+    "static/css/2.ddf66914.chunk.css": "./static/css/2.ddf66914.chunk.css",
+    "static/js/2.8c53ab7f.chunk.js": "./static/js/2.8c53ab7f.chunk.js",
+    "static/js/2.8c53ab7f.chunk.js.map": "./static/js/2.8c53ab7f.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.ddf66914.chunk.css.map": "./static/css/2.ddf66914.chunk.css.map",
+    "static/css/main.9091747a.chunk.css.map": "./static/css/main.9091747a.chunk.css.map",
+    "static/js/2.8c53ab7f.chunk.js.LICENSE.txt": "./static/js/2.8c53ab7f.chunk.js.LICENSE.txt",
+    "static/media/calendarIcon.9b957ff6.jpg": "./static/media/calendarIcon.9b957ff6.jpg",
+    "static/media/styles.css": "./static/media/image3.bdf0ae01.jpg",
+    "static/media/imgMen.609ef006.jpg": "./static/media/imgMen.609ef006.jpg",
+    "static/media/imgWomen.8d6b7217.jpg": "./static/media/imgWomen.8d6b7217.jpg",
+    "static/media/snatch.e2ab2a42.jpg": "./static/media/snatch.e2ab2a42.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e9e253ba.js",
+    "static/css/2.ddf66914.chunk.css",
+    "static/js/2.8c53ab7f.chunk.js",
+    "static/css/main.9091747a.chunk.css",
+    "static/js/main.f0dbf592.chunk.js"
+  ]
+}
