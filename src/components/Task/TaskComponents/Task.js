@@ -48,7 +48,8 @@ const Task = ({
       {task.myReps.map((sets, index) => (
         <p key={index}>
           <span>
-            {sets[0]} set x {sets[1]} reps / {sets[2]} kg/ rest: {sets[3]} min
+            {sets[0]} set x {sets[1]} reps / {sets[2]} kg
+            <p style={{ marginTop: 7 }}>rest: {sets[3]} min</p>
             {/* {task.myReps} */}
           </span>
         </p>
