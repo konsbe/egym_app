@@ -23,11 +23,7 @@
       "type": "image/png",
       "purpose": "maskable"
     },
-    {
-      "src": "logo196.png",
-      "sizes": "196x196",
-      "type": "image/png"
-    },
+
     {
       "src": "logo256.png",
       "sizes": "256x256",
