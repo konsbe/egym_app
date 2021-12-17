@@ -24,9 +24,9 @@ const Task = ({ onDelete }) => {
     );
   } else {
     return (
-      // <div className="postTask">
-      //   <Weeks onDelete={onDelete} />
-      // </div>
+      <div className="postTask">
+        <Weeks onDelete={onDelete} />
+      </div>
     );
   }
 };

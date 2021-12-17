@@ -18,23 +18,29 @@ import {
 
 import LoadMore from "./../../LoadMore";
 
-const mapState = ({ user, trainingData }) => ({
-  user: user.user,
-  currentUser: user.currentUser,
-  userWeeks: trainingData.trainingWeeks,
-  userScheduleData: trainingData.userScheduleData,
+const mapState = (state) => ({
+  user: state.user.user,
+  currentUser: state.user.currentUser,
+  userScheduleData: state.trainingData.userScheduleData,
+  userWeeks: state.trainingData.trainingWeeks,
+  userData: state.trainingData.trainingWeeks.data,
 });
 
 const Weeks = ({ onDelete }) => {
   const dispatch = useDispatch();
   const { userID } = useParams();
   const { userScheduleData } = useSelector(mapState);
-  const userSchedule = { ...userScheduleData[0] };
   const { currentUser } = useSelector(mapState);
   const { userWeeks } = useSelector(mapState);
+  const { userData } = useSelector(mapState);
   const { data, queryDoc, isLastPage } = userWeeks;
+  const userSchedule = { ...userScheduleData[0] };
+  const [bool, setBool] = useState(true);
+
   // console.log(userSchedule, "dasdasdassdadsaasdasdasasddasasd");
   console.log(userSchedule.email, "dasdasdassdadsaasdasdasasddasasd");
+
+  console.log(userData, "dasdasdassdadsaasdasdasasddasasd");
   //   const [showWeek, setShowWeek] = useState(false);
   const { user } = useSelector(mapState);
   const {
@@ -80,10 +86,10 @@ const Weeks = ({ onDelete }) => {
   //   const nodeRef = useRef(null);
 
   useEffect(() => {
-    // const fetchUser = async () => {
-    //   await dispatch(fetchUserStart(userID));
-    // };
-
+    setBool(false);
+    const fetchUser = async () => {
+      await dispatch(fetchUserStart(userID));
+    };
     const fetchData = async () => {
       try {
         await fetchDataDispatch().then(fetchProgramDispatch());
@@ -93,17 +99,22 @@ const Weeks = ({ onDelete }) => {
     const fetchDataDispatch = async () => {
       await setTimeout(async () => {
         dispatch(await fetchUserTrainingScheduleStart(email));
-      }, 1000);
+      }, 2000);
     };
 
     const fetchProgramDispatch = async () => {
       await setTimeout(async () => {
         const scheduleID = userSchedule.documentID;
         dispatch(fetchUserTrainingWeeksStart({ scheduleID }));
-      }, 2000);
+      }, 3000);
     };
-    fetchData();
-  }, []);
+    fetchUser().then(fetchData());
+    // console.log(userData.length);
+
+    if (userSchedule.email === email) {
+      setBool(true);
+    }
+  }, [bool]);
   console.log(data, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   console.log(userWeeks, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   // userScheduleData[0].email !== email;
@@ -128,14 +139,14 @@ const Weeks = ({ onDelete }) => {
         className="weeksContainer"
         //   onClick={() => setShowWeek(!showWeek)}
       >
-        {data.map((week, index) => (
+        {/* {userData.map((week, index) => (
           <Days
             onDelete={onDelete}
             key={index}
             week={week}
             onDelete={deleteWeek}
           />
-        ))}
+        ))} */}
         {!isLastPage && <LoadMore {...configLoadMore} />}
       </div>
     </div>
