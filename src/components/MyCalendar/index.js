@@ -81,7 +81,7 @@ function MyCalendar() {
     };
 
     fetchData();
-  }, [calendar[0].email !== email]);
+  }, []);
   // calendar[0].email !== email;
   // const bees = [];
   // console.log(bees);

@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/createStore";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-
 import App from "./App";
 
 ReactDOM.render(

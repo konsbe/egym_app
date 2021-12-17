@@ -105,6 +105,7 @@ const Weeks = ({ onDelete }) => {
     fetchData();
   }, []);
   console.log(data, "frfrfrfrfrrffrfrfrfrfrfrrffr");
+  console.log(userWeeks, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   // userScheduleData[0].email !== email;
   const handleLoadMore = () => {
     const scheduleID = userScheduleData[0].documentID;
