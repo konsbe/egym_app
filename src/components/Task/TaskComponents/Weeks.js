@@ -103,7 +103,8 @@ const Weeks = ({ onDelete }) => {
       }, 2000);
     };
     fetchData();
-  }, [userSchedule.email !== email]);
+  }, []);
+  console.log(data, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   // userScheduleData[0].email !== email;
   const handleLoadMore = () => {
     const scheduleID = userScheduleData[0].documentID;
