@@ -32,10 +32,13 @@ const Weeks = ({ onDelete }) => {
   const { userScheduleData } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
   const { userWeeks } = useSelector(mapState);
-  const { userData } = useSelector(mapState);
   const { data, queryDoc, isLastPage } = userWeeks;
   const userSchedule = { ...userScheduleData[0] };
-  const [bool, setBool] = useState(true);
+  const [secret, setSecret] = useState({ value: "", countSecrets: 0 });
+  const [myData, setMyData] = useState([]);
+  const [bollState, setBollState] = useState(true);
+
+  let count = 0;
 
   // console.log(userSchedule, "dasdasdassdadsaasdasdasasddasasd");
   console.log(userSchedule.email, "dasdasdassdadsaasdasdasasddasasd");
@@ -82,11 +85,17 @@ const Weeks = ({ onDelete }) => {
   // userWeeks.map((week) =>
   //   console.log(week, "frfrrffrfrfrfrfrfrrfrffrfrrffrfrrffrfrfrfrfr")
   // );
+  const { userData } = useSelector(mapState);
+  if (userSchedule.email !== email) {
+    count = count + 1;
+  }
+  // function triggerData() {
+
+  // }
 
   //   const nodeRef = useRef(null);
 
   useEffect(() => {
-    setBool(false);
     const fetchUser = async () => {
       await dispatch(fetchUserStart(userID));
     };
@@ -109,13 +118,13 @@ const Weeks = ({ onDelete }) => {
       }, 3000);
     };
     fetchUser().then(fetchData());
+    // if (userSchedule.email === email) {
+    //   setSecret((s) => ({ ...s, countSecrets: s.countSecrets + 1 }));
+    // }
     // console.log(userData.length);
+  }, [count]);
 
-    if (userSchedule.email === email) {
-      setBool(true);
-    }
-  }, [bool]);
-  console.log(data, "frfrfrfrfrrffrfrfrfrfrfrrffr");
+  console.log(userData, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   console.log(userWeeks, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   // userScheduleData[0].email !== email;
   const handleLoadMore = () => {
@@ -133,13 +142,14 @@ const Weeks = ({ onDelete }) => {
     onLoadMoreEvt: handleLoadMore,
   };
   console.log(data, queryDoc, ":slsllsslsllslslslslslsllslsls");
-  return (
-    <div>
-      <div
-        className="weeksContainer"
-        //   onClick={() => setShowWeek(!showWeek)}
-      >
-        {/* {userData.map((week, index) => (
+  if (!userData) {
+    return (
+      <div>
+        <div
+          className="weeksContainer"
+          //   onClick={() => setShowWeek(!showWeek)}
+        >
+          {/* {userData.map((week, index) => (
           <Days
             onDelete={onDelete}
             key={index}
@@ -147,10 +157,30 @@ const Weeks = ({ onDelete }) => {
             onDelete={deleteWeek}
           />
         ))} */}
-        {!isLastPage && <LoadMore {...configLoadMore} />}
+          {!isLastPage && <LoadMore {...configLoadMore} />}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div
+          className="weeksContainer"
+          //   onClick={() => setShowWeek(!showWeek)}
+        >
+          {userData.map((week, index) => (
+            <Days
+              onDelete={onDelete}
+              key={index}
+              week={week}
+              onDelete={deleteWeek}
+            />
+          ))}
+          {!isLastPage && <LoadMore {...configLoadMore} />}
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Weeks;
