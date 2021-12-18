@@ -60,6 +60,16 @@ function MyCalendar() {
 
   // const { documentID } = calendar;
   const { email } = user;
+  const [bollState, setBollState] = useState(true);
+
+  let count = 0;
+  if (!user) {
+    count = count + 1;
+  } else if (!calendar[0]) {
+    count = count + 1;
+  } else if (calendar[0].email !== email) {
+    count = count + 1;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,7 +91,7 @@ function MyCalendar() {
     };
 
     fetchData();
-  }, []);
+  }, [count]);
   // calendar[0].email !== email;
   // const bees = [];
   // console.log(bees);
