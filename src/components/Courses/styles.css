@@ -1,4 +1,13 @@
-@media screen and (max-width: 900px){
-
-
+/* .buy{
+    background-color: aquamarine;
+} */
+/* .stat{
+    background-color: red;
+} */
+.stat:nth-child(2):hover{
+    border:1px solid rgb(0, 104, 31);
+}
+.stat:nth-child(2):active{
+    box-shadow: 1px 1px 2px rgba(224, 255, 49, 0.6), 0 0 4px rgba(224, 255, 49, 0.6), 0 0 8px rgba(224, 255, 49, 0.6);
+    color:rgb(67, 76, 83);
 }
