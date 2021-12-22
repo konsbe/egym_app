@@ -45,7 +45,7 @@ const MyUserProfile = ({}) => {
     weight,
     injuries,
     gear,
-    rightShouled,
+    rightShoulder,
     rightSoleAnkle,
     leftSoleAnkle,
     email,
@@ -56,10 +56,9 @@ const MyUserProfile = ({}) => {
     const fetchUser = async () => {
       // setTimeout(() => {
 
-
-            await dispatch(fetchUserStart(userID));
-            dispatch(fetchTrainingSchedulesStart());
-            dispatch(fetchUserTrainingScheduleStart(email));
+      await dispatch(fetchUserStart(userID));
+      dispatch(fetchTrainingSchedulesStart());
+      dispatch(fetchUserTrainingScheduleStart(email));
       // }, 1000);
       // fetchCalendar();
     };
@@ -157,7 +156,7 @@ const MyUserProfile = ({}) => {
         }
         {
           <h6>
-            <span>Right Shoulder:</span> {rightShouled}
+            <span>Right Shoulder:</span> {rightShoulder}
           </h6>
         }
       </div>
