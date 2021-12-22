@@ -4,7 +4,8 @@ import { signUpUserStart } from "../../redux/User/user.actions";
 import { addCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
 import { addTrainingScheduleStart } from "./../../redux/WeekTraining/weekTraining.actions";
 import Recaptcha from "react-recaptcha";
-
+import { BsArrowRight } from "@react-icons/all-files/bs/BsArrowRight";
+import { BsArrowLeft } from "@react-icons/all-files/bs/BsArrowLeft";
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
 
@@ -276,7 +277,19 @@ const SignUp = (props) => {
           )}
           <div className="next" onClick={handleNext}>
             {/* <span> */}
+            {nextText === "BACK" ? (
+              <BsArrowLeft style={{ fontSize: 28 }} />
+            ) : (
+              ""
+            )}
+
             {nextText}
+            {nextText === "NEXT" ? (
+              <BsArrowRight style={{ fontSize: 28 }} />
+            ) : (
+              ""
+            )}
+
             {/* </span> */}
           </div>
           {/* <textarea className="forminput" rows="5" /> */}
