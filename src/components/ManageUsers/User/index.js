@@ -16,6 +16,7 @@ const User = ({
   pos,
   createdDate,
   lastProgram,
+  course,
 }) => {
   // const [conjuctionPayment, setConjuctionPayment] = useState(false);
   // const [monthProgram, setMonthProgram] = useState(false);
@@ -74,13 +75,11 @@ const User = ({
       <span>
         <Link to={`/user/${documentID}`}>{pos}</Link>
       </span>
-      <span>
-        <Link to={`/user/${documentID}`}>{firstName}</Link>
-      </span>
-
-      <span>
+      <span style={{ fontSize: 15 }}>
+        <Link to={`/user/${documentID}`}>{firstName} </Link>
         <Link to={`/user/${documentID}`}>{lastName}</Link>
       </span>
+
       <span>
         <Link to={`/user/${documentID}`}>{birthDay}</Link>
       </span>
@@ -89,6 +88,9 @@ const User = ({
       </span>
       <span>
         <Link to={`/user/${documentID}`}> {c}</Link>
+      </span>
+      <span>
+        <Link to={`/user/${documentID}`}> {course}</Link>
       </span>
       <span>
         <input

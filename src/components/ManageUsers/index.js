@@ -49,12 +49,12 @@ const ManageUsers = ({}) => {
       <h1 className="manageUsers">Manage Users</h1>
       <div className="user userLabels">
         <span>index</span>
-        <span>First Name</span>
+        <span>First Name/Last Name</span>
 
-        <span>Last Name</span>
         <span>BirthDay</span>
         <span>Kilos</span>
         <span>Created Date</span>
+        <span>Course</span>
         <span>Pay</span>
         <span>Last Program</span>
         <span>Month Program</span>
