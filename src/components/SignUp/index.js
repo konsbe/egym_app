@@ -264,13 +264,14 @@ const SignUp = (props) => {
               <Button type="submit" className="btnform">
                 Register
               </Button>
-              <Recaptcha
-                sitekey="6Ldj478dAAAAAN75PJC2YE1aDqAlXk_sn9cGv4Np"
-                render="explicit"
-                onloadCallback={recaptchaLoaded}
-                verifyCallback={verifyCallback}
-              />
-              ,
+              <div className="recaptcha">
+                <Recaptcha
+                  sitekey="6Ldj478dAAAAAN75PJC2YE1aDqAlXk_sn9cGv4Np"
+                  render="explicit"
+                  onloadCallback={recaptchaLoaded}
+                  verifyCallback={verifyCallback}
+                />
+              </div>
             </div>
           )}
           <div className="next" onClick={handleNext}>
