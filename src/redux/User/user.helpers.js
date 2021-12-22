@@ -278,6 +278,32 @@ export const handleUpdateLastProgram = ({ lastProgram, documentID }) => {
   });
 };
 
+export const handleUpdateCourseTaken = ({ course, documentID }) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection("users")
+      .doc(documentID)
+      // .get()
+      // .ref(`gear`)
+      .update({ course })
+      // .update({ injuries: injuries })
+      // .update({ gear: gear })
+
+      .then((snapshot) => {
+        const usersArray = snapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            documentID: doc.num,
+          };
+        });
+        resolve(usersArray);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 
 export const handleFetchUser = (userID) => {
   return new Promise((resolve, reject) => {

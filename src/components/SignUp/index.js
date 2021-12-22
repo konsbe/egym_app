@@ -38,6 +38,7 @@ const SignUp = (props) => {
   const [payment, setPayment] = useState(false);
   const [month, setMonth] = useState(false);
   const [calendarTracker, setCalendarTracker] = useState({});
+  const [course, setCourse] = useState("-");
 
   useEffect(() => {
     if (currentUser) {
@@ -92,6 +93,7 @@ const SignUp = (props) => {
         month,
         calendarTracker,
         lastProgram,
+        course,
       })
     );
   };

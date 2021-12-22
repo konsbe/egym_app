@@ -129,6 +129,7 @@ const FormTest = (props) => {
           userRoles: currentUser.userRoles,
           payment: currentUser.payment,
           month: currentUser.month,
+          course: currentUser.course,
         })
       );
     }

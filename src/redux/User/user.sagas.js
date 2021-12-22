@@ -26,6 +26,7 @@ import {
   handleUpdatePayment,
   handleUpdateCalendar,
   handleUpdateLastProgram,
+  handleUpdateCourseTaken,
 } from "./user.helpers";
 import { useAuth } from "./../../customHooks";
 
@@ -103,6 +104,7 @@ export function* signUpUser({
     month,
     calendarTracker,
     lastProgram,
+    course,
   },
 }) {
   if (password !== confirmPassword) {
@@ -125,6 +127,7 @@ export function* signUpUser({
       month,
       calendarTracker,
       lastProgram,
+      course,
     };
     yield getSnapshotFromUserAuth(user);
     yield call(handleUserProfile, {
@@ -196,6 +199,7 @@ export function* addData({
     userRoles,
     payment,
     month,
+    course,
   },
 }) {
   try {
@@ -232,6 +236,7 @@ export function* addData({
       userRoles,
       payment,
       month,
+      course,
       userUID: auth.currentUser.uid,
     });
   } catch (err) {}
@@ -328,6 +333,19 @@ export function* onUpdateUserLastProgram() {
   yield takeLatest(userTypes.UPDATE_USER_DATA, updateLastProgram);
 }
 
+export function* updateCourseTaken({ payload: { course, documentID } }) {
+  try {
+    yield handleUpdateCourseTaken({
+      course,
+      documentID,
+    });
+  } catch (err) {}
+}
+
+export function* onUpdateCourseTaken() {
+  yield takeLatest(userTypes.UPDATE_USER_DATA, updateCourseTaken);
+}
+
 export function* fetchUser({ payload }) {
   try {
     const user = yield handleFetchUser(payload);
@@ -356,5 +374,6 @@ export default function* userSagas() {
     call(onUpdateUserPayment),
     call(onUpdateUserCalendar),
     call(onUpdateUserLastProgram),
+    call(onUpdateCourseTaken),
   ]);
 }

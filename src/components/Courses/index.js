@@ -3,27 +3,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCoursesStart } from "../../redux/Courses/courses.actions";
 import "./styles.css";
 import { AiOutlineShoppingCart } from "@react-icons/all-files/ai/AiOutlineShoppingCart";
+import { updateUserStart } from "./../../redux/User/user.actions";
 
-const mapState = ({ coursesData }) => ({
+const mapState = ({ coursesData, user }) => ({
   courses: coursesData.courses,
+  currentUser: user.currentUser,
 });
 
 const Courses = (props) => {
   const { courses } = useSelector(mapState);
+  const { currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
-  const [hover, setHover] = useState(false);
+
   useEffect(() => {
     dispatch(fetchCoursesStart());
   }, []);
-  const toggleHover = () => {
-    setHover(!hover);
+
+  const handleChangeCourseTaken = async (e) => {
+    const course = e;
+    const documentID = currentUser.id;
+    dispatch(
+      updateUserStart({
+        course: course,
+        documentID,
+      })
+    );
+    console.log(course, documentID);
   };
-  var linkStyle;
-  if (hover) {
-    linkStyle = { backgroundColor: "red" };
-  } else {
-    linkStyle = { backgroundColor: "blue" };
-  }
 
   return (
     <div className="coursePage">
@@ -62,8 +68,10 @@ const Courses = (props) => {
                     </div>
                     <div
                       className="stat"
-                      onMouseEnter={toggleHover}
-                      onMouseLeave={toggleHover}
+                      onClick={(e) => {
+                        // console.log(courseMonths);
+                        handleChangeCourseTaken(courseMonths);
+                      }}
                     >
                       <div className="buyitem" style={{ paddingLeft: 4 }}>
                         buy
