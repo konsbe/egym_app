@@ -164,7 +164,7 @@ const SignUp = (props) => {
               />
               <p className="textLabels">Birthday:</p>
               <FormInput
-                className="forminput"
+                className="forminput dateinput"
                 type="date"
                 name="birthDay"
                 value={birthDay}

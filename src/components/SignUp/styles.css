@@ -8,8 +8,11 @@
     margin-bottom: 1rem;
     border-radius:0.5rem ;
 }
+.dateinput{
+    width: 24.5rem;
+}
 .formSelect {
-    width: 25rem;
+    width: 24.7rem;
     height: 3rem;
     font-size: 2rem;
     padding-left: 1rem;
