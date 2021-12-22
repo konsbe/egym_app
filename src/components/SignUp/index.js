@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signUpUserStart } from "../../redux/User/user.actions";
 import { addCalendarStart } from "../../redux/CalendarTracker/calendarTracker.actions";
 import { addTrainingScheduleStart } from "./../../redux/WeekTraining/weekTraining.actions";
+import Recaptcha from "react-recaptcha";
 
 import "./styles.css";
 import { Link, useHistory } from "react-router-dom";
@@ -11,8 +12,6 @@ import AuthWrapper from "../AuthWrapper";
 import Button from "./../Forms/Button";
 import FormInput from "../Forms/FormInput";
 import FormSelect from "../Forms/FormSelect";
-
-
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -39,6 +38,8 @@ const SignUp = (props) => {
   const [month, setMonth] = useState(false);
   const [calendarTracker, setCalendarTracker] = useState({});
   const [course, setCourse] = useState("-");
+  const [captca, setCaptca] = useState(false);
+  const [verification, setVerification] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -68,34 +69,46 @@ const SignUp = (props) => {
     setInjuries("");
     setGear("");
     setErrors([]);
+    setVerification(false);
+    setCaptca(false);
   };
-
+  const recaptchaLoaded = () => {
+    console.log("loaded");
+  };
+  const verifyCallback = () => {
+    setCaptca(true);
+  };
   const lastProgram = new Date();
   // console.log(lastProgram, "sadsadasdasdasasdsdasdaasdsad");
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    dispatch(addCalendarStart({ email }));
-    dispatch(await addTrainingScheduleStart({ email }));
-    dispatch(
-      await signUpUserStart({
-        firstName,
-        lastName,
-        genre,
-        height,
-        weight,
-        email,
-        birthDay,
-        password,
-        confirmPassword,
-        injuries,
-        gear,
-        payment,
-        month,
-        calendarTracker,
-        lastProgram,
-        course,
-      })
-    );
+    if (captca) {
+      event.preventDefault();
+      dispatch(addCalendarStart({ email }));
+      dispatch(await addTrainingScheduleStart({ email }));
+      dispatch(
+        await signUpUserStart({
+          firstName,
+          lastName,
+          genre,
+          height,
+          weight,
+          email,
+          birthDay,
+          password,
+          confirmPassword,
+          injuries,
+          gear,
+          payment,
+          month,
+          calendarTracker,
+          lastProgram,
+          course,
+        })
+      );
+      resetForm();
+    } else {
+      alert("Please Verify that you are a human");
+    }
   };
   const [nextState, setNextState] = useState(false);
   const [nextText, setNextText] = useState("NEXT");
@@ -251,6 +264,13 @@ const SignUp = (props) => {
               <Button type="submit" className="btnform">
                 Register
               </Button>
+              <Recaptcha
+                sitekey="6Ldj478dAAAAAN75PJC2YE1aDqAlXk_sn9cGv4Np"
+                render="explicit"
+                onloadCallback={recaptchaLoaded}
+                verifyCallback={verifyCallback}
+              />
+              ,
             </div>
           )}
           <div className="next" onClick={handleNext}>
