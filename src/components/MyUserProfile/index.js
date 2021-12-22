@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserStart } from "../../redux/User/user.actions";
 
@@ -133,33 +133,40 @@ const MyUserProfile = ({}) => {
           </div>
         }
       </div>
-      <div className="mySidebarBottom">
-        {
-          <h6>
-            <span>Pelvic:</span> {pelvic}
-          </h6>
-        }
-        {
-          <h6>
-            <span>rightChest:</span> {rightChest}
-          </h6>
-        }
-        {
-          <h6>
-            <span>Left Sole Ankle:</span> {leftSoleAnkle}
-          </h6>
-        }
-        {
-          <h6>
-            <span>Right Sole Ankle:</span> {rightSoleAnkle}
-          </h6>
-        }
-        {
-          <h6>
-            <span>Right Shoulder:</span> {rightShoulder}
-          </h6>
-        }
-      </div>
+      {!rightChest && (
+        <div>
+          <Link to={"/test"}> complete our evaluation test</Link>
+        </div>
+      )}
+      {rightChest && (
+        <div className="mySidebarBottom">
+          {
+            <h6>
+              <span>Pelvic:</span> {pelvic}
+            </h6>
+          }
+          {
+            <h6>
+              <span>rightChest:</span> {rightChest}
+            </h6>
+          }
+          {
+            <h6>
+              <span>Left Sole Ankle:</span> {leftSoleAnkle}
+            </h6>
+          }
+          {
+            <h6>
+              <span>Right Sole Ankle:</span> {rightSoleAnkle}
+            </h6>
+          }
+          {
+            <h6>
+              <span>Right Shoulder:</span> {rightShoulder}
+            </h6>
+          }
+        </div>
+      )}
     </div>
   );
 };
