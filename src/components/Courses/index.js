@@ -4,6 +4,7 @@ import { fetchCoursesStart } from "../../redux/Courses/courses.actions";
 import "./styles.css";
 import { AiOutlineShoppingCart } from "@react-icons/all-files/ai/AiOutlineShoppingCart";
 import { updateUserStart } from "./../../redux/User/user.actions";
+import { Link, useHistory } from "react-router-dom";
 
 const mapState = ({ coursesData, user }) => ({
   courses: coursesData.courses,
@@ -14,21 +15,26 @@ const Courses = (props) => {
   const { courses } = useSelector(mapState);
   const { currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchCoursesStart());
   }, []);
 
   const handleChangeCourseTaken = async (e) => {
-    const course = e;
-    const documentID = currentUser.id;
-    dispatch(
-      updateUserStart({
-        course: course,
-        documentID,
-      })
-    );
-    console.log(course, documentID);
+    if (currentUser) {
+      const course = e;
+      const documentID = currentUser.id;
+      dispatch(
+        updateUserStart({
+          course: course,
+          documentID,
+        })
+      );
+      console.log(course, documentID);
+    } else {
+      history.push("/login");
+    }
   };
 
   return (

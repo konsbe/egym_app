@@ -105,40 +105,40 @@ const SignUp = (props) => {
   // console.log(lastProgram, "sadsadasdasdasasdsdasdaasdsad");
   const handleFormSubmit = async (event, myText) => {
     if (captca) {
-      const string = myList.toString();
-      console.log(myText);
+      // const string = myList.toString();
+      // console.log(myText);
       // console
-      if (verificationText === string.replace(/,/g, "")) {
-        event.preventDefault();
-        dispatch(addCalendarStart({ email }));
-        dispatch(await addTrainingScheduleStart({ email }));
-        dispatch(
-          await signUpUserStart({
-            firstName,
-            lastName,
-            genre,
-            height,
-            weight,
-            email,
-            birthDay,
-            password,
-            confirmPassword,
-            injuries,
-            gear,
-            payment,
-            month,
-            calendarTracker,
-            lastProgram,
-            course,
-          })
-        );
-        resetForm();
-      } else {
-        alert("Please Verify that you are a human");
-      }
+      // if (verificationText === string.replace(/,/g, "")) {
+      event.preventDefault();
+      dispatch(addCalendarStart({ email }));
+      dispatch(await addTrainingScheduleStart({ email }));
+      dispatch(
+        await signUpUserStart({
+          firstName,
+          lastName,
+          genre,
+          height,
+          weight,
+          email,
+          birthDay,
+          password,
+          confirmPassword,
+          injuries,
+          gear,
+          payment,
+          month,
+          calendarTracker,
+          lastProgram,
+          course,
+        })
+      );
+      resetForm();
     } else {
       alert("Please Verify that you are a human");
     }
+    // } else {
+    // alert("Please Verify that you are a human");
+    // }
   };
   const [nextState, setNextState] = useState(false);
   const [nextText, setNextText] = useState("NEXT");
@@ -158,14 +158,14 @@ const SignUp = (props) => {
 
   return (
     <AuthWrapper {...configAuthWrapper}>
-      <p className="logintext">
+      {/* <p className="logintext">
         Would you Like to
         <Link className="loginlink" to="/trainer-registration">
           {" "}
           Sign Up{" "}
         </Link>
         As a Trainer
-      </p>
+      </p> */}
       <div className="formWrap">
         {errors.length > 0 && (
           <ul className="errorline">
