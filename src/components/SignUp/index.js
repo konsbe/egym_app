@@ -42,7 +42,6 @@ const SignUp = (props) => {
   const [captca, setCaptca] = useState(false);
   const [showCaptca, setShowCaptca] = useState(false);
   const [verification, setVerification] = useState(false);
-  const [verificationText, setVerificationText] = useState("");
   const letters =
     "qwertyuiop1234567890asdfghjklzxcvbnmq1234567890QWERTYUIOPA1234567890SDFGHJKLZXCVBNM1234567890";
   const myList = [];
@@ -56,6 +55,8 @@ const SignUp = (props) => {
   };
   handleVerification();
   console.log(myList);
+  const [verificationText, setVerificationText] = useState("");
+  const [eleos, setEleos] = useState("");
   useEffect(() => {
     if (currentUser) {
       resetForm();
@@ -69,6 +70,12 @@ const SignUp = (props) => {
       setErrors(userErr);
     }
   }, [userErr]);
+  let myText = "";
+  const handleVerificationText = (e) => {
+    setEleos(e.target.value);
+    // console.log(myText);
+    // return myText;
+  };
 
   const resetForm = () => {
     setFirstName("");
@@ -96,32 +103,39 @@ const SignUp = (props) => {
   };
   const lastProgram = new Date();
   // console.log(lastProgram, "sadsadasdasdasasdsdasdaasdsad");
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event, myText) => {
     if (captca) {
-      event.preventDefault();
-      dispatch(addCalendarStart({ email }));
-      dispatch(await addTrainingScheduleStart({ email }));
-      dispatch(
-        await signUpUserStart({
-          firstName,
-          lastName,
-          genre,
-          height,
-          weight,
-          email,
-          birthDay,
-          password,
-          confirmPassword,
-          injuries,
-          gear,
-          payment,
-          month,
-          calendarTracker,
-          lastProgram,
-          course,
-        })
-      );
-      resetForm();
+      const string = myList.toString();
+      console.log(myText);
+      // console
+      if (verificationText === string.replace(/,/g, "")) {
+        event.preventDefault();
+        dispatch(addCalendarStart({ email }));
+        dispatch(await addTrainingScheduleStart({ email }));
+        dispatch(
+          await signUpUserStart({
+            firstName,
+            lastName,
+            genre,
+            height,
+            weight,
+            email,
+            birthDay,
+            password,
+            confirmPassword,
+            injuries,
+            gear,
+            payment,
+            month,
+            calendarTracker,
+            lastProgram,
+            course,
+          })
+        );
+        resetForm();
+      } else {
+        alert("Please Verify that you are a human");
+      }
     } else {
       alert("Please Verify that you are a human");
     }
@@ -289,25 +303,27 @@ const SignUp = (props) => {
                   verifyCallback={verifyCallback}
                 />
               </div>
-              {showCaptca ? (
-                <div className="captcaText">
-                  {/* <div class="line-1"></div> */}
-                  {myList}
-                  {/* <div className="verificationText"> */}
-                  <input
-                    className="verificationText"
-                    type="text"
-                    name="height"
-                    value={height}
-                    placeholder="Please Verify that you are a human!"
-                    // handleChange={(e) => setHeight(e.target.value)}
-                  />
-                  {/* </div> */}
-                  {/* <div class="line-1"></div> */}
-                </div>
-              ) : (
-                " "
-              )}
+              {/* {showCaptca ? ( */}
+              {/* <div className="captcaText"> */}
+              {/* <div class="line-1"></div> */}
+              {/* {myList} */}
+              {/* <div className="verificationText"> */}
+              {/* <input */}
+              {/* className="verificationText" */}
+              {/* // type="text" */}
+              {/* name="verificationText" */}
+              {/* // value={verificationText} */}
+              {/* onChange={handleVerificationText} */}
+              {/* placeholder="Please Verify that you are a human!" */}
+              {/* // handleChange={(e) => setHeight(e.target.value)} */}
+              {/* /> */}
+
+              {/* </div> */}
+              {/* <div class="line-1"></div> */}
+              {/* </div> */}
+              {/* ) : ( */}
+              {/* " " */}
+              {/* )} */}
             </div>
           )}
           <div className="next" onClick={handleNext}>
