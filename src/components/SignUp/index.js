@@ -40,8 +40,22 @@ const SignUp = (props) => {
   const [calendarTracker, setCalendarTracker] = useState({});
   const [course, setCourse] = useState("-");
   const [captca, setCaptca] = useState(false);
+  const [showCaptca, setShowCaptca] = useState(false);
   const [verification, setVerification] = useState(false);
+  const [verificationText, setVerificationText] = useState("");
+  const letters =
+    "qwertyuiop1234567890asdfghjklzxcvbnmq1234567890QWERTYUIOPA1234567890SDFGHJKLZXCVBNM1234567890";
+  const myList = [];
 
+  const handleVerification = () => {
+    myList.push(letters[Math.floor(Math.random() * 92) + 1]);
+    myList.push(letters[Math.floor(Math.random() * 92) + 1]);
+    myList.push(letters[Math.floor(Math.random() * 92) + 1]);
+    myList.push(letters[Math.floor(Math.random() * 92) + 1]);
+    myList.push(letters[Math.floor(Math.random() * 92) + 1]);
+  };
+  handleVerification();
+  console.log(myList);
   useEffect(() => {
     if (currentUser) {
       resetForm();
@@ -78,6 +92,7 @@ const SignUp = (props) => {
   };
   const verifyCallback = () => {
     setCaptca(true);
+    setShowCaptca(true);
   };
   const lastProgram = new Date();
   // console.log(lastProgram, "sadsadasdasdasasdsdasdaasdsad");
@@ -119,6 +134,7 @@ const SignUp = (props) => {
       setNextText("BACK");
     } else {
       setNextText("NEXT");
+      handleVerification();
     }
   };
 
@@ -273,6 +289,25 @@ const SignUp = (props) => {
                   verifyCallback={verifyCallback}
                 />
               </div>
+              {showCaptca ? (
+                <div className="captcaText">
+                  {/* <div class="line-1"></div> */}
+                  {myList}
+                  {/* <div className="verificationText"> */}
+                  <input
+                    className="verificationText"
+                    type="text"
+                    name="height"
+                    value={height}
+                    placeholder="Please Verify that you are a human!"
+                    // handleChange={(e) => setHeight(e.target.value)}
+                  />
+                  {/* </div> */}
+                  {/* <div class="line-1"></div> */}
+                </div>
+              ) : (
+                " "
+              )}
             </div>
           )}
           <div className="next" onClick={handleNext}>

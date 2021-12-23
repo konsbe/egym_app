@@ -5,8 +5,43 @@
   margin-right: auto;
   width: 70%;
     margin-bottom: 1rem;
-}
 
+}
+.line-1 {
+    /* width: 40px; */
+  height: 1px;
+  background: black;
+
+  /* transform: rotate(45deg); */
+}
+.captcaText{
+    margin-bottom:1rem ;
+    margin-top:1rem ;
+    border:1px solid black;
+    width: 6rem;
+    height:3rem;
+    padding-top: 1rem;
+
+  background-color: rgb(197, 197, 197);
+  background-image: radial-gradient(#fff 10%, transparent 11%),
+    radial-gradient(#fff 10%, transparent 11%);
+  background-size: 10px 10px;
+  background-position: 0 0, 30px 30px;
+  background-repeat: repeat;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.verificationText{
+    margin-bottom:4rem ;
+    margin-top:2rem ;
+    margin-left:-7rem;
+
+    margin-right:10rem;
+    width: 20rem;
+    /* width: 100%; */
+
+}
 
 @media (min-width: 980px) {
 .forminput {
@@ -52,6 +87,7 @@
 }
 
 .next{
+    margin-top: 5rem;
     /* border: solid 1px; */
     cursor: pointer;
     /* width: 24.8rem; */
@@ -101,6 +137,13 @@ text-align: center  ;
 }
 }
 @media (max-width: 980px) {
+    .recaptcha{
+
+        margin:auto;
+  width: 80%;
+    margin-bottom: 1rem;
+
+}
 .wrap{
 
     display: flex;
@@ -114,6 +157,7 @@ text-align: center  ;
     border-radius:0.5rem ;
 
 }
+
 .formSelect{
     height: 2rem;
     width: 100%;
@@ -124,5 +168,11 @@ text-align: center  ;
 .formtext{
     width: 100%;
     margin-bottom: 1rem;
+}
+.next{
+    margin-top: 5rem;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 0.4rem;
 }
 }
