@@ -45,6 +45,7 @@ const SignUp = (props) => {
   const letters =
     "qwertyuiop1234567890asdfghjklzxcvbnmq1234567890QWERTYUIOPA1234567890SDFGHJKLZXCVBNM1234567890";
   const myList = [];
+  const verifyList = [];
 
   const handleVerification = () => {
     myList.push(letters[Math.floor(Math.random() * 92) + 1]);
@@ -52,9 +53,10 @@ const SignUp = (props) => {
     myList.push(letters[Math.floor(Math.random() * 92) + 1]);
     myList.push(letters[Math.floor(Math.random() * 92) + 1]);
     myList.push(letters[Math.floor(Math.random() * 92) + 1]);
+    return myList;
   };
-  handleVerification();
-  console.log(myList);
+
+  // console.log(myList);
   const [verificationText, setVerificationText] = useState("");
   const [eleos, setEleos] = useState("");
   useEffect(() => {
@@ -71,11 +73,15 @@ const SignUp = (props) => {
     }
   }, [userErr]);
   let myText = "";
+  const [newone, setNewone] = useState("");
   const handleVerificationText = (e) => {
-    setEleos(e.target.value);
-    // console.log(myText);
+    myText = e.target.value;
+    // verifyList.push(e.target.value);
+    setNewone(myText);
+    console.log(myText, newone);
     // return myText;
   };
+  console.log(myText);
 
   const resetForm = () => {
     setFirstName("");
@@ -103,48 +109,52 @@ const SignUp = (props) => {
   };
   const lastProgram = new Date();
   // console.log(lastProgram, "sadsadasdasdasasdsdasdaasdsad");
-  const handleFormSubmit = async (event, myText) => {
+  const handleFormSubmit = async (event, value) => {
     if (captca) {
-      // const string = myList.toString();
-      // console.log(myText);
+      const string = value.toString();
+
       // console
-      // if (verificationText === string.replace(/,/g, "")) {
-      event.preventDefault();
-      dispatch(addCalendarStart({ email }));
-      dispatch(await addTrainingScheduleStart({ email }));
-      dispatch(
-        await signUpUserStart({
-          firstName,
-          lastName,
-          genre,
-          height,
-          weight,
-          email,
-          birthDay,
-          password,
-          confirmPassword,
-          injuries,
-          gear,
-          payment,
-          month,
-          calendarTracker,
-          lastProgram,
-          course,
-        })
-      );
-      resetForm();
+      if (verificationText === string.replace(/,/g, "")) {
+        event.preventDefault();
+        dispatch(addCalendarStart({ email }));
+        dispatch(await addTrainingScheduleStart({ email }));
+        dispatch(
+          await signUpUserStart({
+            firstName,
+            lastName,
+            genre,
+            height,
+            weight,
+            email,
+            birthDay,
+            password,
+            confirmPassword,
+            injuries,
+            gear,
+            payment,
+            month,
+            calendarTracker,
+            lastProgram,
+            course,
+          })
+        );
+        resetForm();
+      } else {
+        alert("Please Verify that you are a human");
+      }
     } else {
       alert("Please Verify that you are a human");
     }
-    // } else {
-    // alert("Please Verify that you are a human");
-    // }
   };
   const [nextState, setNextState] = useState(false);
   const [nextText, setNextText] = useState("NEXT");
+  const [value, setValue] = useState("");
+
   const handleNext = () => {
     setNextState(!nextState);
     if (nextText === "NEXT") {
+      setValue(handleVerification());
+      // console.log(value);
       setNextText("BACK");
     } else {
       setNextText("NEXT");
@@ -158,14 +168,14 @@ const SignUp = (props) => {
 
   return (
     <AuthWrapper {...configAuthWrapper}>
-      {/* <p className="logintext">
+      <p className="logintext">
         Would you Like to
         <Link className="loginlink" to="/trainer-registration">
           {" "}
           Sign Up{" "}
         </Link>
         As a Trainer
-      </p> */}
+      </p>
       <div className="formWrap">
         {errors.length > 0 && (
           <ul className="errorline">
@@ -303,27 +313,27 @@ const SignUp = (props) => {
                   verifyCallback={verifyCallback}
                 />
               </div>
-              {/* {showCaptca ? ( */}
-              {/* <div className="captcaText"> */}
-              {/* <div class="line-1"></div> */}
-              {/* {myList} */}
-              {/* <div className="verificationText"> */}
-              {/* <input */}
-              {/* className="verificationText" */}
-              {/* // type="text" */}
-              {/* name="verificationText" */}
-              {/* // value={verificationText} */}
-              {/* onChange={handleVerificationText} */}
-              {/* placeholder="Please Verify that you are a human!" */}
-              {/* // handleChange={(e) => setHeight(e.target.value)} */}
-              {/* /> */}
+              {showCaptca ? (
+                <div className="captcaText">
+                  {/* <div class="line-1"></div> */}
+                  {value}
+                  {/* <div className="verificationText"> */}
+                  <input
+                    className="verificationText"
+                    // type="text"
+                    name="verificationText"
+                    // value={verificationText}
+                    onChange={handleVerificationText}
+                    placeholder="Please Verify that you are a human!"
+                    // handleChange={(e) => setHeight(e.target.value)}
+                  />
 
-              {/* </div> */}
-              {/* <div class="line-1"></div> */}
-              {/* </div> */}
-              {/* ) : ( */}
-              {/* " " */}
-              {/* )} */}
+                  {/* </div> */}
+                  {/* <div class="line-1"></div> */}
+                </div>
+              ) : (
+                " "
+              )}
             </div>
           )}
           <div className="next" onClick={handleNext}>
