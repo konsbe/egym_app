@@ -3,10 +3,15 @@ import image2 from "./image2.png";
 import "./styles.scss";
 import Button from "../../Forms/Button";
 import Modal from "./../../Modal";
+import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
+
 import manageusers from "./manageusers.webp";
 import adminToolbar from "./adminToolbar.webp";
 import manageexercises from "./manageexercises.webp";
 import addcourse from "./addcourse.webp";
+import addingweek from "./addingweek.webp";
+import addProgramm from "./addProgramm.webp";
+import addDay from "./addDay.webp";
 
 const AppInfosDirectory = () => {
   const [modal, setModal] = useState(false);
@@ -34,6 +39,17 @@ const AppInfosDirectory = () => {
     <div>
       {/* <button onClick={() => toggleModal()}>OpenModal</button> */}
       <Modal {...configModal}>
+        <FaTimes
+          className="fatimes"
+          style={{
+            color: "red",
+            cursor: "pointer",
+            marginBottom: -20,
+            zIndex: 1000,
+          }}
+          size={40}
+          onClick={toggleModal}
+        />
         <div className="imgView">
           <div className="picos">
             <img src={image} alt=""></img>
@@ -124,6 +140,55 @@ const AppInfosDirectory = () => {
               <h2 className="headingTwo">
                 READ WRITE UPDATE DELETE INDEPENDENTLY
               </h2>
+              {/* <div>
+                Read write update and delete your products independently
+              </div> */}
+            </div>
+          </div>
+        </section>
+        <section className="aboutpageInfos">
+          {/* <div className="aboutSection"> */}
+          <div className="picos picinfo newContent">
+            <img
+              src={addingweek}
+              alt={addingweek}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            <img
+              src={addDay}
+              alt={addDay}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            <img
+              src={addProgramm}
+              alt={addProgramm}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            {/* <Button className="btnDetails">Go to details</Button> */}
+
+            <div className=" newContent">
+              <h2 className="contentHeading">Post Section</h2>
+
+              <div>
+                CMS helps you interact with all the users in this app, being
+                updated, track them and have the abilty for better admin - user
+                experience through this App
+              </div>
+            </div>
+          </div>
+          <div className="pic picinfo">
+            <img
+              src={addcourse}
+              alt={addcourse}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            <img
+              src={manageexercises}
+              alt={manageexercises}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            <div className="content">
+              <h2 className="headingTwo">Post Section</h2>
               {/* <div>
                 Read write update and delete your products independently
               </div> */}
