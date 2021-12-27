@@ -55,7 +55,10 @@ const AppInfosDirectory = () => {
               <h2 className="contentHeading">Progressive Web Application</h2>
 
               <div>
-                <p>This is a Social Media - Ecommerce web app</p>
+                <p>
+                  This is a Social Media - Ecommerce web app for Gyms and
+                  Personal Trainers
+                </p>
                 Progreesive Web Application supported from the most of the
                 common browsers (Google Chrome, Safari, Mozilla Firefox) it can
                 be downloaded from your Browser (Google Chrome, Safari) as an

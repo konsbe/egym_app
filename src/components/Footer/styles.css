@@ -2,7 +2,7 @@
 
   .footer {
     padding-top: 1rem;
-    background-color: black;
+    background-color: rgba(59, 59, 59, 0.7);
     color: aliceblue;
   z-index: y;
 }
