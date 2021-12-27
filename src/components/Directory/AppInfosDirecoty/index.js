@@ -12,6 +12,7 @@ import addcourse from "./addcourse.webp";
 import addingweek from "./addingweek.webp";
 import addProgramm from "./addProgramm.webp";
 import addDay from "./addDay.webp";
+import phoneApp from "./phoneApp.webp";
 
 const AppInfosDirectory = () => {
   const [modal, setModal] = useState(false);
@@ -51,7 +52,7 @@ const AppInfosDirectory = () => {
           onClick={toggleModal}
         />
         <div className="imgView">
-          <div className="picos">
+          <div className="picosView">
             <img src={image} alt=""></img>
           </div>
         </div>
@@ -82,8 +83,9 @@ const AppInfosDirectory = () => {
               </div>
             </div>
             <img
-              src={image2}
-              alt={image2}
+              src={phoneApp}
+              alt={phoneApp}
+              className="phoneImage"
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
