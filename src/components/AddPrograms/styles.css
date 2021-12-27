@@ -65,8 +65,11 @@
 .card{
     margin:2rem;
 }
+
+
+
 .card:nth-child(even){
-    padding-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 }
 }
 

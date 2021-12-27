@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../Forms/Button";
 
-import image2 from "./image2.png";
+import image2 from "./image2.webp";
 import "./styles.css";
 
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);

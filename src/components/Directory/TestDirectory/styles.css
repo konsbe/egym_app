@@ -6,7 +6,7 @@
     min-height: 100vh;
     justify-content: center;
     align-items: center;
-    background: url('image2.png') no-repeat center center/cover;
+    background: url('image2.webp') no-repeat center center/cover;
     background-attachment: fixed;
     opacity: .8;
 }
@@ -22,7 +22,7 @@
 }
 
 .testView  {
-  background-image: url("image2.png");
+  background-image: url("image2.webp");
      background-size:     cover;
     background-repeat:   no-repeat;
     background-position: center center;

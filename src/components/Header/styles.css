@@ -261,6 +261,10 @@ span {
 } */
 
 }
+.brand-image{
+        border-radius: 50%;
+    border-top: ridge ;
+}
 @media screen and (min-width: 901px){
     .phoneBar{
         display: none;
