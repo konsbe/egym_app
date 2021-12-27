@@ -18,6 +18,7 @@ const AppInfosDirectory = () => {
   const [modal, setModal] = useState(false);
   const [hideModal, setHideModal] = useState(true);
   const [image, setImage] = useState(image2);
+  const [ikey, setIKey] = useState("asdasdasd");
 
   const toggleModal = (e) => {
     setHideModal(!hideModal);
@@ -29,7 +30,10 @@ const AppInfosDirectory = () => {
   };
   const imageHandler = (e) => {
     setImage(e.target.alt);
+    setIKey(e.clientX);
     setHideModal(!hideModal);
+    console.log({ ...e });
+    console.log(ikey);
   };
   const configModal = {
     hideModal,
@@ -39,7 +43,7 @@ const AppInfosDirectory = () => {
   return (
     <div>
       {/* <button onClick={() => toggleModal()}>OpenModal</button> */}
-      <Modal {...configModal}>
+      <Modal {...configModal} key={ikey}>
         <FaTimes
           className="fatimes"
           style={{
@@ -85,6 +89,7 @@ const AppInfosDirectory = () => {
             <img
               src={phoneApp}
               alt={phoneApp}
+              key={phoneApp}
               className="phoneImage"
               onClick={(e) => imageHandler(e)}
             ></img>
@@ -94,6 +99,7 @@ const AppInfosDirectory = () => {
             <img
               src={adminToolbar}
               alt={adminToolbar}
+              key={adminToolbar}
               onClick={(e) => imageHandler(e)}
             ></img>
             <div className="content">
@@ -123,6 +129,7 @@ const AppInfosDirectory = () => {
             <img
               src={manageusers}
               alt={manageusers}
+              key={manageusers}
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
@@ -131,11 +138,13 @@ const AppInfosDirectory = () => {
             <img
               src={addcourse}
               alt={addcourse}
+              key={addcourse}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={manageexercises}
               alt={manageexercises}
+              key={manageexercises}
               onClick={(e) => imageHandler(e)}
             ></img>
             <div className="content">
@@ -154,16 +163,19 @@ const AppInfosDirectory = () => {
             <img
               src={addingweek}
               alt={addingweek}
+              key={addingweek}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={addDay}
               alt={addDay}
+              key={addDay}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={addProgramm}
               alt={addProgramm}
+              key={addProgramm}
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
@@ -196,16 +208,19 @@ const AppInfosDirectory = () => {
             <img
               src={addingweek}
               alt={addingweek}
+              key={addingweek}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={addDay}
               alt={addDay}
+              key={addDay}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={addProgramm}
               alt={addProgramm}
+              key={addProgramm}
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
@@ -214,11 +229,15 @@ const AppInfosDirectory = () => {
             <img
               src={addcourse}
               alt={addcourse}
+              // key={addcourse}
+              key={2}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={manageexercises}
               alt={manageexercises}
+              // key={manageexercises}
+              key={1}
               onClick={(e) => imageHandler(e)}
             ></img>
             <div className="content">

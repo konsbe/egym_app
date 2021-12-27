@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CountrySelector from "./CountrySelector";
+import { Link, useHistory } from "react-router-dom";
 
 import FormInput from "../Forms/FormInput";
 
@@ -8,6 +9,7 @@ import "./styles.css";
 import Button from "./../Forms/Button";
 
 const TrainerSignUp = () => {
+  const history = useHistory();
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
   const [type, setType] = useState("");
@@ -32,6 +34,7 @@ const TrainerSignUp = () => {
     setUsername("");
     setTrainerType("");
     setGeneralInfo("");
+    history.push("/trainer");
   };
 
   /*   const paramX = 99999;

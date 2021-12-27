@@ -34,6 +34,7 @@ import Trainers from "./views/Trainers";
 import TrainerRegistration from "./views/TrainerRegistration";
 import EditInfos from "./views/EditInfos";
 import AppSpecs from "./views/AppSpecs";
+import Trainer from "./views/Trainer";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -62,6 +63,15 @@ const App = (props) => {
             render={() => (
               <MainLayout>
                 <AppSpecs />
+              </MainLayout>
+            )}
+          />
+          <Route
+            exact
+            path="/trainer"
+            render={() => (
+              <MainLayout>
+                <Trainer />
               </MainLayout>
             )}
           />
