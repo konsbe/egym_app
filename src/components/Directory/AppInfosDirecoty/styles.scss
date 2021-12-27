@@ -95,11 +95,6 @@ width: 200px;
     margin-bottom: 2rem;
 }
 
-@media screen and (max-width: 901px){
-
-
-}
-
 
 .aboutSection{
 
@@ -162,7 +157,7 @@ width: 200px;
     // .newContent{}
 }
 
-    .headingTwo {
+.headingTwo {
         text-align: start;
         border-bottom: 1px solid red;
 
@@ -180,45 +175,45 @@ width: 200px;
     }
 
 
-@media screen and (max-width: 900px){
-    .picos{
-        display: flex;
-        flex-direction: column;
-    }
+    @media screen and (max-width: 900px){
+        .picos{
+            display: flex;
+            flex-direction: column;
+        }
 
-    .picos img {
-    width: 100%;
-    height:30%;
-    /* border-radius: 15px; */
-    opacity: .8;
+        .picos img {
+            width: 100%;
+            height:30%;
+            /* border-radius: 15px; */
+            opacity: .8;
 
-}
+        }
 
-    .picos img {
-        /* width: 512px; */
-        /* height:400px; */
-        border-radius: 15px;
-        opacity: .8;
-    }
+        .picos img {
+            /* width: 512px; */
+            /* height:400px; */
+            border-radius: 15px;
+            opacity: .8;
+        }
 
-    .picos{
-        margin-bottom: 4rem;
-    }
-    .picos:nth-child(odd){
-        margin-left: 0px;
-    margin-right: 0px;
-    }
+        .picos{
+            margin-bottom: 4rem;
+        }
+        .picos:nth-child(odd){
+            margin-left: 0px;
+            margin-right: 0px;
+        }
 
 
-    .picos img:nth-child(odd) {
-        width: 100%;
-        border-bottom: solid 5px black  ;
-        /* margin-right: 1.5rem; */
-        z-index: 0;
-        border-radius: 0px 0px 0px 40px;
-        margin-bottom: -15px;
+        .picos img:nth-child(odd) {
+            width: 100%;
+            border-bottom: solid 5px black  ;
+            /* margin-right: 1.5rem; */
+            z-index: 0;
+            border-radius: 0px 0px 0px 40px;
+            margin-bottom: -15px;
 
-    }
+        }
     .content{
         margin-left: 0.7rem;
         z-index: 1;
@@ -239,5 +234,22 @@ width: 200px;
     .content:nth-child(1){
         margin-bottom: 1rem;
     }
-
+    .picinfo:hover{
+        border:none;
+        box-shadow: 1px 1px 2px rgba(255, 49, 49, 0.6), 0 0 4px rgba(255, 49, 49, 0.6), 0 0 8px rgba(255, 49, 49, 0.6);
+    }
 }
+
+    @media screen and (max-width: 901px){
+
+        .newContent{
+            img:nth-child(4){margin-top: 0.8rem;}
+            // img:nth-child(6){margin-top: 0.8rem;}
+        }
+
+        .newContent{
+            img:nth-child(2){margin-top: 0.14rem;}
+            // img:nth-child(6){margin-top: 0.8rem;}
+        }
+
+    }

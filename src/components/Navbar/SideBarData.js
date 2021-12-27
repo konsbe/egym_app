@@ -10,6 +10,7 @@ import { BiLogOutCircle } from "@react-icons/all-files/bi/BiLogOutCircle";
 import { IoMdAnalytics } from "@react-icons/all-files/io/IoMdAnalytics";
 import { CgProfile } from "@react-icons/all-files/cg/CgProfile";
 import { GiStrongMan } from "@react-icons/all-files/gi/GiStrongMan";
+import { MdDeveloperMode } from "@react-icons/all-files/md/MdDeveloperMode";
 
 export const SideBarDataLogIn = [
   {
@@ -30,12 +31,14 @@ export const SideBarDataLogIn = [
     icon: <IoMdAnalytics />,
     cName: "nav-text",
   },
+
   {
     title: "My Workout",
     path: "/profile",
     icon: <GiStrongMan />,
     cName: "nav-text",
   },
+
   {
     title: "My Profile",
     path: "/myprofile",
@@ -61,6 +64,12 @@ export const SideBarDataLogOut = [
     title: "TEST",
     path: "/test",
     icon: <IoMdAnalytics />,
+    cName: "nav-text",
+  },
+  {
+    title: "App-Specs",
+    path: "/app-specs",
+    icon: <MdDeveloperMode />,
     cName: "nav-text",
   },
   {

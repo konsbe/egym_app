@@ -18,6 +18,12 @@ export const SideBarDataLogIn = [
     cName: "nav-text",
   },
   {
+    title: "App-Specs",
+    path: "/app-specs",
+    icon: <AiOutlineShop />,
+    cName: "nav-text",
+  },
+  {
     title: "COURSES",
     path: "/courses",
     icon: <AiOutlineShop />,
@@ -53,6 +59,12 @@ export const SideBarDataLogOut = [
   {
     title: "COURSES",
     path: "/courses",
+    icon: <AiOutlineShop />,
+    cName: "nav-text",
+  },
+  {
+    title: "App-Specs",
+    path: "/app-specs",
     icon: <AiOutlineShop />,
     cName: "nav-text",
   },

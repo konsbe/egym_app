@@ -210,7 +210,7 @@ const AppInfosDirectory = () => {
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
           </div>
-          <div className="pic picinfo">
+          <div className="pic picinfo  newContent">
             <img
               src={addcourse}
               alt={addcourse}
