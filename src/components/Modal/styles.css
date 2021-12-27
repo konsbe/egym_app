@@ -13,19 +13,16 @@
   pointer-events: none;
   z-index: 100;
 }
+
 .modal {
     position: absolute;
-    top: 50%; left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    width: 95%;
-    padding: 2rem;
-    max-width: 60rem;
-    height: auto;
-    min-height: 40.0rem;
-    pointer-events: all;
-    max-height: 95vh;
-    overflow: auto;
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
   }

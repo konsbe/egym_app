@@ -102,6 +102,9 @@ const Header = (props) => {
               <Nav.Link as={Link} to="/test" className="navmenu">
                 <span className={y.join(" ")}>TEST</span>
               </Nav.Link>
+              <Nav.Link as={Link} to="/app-specs" className="navmenu">
+                <span className={y.join(" ")}>App Specs</span>
+              </Nav.Link>
               {/* <Nav.Link as={Link} to="/fortrainers" className="navmenu">
                 <span className={y.join(" ")}>TRAINERS</span>
               </Nav.Link> */}

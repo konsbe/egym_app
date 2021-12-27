@@ -33,6 +33,7 @@ import Programs from "./views/Programs";
 import Trainers from "./views/Trainers";
 import TrainerRegistration from "./views/TrainerRegistration";
 import EditInfos from "./views/EditInfos";
+import AppSpecs from "./views/AppSpecs";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -52,6 +53,15 @@ const App = (props) => {
             render={() => (
               <MainLayout>
                 <Homepage />
+              </MainLayout>
+            )}
+          />
+          <Route
+            exact
+            path="/app-specs"
+            render={() => (
+              <MainLayout>
+                <AppSpecs />
               </MainLayout>
             )}
           />

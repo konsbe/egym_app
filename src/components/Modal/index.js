@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles.css";
+import "./styles.scss";
 
 const Modal = ({ hideModal, toggleModal, children }) => {
   if (hideModal) return null;
@@ -7,7 +7,9 @@ const Modal = ({ hideModal, toggleModal, children }) => {
   return [
     <div className="modalOverlay" onClick={() => toggleModal()} />,
     <div className="modalWrap">
-      <div className="modal">{children}</div>
+      {/* <div className="modal"> */}
+      <div className="modalDiv">{children}</div>
+      {/* </div> */}
     </div>,
   ];
 };

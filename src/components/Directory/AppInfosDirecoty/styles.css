@@ -7,6 +7,28 @@
     background: url('image2.png') no-repeat center center/cover;
     min-height: 100vh;
 }
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.imgView{
+    position: absolute;
+    background-color: white;
+}
+
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+}
+
 .aboutpage::before{
     content:"";
     position:absolute;
@@ -17,12 +39,6 @@
     min-height: 100vh;
     z-index: -1;
     opacity: .8;
-}
-
-
-.picinfo{
-    margin-bottom: 1rem;
-    border:1px solid red;
 }
 
 .pic {
