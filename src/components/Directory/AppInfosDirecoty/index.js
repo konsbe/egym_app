@@ -169,7 +169,7 @@ const AppInfosDirectory = () => {
             {/* <Button className="btnDetails">Go to details</Button> */}
 
             <div className=" newContent">
-              <h2 className="contentHeading">Post Section</h2>
+              <h2 className="contentHeading contentHeadingTwo">Post Section</h2>
 
               <div>
                 CMS helps you interact with all the users in this app, being
@@ -177,6 +177,38 @@ const AppInfosDirectory = () => {
                 experience through this App
               </div>
             </div>
+          </div>
+          <div className="picos picinfo newContent">
+            <div className=" newContent">
+              <h2
+                className="contentHeading contentHeadingTwo"
+                style={{ textAlign: "start" }}
+              >
+                User Interface client side
+              </h2>
+
+              <div>
+                CMS helps you interact with all the users in this app, being
+                updated, track them and have the abilty for better admin - user
+                experience through this App
+              </div>
+            </div>
+            <img
+              src={addingweek}
+              alt={addingweek}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            <img
+              src={addDay}
+              alt={addDay}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            <img
+              src={addProgramm}
+              alt={addProgramm}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            {/* <Button className="btnDetails">Go to details</Button> */}
           </div>
           <div className="pic picinfo">
             <img
