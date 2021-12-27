@@ -265,6 +265,10 @@ span {
         border-radius: 50%;
     border-top: ridge ;
 }
+
+.show{display: none;}
+.scrolledKeys{display:contents;}
+
 @media screen and (min-width: 901px){
     .phoneBar{
         display: none;

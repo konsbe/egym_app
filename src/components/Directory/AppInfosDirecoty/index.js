@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import image2 from "./image2.png";
 import "./styles.scss";
 import Button from "../../Forms/Button";
 import Modal from "./../../Modal";
+import ScrolledKeys from "./../../ScrolledKeys";
+import { Link } from "react-scroll";
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes";
+import { FaArrowCircleUp } from "@react-icons/all-files/fa/FaArrowCircleUp";
+import { GiSmartphone } from "@react-icons/all-files/gi/GiSmartphone";
+import { AiOutlineFileSearch } from "@react-icons/all-files/ai/AiOutlineFileSearch";
+import { FaRegEdit } from "@react-icons/all-files/fa/FaRegEdit";
+import { RiAdminLine } from "@react-icons/all-files/ri/RiAdminLine";
 
 import manageusers from "./manageusers.webp";
 import adminToolbar from "./adminToolbar.webp";
@@ -19,6 +26,22 @@ const AppInfosDirectory = () => {
   const [hideModal, setHideModal] = useState(true);
   const [image, setImage] = useState(image2);
   const [ikey, setIKey] = useState("asdasdasd");
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    // console.log("33");
+    if (offset > 20) {
+      setScrolled(true);
+      console.log("scroll");
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
 
   const toggleModal = (e) => {
     setHideModal(!hideModal);
@@ -39,9 +62,55 @@ const AppInfosDirectory = () => {
     hideModal,
     toggleModal,
   };
+  let x = ["show"];
+
+  if (scrolled) {
+    x.push("scrolledKeys");
+  }
 
   return (
     <div>
+      <div className={x.join(" ")}>
+        <ScrolledKeys>
+          <div className="scrolledKeysExp">
+            <Link
+              to="aboutPageScroll"
+              smooth={true}
+              duration={100}
+              style={{ marginRight: 20 }}
+            >
+              <GiSmartphone size={25} />
+            </Link>
+            <Link
+              to="aboutpageScrolled"
+              smooth={true}
+              duration={100}
+              style={{ marginRight: 20 }}
+            >
+              <AiOutlineFileSearch size={25} />
+            </Link>
+            <Link to="aboutPageScroll" smooth={true} duration={100}>
+              <FaArrowCircleUp size={25} />
+            </Link>
+            <Link
+              to="headingTwoScrolled"
+              smooth={true}
+              duration={100}
+              style={{ marginLeft: 20 }}
+            >
+              <RiAdminLine size={25} />
+            </Link>
+            <Link
+              to="scrolledTwo"
+              smooth={true}
+              duration={100}
+              style={{ marginLeft: 20 }}
+            >
+              <FaRegEdit size={25} />
+            </Link>
+          </div>
+        </ScrolledKeys>
+      </div>
       {/* <button onClick={() => toggleModal()}>OpenModal</button> */}
       <Modal {...configModal} key={ikey}>
         <FaTimes
@@ -68,10 +137,10 @@ const AppInfosDirectory = () => {
         </div>
       )} */}
       <div id="aboutPageScroll">
-        <section className="aboutpageInfos">
+        <section className="aboutpageInfos ">
           <h1 className="headings">This is the About Page</h1>
           {/* <div className="aboutSection"> */}
-          <div className="pic picinfo">
+          <div className="pic picinfo pwaScrolled">
             <div className="content">
               <h2 className="contentHeading">Progressive Web Application</h2>
 
@@ -114,11 +183,11 @@ const AppInfosDirectory = () => {
             </div>
           </div>
         </section>
-        <section className="aboutpageInfos">
+        <section className="aboutpageInfos aboutpageScrolled">
           {/* <div className="aboutSection"> */}
           <div className="pic picinfo">
             <div className="content">
-              <h2 className="contentHeading">Customer Management System</h2>
+              <h2 className="contentHeading ">Customer Management System</h2>
 
               <div>
                 CMS helps you interact with all the users in this app, being
@@ -134,7 +203,7 @@ const AppInfosDirectory = () => {
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
           </div>
-          <div className="pic picinfo">
+          <div className="pic picinfo headingTwoScrolled">
             <img
               src={addcourse}
               alt={addcourse}
@@ -142,13 +211,14 @@ const AppInfosDirectory = () => {
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
+              // className="scrolledTwo"
               src={manageexercises}
               alt={manageexercises}
               key={manageexercises}
               onClick={(e) => imageHandler(e)}
             ></img>
-            <div className="content">
-              <h2 className="headingTwo">
+            <div className="content ">
+              <h2 className="headingTwo ">
                 READ WRITE UPDATE DELETE INDEPENDENTLY
               </h2>
               {/* <div>
@@ -157,7 +227,7 @@ const AppInfosDirectory = () => {
             </div>
           </div>
         </section>
-        <section className="aboutpageInfos">
+        <section className="aboutpageInfos scrolledTwo">
           {/* <div className="aboutSection"> */}
           <div className="picos picinfo newContent">
             <img
