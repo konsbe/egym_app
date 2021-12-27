@@ -105,9 +105,9 @@ const MyUserProfile = ({}) => {
       <div className="sidebarTop">
         <h3>
           {genre === "woman" ? (
-            <img src={imgWomen}></img>
+            <img className="prifileImg" src={imgWomen}></img>
           ) : (
-            <img src={imgMen}></img>
+            <img className="prifileImg" src={imgMen}></img>
           )}
         </h3>
         {<h3>{firstName}</h3>}
