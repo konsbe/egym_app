@@ -43,7 +43,7 @@ const Weeks = ({ onDelete }) => {
   // console.log(userSchedule, "dasdasdassdadsaasdasdasasddasasd");
   console.log(userSchedule.email, "dasdasdassdadsaasdasdasasddasasd");
 
-  console.log(userData, "dasdasdassdadsaasdasdasasddasasd");
+  // console.log(userData, "dasdasdassdadsaasdasdasasddasasd");
   //   const [showWeek, setShowWeek] = useState(false);
   const { user } = useSelector(mapState);
   const {
@@ -123,7 +123,7 @@ const Weeks = ({ onDelete }) => {
     // }
     // console.log(userData.length);
   }, [count]);
-
+  // count;
   console.log(userData, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   console.log(userWeeks, "frfrfrfrfrrffrfrfrfrfrfrrffr");
   // userScheduleData[0].email !== email;
@@ -181,6 +181,6 @@ const Weeks = ({ onDelete }) => {
       </div>
     );
   }
-};
+};;
 
 export default Weeks;

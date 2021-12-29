@@ -20,6 +20,12 @@ import addingweek from "./addingweek.webp";
 import addProgramm from "./addProgramm.webp";
 import addDay from "./addDay.webp";
 import phoneApp from "./phoneApp.webp";
+import d3 from "./d3.webp";
+import d4 from "./d4.webp";
+import d1 from "./d1.webp";
+import calendarDay from "./calendarDay.webp";
+import calendarMonth from "./calendarMonth.webp";
+import calendarWeek from "./calendarWeek.webp";
 
 const AppInfosDirectory = () => {
   const [modal, setModal] = useState(false);
@@ -30,6 +36,7 @@ const AppInfosDirectory = () => {
 
   const handleScroll = () => {
     const offset = window.scrollY;
+    const price = window.onClick;
     // console.log("33");
     if (offset > 20) {
       setScrolled(true);
@@ -70,7 +77,8 @@ const AppInfosDirectory = () => {
 
   return (
     <div>
-      <div className={x.join(" ")}>
+      <div className="show">
+        {/* <div className={x.join(" ")}> */}
         <ScrolledKeys>
           <div className="scrolledKeysExp">
             <Link
@@ -251,13 +259,11 @@ const AppInfosDirectory = () => {
             {/* <Button className="btnDetails">Go to details</Button> */}
 
             <div className=" newContent">
-              <h2 className="contentHeading contentHeadingTwo">Post Section</h2>
+              <h2 className="contentHeading contentHeadingTwo">
+                User Interface for Admin
+              </h2>
 
-              <div>
-                CMS helps you interact with all the users in this app, being
-                updated, track them and have the abilty for better admin - user
-                experience through this App
-              </div>
+              <div></div>
             </div>
           </div>
           <div className="picos picinfo newContent">
@@ -266,55 +272,58 @@ const AppInfosDirectory = () => {
                 className="contentHeading contentHeadingTwo"
                 style={{ textAlign: "start" }}
               >
-                User Interface client side
+                User Interface for clients
               </h2>
 
-              <div>
-                CMS helps you interact with all the users in this app, being
-                updated, track them and have the abilty for better admin - user
-                experience through this App
-              </div>
+              <div></div>
             </div>
             <img
-              src={addingweek}
-              alt={addingweek}
-              key={addingweek}
+              src={d3}
+              alt={d3}
+              key={d3}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
-              src={addDay}
-              alt={addDay}
-              key={addDay}
+              src={d1}
+              alt={d1}
+              key={d1}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
-              src={addProgramm}
-              alt={addProgramm}
-              key={addProgramm}
+              src={d4}
+              alt={d4}
+              key={d4}
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
           </div>
-          <div className="pic picinfo  newContent">
+          <div className="picos picinfo newContent">
             <img
-              src={addcourse}
-              alt={addcourse}
-              // key={addcourse}
-              key={2}
+              src={calendarMonth}
+              alt={calendarMonth}
+              key={calendarMonth}
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
-              src={manageexercises}
-              alt={manageexercises}
-              // key={manageexercises}
-              key={1}
+              src={calendarWeek}
+              alt={calendarWeek}
+              key={calendarWeek}
               onClick={(e) => imageHandler(e)}
             ></img>
-            <div className="content">
-              <h2 className="headingTwo">Post Section</h2>
-              {/* <div>
-                Read write update and delete your products independently
-              </div> */}
+            <img
+              src={calendarDay}
+              alt={calendarDay}
+              key={calendarDay}
+              onClick={(e) => imageHandler(e)}
+            ></img>
+            {/* <Button className="btnDetails">Go to details</Button> */}
+
+            <div className=" newContent">
+              <h2 className="contentHeading contentHeadingTwo">
+                Calendar Notes
+              </h2>
+
+              <div></div>
             </div>
           </div>
         </section>

@@ -11,6 +11,10 @@
 .AppCalendar {
   text-align: center;
 }
+.calendarImg {
+    border-radius: 50%;
+    border-top: ridge ;
+}
 
 .App-logo {
   height: 40vmin;

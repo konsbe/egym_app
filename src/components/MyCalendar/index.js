@@ -92,6 +92,7 @@ function MyCalendar() {
 
     fetchData();
   }, [count]);
+  // count;
   // calendar[0].email !== email;
   // const bees = [];
   // console.log(bees);
@@ -136,7 +137,7 @@ function MyCalendar() {
     <div className="AppCalendar">
       <h1 className="calendar">
         <div className="backcal">
-          <img src={calendarIcon}></img>
+          <img className="calendarImg" src={calendarIcon}></img>
         </div>
       </h1>
 
