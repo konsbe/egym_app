@@ -158,7 +158,7 @@ const AppInfosDirectory = () => {
                   Personal Trainers
                 </p>
                 Progreesive Web Application supported from the most of the
-                common browsers (Google Chrome, Safari, Mozilla Firefox) it can
+                common browsers (Google Chrome, Safari, Mozilla Firefox), it can
                 be downloaded from your Browser (Google Chrome, Safari) as an
                 App or even from Google Play Store.
               </div>
@@ -182,9 +182,9 @@ const AppInfosDirectory = () => {
             <div className="content">
               <h2 className="headingTwo">Admin Navigation Bar</h2>
               <div>
-                With the admin Toolbar you can have access all over your
-                products and customers, by writing new products, updating and
-                delete them
+                With the admin Toolbar you can have access all over your app,
+                navigate wherever you like and make your changes or even
+                updating and delete things
               </div>
               {/* </div> */}
               {/* <Button className="btnDetails">Go to details</Button> */}
@@ -199,8 +199,8 @@ const AppInfosDirectory = () => {
 
               <div>
                 CMS helps you interact with all the users in this app, being
-                updated, track them and have the abilty for better admin - user
-                experience through this App
+                updated, track the customers and the inside payments, and have
+                the abilty for better admin - user experience through this App
               </div>
             </div>
             <img
