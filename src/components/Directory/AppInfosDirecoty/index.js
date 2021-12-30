@@ -167,7 +167,7 @@ const AppInfosDirectory = () => {
               src={phoneApp}
               alt={phoneApp}
               key={phoneApp}
-              className="phoneImage"
+              className="phoneImage specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
@@ -177,6 +177,7 @@ const AppInfosDirectory = () => {
               src={adminToolbar}
               alt={adminToolbar}
               key={adminToolbar}
+              className="specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             <div className="content">
@@ -207,22 +208,26 @@ const AppInfosDirectory = () => {
               src={manageusers}
               alt={manageusers}
               key={manageusers}
+              className="specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
           </div>
           <div className="pic picinfo headingTwoScrolled">
             <img
+              className="specsImg"
               src={addcourse}
               alt={addcourse}
               key={addcourse}
               onClick={(e) => imageHandler(e)}
+              // style={{ marginTop: 20 }}
             ></img>
             <img
               // className="scrolledTwo"
               src={manageexercises}
               alt={manageexercises}
               key={manageexercises}
+              className="specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             <div className="content ">
@@ -237,8 +242,9 @@ const AppInfosDirectory = () => {
         </section>
         <section className="aboutpageInfos scrolledTwo">
           {/* <div className="aboutSection"> */}
-          <div className="picos picinfo newContent">
+          <div className="picos picinfo newContent marginTop">
             <img
+              className="specsImg"
               src={addingweek}
               alt={addingweek}
               key={addingweek}
@@ -248,12 +254,16 @@ const AppInfosDirectory = () => {
               src={addDay}
               alt={addDay}
               key={addDay}
+              className="specsImg"
+              // className="marginTop"
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={addProgramm}
               alt={addProgramm}
               key={addProgramm}
+              className="specsImg"
+              className="specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
@@ -281,6 +291,8 @@ const AppInfosDirectory = () => {
               src={d3}
               alt={d3}
               key={d3}
+              className="specsImg"
+
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
@@ -288,11 +300,13 @@ const AppInfosDirectory = () => {
               alt={d1}
               key={d1}
               onClick={(e) => imageHandler(e)}
+              className="specsImg"
             ></img>
             <img
               src={d4}
               alt={d4}
               key={d4}
+              className="specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
@@ -301,6 +315,7 @@ const AppInfosDirectory = () => {
             <img
               src={calendarMonth}
               alt={calendarMonth}
+              className="specsImg"
               key={calendarMonth}
               onClick={(e) => imageHandler(e)}
             ></img>
@@ -308,12 +323,14 @@ const AppInfosDirectory = () => {
               src={calendarWeek}
               alt={calendarWeek}
               key={calendarWeek}
+              className="specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             <img
               src={calendarDay}
               alt={calendarDay}
               key={calendarDay}
+              className="specsImg"
               onClick={(e) => imageHandler(e)}
             ></img>
             {/* <Button className="btnDetails">Go to details</Button> */}
@@ -333,3 +350,4 @@ const AppInfosDirectory = () => {
 };
 
 export default AppInfosDirectory;
+
